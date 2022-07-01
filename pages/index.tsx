@@ -1,13 +1,11 @@
 import type { NextPage } from 'next'
-import Sidebanner from "../components/sidebanner/Sidebanner";
-import {Calculator, FlowerBladeFallFilled, HeartBroken} from "@navikt/ds-icons";
+import {Calculator} from "@navikt/ds-icons";
 import {BodyLong, Button, Heading} from "@navikt/ds-react";
 import Divider from "../components/divider/Divider";
 import Container from "../components/container/Container";
 
 const Home: NextPage = () => {
-    return (<>
-        <Sidebanner tittel="Beregning av AAP"/>
+    return (
         <Container>
                 <div className="flex flex-col items-center">
                     <Calculator className="h-14 w-14 my-4"/>
@@ -23,7 +21,7 @@ const Home: NextPage = () => {
                     <Button className="w-20" variant="primary" aria-label="Start">Start</Button>
                 </div>
         </Container>
-    </>)
+    )
 }
 
 export default Home
