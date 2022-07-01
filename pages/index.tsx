@@ -3,12 +3,12 @@ import Sidebanner from "../components/sidebanner/Sidebanner";
 import {Calculator, FlowerBladeFallFilled, HeartBroken} from "@navikt/ds-icons";
 import {BodyLong, Button, Heading} from "@navikt/ds-react";
 import Divider from "../components/divider/Divider";
+import Container from "../components/container/Container";
 
 const Home: NextPage = () => {
     return (<>
         <Sidebanner tittel="Beregning av AAP"/>
-        <div className="md:w-2/3 mx-auto">
-            <section className="bg-component-background-light mt-8 pb-4 px-6">
+        <Container>
                 <div className="flex flex-col items-center">
                     <Calculator className="h-14 w-14 my-4"/>
                     <Heading level="2" size="large" spacing aria-label="Hvor mye kan jeg få?">
@@ -22,8 +22,7 @@ const Home: NextPage = () => {
                     </BodyLong>
                     <Button className="w-20" variant="primary" aria-label="Start">Start</Button>
                 </div>
-            </section>
-        </div>
+        </Container>
     </>)
 }
 
