@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    minHeight: {
+      "container": "80vh"
+    }
   },
   plugins: [],
   presets: [require("@navikt/ds-tailwind")],
