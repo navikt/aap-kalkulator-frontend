@@ -1,9 +1,9 @@
-import 'node-fetch'
+import "node-fetch"
 
 import {
     Components,
     fetchDecoratorReact,
-} from '@navikt/nav-dekoratoren-moduler/ssr'
+} from "@navikt/nav-dekoratoren-moduler/ssr"
 import Document, {
     DocumentContext,
     DocumentInitialProps,
@@ -11,8 +11,8 @@ import Document, {
     Html,
     Main,
     NextScript,
-} from 'next/document'
-import React from 'react'
+} from "next/document"
+import React from "react"
 
 // The 'head'-field of the document initialProps contains data from <head> (meta-tags etc)
 const getDocumentParameter = (
@@ -43,7 +43,7 @@ class MyDocument extends Document<Props> {
             urlLookupTable: false,
         })
 
-        const language = getDocumentParameter(initialProps, 'lang')
+        const language = getDocumentParameter(initialProps, "lang")
 
         return { ...initialProps, Decorator, language }
     }
@@ -52,18 +52,18 @@ class MyDocument extends Document<Props> {
         const { Decorator, language } = this.props
         const showDecorator = true
         return (
-            <Html lang={language || 'no'}>
+            <Html lang={language || "no"}>
                 <Head>{showDecorator && <Decorator.Styles />}</Head>
                 <body>
-                {showDecorator && <Decorator.Header />}
-                <Main />
-                {showDecorator && (
-                    <>
-                        <Decorator.Footer />
-                        <Decorator.Scripts />
-                    </>
-                )}
-                <NextScript />
+                    {showDecorator && <Decorator.Header />}
+                    <Main />
+                    {showDecorator && (
+                        <>
+                            <Decorator.Footer />
+                            <Decorator.Scripts />
+                        </>
+                    )}
+                    <NextScript />
                 </body>
             </Html>
         )
