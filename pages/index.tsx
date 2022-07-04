@@ -11,7 +11,7 @@ const Home: NextPage = () => {
         await router.push("/steg/1")
     }
     return (
-        <Container>
+        <>
             <div className="flex flex-col items-center">
                 <Calculator className="h-14 w-14 my-4" />
                 <Heading
@@ -41,7 +41,7 @@ const Home: NextPage = () => {
                     Start
                 </Button>
             </div>
-        </Container>
+        </>
     )
 }
 

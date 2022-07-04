@@ -1,17 +1,20 @@
 import { useRouter } from "next/router"
 import Container from "../../components/container/Container"
 import { Button, TextField } from "@navikt/ds-react"
-import React from "react"
+import React, { useContext } from "react"
+import { ResultInterface } from "../../components/result/Result"
+import { ResultState } from "../_app"
 
-interface InntektsForm extends HTMLFormElement{
-    readonly inntekt1: HTMLInputElement,
-    readonly inntekt2: HTMLInputElement,
+interface InntektsForm extends HTMLFormElement {
+    readonly inntekt1: HTMLInputElement
+    readonly inntekt2: HTMLInputElement
     readonly inntekt3: HTMLInputElement
 }
 
 const Steg = () => {
     const router = useRouter()
     const { steg } = router.query
+    const { resultat, setResultat } = useContext(ResultState)
     const handleSubmit = async (event: React.FormEvent<InntektsForm>) => {
         event.preventDefault()
 
@@ -34,26 +37,25 @@ const Steg = () => {
 
         const result = await response.json()
 
-        alert(`Results: ${result.resultat}`)
+        setResultat(result)
+        router.push("/resultat")
     }
     const currentYear = new Date().getFullYear()
     const years = [currentYear - 1, currentYear - 2, currentYear - 3]
 
     return (
-        <Container>
-            <form onSubmit={handleSubmit}>
-                {years.map((year, index) => (
-                    <TextField
-                        className="mb-4"
-                        key={index}
-                        id={`inntekt${index + 1}`}
-                        label={`Hva var årsinntekten i ${year}?`}
-                        size="medium"
-                    />
-                ))}
-                <Button variant="primary">Beregn</Button>
-            </form>
-        </Container>
+        <form onSubmit={handleSubmit}>
+            {years.map((year, index) => (
+                <TextField
+                    className="mb-4"
+                    key={index}
+                    id={`inntekt${index + 1}`}
+                    label={`Hva var årsinntekten i ${year}?`}
+                    size="medium"
+                />
+            ))}
+            <Button variant="primary">Beregn</Button>
+        </form>
     )
 }
 
