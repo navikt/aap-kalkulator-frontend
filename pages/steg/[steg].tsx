@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 import Container from "../../components/container/Container"
-import { Button, TextField } from "@navikt/ds-react";
+import { Button, TextField } from "@navikt/ds-react"
 
 const Steg = () => {
     const router = useRouter()
@@ -14,7 +14,7 @@ const Steg = () => {
             inntekt3: parseFloat(event.target.inntekt3.value),
         }
 
-        const endpoint="http://0.0.0.0:8080/beregning"
+        const endpoint = "http://0.0.0.0:8080/beregning"
         const options = {
             method: "POST",
             headers: {
@@ -29,25 +29,21 @@ const Steg = () => {
 
         alert(`Results: ${result.resultat}`)
     }
+    const currentYear = new Date().getFullYear()
+    const years = [currentYear - 1, currentYear - 2, currentYear - 3]
 
     return (
         <Container>
             <form onSubmit={handleSubmit}>
-                <TextField
-                    id="inntekt1"
-                    label="Har du noen tilbakemeldinger?"
-                    size="medium"
-                />
-                <TextField
-                    id="inntekt2"
-                    label="Har du noen tilbakemeldinger?"
-                    size="medium"
-                />
-                <TextField
-                    id="inntekt3"
-                    label="Har du noen tilbakemeldinger?"
-                    size="medium"
-                />
+                {years.map((year, index) => (
+                    <TextField
+                        className="mb-4"
+                        key={index}
+                        id={`inntekt${index + 1}`}
+                        label={`Hva var årsinntekten i ${year}?`}
+                        size="medium"
+                    />
+                ))}
                 <Button variant="primary">Beregn</Button>
             </form>
         </Container>

@@ -3,8 +3,13 @@ import { Calculator } from "@navikt/ds-icons"
 import { BodyLong, Button, Heading } from "@navikt/ds-react"
 import Divider from "../components/divider/Divider"
 import Container from "../components/container/Container"
+import { useRouter } from "next/router"
 
 const Home: NextPage = () => {
+    const router = useRouter()
+    const handleStart = async () => {
+        await router.push("/steg/1")
+    }
     return (
         <Container>
             <div className="flex flex-col items-center">
@@ -27,7 +32,12 @@ const Home: NextPage = () => {
                     like Sandpeople did this, all right. Look, here are Gaffi
                     sticks, Bantha tracks.
                 </BodyLong>
-                <Button className="w-20" variant="primary" aria-label="Start">
+                <Button
+                    onClick={handleStart}
+                    className="w-20"
+                    variant="primary"
+                    aria-label="Start"
+                >
                     Start
                 </Button>
             </div>
