@@ -1,7 +1,7 @@
-import React, {useContext, useState} from "react";
-import {ResultState, State} from "../../pages/_app";
-import {Button, TextField} from "@navikt/ds-react";
-import {useRouter} from "next/router";
+import React, { useContext, useState } from "react"
+import { ResultState, State } from "../../pages/_app"
+import { Button, TextField } from "@navikt/ds-react"
+import { useRouter } from "next/router"
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -31,7 +31,10 @@ const Inntekt = () => {
             return
         }
         setState({
-            inntekt1, inntekt2, inntekt3, antallBarn: state.antallBarn
+            inntekt1,
+            inntekt2,
+            inntekt3,
+            antallBarn: state.antallBarn,
         })
         await router.push("/steg/2")
     }
