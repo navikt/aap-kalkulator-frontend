@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react"
 import { ResultState, State } from "../../pages/_app"
-import { Button, TextField } from "@navikt/ds-react"
+import { Button, GuidePanel, Heading, TextField } from "@navikt/ds-react"
 import { useRouter } from "next/router"
+import Divider from "../divider/Divider"
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -42,20 +43,32 @@ const Inntekt = () => {
     const years = [currentYear - 1, currentYear - 2, currentYear - 3]
 
     return (
-        <form onSubmit={handleSubmit}>
-            {years.map((year, index) => (
-                <TextField
-                    className="mb-4"
-                    key={index}
-                    id={`inntekt${index + 1}`}
-                    label={`Hva var årsinntekten i ${year}?`}
-                    size="medium"
-                    error={error[index]}
-                />
-            ))}
+        <>
+            <div className="items-center flex flex-col pt-4">
+                <Heading size="large" level="2" spacing>
+                    Inntekt
+                </Heading>
+                <GuidePanel className="w-1/2 mb-4">
+                    Help me, Obi-Wan Kenobi. You're my only hope. Oh, he says
+                    it's nothing, sir. Merely a malfunction.
+                </GuidePanel>
+                <Divider />
+            </div>
+            <form onSubmit={handleSubmit}>
+                {years.map((year, index) => (
+                    <TextField
+                        className="mb-4"
+                        key={index}
+                        id={`inntekt${index + 1}`}
+                        label={`Hva var årsinntekten i ${year}?`}
+                        size="medium"
+                        error={error[index]}
+                    />
+                ))}
 
-            <Button variant="primary">Beregn</Button>
-        </form>
+                <Button variant="primary">Beregn</Button>
+            </form>
+        </>
     )
 }
 

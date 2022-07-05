@@ -2,7 +2,8 @@ import { useRouter } from "next/router"
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
 import inntekt from "./Inntekt"
-import { Button, TextField } from "@navikt/ds-react"
+import { Button, GuidePanel, Heading, TextField } from "@navikt/ds-react"
+import Divider from "../divider/Divider"
 
 interface BarnInterface extends HTMLFormElement {
     antallBarn: HTMLInputElement
@@ -31,17 +32,29 @@ const Barn = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <TextField
-                className="mb-4"
-                id="antallBarn"
-                label="Hvor mange barn som er under 18 år har du?"
-                size="medium"
-                error={error}
-            />
+        <>
+            <div className="items-center flex flex-col pt-4">
+                <Heading size="large" level="2" spacing>
+                    Barn
+                </Heading>
+                <GuidePanel className="w-1/2 mb-4">
+                    Help me, Obi-Wan Kenobi. You're my only hope. Oh, he says
+                    it's nothing, sir. Merely a malfunction.
+                </GuidePanel>
+                <Divider />
+            </div>
+            <form onSubmit={handleSubmit}>
+                <TextField
+                    className="mb-4"
+                    id="antallBarn"
+                    label="Hvor mange barn som er under 18 år har du?"
+                    size="medium"
+                    error={error}
+                />
 
-            <Button variant="primary">Beregn</Button>
-        </form>
+                <Button variant="primary">Beregn</Button>
+            </form>
+        </>
     )
 }
 
