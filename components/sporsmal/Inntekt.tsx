@@ -66,7 +66,7 @@ const Inntekt = () => {
                     />
                 ))}
 
-                <Button variant="primary">Beregn</Button>
+                <Button variant="primary">Neste</Button>
             </form>
         </>
     )

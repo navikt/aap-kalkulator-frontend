@@ -69,7 +69,7 @@ const Innsending = () => {
                     </BodyShort>
                 </ReadMore>
             </div>
-            <Button onClick={handleSubmit}>Send inn</Button>
+            <Button onClick={handleSubmit}>Se resultat</Button>
         </div>
     )
 }
