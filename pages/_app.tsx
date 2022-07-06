@@ -16,6 +16,10 @@ export const State = createContext({
     setState: (value: StateInterface) => {},
 })
 
+export const BreadcrumbsState = createContext( {
+    breadcrumb: {}
+})
+
 function MyApp({ Component, pageProps }: AppProps) {
     const [resultat, setResultat] = useState<ResultInterface>({ resultat: 0.0 })
     const [state, setState] = useState<StateInterface>({

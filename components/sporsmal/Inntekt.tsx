@@ -3,6 +3,8 @@ import { ResultState, State } from "../../pages/_app"
 import { Button, GuidePanel, Heading, TextField } from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Divider from "../divider/Divider"
+import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
+import {setBreadcrumbs} from "@navikt/nav-dekoratoren-moduler";
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -17,6 +19,7 @@ const Inntekt = () => {
     const [error, setError] = useState<string[]>(["", "", ""])
     const handleSubmit = async (event: React.FormEvent<InntektsForm>) => {
         event.preventDefault()
+
         const error_message = "ugyldig verdi"
         const inntekt1 = parseFloat(event.currentTarget.inntekt1.value)
         const inntekt2 = parseFloat(event.currentTarget.inntekt2.value)
@@ -66,7 +69,7 @@ const Inntekt = () => {
                     />
                 ))}
 
-                <Button variant="primary">Neste</Button>
+                <Button variant="primary" >Neste</Button>
             </form>
         </>
     )
