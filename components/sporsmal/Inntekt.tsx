@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react"
 import { ResultState, State } from "../../pages/_app"
-import { Button, GuidePanel, Heading, TextField } from "@navikt/ds-react"
+import {Button, GuidePanel, Heading, ReadMore, TextField} from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Divider from "../divider/Divider"
+import Image from "next/image";
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -45,27 +46,29 @@ const Inntekt = () => {
 
     return (
         <>
-            <div className="items-center flex flex-col pt-4">
+            <div className="items flex flex-col pt-4">
+                <Image src="/ikoner/wallet_circle.svg" height="100" width="100" alt="lommebok ikon" className={" flex items-center"}></Image>
                 <Heading size="large" level="2" spacing>
                     Inntekt
                 </Heading>
-                <GuidePanel className="w-1/2 mb-4">
-                    Help me, Obi-Wan Kenobi. Youre my only hope. Oh, he says its
-                    nothing, sir. Merely a malfunction.
-                </GuidePanel>
-                <Divider />
             </div>
-            <form onSubmit={handleSubmit}>
+            <form  onSubmit={handleSubmit}>
+                <Heading size="small">Inntekt de siste tre årene før du ble sykemeldt</Heading>
+                <ReadMore size="small" header="Hvorfor spør vi om inntekten din de siste tre årene før du ble syk?" > Fordi vi lurer ;)</ReadMore>
+                <div className="flex flex-row space-x-8 mt-8" >
                 {years.map((year, index) => (
+
                     <TextField
-                        className="mb-4"
+
+                        className="mb-4 w-40 "
                         key={index}
                         id={`inntekt${index + 1}`}
-                        label={`Hva var årsinntekten i ${year}?`}
+                        label={`Inntekt ${year}`}
                         size="medium"
                         error={error[index]}
                     />
                 ))}
+                </div>
 
                 <Button variant="primary">Neste</Button>
             </form>

@@ -37,10 +37,6 @@ const Barn = () => {
                 <Heading size="large" level="2" spacing>
                     Barn
                 </Heading>
-                <GuidePanel className="w-1/2 mb-4">
-                    Help me, Obi-Wan Kenobi. Youre my only hope. Oh, he says its
-                    nothing, sir. Merely a malfunction.
-                </GuidePanel>
                 <Divider />
             </div>
             <form onSubmit={handleSubmit}>
