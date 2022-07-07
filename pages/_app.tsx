@@ -12,12 +12,18 @@ export const ResultState = createContext({
 })
 
 export const State = createContext({
-    state: { inntekt1: 0.0, inntekt2: 0.0, inntekt3: 0.0, antallBarn: 0 },
+    state: {
+        inntekt1: 0.0,
+        inntekt2: 0.0,
+        inntekt3: 0.0,
+        antallBarn: 0,
+        arbeidsgrad: 0,
+    },
     setState: (value: StateInterface) => {},
 })
 
-export const BreadcrumbsState = createContext( {
-    breadcrumb: {}
+export const BreadcrumbsState = createContext({
+    breadcrumb: {},
 })
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -27,6 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         inntekt2: 0.0,
         inntekt3: 0.0,
         antallBarn: 0,
+        arbeidsgrad: 0,
     })
     return (
         <ResultState.Provider value={{ resultat, setResultat }}>

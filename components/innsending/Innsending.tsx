@@ -1,15 +1,8 @@
 import { useRouter } from "next/router"
 import React, { useContext } from "react"
 import { ResultState, State } from "../../pages/_app"
-import {
-    BodyShort,
-    Button,
-    GuidePanel,
-    Heading,
-    ReadMore,
-} from "@navikt/ds-react"
+import { BodyShort, Button, Heading, ReadMore } from "@navikt/ds-react"
 import Divider from "../divider/Divider"
-import inntekt from "../sporsmal/Inntekt"
 
 const Innsending = () => {
     const router = useRouter()
@@ -57,11 +50,16 @@ const Innsending = () => {
                     <ul>
                         {years.reverse().map((value, index) => (
                             <li key={index}>
-                                Du tjente <b>{value.inntekt}kr</b> i{" "}
+                                Du tjente <b>{value.inntekt} kr</b> i{" "}
                                 <b>{value.year}</b>
                             </li>
                         ))}
                     </ul>
+                </ReadMore>
+                <ReadMore size="medium" header="Arbeidsgrad" defaultOpen>
+                    <BodyShort>
+                        Din arbeidsgrad er <b>{state.arbeidsgrad}%</b>.
+                    </BodyShort>
                 </ReadMore>
                 <ReadMore size="medium" header="Barn" defaultOpen>
                     <BodyShort>

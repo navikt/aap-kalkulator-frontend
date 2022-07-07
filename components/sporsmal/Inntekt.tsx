@@ -3,8 +3,6 @@ import { ResultState, State } from "../../pages/_app"
 import { Button, GuidePanel, Heading, TextField } from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Divider from "../divider/Divider"
-import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
-import {setBreadcrumbs} from "@navikt/nav-dekoratoren-moduler";
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -15,7 +13,6 @@ interface InntektsForm extends HTMLFormElement {
 const Inntekt = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
-    const { resultat, setResultat } = useContext(ResultState)
     const [error, setError] = useState<string[]>(["", "", ""])
     const handleSubmit = async (event: React.FormEvent<InntektsForm>) => {
         event.preventDefault()
@@ -39,6 +36,7 @@ const Inntekt = () => {
             inntekt2,
             inntekt3,
             antallBarn: state.antallBarn,
+            arbeidsgrad: state.arbeidsgrad,
         })
         await router.push("/steg/2")
     }
@@ -52,8 +50,8 @@ const Inntekt = () => {
                     Inntekt
                 </Heading>
                 <GuidePanel className="w-1/2 mb-4">
-                    Help me, Obi-Wan Kenobi. You're my only hope. Oh, he says
-                    it's nothing, sir. Merely a malfunction.
+                    Help me, Obi-Wan Kenobi. Youre my only hope. Oh, he says its
+                    nothing, sir. Merely a malfunction.
                 </GuidePanel>
                 <Divider />
             </div>
@@ -69,7 +67,7 @@ const Inntekt = () => {
                     />
                 ))}
 
-                <Button variant="primary" >Neste</Button>
+                <Button variant="primary">Neste</Button>
             </form>
         </>
     )

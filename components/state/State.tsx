@@ -3,4 +3,5 @@ export interface StateInterface {
     inntekt2: number
     inntekt3: number
     antallBarn: number
+    arbeidsgrad: number
 }

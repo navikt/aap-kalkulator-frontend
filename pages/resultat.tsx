@@ -9,9 +9,10 @@ const Resultat: NextPage = () => {
     const { resultat, setResultat } = useContext(ResultState)
     const router = useRouter()
     useEffect(() => {
-        if (resultat.resultat == 0.0) {
+        // nå er det mulig å få inn 0 i resultat grunnet arbeidsgradsberegning
+        /*if (resultat.resultat == 0.0) {
             router.push("/")
-        }
+        }*/
     }, [resultat])
     return (
         <>

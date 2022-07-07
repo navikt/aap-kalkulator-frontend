@@ -7,6 +7,7 @@ import { ResultState } from "../_app"
 import Inntekt from "../../components/sporsmal/Inntekt"
 import Barn from "../../components/sporsmal/Barn"
 import Innsending from "../../components/innsending/Innsending"
+import Arbeidsgrad from "../../components/sporsmal/Arbeidsgrad"
 
 const Steg = () => {
     const router = useRouter()
@@ -15,6 +16,7 @@ const Steg = () => {
 
     const sporsmal = [
         <Inntekt key={0} />,
+        <Arbeidsgrad key={4} />,
         <Barn key={1} />,
         <Innsending key={2} />,
     ]
