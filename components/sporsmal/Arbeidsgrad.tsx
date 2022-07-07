@@ -1,8 +1,7 @@
 import { useRouter } from "next/router"
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import {Button, GuidePanel, Heading, Radio, RadioGroup, TextField} from "@navikt/ds-react"
-import Divider from "../divider/Divider"
+import {Button, Heading, Radio, RadioGroup, TextField} from "@navikt/ds-react"
 import Image from "next/image";
 
 interface ArbeidsgradInterface extends HTMLFormElement {
@@ -19,9 +18,20 @@ const Arbeidsgrad = () => {
         event: React.FormEvent<ArbeidsgradInterface>
     ) => {
         event.preventDefault()
-        const arbeidsuke = parseInt(event.currentTarget.arbeidsuke.value)
-        const arbeidstimer = parseInt(event.currentTarget.arbeidstimer.value)
-        setError(!isNaN(arbeidsuke || arbeidstimer) ? "" : "Ugyldig verdi")
+        let arbeidsuke;
+        let arbeidstimer;
+
+        if (event.currentTarget.arbeidsuke == undefined) {
+            arbeidsuke = 0
+            arbeidstimer = 0
+        } else {
+            arbeidsuke = parseInt(event.currentTarget.arbeidsuke.value)
+            arbeidstimer = parseInt(event.currentTarget.arbeidstimer.value)
+        }
+
+
+
+        setError(((arbeidstimer == 0 || arbeidsuke == 0) && open) ? "" : "Ugyldig verdi")
 
         if (isNaN(arbeidsuke || arbeidstimer)) {
             return
