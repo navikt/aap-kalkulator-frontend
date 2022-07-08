@@ -1,11 +1,12 @@
 import type { NextPage } from "next"
-import { Calculator } from "@navikt/ds-icons"
 import { BodyLong, Button, Heading } from "@navikt/ds-react"
 import Divider from "../components/divider/Divider"
 import Container from "../components/container/Container"
 import { useRouter } from "next/router"
 import { BreadcrumbsInterface } from "../components/breadcrumbs/breadcrumbsInterface"
 import Breadcrumbs from "../components/breadcrumbs/Breadcrumbs"
+import Image from "next/image";
+import React from "react";
 
 const crumbs: BreadcrumbsInterface[] = [
     {
@@ -50,8 +51,15 @@ const Home: NextPage = () => {
     return (
         <>
             <Breadcrumbs crumbs={crumbs} />
-            <div className="flex flex-col items-center">
-                <Calculator className="h-14 w-14 my-4" />
+            <div className="flex flex-col items-center pt-4">
+                <Image
+                    src="/ikoner/calculator_circle.svg"
+                    height="120"
+                    width="120"
+                    alt="kalkulator ikon"
+
+                    className="flex items-center pb-4"
+                ></Image>
                 <Heading
                     level="2"
                     size="large"
