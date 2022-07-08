@@ -3,10 +3,19 @@ import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
 import {Button, Heading, Radio, RadioGroup, TextField} from "@navikt/ds-react"
 import Image from "next/image";
+import {BreadcrumbsInterface} from "../breadcrumbs/breadcrumbsInterface";
+import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
 
 interface ArbeidsgradInterface extends HTMLFormElement {
     arbeidsgrad: HTMLInputElement
 }
+
+const crumbs: BreadcrumbsInterface[] = [
+    { tittel: 'Inntekt', sti: "/steg/1", erKlikkbar: true },
+    { tittel: 'Arbeidsgrad', sti: "/steg/2", erKlikkbar: true },
+    { tittel: 'Barn', sti: "/steg/3", erKlikkbar: false },
+    { tittel: 'Resultat', sti: "/steg/4", erKlikkbar: false },
+]
 
 const Arbeidsgrad = () => {
     const router = useRouter()
@@ -50,6 +59,7 @@ const Arbeidsgrad = () => {
 
     return (
         <>
+            <Breadcrumbs crumbs={crumbs} />
             <div className="flex flex-col pt-4">
                 <Image src="/ikoner/briefcase_circle.svg" height="100" width="100" alt="lommebok ikon" className=" flex items-center"></Image>
                 <Heading size="large" level="2" spacing>

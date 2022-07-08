@@ -3,10 +3,19 @@ import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
 import { Button, GuidePanel, Heading, TextField } from "@navikt/ds-react"
 import Divider from "../divider/Divider"
+import {BreadcrumbsInterface} from "../breadcrumbs/breadcrumbsInterface";
+import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
 
 interface BarnInterface extends HTMLFormElement {
     antallBarn: HTMLInputElement
 }
+
+const crumbs: BreadcrumbsInterface[] = [
+    { tittel: 'Inntekt', sti: "/steg/1", erKlikkbar: true },
+    { tittel: 'Arbeidsgrad', sti: "/steg/2", erKlikkbar: true },
+    { tittel: 'Barn', sti: "/steg/3", erKlikkbar: true },
+    { tittel: 'Resultat', sti: "/steg/4", erKlikkbar: false },
+]
 
 const Barn = () => {
     const router = useRouter()
@@ -33,6 +42,7 @@ const Barn = () => {
 
     return (
         <>
+            <Breadcrumbs crumbs={crumbs} />
             <div className="items-center flex flex-col pt-4">
                 <Heading size="large" level="2" spacing>
                     Barn

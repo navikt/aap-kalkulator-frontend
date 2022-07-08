@@ -1,15 +1,23 @@
 import React, { useContext, useState } from "react"
-import { ResultState, State } from "../../pages/_app"
-import {Button, GuidePanel, Heading, ReadMore, TextField} from "@navikt/ds-react"
+import { State } from "../../pages/_app"
+import {Button, Heading, ReadMore, TextField} from "@navikt/ds-react"
 import { useRouter } from "next/router"
-import Divider from "../divider/Divider"
 import Image from "next/image";
+import {BreadcrumbsInterface} from "../breadcrumbs/breadcrumbsInterface";
+import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
     readonly inntekt2: HTMLInputElement
     readonly inntekt3: HTMLInputElement
 }
+
+const crumbs: BreadcrumbsInterface[] = [
+    { tittel: 'Inntekt', sti: "/steg/1", erKlikkbar: true },
+    { tittel: 'Arbeidsgrad', sti: "/steg/2", erKlikkbar: false },
+    { tittel: 'Barn', sti: "/steg/3", erKlikkbar: false },
+    { tittel: 'Resultat', sti: "/steg/4", erKlikkbar: false },
+]
 
 const Inntekt = () => {
     const router = useRouter()
@@ -46,6 +54,7 @@ const Inntekt = () => {
 
     return (
         <>
+            <Breadcrumbs crumbs={crumbs} />
             <div className="items flex flex-col pt-4">
                 <Image src="/ikoner/wallet_circle.svg" height="100" width="100" alt="lommebok ikon" className={" flex items-center"}></Image>
                 <Heading size="large" level="2" spacing>

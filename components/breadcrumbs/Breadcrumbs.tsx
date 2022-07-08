@@ -4,14 +4,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import {BreadcrumbsInterface} from "./breadcrumbsInterface";
 import Vis from "./vis";
 
-const LITEN = 768
-
 const faste: BreadcrumbsInterface[] = [
     { tittel: 'Start', sti: "/", erKlikkbar: true },
-    { tittel: 'Inntekt', sti: "/steg/1", erKlikkbar: false },
-    { tittel: 'Arbeidsgrad', sti: "/steg/2", erKlikkbar: false },
-    { tittel: 'Barn', sti: "/steg/3", erKlikkbar: false },
-    { tittel: 'Resultat', sti: "/steg/4", erKlikkbar: false },
 ]
 
 const BreadcrumbBit = ({ sti, tittel, erKlikkbar }: BreadcrumbsInterface) => {
@@ -77,7 +71,7 @@ const Crumb = ({ crumbs }: BreadcrumbProps) => {
     return (
         <nav className="brodsmuler" ref={smulesti}>
             <div className="limit">
-                <ul className="brodsmuler__smuler flex flex-row space-x-4">
+                <ul className="brodsmuler__smuler flex flex-row space-x-4 justify-center pt-4 pb-4">
                     <Vis
                         hvis=""
                         render={() => (
@@ -110,17 +104,7 @@ const Crumb = ({ crumbs }: BreadcrumbProps) => {
                         )
                     })}
                 </ul>
-                <button
-                    aria-label={
-                        synlige.length === crumbs.length
-                            ? 'Vis redusert brødsmulesti'
-                            : 'Vis hele brødsmulestien'
-                    }
-                    className="js-toggle"
-                    onClick={toggleSynlige}
-                >
-                    <Collapse className="chevron--opp" />
-                </button>
+
             </div>
         </nav>
     )
