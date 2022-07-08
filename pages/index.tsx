@@ -8,10 +8,10 @@ import {BreadcrumbsInterface} from "../components/breadcrumbs/breadcrumbsInterfa
 import Breadcrumbs from "../components/breadcrumbs/Breadcrumbs";
 
 const crumbs: BreadcrumbsInterface[] = [
-    { tittel: 'Inntekt', sti: "/steg/1", erKlikkbar: true },
-    { tittel: 'Arbeidsgrad', sti: "/steg/2", erKlikkbar: false },
-    { tittel: 'Barn', sti: "/steg/3", erKlikkbar: false },
-    { tittel: 'Resultat', sti: "/steg/4", erKlikkbar: false },
+    { tittel: 'Inntekt', sti: "/steg/1", erKlikkbar: true, steg: 2, isChecked:false },
+    { tittel: 'Arbeidsgrad', sti: "/steg/2", erKlikkbar: false, steg: 3, isChecked:false },
+    { tittel: 'Barn', sti: "/steg/3", erKlikkbar: false, steg: 4, isChecked:false },
+    { tittel: 'Resultat', sti: "/steg/4", erKlikkbar: false, steg: 5, isChecked:false },
 ]
 
 const Home: NextPage = () => {

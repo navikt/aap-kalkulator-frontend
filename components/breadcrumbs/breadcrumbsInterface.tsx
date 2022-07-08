@@ -2,5 +2,7 @@ export interface BreadcrumbsInterface {
     sti: string
     tittel: string
     erKlikkbar?: boolean
-    isCurrentPage?: Boolean
+    isCurrentPage?: boolean
+    steg: number
+    isChecked: boolean
 }

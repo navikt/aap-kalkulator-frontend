@@ -5,39 +5,51 @@ import {BreadcrumbsInterface} from "./breadcrumbsInterface";
 import Vis from "./vis";
 
 const faste: BreadcrumbsInterface[] = [
-    { tittel: 'Start', sti: "/", erKlikkbar: true },
+    { tittel: 'Start', sti: "/", erKlikkbar: true, steg: 1, isChecked:true},
 ]
 
-const BreadcrumbBit = ({ sti, tittel, erKlikkbar }: BreadcrumbsInterface) => {
+const BreadcrumbBit = ({ sti, tittel, erKlikkbar, steg, isChecked }: BreadcrumbsInterface) => {
 
     const link = (
         <Link
             href={sti}
         >
+            <div className="flex flex-col items-center">
+                {isChecked ? ( <div className="flex rounded-full bg-red-200 w-10 h-10 items-center justify-center"><p>{steg}</p></div>) :
+                    <div className="flex rounded-full bg-green-200 w-10 h-10 items-center justify-center"><p>{steg}</p></div>}
             <BodyShort as="span" size="small">
                 {tittel}
             </BodyShort>
+            </div>
         </Link>
     )
 
     if (!erKlikkbar) {
         return (
-            <BodyShort as="li" size="small" className="smule">
-                <span>{tittel}</span>
-            </BodyShort>
+            <div className="flex flex-col items-center">
+                {!isChecked ? ( <div className="flex rounded-full bg-red-200 w-10 h-10 items-center justify-center"><p>{steg}</p></div>) :
+                    <div className="flex rounded-full bg-green-200 w-10 h-10 items-center justify-center"><p>{steg}</p></div>}
+                <BodyShort as="span" size="small" className="smule">
+                    <span>{tittel}</span>
+                </BodyShort>
+            </div>
         )
     } else if (erKlikkbar) {
         return (
-            <BodyShort as="li" size="small" className="smule">
-                {link}
-            </BodyShort>
+
+                <BodyShort as="span" size="small" className="smule">
+                    {link}
+                </BodyShort>
         )
     }
 
     return (
-        <BodyShort as="li" size="small" className="smule">
-            <span>{tittel}</span>
-        </BodyShort>
+        <div className="flex flex-col items-center">
+            <div className="flex rounded-full bg-red-200 w-10 h-10 items-center justify-center"><p>{steg}</p></div>
+            <BodyShort as="span" size="small" className="smule">
+                <span>{tittel}</span>
+            </BodyShort>
+        </div>
     )
 }
 
@@ -100,6 +112,7 @@ const Crumb = ({ crumbs }: BreadcrumbProps) => {
                                     smule.tittel
                                 }
                                 erKlikkbar={smule.erKlikkbar}
+                                steg={smule.steg}
                             />
                         )
                     })}

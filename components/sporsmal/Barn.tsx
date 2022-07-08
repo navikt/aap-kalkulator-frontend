@@ -11,10 +11,10 @@ interface BarnInterface extends HTMLFormElement {
 }
 
 const crumbs: BreadcrumbsInterface[] = [
-    { tittel: 'Inntekt', sti: "/steg/1", erKlikkbar: true },
-    { tittel: 'Arbeidsgrad', sti: "/steg/2", erKlikkbar: true },
-    { tittel: 'Barn', sti: "/steg/3", erKlikkbar: true },
-    { tittel: 'Resultat', sti: "/steg/4", erKlikkbar: false },
+    { tittel: 'Inntekt', sti: "/steg/1", erKlikkbar: true, steg: 2 },
+    { tittel: 'Arbeidsgrad', sti: "/steg/2", erKlikkbar: true, steg: 3  },
+    { tittel: 'Barn', sti: "/steg/3", erKlikkbar: true, steg: 4 },
+    { tittel: 'Resultat', sti: "/steg/4", erKlikkbar: false, steg: 5 },
 ]
 
 const Barn = () => {

@@ -1,9 +1,18 @@
-import { useContext, useEffect } from "react"
+import React, { useContext, useEffect } from "react"
 import { ResultState } from "./_app"
 import { useRouter } from "next/router"
 import { NextPage } from "next"
 import ResultContainer from "../components/container/ResultContainer"
 import { Heading } from "@navikt/ds-react"
+import Breadcrumbs from "../components/breadcrumbs/Breadcrumbs";
+import {BreadcrumbsInterface} from "../components/breadcrumbs/breadcrumbsInterface";
+
+const crumbs: BreadcrumbsInterface[] = [
+    { tittel: 'Inntekt', sti: "/steg/1", erKlikkbar: true, steg: 2  },
+    { tittel: 'Arbeidsgrad', sti: "/steg/2", erKlikkbar: true, steg: 3  },
+    { tittel: 'Barn', sti: "/steg/3", erKlikkbar: true, steg: 4  },
+    { tittel: 'Resultat', sti: "/steg/4", erKlikkbar: true, steg: 5  },
+]
 
 const Resultat: NextPage = () => {
     const { resultat, setResultat } = useContext(ResultState)
@@ -16,6 +25,7 @@ const Resultat: NextPage = () => {
     }, [resultat])
     return (
         <>
+            <Breadcrumbs crumbs={crumbs} />
             <Heading
                 level="2"
                 size="large"
