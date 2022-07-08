@@ -55,13 +55,11 @@ const Arbeidsgrad = () => {
         event: React.FormEvent<ArbeidsgradInterface>
     ) => {
         event.preventDefault()
-        let arbeidsuke
-        let arbeidstimer
+        let arbeidsuke = 0
+        let arbeidstimer = 0
+        let arbeidsgrad = 0
 
-        if (event.currentTarget.arbeidsuke == undefined) {
-            arbeidsuke = 0
-            arbeidstimer = 0
-        } else {
+        if (open=="Ja") {
             arbeidsuke = parseInt(event.currentTarget.arbeidsuke.value)
             arbeidstimer = parseInt(event.currentTarget.arbeidstimer.value)
         }
@@ -72,10 +70,12 @@ const Arbeidsgrad = () => {
                 : "Ugyldig verdi"
         )
 
-        if (isNaN(arbeidsuke || arbeidstimer)) {
-            return
+        if ((arbeidsuke || arbeidstimer) !== 0) {
+            arbeidsgrad = (arbeidstimer / arbeidsuke) * 100
         }
-        const arbeidsgrad = (arbeidstimer / arbeidsuke) * 100
+        console.log(arbeidsuke)
+        console.log(arbeidstimer)
+        console.log(arbeidsgrad)
 
         setState({
             inntekt1: state.inntekt1,
