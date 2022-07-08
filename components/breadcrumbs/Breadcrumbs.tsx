@@ -1,25 +1,50 @@
-import { Collapse } from '@navikt/ds-icons'
-import { BodyShort, Link } from '@navikt/ds-react'
-import React, { useEffect, useRef, useState } from 'react'
-import {BreadcrumbsInterface} from "./breadcrumbsInterface";
-import Vis from "./vis";
+import { Collapse, SuccessColored } from "@navikt/ds-icons"
+import { BodyShort, Link } from "@navikt/ds-react"
+import React, { useEffect, useRef, useState } from "react"
+import { BreadcrumbsInterface } from "./breadcrumbsInterface"
+import Vis from "./vis"
 
 const faste: BreadcrumbsInterface[] = [
-    { tittel: 'Start', sti: "/", erKlikkbar: true, steg: 1, isChecked:true},
+    {
+        tittel: "Start",
+        sti: "/",
+        erKlikkbar: true,
+        steg: 1,
+        isCompleted: false,
+        isCurrentPage: true,
+    },
 ]
 
-const BreadcrumbBit = ({ sti, tittel, erKlikkbar, steg, isChecked }: BreadcrumbsInterface) => {
+const BreadcrumbBit = ({
+    sti,
+    tittel,
+    erKlikkbar,
+    steg,
+    isCompleted,
+    isCurrentPage,
+}: BreadcrumbsInterface) => {
+
+
+
+    const circle = isCompleted ? (
+        <div className="flex rounded-full bg-green-200 w-10 h-10 items-center justify-center">
+            <SuccessColored className="w-10 h-10" />
+        </div>
+    ) : !isCurrentPage ? (
+        <div className="flex rounded-full bg-blue-200 w-10 h-10 items-center justify-center">
+            <p>{steg}</p>
+        </div>
+    ) : (
+        <div className="flex rounded-full bg-red-500 w-10 h-10 items-center justify-center"></div>
+    )
 
     const link = (
-        <Link
-            href={sti}
-        >
+        <Link href={sti}>
             <div className="flex flex-col items-center">
-                {isChecked ? ( <div className="flex rounded-full bg-red-200 w-10 h-10 items-center justify-center"><p>{steg}</p></div>) :
-                    <div className="flex rounded-full bg-green-200 w-10 h-10 items-center justify-center"><p>{steg}</p></div>}
-            <BodyShort as="span" size="small">
-                {tittel}
-            </BodyShort>
+                {circle}
+                <BodyShort as="span" size="small">
+                    {tittel}
+                </BodyShort>
             </div>
         </Link>
     )
@@ -27,8 +52,7 @@ const BreadcrumbBit = ({ sti, tittel, erKlikkbar, steg, isChecked }: Breadcrumbs
     if (!erKlikkbar) {
         return (
             <div className="flex flex-col items-center">
-                {!isChecked ? ( <div className="flex rounded-full bg-red-200 w-10 h-10 items-center justify-center"><p>{steg}</p></div>) :
-                    <div className="flex rounded-full bg-green-200 w-10 h-10 items-center justify-center"><p>{steg}</p></div>}
+                {circle}
                 <BodyShort as="span" size="small" className="smule">
                     <span>{tittel}</span>
                 </BodyShort>
@@ -36,16 +60,17 @@ const BreadcrumbBit = ({ sti, tittel, erKlikkbar, steg, isChecked }: Breadcrumbs
         )
     } else if (erKlikkbar) {
         return (
-
-                <BodyShort as="span" size="small" className="smule">
-                    {link}
-                </BodyShort>
+            <BodyShort as="span" size="small" className="smule">
+                {link}
+            </BodyShort>
         )
     }
 
     return (
         <div className="flex flex-col items-center">
-            <div className="flex rounded-full bg-red-200 w-10 h-10 items-center justify-center"><p>{steg}</p></div>
+            <div className="flex rounded-full bg-red-200 w-10 h-10 items-center justify-center">
+                <p>{steg}</p>
+            </div>
             <BodyShort as="span" size="small" className="smule">
                 <span>{tittel}</span>
             </BodyShort>
@@ -64,19 +89,17 @@ const Crumb = ({ crumbs }: BreadcrumbProps) => {
     crumbs = faste.concat(crumbs)
 
     useEffect(() => {
-        setSynlige(
-            crumbs
-        )
+        setSynlige(crumbs)
         // eslint-disable-next-line
     }, [])
 
     const toggleSynlige = () => {
         if (synlige.length === crumbs.length) {
             setSynlige([crumbs[crumbs.length - 1]])
-            smulesti.current!.classList.remove('apen')
+            smulesti.current!.classList.remove("apen")
         } else {
             setSynlige(crumbs)
-            smulesti.current!.classList.add('apen')
+            smulesti.current!.classList.add("apen")
         }
     }
 
@@ -91,8 +114,8 @@ const Crumb = ({ crumbs }: BreadcrumbProps) => {
                                 <button
                                     aria-label={
                                         synlige.length === crumbs.length
-                                            ? 'Vis redusert brødsmulesti'
-                                            : 'Vis hele brødsmulestien'
+                                            ? "Vis redusert brødsmulesti"
+                                            : "Vis hele brødsmulestien"
                                     }
                                     className="js-toggle"
                                     onClick={toggleSynlige}
@@ -101,23 +124,21 @@ const Crumb = ({ crumbs }: BreadcrumbProps) => {
                                 </button>
                             </li>
                         )}
-                     />
+                    />
 
                     {synlige.map((smule, index) => {
                         return (
                             <BreadcrumbBit
                                 key={index}
                                 sti={smule.sti}
-                                tittel={
-                                    smule.tittel
-                                }
+                                tittel={smule.tittel}
                                 erKlikkbar={smule.erKlikkbar}
+                                isCompleted={smule.isCompleted}
                                 steg={smule.steg}
                             />
                         )
                     })}
                 </ul>
-
             </div>
         </nav>
     )

@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import {Button, Heading, ReadMore, TextField} from "@navikt/ds-react"
+import { Button, Heading, ReadMore, TextField } from "@navikt/ds-react"
 import { useRouter } from "next/router"
-import Image from "next/image";
-import {BreadcrumbsInterface} from "../breadcrumbs/breadcrumbsInterface";
-import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
-import { SuccessColored } from "@navikt/ds-icons";
+import Image from "next/image"
+import { BreadcrumbsInterface } from "../breadcrumbs/breadcrumbsInterface"
+import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
+import { SuccessColored } from "@navikt/ds-icons"
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -14,10 +14,38 @@ interface InntektsForm extends HTMLFormElement {
 }
 
 const crumbs: BreadcrumbsInterface[] = [
-    { tittel: 'Inntekt', sti: "/steg/1", erKlikkbar: true, steg: 2, isChecked:true  },
-    { tittel: 'Arbeidsgrad', sti: "/steg/2", erKlikkbar: false, steg: 3, isChecked:false  },
-    { tittel: 'Barn', sti: "/steg/3", erKlikkbar: false, steg: 4, isChecked:false  },
-    { tittel: 'Resultat', sti: "/steg/4", erKlikkbar: false, steg: 5, isChecked:false  },
+    {
+        tittel: "Inntekt",
+        sti: "/steg/1",
+        erKlikkbar: true,
+        steg: 2,
+        isCompleted: false,
+        isCurrentPage: true,
+    },
+    {
+        tittel: "Arbeidsgrad",
+        sti: "/steg/2",
+        erKlikkbar: false,
+        steg: 3,
+        isCompleted: false,
+        isCurrentPage: false,
+    },
+    {
+        tittel: "Barn",
+        sti: "/steg/3",
+        erKlikkbar: false,
+        steg: 4,
+        isCompleted: false,
+        isCurrentPage: false,
+    },
+    {
+        tittel: "Resultat",
+        sti: "/steg/4",
+        erKlikkbar: false,
+        steg: 5,
+        isCompleted: false,
+        isCurrentPage: false,
+    },
 ]
 
 const Inntekt = () => {
@@ -57,27 +85,39 @@ const Inntekt = () => {
         <>
             <Breadcrumbs crumbs={crumbs} />
             <div className="items flex flex-col pt-4">
-                <Image src="/ikoner/wallet_circle.svg" height="100" width="100" alt="lommebok ikon" className={" flex items-center"}></Image>
+                <Image
+                    src="/ikoner/wallet_circle.svg"
+                    height="100"
+                    width="100"
+                    alt="lommebok ikon"
+                    className={" flex items-center"}
+                ></Image>
                 <Heading size="large" level="2" spacing>
                     Inntekt
                 </Heading>
             </div>
-            <form  onSubmit={handleSubmit}>
-                <Heading size="small">Inntekt de siste tre årene før du ble sykemeldt</Heading>
-                <ReadMore size="small" header="Hvorfor spør vi om inntekten din de siste tre årene før du ble syk?" > Fordi vi lurer ;)</ReadMore>
-                <div className="flex flex-row space-x-8 mt-8" >
-                {years.map((year, index) => (
-
-                    <TextField
-
-                        className="mb-4 w-40 "
-                        key={index}
-                        id={`inntekt${index + 1}`}
-                        label={`Inntekt ${year}`}
-                        size="medium"
-                        error={error[index]}
-                    />
-                ))}
+            <form onSubmit={handleSubmit}>
+                <Heading size="small">
+                    Inntekt de siste tre årene før du ble sykemeldt
+                </Heading>
+                <ReadMore
+                    size="small"
+                    header="Hvorfor spør vi om inntekten din de siste tre årene før du ble syk?"
+                >
+                    {" "}
+                    Fordi vi lurer ;)
+                </ReadMore>
+                <div className="flex flex-row space-x-8 mt-8">
+                    {years.map((year, index) => (
+                        <TextField
+                            className="mb-4 w-40 "
+                            key={index}
+                            id={`inntekt${index + 1}`}
+                            label={`Inntekt ${year}`}
+                            size="medium"
+                            error={error[index]}
+                        />
+                    ))}
                 </div>
 
                 <Button variant="primary">Neste</Button>

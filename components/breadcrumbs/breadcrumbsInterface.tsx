@@ -4,5 +4,5 @@ export interface BreadcrumbsInterface {
     erKlikkbar?: boolean
     isCurrentPage?: boolean
     steg: number
-    isChecked: boolean
+    isCompleted: boolean
 }

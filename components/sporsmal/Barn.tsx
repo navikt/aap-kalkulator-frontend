@@ -3,18 +3,46 @@ import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
 import { Button, GuidePanel, Heading, TextField } from "@navikt/ds-react"
 import Divider from "../divider/Divider"
-import {BreadcrumbsInterface} from "../breadcrumbs/breadcrumbsInterface";
-import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
+import { BreadcrumbsInterface } from "../breadcrumbs/breadcrumbsInterface"
+import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
 
 interface BarnInterface extends HTMLFormElement {
     antallBarn: HTMLInputElement
 }
 
 const crumbs: BreadcrumbsInterface[] = [
-    { tittel: 'Inntekt', sti: "/steg/1", erKlikkbar: true, steg: 2 },
-    { tittel: 'Arbeidsgrad', sti: "/steg/2", erKlikkbar: true, steg: 3  },
-    { tittel: 'Barn', sti: "/steg/3", erKlikkbar: true, steg: 4 },
-    { tittel: 'Resultat', sti: "/steg/4", erKlikkbar: false, steg: 5 },
+    {
+        tittel: "Inntekt",
+        sti: "/steg/1",
+        erKlikkbar: true,
+        steg: 2,
+        isCompleted: true,
+        isCurrentPage: false,
+    },
+    {
+        tittel: "Arbeidsgrad",
+        sti: "/steg/2",
+        erKlikkbar: true,
+        steg: 3,
+        isCompleted: true,
+        isCurrentPage: false,
+    },
+    {
+        tittel: "Barn",
+        sti: "/steg/3",
+        erKlikkbar: true,
+        steg: 4,
+        isCompleted: false,
+        isCurrentPage: true,
+    },
+    {
+        tittel: "Resultat",
+        sti: "/steg/4",
+        erKlikkbar: false,
+        steg: 5,
+        isCompleted: false,
+        isCurrentPage: false,
+    },
 ]
 
 const Barn = () => {
