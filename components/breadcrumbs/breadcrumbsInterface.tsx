@@ -1,5 +1,6 @@
-export interface breadcrumbsInterface {
-    href: String
+export interface BreadcrumbsInterface {
+    sti: string
+    tittel: string
+    erKlikkbar?: boolean
     isCurrentPage?: Boolean
-    ariaLabel?: String
 }

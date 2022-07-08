@@ -4,7 +4,16 @@ import { BodyLong, Button, Heading } from "@navikt/ds-react"
 import Divider from "../components/divider/Divider"
 import Container from "../components/container/Container"
 import { useRouter } from "next/router"
-import { Breadcrumbs, Crumb } from "../components/breadcrumbs/Breadcrumbs"
+import {BreadcrumbsInterface} from "../components/breadcrumbs/breadcrumbsInterface";
+import Breadcrumbs from "../components/breadcrumbs/Breadcrumbs";
+
+const crumbs: BreadcrumbsInterface[] = [
+    {
+        tittel: 'Inntekt',
+        sti: '/steg/1',
+        erKlikkbar: true,
+    },
+]
 
 const Home: NextPage = () => {
     const router = useRouter()
@@ -13,10 +22,7 @@ const Home: NextPage = () => {
     }
     return (
         <>
-            <Breadcrumbs>
-                {" "}
-                <Crumb href={"/steg/2"}> hei </Crumb>{" "}
-            </Breadcrumbs>
+            <Breadcrumbs crumbs={crumbs} />
             <div className="flex flex-col items-center">
                 <Calculator className="h-14 w-14 my-4" />
                 <Heading
