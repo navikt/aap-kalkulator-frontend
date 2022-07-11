@@ -4,17 +4,8 @@ import React, { useEffect, useRef, useState } from "react"
 import { BreadcrumbsInterface } from "./breadcrumbsInterface"
 import Vis from "./vis"
 import Divider from "../divider/Divider"
+import {useRouter} from "next/router";
 
-const faste: BreadcrumbsInterface[] = [
-    {
-        tittel: "Start",
-        sti: "/",
-        erKlikkbar: true,
-        steg: 1,
-        isCompleted: false,
-        isCurrentPage: true,
-    },
-]
 
 const BreadcrumbBit = ({
     sti,
@@ -22,18 +13,23 @@ const BreadcrumbBit = ({
     erKlikkbar,
     steg,
     isCompleted,
-    isCurrentPage,
 }: BreadcrumbsInterface) => {
+    const router = useRouter()
+    const isCurrentPage = router.asPath === sti
+    console.log(router.asPath)
+    console.log(isCurrentPage)
     const circle = isCompleted ? (
-        <div className="flex rounded-full bg-green-200 w-10 h-10 items-center justify-center">
+        <div className="flex rounded-full bg-green-200 w-7 h-7 md:w-10 md:h-10  items-center justify-center">
             <SuccessColored className="w-10 h-10" />
         </div>
-    ) : !isCurrentPage ? (
-        <div className="flex rounded-full bg-blue-200 w-10 h-10 items-center justify-center">
-            <p>{steg}</p>
+    ) : isCurrentPage ? (
+        <div className="flex rounded-full bg-blue-200 w-7 h-7 md:w-10 md:h-10 items-center justify-center">
+            {steg}
         </div>
     ) : (
-        <div className="flex rounded-full bg-red-500 w-10 h-10 items-center justify-center"></div>
+        <div className="flex rounded-full border w-7 h-7 md:w-10 md:h-10 items-center justify-center">
+            {steg}
+        </div>
     )
 
     const link = (
@@ -84,7 +80,6 @@ const Crumb = ({ crumbs }: BreadcrumbProps) => {
     const [synlige, setSynlige] = useState<BreadcrumbsInterface[]>([])
     const smulesti = useRef<HTMLElement>(null)
 
-    crumbs = faste.concat(crumbs)
 
     useEffect(() => {
         setSynlige(crumbs)

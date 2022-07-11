@@ -18,7 +18,7 @@ const crumbs: BreadcrumbsInterface[] = [
         isCurrentPage: false,
     },
     {
-        tittel: "Arbeidsgrad",
+        tittel: "Arbeid",
         sti: "/steg/2",
         erKlikkbar: false,
         steg: 3,
