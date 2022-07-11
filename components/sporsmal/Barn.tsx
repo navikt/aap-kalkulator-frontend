@@ -1,11 +1,18 @@
 import { useRouter } from "next/router"
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import { Button, GuidePanel, Heading, TextField } from "@navikt/ds-react"
+import {
+    Button,
+    GuidePanel,
+    Heading,
+    ReadMore,
+    TextField,
+} from "@navikt/ds-react"
 import Divider from "../divider/Divider"
 import { BreadcrumbsInterface } from "../breadcrumbs/breadcrumbsInterface"
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
 import Image from "next/image"
+import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
 
 interface BarnInterface extends HTMLFormElement {
     antallBarn: HTMLInputElement
@@ -50,9 +57,13 @@ const Barn = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
+    const [open, setOpen] = useState("")
     const handleSubmit = async (event: React.FormEvent<BarnInterface>) => {
         event.preventDefault()
-        const antallBarn = parseInt(event.currentTarget.antallBarn.value)
+        let antallBarn = 0
+        if (open == "Ja") {
+            antallBarn = parseInt(event.currentTarget.antallBarn.value)
+        }
         setError(isNaN(antallBarn) || antallBarn < 0 ? "Ugyldig verdi" : "")
 
         if (isNaN(antallBarn) || antallBarn < 0) {
@@ -85,17 +96,34 @@ const Barn = () => {
                 </Heading>
             </div>
             <form onSubmit={handleSubmit}>
-                <Heading size="small">
-                    Hvor mange barn som er under 18 år har du?
-                </Heading>
-                <TextField
-                    type="number"
-                    className="mb-4 w-20"
-                    id="antallBarn"
-                    label=""
-                    size="medium"
-                    error={error}
+                <JaNeiRadio
+                    tittel="Har du barn?"
+                    readMoreTittel="Hvorfor spør vi om du har barn?"
+                    readMore="fordi"
+                    state={open}
+                    setState={setOpen}
                 />
+                {open == "Ja" && (
+                    <div>
+                        <Heading size="small">
+                            Hvor mange barn som er under 18 år har du?
+                        </Heading>
+                        <ReadMore
+                            size="small"
+                            header="Hvorfor spør vi hvor mange barn du har?"
+                        >
+                            {" "}
+                            Fordi vi lurer
+                        </ReadMore>
+                        <TextField
+                            className="mb-4 w-20"
+                            id="antallBarn"
+                            label=""
+                            size="medium"
+                            error={error}
+                        />
+                    </div>
+                )}
 
                 <Button variant="primary">Neste</Button>
             </form>

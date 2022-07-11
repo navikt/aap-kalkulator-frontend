@@ -13,7 +13,7 @@ import Image from "next/image"
 import { BreadcrumbsInterface } from "../breadcrumbs/breadcrumbsInterface"
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
 import { Text } from "@navikt/ds-react/src/form/search/search.stories"
-import JaNeiRadio from "../jaNeiRadio/JaNeiRadio";
+import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
 
 interface ArbeidsgradInterface extends HTMLFormElement {
     arbeidsgrad: HTMLInputElement
@@ -71,21 +71,19 @@ const Arbeidsgrad = () => {
 
         if (open == "Ja") {
             arbeidsuke = parseInt(event.currentTarget.arbeidsuke.value)
+        }
+
+        if (aapen == "Timer" && (arbeidsuke || arbeidstimer) !== 0) {
             arbeidstimer = parseInt(event.currentTarget.arbeidstimer.value)
-        }
-
-        setError(
-            (arbeidstimer == 0 || arbeidsuke == 0) && open
-                ? ""
-                : "Ugyldig verdi"
-        )
-
-        if ((arbeidsuke || arbeidstimer) !== 0) {
+            setError(
+                (arbeidstimer == 0 || arbeidsuke == 0) && open
+                    ? ""
+                    : "Ugyldig verdi"
+            )
             arbeidsgrad = (arbeidstimer / arbeidsuke) * 100
+        } else if (aapen == "Prosent") {
+            arbeidsgrad = parseInt(event.currentTarget.arbeidsprosent.value)
         }
-        console.log(arbeidsuke)
-        console.log(arbeidstimer)
-        console.log(arbeidsgrad)
 
         setState({
             inntekt1: state.inntekt1,
@@ -112,7 +110,7 @@ const Arbeidsgrad = () => {
             <Heading size="large" level="2" spacing>
                 Jobb
             </Heading>
-            <JaNeiRadio tittel="Har du jobb?" state={open} setState={setOpen}/>
+            <JaNeiRadio tittel="Har du jobb?" state={open} setState={setOpen} />
 
             <form onSubmit={handleSubmit}>
                 {open == "Ja" && (
