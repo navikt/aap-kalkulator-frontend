@@ -59,7 +59,7 @@ const Arbeidsgrad = () => {
         let arbeidstimer = 0
         let arbeidsgrad = 0
 
-        if (open=="Ja") {
+        if (open == "Ja") {
             arbeidsuke = parseInt(event.currentTarget.arbeidsuke.value)
             arbeidstimer = parseInt(event.currentTarget.arbeidstimer.value)
         }

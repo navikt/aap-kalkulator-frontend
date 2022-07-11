@@ -5,8 +5,8 @@ import Container from "../components/container/Container"
 import { useRouter } from "next/router"
 import { BreadcrumbsInterface } from "../components/breadcrumbs/breadcrumbsInterface"
 import Breadcrumbs from "../components/breadcrumbs/Breadcrumbs"
-import Image from "next/image";
-import React from "react";
+import Image from "next/image"
+import React from "react"
 
 const crumbs: BreadcrumbsInterface[] = [
     {
@@ -57,7 +57,6 @@ const Home: NextPage = () => {
                     height="120"
                     width="120"
                     alt="kalkulator ikon"
-
                     className="flex items-center pb-4"
                 ></Image>
                 <Heading

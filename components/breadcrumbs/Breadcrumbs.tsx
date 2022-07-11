@@ -3,6 +3,7 @@ import { BodyShort, Link } from "@navikt/ds-react"
 import React, { useEffect, useRef, useState } from "react"
 import { BreadcrumbsInterface } from "./breadcrumbsInterface"
 import Vis from "./vis"
+import Divider from "../divider/Divider"
 
 const faste: BreadcrumbsInterface[] = [
     {
@@ -23,9 +24,6 @@ const BreadcrumbBit = ({
     isCompleted,
     isCurrentPage,
 }: BreadcrumbsInterface) => {
-
-
-
     const circle = isCompleted ? (
         <div className="flex rounded-full bg-green-200 w-10 h-10 items-center justify-center">
             <SuccessColored className="w-10 h-10" />
@@ -106,36 +104,20 @@ const Crumb = ({ crumbs }: BreadcrumbProps) => {
     return (
         <nav className="brodsmuler" ref={smulesti}>
             <div className="limit">
-                <ul className="brodsmuler__smuler flex flex-row space-x-4 justify-center pt-4 pb-4">
-                    <Vis
-                        hvis=""
-                        render={() => (
-                            <li className="smule">
-                                <button
-                                    aria-label={
-                                        synlige.length === crumbs.length
-                                            ? "Vis redusert brødsmulesti"
-                                            : "Vis hele brødsmulestien"
-                                    }
-                                    className="js-toggle"
-                                    onClick={toggleSynlige}
-                                >
-                                    ...
-                                </button>
-                            </li>
-                        )}
-                    />
-
+                <ul className="brodsmuler__smuler flex flex-row space-x-4 justify-center pt-4 pb-4 items-center">
                     {synlige.map((smule, index) => {
                         return (
-                            <BreadcrumbBit
-                                key={index}
-                                sti={smule.sti}
-                                tittel={smule.tittel}
-                                erKlikkbar={smule.erKlikkbar}
-                                isCompleted={smule.isCompleted}
-                                steg={smule.steg}
-                            />
+                            <>
+                                {index > 0 && <Divider />}
+                                <BreadcrumbBit
+                                    key={index}
+                                    sti={smule.sti}
+                                    tittel={smule.tittel}
+                                    erKlikkbar={smule.erKlikkbar}
+                                    isCompleted={smule.isCompleted}
+                                    steg={smule.steg}
+                                />
+                            </>
                         )
                     })}
                 </ul>

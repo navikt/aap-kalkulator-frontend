@@ -5,7 +5,7 @@ import { Button, GuidePanel, Heading, TextField } from "@navikt/ds-react"
 import Divider from "../divider/Divider"
 import { BreadcrumbsInterface } from "../breadcrumbs/breadcrumbsInterface"
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
-import Image from "next/image";
+import Image from "next/image"
 
 interface BarnInterface extends HTMLFormElement {
     antallBarn: HTMLInputElement
@@ -83,10 +83,11 @@ const Barn = () => {
                 <Heading size="large" level="2" spacing>
                     Barn
                 </Heading>
-
             </div>
             <form onSubmit={handleSubmit}>
-                <Heading size="small">Hvor mange barn som er under 18 år har du?</Heading>
+                <Heading size="small">
+                    Hvor mange barn som er under 18 år har du?
+                </Heading>
                 <TextField
                     type="number"
                     className="mb-4 w-20"
