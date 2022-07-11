@@ -8,40 +8,7 @@ import Breadcrumbs from "../components/breadcrumbs/Breadcrumbs"
 import Image from "next/image"
 import React from "react"
 
-const crumbs: BreadcrumbsInterface[] = [
-    {
-        tittel: "Inntekt",
-        sti: "/steg/1",
-        erKlikkbar: true,
-        steg: 2,
-        isCompleted: false,
-        isCurrentPage: false,
-    },
-    {
-        tittel: "Arbeid",
-        sti: "/steg/2",
-        erKlikkbar: false,
-        steg: 3,
-        isCompleted: false,
-        isCurrentPage: false,
-    },
-    {
-        tittel: "Barn",
-        sti: "/steg/3",
-        erKlikkbar: false,
-        steg: 4,
-        isCompleted: false,
-        isCurrentPage: false,
-    },
-    {
-        tittel: "Resultat",
-        sti: "/steg/4",
-        erKlikkbar: false,
-        steg: 5,
-        isCompleted: false,
-        isCurrentPage: false,
-    },
-]
+
 
 const Home: NextPage = () => {
     const router = useRouter()
@@ -50,7 +17,6 @@ const Home: NextPage = () => {
     }
     return (
         <>
-            <Breadcrumbs crumbs={crumbs} />
             <div className="flex flex-col items-center pt-4">
                 <Image
                     src="/ikoner/calculator_circle.svg"

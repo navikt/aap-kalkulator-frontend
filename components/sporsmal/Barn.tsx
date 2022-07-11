@@ -16,7 +16,7 @@ const crumbs: BreadcrumbsInterface[] = [
         tittel: "Inntekt",
         sti: "/steg/1",
         erKlikkbar: true,
-        steg: 2,
+        steg: 1,
         isCompleted: true,
         isCurrentPage: false,
     },
@@ -24,7 +24,7 @@ const crumbs: BreadcrumbsInterface[] = [
         tittel: "Arbeid",
         sti: "/steg/2",
         erKlikkbar: true,
-        steg: 3,
+        steg: 2,
         isCompleted: true,
         isCurrentPage: false,
     },
@@ -32,7 +32,7 @@ const crumbs: BreadcrumbsInterface[] = [
         tittel: "Barn",
         sti: "/steg/3",
         erKlikkbar: true,
-        steg: 4,
+        steg: 3,
         isCompleted: false,
         isCurrentPage: true,
     },
@@ -40,7 +40,7 @@ const crumbs: BreadcrumbsInterface[] = [
         tittel: "Resultat",
         sti: "/steg/4",
         erKlikkbar: false,
-        steg: 5,
+        steg: 4,
         isCompleted: false,
         isCurrentPage: false,
     },
@@ -53,9 +53,9 @@ const Barn = () => {
     const handleSubmit = async (event: React.FormEvent<BarnInterface>) => {
         event.preventDefault()
         const antallBarn = parseInt(event.currentTarget.antallBarn.value)
-        setError(!isNaN(antallBarn) ? "" : "Ugyldig verdi")
+        setError(isNaN(antallBarn) || antallBarn < 0 ? "Ugyldig verdi" : "")
 
-        if (isNaN(antallBarn)) {
+        if (isNaN(antallBarn) || antallBarn < 0) {
             return
         }
 
