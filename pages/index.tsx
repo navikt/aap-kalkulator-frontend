@@ -8,8 +8,6 @@ import Breadcrumbs from "../components/breadcrumbs/Breadcrumbs"
 import Image from "next/image"
 import React from "react"
 
-
-
 const Home: NextPage = () => {
     const router = useRouter()
     const handleStart = async () => {

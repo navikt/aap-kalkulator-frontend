@@ -3,8 +3,7 @@ import { BodyShort, Link } from "@navikt/ds-react"
 import React, { useEffect, useRef, useState } from "react"
 import { BreadcrumbsInterface } from "./breadcrumbsInterface"
 import Divider from "../divider/Divider"
-import {useRouter} from "next/router";
-
+import { useRouter } from "next/router"
 
 const BreadcrumbBit = ({
     sti,
@@ -78,7 +77,6 @@ interface BreadcrumbProps {
 const Crumb = ({ crumbs }: BreadcrumbProps) => {
     const [synlige, setSynlige] = useState<BreadcrumbsInterface[]>([])
     const smulesti = useRef<HTMLElement>(null)
-
 
     useEffect(() => {
         setSynlige(crumbs)

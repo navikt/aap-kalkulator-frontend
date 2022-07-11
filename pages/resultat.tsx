@@ -7,8 +7,6 @@ import { Heading } from "@navikt/ds-react"
 import Breadcrumbs from "../components/breadcrumbs/Breadcrumbs"
 import { BreadcrumbsInterface } from "../components/breadcrumbs/breadcrumbsInterface"
 
-
-
 const Resultat: NextPage = () => {
     const { resultat, setResultat } = useContext(ResultState)
     const router = useRouter()

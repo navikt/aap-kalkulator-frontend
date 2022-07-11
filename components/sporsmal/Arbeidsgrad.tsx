@@ -1,11 +1,19 @@
 import { useRouter } from "next/router"
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import {BodyShort, Button, Heading, Radio, RadioGroup, TextField } from "@navikt/ds-react"
+import {
+    BodyShort,
+    Button,
+    Heading,
+    Radio,
+    RadioGroup,
+    TextField,
+} from "@navikt/ds-react"
 import Image from "next/image"
 import { BreadcrumbsInterface } from "../breadcrumbs/breadcrumbsInterface"
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
-import {Text} from "@navikt/ds-react/src/form/search/search.stories";
+import { Text } from "@navikt/ds-react/src/form/search/search.stories"
+import JaNeiRadio from "../jaNeiRadio/JaNeiRadio";
 
 interface ArbeidsgradInterface extends HTMLFormElement {
     arbeidsgrad: HTMLInputElement
@@ -66,7 +74,6 @@ const Arbeidsgrad = () => {
             arbeidstimer = parseInt(event.currentTarget.arbeidstimer.value)
         }
 
-
         setError(
             (arbeidstimer == 0 || arbeidsuke == 0) && open
                 ? ""
@@ -105,60 +112,59 @@ const Arbeidsgrad = () => {
             <Heading size="large" level="2" spacing>
                 Jobb
             </Heading>
-            <RadioGroup
-                legend="Har du jobb?"
-                value={open}
-                onChange={(v) => setOpen(v)}
-            >
-                <div className="flex flex-row space-x-4 mb-4">
-                    <Radio className="border-1" value="Ja">Ja</Radio>
-                    <Radio className="border-1" value="Nei">Nei</Radio>
-                </div>
-            </RadioGroup>
+            <JaNeiRadio tittel="Har du jobb?" state={open} setState={setOpen}/>
+
             <form onSubmit={handleSubmit}>
                 {open == "Ja" && (
                     <div className="mb-4">
-
                         <Heading size="small">
-                            Hvor mange timer i uken jobber du vanligvis når du er frisk?
+                            Hvor mange timer i uken jobber du vanligvis når du
+                            er frisk?
                         </Heading>
-                        <BodyShort>Varierer det, kan du oppgi gjennomsnittet.</BodyShort>
+                        <BodyShort>
+                            Varierer det, kan du oppgi gjennomsnittet.
+                        </BodyShort>
                         <div className="flex flex-row items-center gap-2 mb-4">
-                        <TextField
-                            className="mb-4 md:w-28"
-                            id="arbeidsuke"
-                            label=""
-                            size="medium"
-                            error={error}
-                        /><BodyShort>timer per uke</BodyShort>
+                            <TextField
+                                className="mb-4 md:w-28"
+                                id="arbeidsuke"
+                                label=""
+                                size="medium"
+                                error={error}
+                            />
+                            <BodyShort>timer per uke</BodyShort>
                         </div>
-                        <Heading size="small">
-                            Hvor mye jobber du nå?
-                        </Heading>
+                        <Heading size="small">Hvor mye jobber du nå?</Heading>
                         <BodyShort>Velg timer eller prosent</BodyShort>
                         <RadioGroup
                             value={aapen}
                             onChange={(v) => setAapen(v)}
-                         legend=""
-                        size="medium">
+                            legend=""
+                            size="medium"
+                        >
                             <div className="flex flex-col">
-                                <Radio className="border-1" value="Timer">Timer</Radio>
-                                <Radio className="border-1" value="Prosent">Prosent</Radio>
+                                <Radio className="border-1" value="Timer">
+                                    Timer
+                                </Radio>
+                                <Radio className="border-1" value="Prosent">
+                                    Prosent
+                                </Radio>
                             </div>
                         </RadioGroup>
                         {aapen == "Timer" && (
                             <div className="flex-row flex gap-2 items-center">
-                        <TextField
-                            className="mb-4 md:w-28"
-                            id="arbeidstimer"
-                            label=""
-                            size="medium"
-                            error={error}
-                        />
+                                <TextField
+                                    className="mb-4 md:w-28"
+                                    id="arbeidstimer"
+                                    label=""
+                                    size="medium"
+                                    error={error}
+                                />
                                 <BodyShort>timer</BodyShort>
-                            </div>) }
-                        {aapen == "Prosent" &&
-                            (<div className="flex-row flex gap-2 items-center">
+                            </div>
+                        )}
+                        {aapen == "Prosent" && (
+                            <div className="flex-row flex gap-2 items-center">
                                 <TextField
                                     className="mb-4 md:w-28"
                                     id="arbeidsprosent"
@@ -167,7 +173,8 @@ const Arbeidsgrad = () => {
                                     error={error}
                                 />
                                 <BodyShort>%</BodyShort>
-                            </div>)}
+                            </div>
+                        )}
                     </div>
                 )}
                 <Button variant="primary">Neste</Button>
