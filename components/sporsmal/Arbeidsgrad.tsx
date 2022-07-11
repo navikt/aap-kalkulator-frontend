@@ -1,10 +1,11 @@
 import { useRouter } from "next/router"
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import { Button, Heading, Radio, RadioGroup, TextField } from "@navikt/ds-react"
+import {BodyShort, Button, Heading, Radio, RadioGroup, TextField } from "@navikt/ds-react"
 import Image from "next/image"
 import { BreadcrumbsInterface } from "../breadcrumbs/breadcrumbsInterface"
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
+import {Text} from "@navikt/ds-react/src/form/search/search.stories";
 
 interface ArbeidsgradInterface extends HTMLFormElement {
     arbeidsgrad: HTMLInputElement
@@ -50,6 +51,7 @@ const Arbeidsgrad = () => {
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
     const [open, setOpen] = useState("")
+    const [aapen, setAapen] = useState("")
 
     const handleSubmit = async (
         event: React.FormEvent<ArbeidsgradInterface>
@@ -63,6 +65,7 @@ const Arbeidsgrad = () => {
             arbeidsuke = parseInt(event.currentTarget.arbeidsuke.value)
             arbeidstimer = parseInt(event.currentTarget.arbeidstimer.value)
         }
+
 
         setError(
             (arbeidstimer == 0 || arbeidsuke == 0) && open
@@ -90,7 +93,7 @@ const Arbeidsgrad = () => {
     return (
         <>
             <Breadcrumbs crumbs={crumbs} />
-            <div className="flex flex-col pt-4">
+            <div className="flex flex-col pt-4 mb-4">
                 <Image
                     src="/ikoner/briefcase_circle.svg"
                     height="100"
@@ -98,44 +101,73 @@ const Arbeidsgrad = () => {
                     alt="lommebok ikon"
                     className=" flex items-center"
                 ></Image>
-                <Heading size="large" level="2" spacing>
-                    Arbeidsgrad
-                </Heading>
             </div>
+            <Heading size="large" level="2" spacing>
+                Jobb
+            </Heading>
             <RadioGroup
-                legend="Er du i arbeid?"
+                legend="Har du jobb?"
                 value={open}
                 onChange={(v) => setOpen(v)}
             >
-                <div className="flex flex-row space-x-4">
+                <div className="flex flex-row space-x-4 mb-4">
                     <Radio className="border-1" value="Ja">Ja</Radio>
                     <Radio className="border-1" value="Nei">Nei</Radio>
                 </div>
             </RadioGroup>
             <form onSubmit={handleSubmit}>
                 {open == "Ja" && (
-                    <div>
+                    <div className="mb-4">
+
                         <Heading size="small">
-                            Hvor mange timer er en vanlig arbeidsuke i ditt
-                            yrke?
+                            Hvor mange timer i uken jobber du vanligvis når du er frisk?
                         </Heading>
+                        <BodyShort>Varierer det, kan du oppgi gjennomsnittet.</BodyShort>
+                        <div className="flex flex-row items-center gap-2 mb-4">
                         <TextField
-                            className="mb-4 md:w-1/3"
+                            className="mb-4 md:w-28"
                             id="arbeidsuke"
                             label=""
                             size="medium"
                             error={error}
-                        />
+                        /><BodyShort>timer per uke</BodyShort>
+                        </div>
                         <Heading size="small">
-                            Hvor mange timer er din arbeidsuke?
+                            Hvor mye jobber du nå?
                         </Heading>
+                        <BodyShort>Velg timer eller prosent</BodyShort>
+                        <RadioGroup
+                            value={aapen}
+                            onChange={(v) => setAapen(v)}
+                         legend=""
+                        size="medium">
+                            <div className="flex flex-col">
+                                <Radio className="border-1" value="Timer">Timer</Radio>
+                                <Radio className="border-1" value="Prosent">Prosent</Radio>
+                            </div>
+                        </RadioGroup>
+                        {aapen == "Timer" && (
+                            <div className="flex-row flex gap-2 items-center">
                         <TextField
-                            className="mb-4 md:w-1/3"
+                            className="mb-4 md:w-28"
                             id="arbeidstimer"
                             label=""
                             size="medium"
                             error={error}
                         />
+                                <BodyShort>timer</BodyShort>
+                            </div>) }
+                        {aapen == "Prosent" &&
+                            (<div className="flex-row flex gap-2 items-center">
+                                <TextField
+                                    className="mb-4 md:w-28"
+                                    id="arbeidsprosent"
+                                    label=""
+                                    size="medium"
+                                    error={error}
+                                />
+                                <BodyShort>%</BodyShort>
+                            </div>)}
                     </div>
                 )}
                 <Button variant="primary">Neste</Button>

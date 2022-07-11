@@ -2,7 +2,6 @@ import { Collapse, SuccessColored } from "@navikt/ds-icons"
 import { BodyShort, Link } from "@navikt/ds-react"
 import React, { useEffect, useRef, useState } from "react"
 import { BreadcrumbsInterface } from "./breadcrumbsInterface"
-import Vis from "./vis"
 import Divider from "../divider/Divider"
 import {useRouter} from "next/router";
 
