@@ -1,10 +1,7 @@
 import type { NextPage } from "next"
-import { BodyLong, Button, Heading } from "@navikt/ds-react"
+import { Button, Heading } from "@navikt/ds-react"
 import Divider from "../components/divider/Divider"
-import Container from "../components/container/Container"
 import { useRouter } from "next/router"
-import { BreadcrumbsInterface } from "../components/breadcrumbs/breadcrumbsInterface"
-import Breadcrumbs from "../components/breadcrumbs/Breadcrumbs"
 import Image from "next/image"
 import React from "react"
 

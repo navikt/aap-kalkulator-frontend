@@ -1,7 +1,7 @@
 const Divider = () => {
     return (
         <div
-            className={`border-t-2 border-solid border-border w-16 h-2 mb-2`}
+            className={`border-t-2 border-solid border-border md:w-16 h-2 mb-2`}
         />
     )
 }
