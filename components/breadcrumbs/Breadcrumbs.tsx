@@ -1,4 +1,4 @@
-import { Collapse, SuccessColored } from "@navikt/ds-icons"
+import {Collapse, Success, SuccessColored} from "@navikt/ds-icons"
 import { BodyShort, Link } from "@navikt/ds-react"
 import React, { useEffect, useRef, useState } from "react"
 import Divider from "../divider/Divider"
@@ -9,15 +9,16 @@ const BreadcrumbBit = ({ tittel, steg }: { tittel: string; steg: number }) => {
     const path = router.asPath
     const current_steg = parseInt(path.split("/").at(-1)!!)
     const isCurrentPage = steg === current_steg
+    const circleStyling = "flex rounded-full w-8 h-8 md:w-8 md:h-8  items-center justify-center mb-2"
 
     const isCompleted = current_steg > steg
 
     const circle = isCompleted ? (
-        <div className="flex rounded-full bg-green-200 w-7 h-7 md:w-10 md:h-10  items-center justify-center">
-            <SuccessColored className="w-10 h-10" />
+        <div className={`text-feedback-success-icon bg-feedback-success-background ${circleStyling}`}>
+            <Success className="w-8 h-8" />
         </div>
     ) : isCurrentPage ? (
-        <div className="flex rounded-full bg-blue-200 w-7 h-7 md:w-10 md:h-10 items-center justify-center">
+        <div className={`bg-feedback-info-background border-feedback-info-border border-2 ${circleStyling}`}>
             {steg}
         </div>
     ) : (
