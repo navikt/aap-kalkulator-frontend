@@ -9,7 +9,6 @@ import {
     TextField,
 } from "@navikt/ds-react"
 import Divider from "../divider/Divider"
-import { BreadcrumbsInterface } from "../breadcrumbs/breadcrumbsInterface"
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
 import Image from "next/image"
 import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
@@ -17,41 +16,6 @@ import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
 interface BarnInterface extends HTMLFormElement {
     antallBarn: HTMLInputElement
 }
-
-const crumbs: BreadcrumbsInterface[] = [
-    {
-        tittel: "Inntekt",
-        sti: "/steg/1",
-        erKlikkbar: true,
-        steg: 1,
-        isCompleted: true,
-        isCurrentPage: false,
-    },
-    {
-        tittel: "Arbeid",
-        sti: "/steg/2",
-        erKlikkbar: true,
-        steg: 2,
-        isCompleted: true,
-        isCurrentPage: false,
-    },
-    {
-        tittel: "Barn",
-        sti: "/steg/3",
-        erKlikkbar: true,
-        steg: 3,
-        isCompleted: false,
-        isCurrentPage: true,
-    },
-    {
-        tittel: "Resultat",
-        sti: "/steg/4",
-        erKlikkbar: false,
-        steg: 4,
-        isCompleted: false,
-        isCurrentPage: false,
-    },
-]
 
 const Barn = () => {
     const router = useRouter()
@@ -82,7 +46,7 @@ const Barn = () => {
 
     return (
         <>
-            <Breadcrumbs crumbs={crumbs} />
+            <Breadcrumbs />
             <div className=" flex flex-col pt-4">
                 <Image
                     src="/ikoner/teddy_circle.svg"

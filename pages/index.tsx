@@ -35,11 +35,20 @@ const Home: NextPage = () => {
             </div>
             <div className="flex flex-col items-center mt-4 gap-4">
                 <ul className="list-disc space-y-2 mb-8">
-                    <li>Kalkulatoren regner ut hvor mye du får i AAP ut i fra svarene du gir. </li>
+                    <li>
+                        Kalkulatoren regner ut hvor mye du får i AAP ut i fra
+                        svarene du gir.{" "}
+                    </li>
                     <li>Resultatet bestemmes av svarene du gir. </li>
                     <li>Kalkulatoren er ment som et hjelpeverktøy for deg.</li>
-                    <li>Dette er ikke et vedtak fra NAV og du må søke for å få penger. Det kan du gjøre på nav.no et sted</li>
-                    <li>Denne kalkulatoren er anonym, og vi lagrer ingenting!!!!(; NAV backer</li>
+                    <li>
+                        Dette er ikke et vedtak fra NAV og du må søke for å få
+                        penger. Det kan du gjøre på nav.no et sted
+                    </li>
+                    <li>
+                        Denne kalkulatoren er anonym, og vi lagrer
+                        ingenting!!!!(; NAV backer
+                    </li>
                 </ul>
 
                 <Button

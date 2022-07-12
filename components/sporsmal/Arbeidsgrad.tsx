@@ -10,7 +10,6 @@ import {
     TextField,
 } from "@navikt/ds-react"
 import Image from "next/image"
-import { BreadcrumbsInterface } from "../breadcrumbs/breadcrumbsInterface"
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
 import { Text } from "@navikt/ds-react/src/form/search/search.stories"
 import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
@@ -18,41 +17,6 @@ import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
 interface ArbeidsgradInterface extends HTMLFormElement {
     arbeidsgrad: HTMLInputElement
 }
-
-const crumbs: BreadcrumbsInterface[] = [
-    {
-        tittel: "Inntekt",
-        sti: "/steg/1",
-        erKlikkbar: true,
-        steg: 1,
-        isCompleted: true,
-        isCurrentPage: false,
-    },
-    {
-        tittel: "Arbeid",
-        sti: "/steg/2",
-        erKlikkbar: true,
-        steg: 2,
-        isCompleted: false,
-        isCurrentPage: true,
-    },
-    {
-        tittel: "Barn",
-        sti: "/steg/3",
-        erKlikkbar: false,
-        steg: 3,
-        isCompleted: false,
-        isCurrentPage: false,
-    },
-    {
-        tittel: "Resultat",
-        sti: "/steg/4",
-        erKlikkbar: false,
-        steg: 4,
-        isCompleted: false,
-        isCurrentPage: false,
-    },
-]
 
 const Arbeidsgrad = () => {
     const router = useRouter()
@@ -97,7 +61,7 @@ const Arbeidsgrad = () => {
 
     return (
         <>
-            <Breadcrumbs crumbs={crumbs} />
+            <Breadcrumbs />
             <div className="flex flex-col pt-4 mb-4">
                 <Image
                     src="/ikoner/briefcase_circle.svg"

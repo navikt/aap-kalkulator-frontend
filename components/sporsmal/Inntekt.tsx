@@ -3,7 +3,6 @@ import { State } from "../../pages/_app"
 import { Button, Heading, ReadMore, TextField } from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Image from "next/image"
-import { BreadcrumbsInterface } from "../breadcrumbs/breadcrumbsInterface"
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
 import { SuccessColored } from "@navikt/ds-icons"
 
@@ -12,41 +11,6 @@ interface InntektsForm extends HTMLFormElement {
     readonly inntekt2: HTMLInputElement
     readonly inntekt3: HTMLInputElement
 }
-
-const crumbs: BreadcrumbsInterface[] = [
-    {
-        tittel: "Inntekt",
-        sti: "/steg/1",
-        erKlikkbar: true,
-        steg: 1,
-        isCompleted: false,
-        isCurrentPage: true,
-    },
-    {
-        tittel: "Arbeid",
-        sti: "/steg/2",
-        erKlikkbar: false,
-        steg: 2,
-        isCompleted: false,
-        isCurrentPage: false,
-    },
-    {
-        tittel: "Barn",
-        sti: "/steg/3",
-        erKlikkbar: false,
-        steg: 3,
-        isCompleted: false,
-        isCurrentPage: false,
-    },
-    {
-        tittel: "Resultat",
-        sti: "/steg/4",
-        erKlikkbar: false,
-        steg: 4,
-        isCompleted: false,
-        isCurrentPage: false,
-    },
-]
 
 const Inntekt = () => {
     const router = useRouter()
@@ -83,7 +47,7 @@ const Inntekt = () => {
 
     return (
         <>
-            <Breadcrumbs crumbs={crumbs} />
+            <Breadcrumbs />
             <div className="items flex flex-col pt-4">
                 <Image
                     src="/ikoner/wallet_circle.svg"
