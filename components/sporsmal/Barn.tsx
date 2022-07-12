@@ -41,7 +41,7 @@ const Barn = () => {
             arbeidsgrad: state.arbeidsgrad,
             antallBarn,
         })
-        await router.push("/steg/4")
+        await router.push("/resultat")
     }
 
     return (
