@@ -3,8 +3,8 @@ import { ResultState } from "./_app"
 import { useRouter } from "next/router"
 import { NextPage } from "next"
 import ResultContainer from "../components/container/ResultContainer"
-import { Heading } from "@navikt/ds-react"
-import Breadcrumbs from "../components/breadcrumbs/Breadcrumbs"
+import {Alert, BodyShort, Heading, Link, ReadMore} from "@navikt/ds-react"
+import Image from "next/image";
 
 const Resultat: NextPage = () => {
     const { resultat, setResultat } = useContext(ResultState)
@@ -17,33 +17,85 @@ const Resultat: NextPage = () => {
     }, [resultat])
     return (
         <>
+            <div className="flex flex-col pt-4 mb-4">
+            <Image
+                src="/ikoner/money_circle.svg"
+                height="100"
+                width="100"
+                alt="penger ikon"
+                className={" flex items-center"}
+            ></Image>
+            </div>
             <Heading
                 level="2"
                 size="large"
                 spacing
                 aria-label="Hvor mye kan jeg få?"
-                className="flex justify-center pt-4"
+                className="pb-4"
             >
-                Resultat
+
+                Dette kan du få:
             </Heading>
-            <ResultContainer>
-                <div>
+            <div className="grid md:grid-cols-3 md:grid-rows-1 gap-2 grid-cols-1 pb-4">
+                <div className="pb-4">
                     <Heading
-                        className="p-4 pl-9 pt-6"
+                        className="flex justify-center"
                         size="small"
                         spacing
                         aria-label="Din utbetaling hver 14. dag"
                     >
-                        Din utbetaling hver 14. dag
+                        Årlig
                     </Heading>
-                    <div
-                        className={`p-4 border-t-2 border-solid border-divider w-5/6 h-1 mb-2 mx-auto`}
-                    />
-                    <div className="flex justify-center text-3xl">
+                    <div className="flex justify-center text-xl">
                         {resultat.resultat} kr
                     </div>
                 </div>
-            </ResultContainer>
+                <div className="pb-4">
+                <Heading
+                    className="flex justify-center"
+                    size="small"
+                    spacing
+                    aria-label="Din utbetaling hver 14. dag"
+                >
+                    Hver 14. dag
+                </Heading>
+                    <div className="flex justify-center text-xl">
+                        {resultat.resultat} kr
+                    </div>
+                </div>
+                <div className="pb-4">
+                <Heading
+                    className="flex justify-center"
+                    size="small"
+                    spacing
+                    aria-label="Din utbetaling hver 14. dag"
+                >
+                    Dagsats
+                </Heading>
+                    <div className="flex justify-center text-xl">
+                        {resultat.resultat} kr
+                    </div>
+            </div>
+
+
+
+            </div>
+
+            <ReadMore
+                size="small"
+                header="Hvorfor får jeg denne summen?"
+            >
+                {" "}
+                Fordi vi lurer ;)
+            </ReadMore>
+            <div className="pt-4">
+            <Alert variant="info" size="small">
+                <p>Dette er en foreløpig beregning på hva du kan få før skatt. Når du har sendt søknaden og den er ferdigbehandlet, vil du få vite hva du får utbetalt.</p>
+
+                <Link className="pt-4" href="https://www.nav.no/aap">Les mer om hva du kan få i AAP her.</Link>
+            </Alert>
+            </div>
+
         </>
     )
 }
