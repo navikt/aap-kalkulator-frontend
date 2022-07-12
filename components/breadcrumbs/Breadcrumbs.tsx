@@ -22,7 +22,7 @@ const BreadcrumbBit = ({ tittel, steg }: { tittel: string; steg: number }) => {
             {steg}
         </div>
     ) : (
-        <div className="flex rounded-full border w-7 h-7 md:w-10 md:h-10 items-center justify-center">
+        <div className={`border-2 border-border text-text-muted ${circleStyling}`}>
             {steg}
         </div>
     )
