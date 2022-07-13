@@ -10,7 +10,10 @@ const Resultat: NextPage = () => {
     const { resultat, setResultat } = useContext(ResultState)
     const { state, setState } = useContext(State)
     const router = useRouter()
-    const handleSubmit = async () => {
+
+    const gjennomsnitt = (state.inntekt1 + state.inntekt2 + state.inntekt3) / 3
+
+    useEffect(() => {
         //event.preventDefault()
         const endpoint = "http://0.0.0.0:8080/beregning"
         const options = {
@@ -21,19 +24,10 @@ const Resultat: NextPage = () => {
             body: JSON.stringify(state),
         }
 
-        const response = await fetch(endpoint, options)
-
-        const result = await response.json()
-
-        setResultat(result)
-    }
-    handleSubmit()
-    useEffect(() => {
-        // nå er det mulig å få inn 0 i resultat grunnet arbeidsgradsberegning
-        /*if (resultat.resultat == 0.0) {
-            router.push("/")
-        }*/
-    }, [resultat])
+        fetch(endpoint, options)
+            .then((response) => response.json())
+            .then((data) => setResultat(data))
+    }, [])
     const perDag = Math.ceil(resultat.resultat / 260)
     return (
         <>
@@ -89,7 +83,7 @@ const Resultat: NextPage = () => {
                         spacing
                         aria-label="Din utbetaling hver 14. dag"
                     >
-                        Dagsats
+                        Daglig
                     </Heading>
                     <div className="flex justify-center text-xl">
                         {perDag} kr
@@ -99,7 +93,18 @@ const Resultat: NextPage = () => {
 
             <ReadMore size="small" header="Hvorfor får jeg denne summen?">
                 {" "}
-                Fordi vi lurer ;)
+                Du har oppgitt at du har {gjennomsnitt} i gjennomsnittsinntekt
+                de siste tre årene og {state.inntekt1} i inntekt siste året før
+                du ble sykemeldt. Siden{" "}
+                {Math.max(gjennomsnitt, state.inntekt1) == gjennomsnitt
+                    ? "gjennomsnittsinntekten"
+                    : "inntekten året før du ble sykemeldt"}{" "}
+                er størst vil dette bli brukt i beregningen av din AAP. Ditt
+                opprinnelige grunnlag før barn og arbeid er «dette» kr. Da er
+                din ytelse (det du får utbetalt) x*66% kr Siden du jobber{" "}
+                {state.arbeidsgrad} vil du bli trukket z% i utbetalt AAP Siden
+                du har a barn under 18 år, vil du få et tillegg på 27*a kr. Din
+                AAP vil være «penger» i året
             </ReadMore>
             <div className="pt-4">
                 <Alert variant="info" size="small">

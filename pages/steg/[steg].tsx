@@ -6,7 +6,6 @@ import { ResultInterface } from "../../components/result/Result"
 import { ResultState } from "../_app"
 import Inntekt from "../../components/sporsmal/Inntekt"
 import Barn from "../../components/sporsmal/Barn"
-import Innsending from "../../components/innsending/Innsending"
 import Arbeidsgrad from "../../components/sporsmal/Arbeidsgrad"
 
 const Steg = () => {
@@ -16,9 +15,8 @@ const Steg = () => {
 
     const sporsmal = [
         <Inntekt key={0} />,
-        <Arbeidsgrad key={4} />,
+        <Arbeidsgrad key={2} />,
         <Barn key={1} />,
-        <Innsending key={2} />,
     ]
 
     return sporsmal[stegnummer - 1]
