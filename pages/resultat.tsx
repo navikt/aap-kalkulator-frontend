@@ -58,11 +58,12 @@ const Resultat: NextPage = () => {
             >
                 Dette kan du få:
             </Heading>
-            <div className="grid grid-cols-2 mb-4">
+            <div className="grid md:grid-cols-2 grid-cols-1 mb-4 gap-4">
                 <ToggleGroup
                     onChange={(x) => setValue(x)}
                     value={value}
                     size="medium"
+                    className="justify-center w-full"
                 >
                     <ToggleGroup.Item value="14dag">
                         Hver 14. dag
@@ -70,13 +71,13 @@ const Resultat: NextPage = () => {
                     <ToggleGroup.Item value="arlig">Årlig</ToggleGroup.Item>
                 </ToggleGroup>
                 {value == "14dag" && (
-                    <p className="flex text-5xl justify-center">
-                        {(perDag * 10).toLocaleString().replace(",", " ")} kr
+                    <p className="flex text-5xl justify-center items-center">
+                        {(perDag * 10).toLocaleString()} kr
                     </p>
                 )}
                 {value == "arlig" && (
-                    <p className="flex text-5xl justify-center">
-                        {resultat.resultat.toLocaleString().replace(",", " ")}{" "}
+                    <p className="flex text-5xl justify-center items-center">
+                        {Math.ceil(resultat.resultat).toLocaleString()}{" "}
                         kr
                     </p>
                 )}
@@ -85,35 +86,7 @@ const Resultat: NextPage = () => {
                 <ReadMore size="small" header="Hvorfor får jeg denne summen?">
                     {" "}
                     <ul className=" space-y-4">
-                        <li>
-                            Du har oppgitt at du har {gjennomsnitt} i
-                            gjennomsnittsinntekt de siste tre årene og{" "}
-                            {state.inntekt1} i inntekt siste året før du ble
-                            sykemeldt. Siden{" "}
-                            {Math.max(gjennomsnitt, state.inntekt1) ==
-                            gjennomsnitt
-                                ? "gjennomsnittsinntekten"
-                                : "inntekten året før du ble sykemeldt"}{" "}
-                            er størst vil dette bli brukt i beregningen av din
-                            AAP.{" "}
-                        </li>
-                        <li>
-                            {" "}
-                            Ditt opprinnelige grunnlag før barn og arbeid er
-                            «dette» kr. Da er din ytelse (det du får utbetalt)
-                            x*66% kr{" "}
-                        </li>
-                        <li>
-                            {" "}
-                            Siden du jobber {state.arbeidsgrad} vil du bli
-                            trukket z% i utbetalt AAP{" "}
-                        </li>
-                        <li>
-                            {" "}
-                            Siden du har a barn under 18 år, vil du få et
-                            tillegg på 27*a kr.{" "}
-                        </li>
-                        <li> Din AAP vil være «penger» i året</li>
+                        {resultat.logs.map((text, index) => <li key={index}>{text}</li>)}
                     </ul>
                 </ReadMore>
             </div>
