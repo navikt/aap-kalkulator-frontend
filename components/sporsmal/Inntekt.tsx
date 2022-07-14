@@ -78,10 +78,10 @@ const Inntekt = () => {
                         <TextField
                             className="mb-4 w-40 "
                             key={index}
-                            id={`inntekt${index + 1}`}
+                            id={`inntekt${2-index + 1}`}
                             label={`Inntekt ${year}`}
                             size="medium"
-                            error={error[index]}
+                            error={error[2-index]}
                         />
                     ))}
                 </div>
