@@ -2,6 +2,7 @@ import { useRouter } from "next/router"
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
 import {
+    BodyShort,
     Button,
     GuidePanel,
     Heading,
@@ -43,6 +44,7 @@ const Barn = () => {
         })
         await router.push("/resultat")
     }
+    const readmoreTekst = "Dersom du har barn kan du få et tillegg på din utbetaling."
 
     return (
         <>
@@ -63,29 +65,23 @@ const Barn = () => {
                 <JaNeiRadio
                     tittel="Har du barn?"
                     readMoreTittel="Hvorfor spør vi om du har barn?"
-                    readMore="fordi"
+                    readMore={readmoreTekst}
                     state={open}
                     setState={setOpen}
                 />
                 {open == "Ja" && (
                     <div>
                         <Heading size="small">
-                            Hvor mange barn som er under 18 år har du?
+                            Hvor mange barn under 18 år har du?
                         </Heading>
-                        <ReadMore
-                            size="small"
-                            header="Hvorfor spør vi hvor mange barn du har?"
-                        >
-                            {" "}
-                            Fordi vi lurer
-                        </ReadMore>
+                        <div className="flex flex-row items-center gap-2 mb-4">
                         <TextField
                             className="mb-4 w-20"
                             id="antallBarn"
                             label=""
                             size="medium"
                             error={error}
-                        />
+                        /><BodyShort>barn</BodyShort></div>
                     </div>
                 )}
 

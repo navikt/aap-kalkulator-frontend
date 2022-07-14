@@ -24,27 +24,25 @@ const Home: NextPage = () => {
                     level="2"
                     size="large"
                     spacing
-                    aria-label="Hvor mye kan jeg få?"
+                    aria-label="Hvor mye kan du få?"
                 >
-                    Hvor mye kan jeg få?
+                    Hvor mye kan du få?
                 </Heading>
                 <Divider />
             </div>
             <div className="flex flex-col items-center mt-4 gap-4">
                 <ul className="list-disc space-y-2 mb-8">
                     <li>
-                        Kalkulatoren regner ut hvor mye du får i AAP ut i fra
-                        svarene du gir.{" "}
+                        Regn ut hvor mye du kan få i arbeidsavklaringspenger.
                     </li>
-                    <li>Resultatet bestemmes av svarene du gir. </li>
+
                     <li>Kalkulatoren er ment som et hjelpeverktøy for deg.</li>
                     <li>
-                        Dette er ikke et vedtak fra NAV og du må søke for å få
-                        penger. Det kan du gjøre på nav.no et sted
+                        Resultatet er kun et anslag.
                     </li>
+                    <li>NAV vurderer situasjonen din nærmere hvis du sender en søknad.</li>
                     <li>
-                        Denne kalkulatoren er anonym, og vi lagrer
-                        ingenting!!!!(; NAV backer
+                        NAV lagrer ikke informasjonen du oppgir.
                     </li>
                 </ul>
 

@@ -17,17 +17,18 @@ const JaNeiRadio = ({
     const radioStyle = "flex-grow border-[1px] px-2 rounded-md hover:shadow"
     const selectedStyle =
         "bg-interaction-primary-hover-subtle border-interaction-primary"
+    const description =
+        <ReadMore header={readMoreTittel}>{readMore}</ReadMore>
+
     return (
         <RadioGroup
             className="grow"
             legend={tittel}
+            description={readMore !== undefined && (description)}
             onChange={setState}
             value={state}
         >
-            {readMore !== undefined && (
-                <ReadMore header={readMoreTittel}> Fordi vi lurer </ReadMore>
-            )}
-            <div className="flex flex-row gap-4 mb-4">
+            <div className="flex flex-row gap-4 mb-4 mt-4">
                 <Radio
                     className={`${radioStyle} ${
                         state == "Ja" && selectedStyle

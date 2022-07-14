@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import { Button, Heading, ReadMore, TextField } from "@navikt/ds-react"
+import {BodyShort, Button, Heading, ReadMore, TextField} from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Image from "next/image"
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
@@ -62,17 +62,19 @@ const Inntekt = () => {
             </div>
             <form onSubmit={handleSubmit}>
                 <Heading size="small">
-                    Inntekt de siste tre årene før du ble sykemeldt
+                    Hvor mye tjente du de tre siste årene før du ble sykmeldt?
                 </Heading>
+                <BodyShort spacing>Oppgi inntekt før skatt</BodyShort>
                 <ReadMore
                     size="small"
-                    header="Hvorfor spør vi om inntekten din de siste tre årene før du ble syk?"
+                    header="Hvorfor spør vi om inntekt?"
                 >
                     {" "}
-                    Fordi vi lurer ;)
+                    Inntekten din brukes til å regne ut hva du kan få i arbeidsavklaringspenger.
+
                 </ReadMore>
                 <div className="flex flex-row space-x-8 mt-8">
-                    {years.map((year, index) => (
+                    {years.reverse().map((year, index) => (
                         <TextField
                             className="mb-4 w-40 "
                             key={index}

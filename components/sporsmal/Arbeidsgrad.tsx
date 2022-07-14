@@ -6,7 +6,7 @@ import {
     Button,
     Heading,
     Radio,
-    RadioGroup,
+    RadioGroup, ReadMore,
     TextField,
 } from "@navikt/ds-react"
 import Image from "next/image"
@@ -59,6 +59,8 @@ const Arbeidsgrad = () => {
         await router.push("/steg/3")
     }
 
+    const readMoreTekst = "Hvor mye du får utbetalt avhenger av hvor mye du jobber. Jobber du mer enn 22,5 timer i uken får du ikke arbeidsavklaringspenger."
+
     return (
         <>
             <Breadcrumbs />
@@ -74,7 +76,8 @@ const Arbeidsgrad = () => {
             <Heading size="large" level="2" spacing>
                 Jobb
             </Heading>
-            <JaNeiRadio tittel="Har du jobb?" state={open} setState={setOpen} />
+            <JaNeiRadio tittel="Har du jobb?" state={open} setState={setOpen} readMoreTittel="Hvorfor spør vi om du har jobb?" readMore={readMoreTekst} />
+
 
             <form onSubmit={handleSubmit}>
                 {open == "Ja" && (
@@ -84,7 +87,7 @@ const Arbeidsgrad = () => {
                             er frisk?
                         </Heading>
                         <BodyShort>
-                            Varierer det, kan du oppgi gjennomsnittet.
+                            Varierer det, kan du oppgi gjennomsnittet
                         </BodyShort>
                         <div className="flex flex-row items-center gap-2 mb-4">
                             <TextField

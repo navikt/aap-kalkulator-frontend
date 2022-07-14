@@ -72,12 +72,12 @@ const Resultat: NextPage = () => {
                 </ToggleGroup>
                 {value == "14dag" && (
                     <p className="flex text-5xl justify-center items-center">
-                        {(perDag * 10).toLocaleString()} kr
+                        {(perDag * 10).toLocaleString("nb-NO")} kr
                     </p>
                 )}
                 {value == "arlig" && (
                     <p className="flex text-5xl justify-center items-center">
-                        {Math.ceil(resultat.resultat).toLocaleString()}{" "}
+                        {Math.ceil(resultat.resultat).toLocaleString("nb-NO")}{" "}
                         kr
                     </p>
                 )}
