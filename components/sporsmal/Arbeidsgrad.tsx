@@ -56,7 +56,7 @@ const Arbeidsgrad = () => {
             arbeidsgrad,
             antallBarn: state.antallBarn,
         })
-        await router.push("/steg/3")
+        await router.push("/steg/4")
     }
 
     const readMoreTekst = "Hvor mye du får utbetalt avhenger av hvor mye du jobber. Jobber du mer enn 22,5 timer i uken får du ikke arbeidsavklaringspenger."

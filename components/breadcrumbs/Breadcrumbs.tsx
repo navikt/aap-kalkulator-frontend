@@ -64,7 +64,7 @@ const BreadcrumbBit = ({ tittel, steg }: { tittel: string; steg: number }) => {
 
 const Crumb = () => {
     const smulesti = useRef<HTMLElement>(null)
-    const crumbs = ["Inntekt", "Arbeid", "Barn", "Resultat"]
+    const crumbs = ["Sykmelding", "Inntekt", "Arbeid", "Barn", "Resultat"]
     return (
         <nav className="brodsmuler" ref={smulesti}>
             <div className="limit">

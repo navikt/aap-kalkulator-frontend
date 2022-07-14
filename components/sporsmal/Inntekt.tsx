@@ -5,6 +5,8 @@ import { useRouter } from "next/router"
 import Image from "next/image"
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
 import { SuccessColored } from "@navikt/ds-icons"
+import {Text} from "@navikt/ds-react/src/form/search/search.stories";
+import JaNeiRadio from "../jaNeiRadio/JaNeiRadio";
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -40,7 +42,7 @@ const Inntekt = () => {
             antallBarn: state.antallBarn,
             arbeidsgrad: state.arbeidsgrad,
         })
-        await router.push("/steg/2")
+        await router.push("/steg/3")
     }
     const currentYear = new Date().getFullYear()
     const years = [currentYear - 1, currentYear - 2, currentYear - 3]
