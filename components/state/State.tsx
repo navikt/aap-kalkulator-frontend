@@ -4,5 +4,5 @@ export interface StateInterface {
     inntekt3: number
     antallBarn: number
     arbeidsgrad: number
-    sykmeldtAar?: number
+    sykmeldtAar: number
 }

@@ -15,10 +15,33 @@ interface InntektsForm extends HTMLFormElement {
 const Sykmelding = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
-    const [error, setError] = useState<string[]>(["", "", ""])
+    const [error, setError] = useState("")
     const [open, setOpen] = useState("")
     const handleSubmit = async (event: React.FormEvent<InntektsForm>) => {
         event.preventDefault()
+        const currentAar = new Date().getFullYear()
+        let sykmeldtAar = currentAar
+        if(event.currentTarget.sykmelding.value ) {
+            sykmeldtAar = parseInt(event.currentTarget.sykmelding.value)
+        }
+
+        const aapGrense = 10
+        const errors = isNaN(sykmeldtAar) ? "Sykmeldingsår må være et heltall" : sykmeldtAar > currentAar ? "Sykmeldingsår må være året vi er i nå eller tidligere" :
+            sykmeldtAar < sykmeldtAar - aapGrense ? `Du får ikke arbeidsavklaringspenger dersom du ble sykmeldt for mer enn ${aapGrense} år siden.` : ""
+
+        setError(errors)
+        if (isNaN(sykmeldtAar) || sykmeldtAar > currentAar || sykmeldtAar < sykmeldtAar - aapGrense) {
+            return
+        }
+        setState ({
+            inntekt1: state.inntekt1,
+            inntekt2: state.inntekt2,
+            inntekt3: state.inntekt3,
+            antallBarn: state.antallBarn,
+            arbeidsgrad: state.arbeidsgrad,
+            sykmeldtAar
+        })
+
 
         await router.push("/steg/2")
     }
@@ -37,7 +60,7 @@ const Sykmelding = () => {
                     className={" flex items-center"}
                 ></Image>
                 <Heading size="large" level="2" spacing>
-                    Inntekt
+                    Sykmelding
                 </Heading>
             </div>
 
@@ -51,7 +74,7 @@ const Sykmelding = () => {
                 {open == "Ja" && (
                     <>
                     <Heading size="small">Hvilket år ble du sykmeldt?</Heading>
-                <TextField label="" className="w-1/5 mb-4"/>
+                <TextField label="" id="sykmelding" className="w-1/5 mb-4" error={error}/>
                     </>
                 )}
                 <Button variant="primary">Neste</Button>

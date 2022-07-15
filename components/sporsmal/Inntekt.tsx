@@ -7,6 +7,7 @@ import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
 import { SuccessColored } from "@navikt/ds-icons"
 import {Text} from "@navikt/ds-react/src/form/search/search.stories";
 import JaNeiRadio from "../jaNeiRadio/JaNeiRadio";
+import sykmelding from "./Sykmelding";
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -41,10 +42,11 @@ const Inntekt = () => {
             inntekt3,
             antallBarn: state.antallBarn,
             arbeidsgrad: state.arbeidsgrad,
+            sykmeldtAar: state.sykmeldtAar
         })
         await router.push("/steg/3")
     }
-    const currentYear = new Date().getFullYear()
+    const currentYear = state.sykmeldtAar
     const years = [currentYear - 1, currentYear - 2, currentYear - 3]
 
     return (
