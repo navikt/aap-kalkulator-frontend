@@ -1,52 +1,55 @@
-import React, { useContext, useState } from "react"
-import { State } from "../../pages/_app"
-import {BodyShort, Button, Heading, ReadMore, TextField} from "@navikt/ds-react"
-import { useRouter } from "next/router"
-import Image from "next/image"
-import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
+import React, { useContext, useState } from "react";
+import { State } from "../../pages/_app";
+import { Button, Heading, TextField } from "@navikt/ds-react";
+import { useRouter } from "next/router";
+import Image from "next/image";
+import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
 import JaNeiRadio from "../jaNeiRadio/JaNeiRadio";
 
 interface InntektsForm extends HTMLFormElement {
-    readonly inntekt1: HTMLInputElement
-    readonly inntekt2: HTMLInputElement
-    readonly inntekt3: HTMLInputElement
+    readonly inntekt1: HTMLInputElement;
+    readonly inntekt2: HTMLInputElement;
+    readonly inntekt3: HTMLInputElement;
 }
 
 const Sykmelding = () => {
-    const router = useRouter()
-    const { state, setState } = useContext(State)
-    const [error, setError] = useState("")
-    const [open, setOpen] = useState("")
+    const router = useRouter();
+    const { state, setState } = useContext(State);
+    const [error, setError] = useState("");
+    const [open, setOpen] = useState("");
     const handleSubmit = async (event: React.FormEvent<InntektsForm>) => {
-        event.preventDefault()
-        const currentAar = new Date().getFullYear()
-        let sykmeldtAar = currentAar
-        if(event.currentTarget.sykmelding.value ) {
-            sykmeldtAar = parseInt(event.currentTarget.sykmelding.value)
+        event.preventDefault();
+        const currentAar = new Date().getFullYear();
+        let sykmeldtAar = currentAar;
+        if (open == "Ja") {
+            sykmeldtAar = parseInt(event.currentTarget.sykmelding.value);
         }
+        const aapGrense = 10;
 
-        const aapGrense = 10
-        const errors = isNaN(sykmeldtAar) ? "Sykmeldingsår må være et heltall" : sykmeldtAar > currentAar ? "Sykmeldingsår må være året vi er i nå eller tidligere" :
-            sykmeldtAar < sykmeldtAar - aapGrense ? `Du får ikke arbeidsavklaringspenger dersom du ble sykmeldt for mer enn ${aapGrense} år siden.` : ""
+        const errors = isNaN(sykmeldtAar) ? "Sykmeldingsår må være et heltall" :
+            sykmeldtAar > currentAar ? "Sykmeldingsår må være året vi er i nå eller tidligere" :
+                sykmeldtAar < currentAar - aapGrense ? `Du får ikke arbeidsavklaringspenger dersom du ble sykmeldt for mer enn ${aapGrense} år siden.` : "";
 
-        setError(errors)
-        if (isNaN(sykmeldtAar) || sykmeldtAar > currentAar || sykmeldtAar < sykmeldtAar - aapGrense) {
-            return
+        setError(errors);
+        if ((isNaN(sykmeldtAar) || sykmeldtAar > currentAar || sykmeldtAar < currentAar - aapGrense) && open ) {
+            return;
         }
-        setState ({
+        setState({
             inntekt1: state.inntekt1,
             inntekt2: state.inntekt2,
             inntekt3: state.inntekt3,
             antallBarn: state.antallBarn,
             arbeidsgrad: state.arbeidsgrad,
             sykmeldtAar
-        })
+        });
 
-
-        await router.push("/steg/2")
-    }
-    const currentYear = new Date().getFullYear()
-    const years = [currentYear - 1, currentYear - 2, currentYear - 3]
+        /*
+        *
+        * */
+        await router.push("/steg/2");
+    };
+    const currentYear = new Date().getFullYear();
+    const years = [currentYear - 1, currentYear - 2, currentYear - 3];
 
     return (
         <>
@@ -73,14 +76,14 @@ const Sykmelding = () => {
                 />
                 {open == "Ja" && (
                     <>
-                    <Heading size="small">Hvilket år ble du sykmeldt?</Heading>
-                <TextField label="" id="sykmelding" className="w-1/5 mb-4" error={error}/>
+                        <Heading size="small">Hvilket år ble du sykmeldt?</Heading>
+                        <TextField label="" id="sykmelding" className="w-1/5 mb-4" error={error} />
                     </>
                 )}
                 <Button variant="primary">Neste</Button>
             </form>
         </>
-    )
-}
+    );
+};
 
-export default Sykmelding
+export default Sykmelding;

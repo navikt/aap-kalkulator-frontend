@@ -24,7 +24,7 @@ export const State = createContext({
         inntekt3: 0.0,
         antallBarn: 0,
         arbeidsgrad: 0,
-        sykmeldtAar: new Date().getFullYear() as number
+        sykmeldtAar: new Date().getFullYear()
     },
     setState: (value: StateInterface) => {},
 })
@@ -40,7 +40,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             inntekt3: 0.0,
             antallBarn: 0,
             arbeidsgrad: 0,
-            sykmeldtAar: new Date().getFullYear() as number
+            sykmeldtAar: new Date().getFullYear()
 
         }})
     const [state, setState] = useState<StateInterface>({
