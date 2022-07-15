@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import { State } from "../../pages/_app";
-import { Button, Heading, TextField } from "@navikt/ds-react";
+import {BodyShort, Button, Heading, TextField} from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
 import JaNeiRadio from "../jaNeiRadio/JaNeiRadio";
+import row from "@navikt/ds-react/src/table/Row";
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement;
@@ -26,7 +27,7 @@ const Sykmelding = () => {
         }
         const aapGrense = 10;
 
-        const errors = isNaN(sykmeldtAar) ? "Sykmeldingsår må være et heltall" :
+        const errors = isNaN(sykmeldtAar) ? "Sykmeldingsår må være et tall" :
             sykmeldtAar > currentAar ? "Sykmeldingsår må være året vi er i nå eller tidligere" :
                 sykmeldtAar < currentAar - aapGrense ? `Du får ikke arbeidsavklaringspenger dersom du ble sykmeldt for mer enn ${aapGrense} år siden.` : "";
 
@@ -77,10 +78,13 @@ const Sykmelding = () => {
                 {open == "Ja" && (
                     <>
                         <Heading size="small">Hvilket år ble du sykmeldt?</Heading>
-                        <TextField label="" id="sykmelding" className="w-1/5 mb-4" error={error} />
+                        <TextField size="medium" label="" id="sykmelding" className="w-1/5 " error={error && (<div className="list-disc font-bold w-full text-red-500" >{}</div>)}/>
+                        {error && state.sykmeldtAar && (<div className="list-disc ml-5 font-bold text-red-500 mb-4 -mt-6" >{error}</div>)}
                     </>
                 )}
-                <Button variant="primary">Neste</Button>
+                <div className="mt-4">
+                    <Button variant="primary">Neste</Button>
+                </div>
             </form>
         </>
     );
