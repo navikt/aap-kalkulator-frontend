@@ -3,7 +3,7 @@ import { State } from "../../pages/_app"
 import {BodyShort, Button, Heading, ReadMore, TextField} from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Image from "next/image"
-import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
+import Breadcrumbs from "../steg/Steg"
 import { SuccessColored } from "@navikt/ds-icons"
 import {Text} from "@navikt/ds-react/src/form/search/search.stories";
 import JaNeiRadio from "../jaNeiRadio/JaNeiRadio";

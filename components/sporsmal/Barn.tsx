@@ -10,7 +10,7 @@ import {
     TextField,
 } from "@navikt/ds-react"
 import Divider from "../divider/Divider"
-import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
+import Breadcrumbs from "../steg/Steg"
 import Image from "next/image"
 import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
 

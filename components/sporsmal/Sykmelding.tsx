@@ -3,7 +3,7 @@ import { State } from "../../pages/_app";
 import {BodyShort, Button, Heading, TextField} from "@navikt/ds-react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../steg/Steg";
 import JaNeiRadio from "../jaNeiRadio/JaNeiRadio";
 import row from "@navikt/ds-react/src/table/Row";
 

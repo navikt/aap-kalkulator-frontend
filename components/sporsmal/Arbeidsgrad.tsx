@@ -10,7 +10,7 @@ import {
     TextField,
 } from "@navikt/ds-react"
 import Image from "next/image"
-import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
+import Breadcrumbs from "../steg/Steg"
 import { Text } from "@navikt/ds-react/src/form/search/search.stories"
 import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
 
