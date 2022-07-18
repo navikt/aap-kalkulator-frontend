@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import { BodyShort, Button, Heading, TextField } from "@navikt/ds-react"
+import { Button, Heading, TextField } from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Image from "next/image"
 import Sti from "../steg/Steg"
 import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
-import row from "@navikt/ds-react/src/table/Row"
 import Tilbakeknapp from "../tilbakeknapp/Tilbakeknapp"
 
 interface InntektsForm extends HTMLFormElement {
@@ -53,14 +52,8 @@ const Sykmelding = () => {
             arbeidsgrad: state.arbeidsgrad,
             sykmeldtAar,
         })
-
-        /*
-         *
-         * */
         await router.push("/steg/2")
     }
-    const currentYear = new Date().getFullYear()
-    const years = [currentYear - 1, currentYear - 2, currentYear - 3]
 
     return (
         <>

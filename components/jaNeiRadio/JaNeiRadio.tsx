@@ -1,5 +1,4 @@
 import { Radio, RadioGroup, ReadMore } from "@navikt/ds-react"
-import { useState } from "react"
 
 const JaNeiRadio = ({
     tittel,

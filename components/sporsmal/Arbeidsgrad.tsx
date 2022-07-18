@@ -5,14 +5,9 @@ import {
     BodyShort,
     Button,
     Heading,
-    Radio,
-    RadioGroup,
-    ReadMore,
     TextField,
 } from "@navikt/ds-react"
 import Image from "next/image"
-import Breadcrumbs from "../steg/Steg"
-import { Text } from "@navikt/ds-react/src/form/search/search.stories"
 import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
 import Sti from "../steg/Steg"
 import Tilbakeknapp from "../tilbakeknapp/Tilbakeknapp"
@@ -26,7 +21,6 @@ const Arbeidsgrad = () => {
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
     const [open, setOpen] = useState("")
-    const [aapen, setAapen] = useState("")
 
     const arbeidsuke = 37.5
 

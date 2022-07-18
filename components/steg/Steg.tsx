@@ -1,6 +1,6 @@
-import { Collapse, Success, SuccessColored } from "@navikt/ds-icons"
+import { Success } from "@navikt/ds-icons"
 import { BodyShort, Link } from "@navikt/ds-react"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useRef } from "react"
 import Divider from "../divider/Divider"
 import { useRouter } from "next/router"
 

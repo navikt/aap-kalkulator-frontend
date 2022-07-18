@@ -9,11 +9,6 @@ import {
 } from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Image from "next/image"
-import Breadcrumbs from "../steg/Steg"
-import { SuccessColored } from "@navikt/ds-icons"
-import { Text } from "@navikt/ds-react/src/form/search/search.stories"
-import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
-import sykmelding from "./Sykmelding"
 import Sti from "../steg/Steg"
 import Tilbakeknapp from "../tilbakeknapp/Tilbakeknapp"
 

@@ -1,11 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import { ResultState, State } from "./_app"
-import { useRouter } from "next/router"
 import { NextPage } from "next"
-import ResultContainer from "../components/container/ResultContainer"
 import {
     Alert,
-    BodyShort,
     Heading,
     Link,
     ReadMore,
@@ -16,11 +13,7 @@ import Image from "next/image"
 const Resultat: NextPage = () => {
     const { resultat, setResultat } = useContext(ResultState)
     const { state, setState } = useContext(State)
-    const router = useRouter()
     const [value, setValue] = useState("14dag")
-
-    const gjennomsnitt = (state.inntekt1 + state.inntekt2 + state.inntekt3) / 3
-    const pengeStyling = "flex justify-center"
 
     useEffect(() => {
         //event.preventDefault()

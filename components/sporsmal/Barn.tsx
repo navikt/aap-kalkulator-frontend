@@ -4,13 +4,9 @@ import { State } from "../../pages/_app"
 import {
     BodyShort,
     Button,
-    GuidePanel,
     Heading,
-    ReadMore,
     TextField,
 } from "@navikt/ds-react"
-import Divider from "../divider/Divider"
-import Breadcrumbs from "../steg/Steg"
 import Image from "next/image"
 import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
 import Sti from "../steg/Steg"
