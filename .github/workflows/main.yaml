@@ -1,0 +1,57 @@
+name: Push
+on: push
+env:
+  APP: aap-kalkulator-frontend
+  branchname: ${{ github.ref_name }}
+jobs:
+  build-and-publish:
+    name: Bygg og push Docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Generer versjon og image navn
+        run: |
+          TIME=$(TZ="Europe/Oslo" date +%Y.%m.%d-%H.%M)
+          COMMIT=$(git rev-parse --short=8 HEAD)
+          VERSION=$TIME-$COMMIT
+          echo "IMAGE=ghcr.io/navikt/$APP:$VERSION" >> $GITHUB_ENV
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+      - run: echo $VERSION > VERSION.txt
+      - name: Last opp VERSION til neste job
+        uses: actions/upload-artifact@v1
+        with:
+          name: VERSION.txt
+          path: VERSION.txt
+      - name: Install npm dependencies
+        run: npm ci
+      - name: Build application
+        run: npm run build
+      - name: Docker login
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo ${GITHUB_TOKEN} | docker login ghcr.io --username ${GITHUB_REPOSITORY} --password-stdin
+      - name: Bygg og push Docker image
+        run: |
+          docker build . -t ${IMAGE}
+          docker push ${IMAGE}
+
+  deploy-to-dev:
+    name: Deploy to dev
+    needs: [build-and-publish]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/download-artifact@v1
+        with:
+          name: VERSION.txt
+          path: .
+      - run: echo "VERSION=`cat VERSION.txt`" >> $GITHUB_ENV
+      - run: echo "IMAGE=ghcr.io/navikt/$APP:$VERSION" >> $GITHUB_ENV
+      - name: Deploy to dev-gcp
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-gcp
+          RESOURCE: nais-dev-gcp.yaml

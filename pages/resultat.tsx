@@ -25,7 +25,7 @@ const Resultat: NextPage = () => {
     useEffect(() => {
         //event.preventDefault()
 
-        const endpoint = "http://0.0.0.0:8080/beregning"
+        const endpoint = "https://aap-kalkulator.dev.nav.no/beregning"
         const options = {
             method: "POST",
             headers: {
