@@ -1,13 +1,21 @@
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import {BodyShort, Button, Heading, ReadMore, TextField} from "@navikt/ds-react"
+import {
+    BodyShort,
+    Button,
+    Heading,
+    ReadMore,
+    TextField,
+} from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Image from "next/image"
 import Breadcrumbs from "../steg/Steg"
 import { SuccessColored } from "@navikt/ds-icons"
-import {Text} from "@navikt/ds-react/src/form/search/search.stories";
-import JaNeiRadio from "../jaNeiRadio/JaNeiRadio";
-import sykmelding from "./Sykmelding";
+import { Text } from "@navikt/ds-react/src/form/search/search.stories"
+import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
+import sykmelding from "./Sykmelding"
+import Sti from "../steg/Steg"
+import Tilbakeknapp from "../tilbakeknapp/Tilbakeknapp"
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -42,7 +50,7 @@ const Inntekt = () => {
             inntekt3,
             antallBarn: state.antallBarn,
             arbeidsgrad: state.arbeidsgrad,
-            sykmeldtAar: state.sykmeldtAar
+            sykmeldtAar: state.sykmeldtAar,
         })
         await router.push("/steg/3")
     }
@@ -51,7 +59,8 @@ const Inntekt = () => {
 
     return (
         <>
-            <Breadcrumbs />
+            <Sti />
+            <Tilbakeknapp til="/steg/1" />
             <div className="items flex flex-col pt-4">
                 <Image
                     src="/ikoner/wallet_circle.svg"
@@ -69,23 +78,20 @@ const Inntekt = () => {
                     Hvor mye tjente du de tre siste årene før du ble sykmeldt?
                 </Heading>
                 <BodyShort spacing>Oppgi inntekt før skatt</BodyShort>
-                <ReadMore
-                    size="small"
-                    header="Hvorfor spør vi om inntekt?"
-                >
+                <ReadMore size="small" header="Hvorfor spør vi om inntekt?">
                     {" "}
-                    Inntekten din brukes til å regne ut hva du kan få i arbeidsavklaringspenger.
-
+                    Inntekten din brukes til å regne ut hva du kan få i
+                    arbeidsavklaringspenger.
                 </ReadMore>
                 <div className="flex flex-row space-x-8 mt-8">
                     {years.reverse().map((year, index) => (
                         <TextField
                             className="mb-4 w-40 "
                             key={index}
-                            id={`inntekt${2-index + 1}`}
+                            id={`inntekt${2 - index + 1}`}
                             label={`Inntekt ${year}`}
                             size="medium"
-                            error={error[2-index]}
+                            error={error[2 - index]}
                         />
                     ))}
                 </div>

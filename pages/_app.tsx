@@ -7,13 +7,17 @@ import Container from "../components/container/Container"
 import { StateInterface } from "../components/state/State"
 
 export const ResultState = createContext({
-    resultat: { resultat: 0.0, logs: Array<string>(), personInfo: {
+    resultat: {
+        resultat: 0.0,
+        logs: Array<string>(),
+        personInfo: {
             inntekt1: 0.0,
             inntekt2: 0.0,
             inntekt3: 0.0,
             antallBarn: 0,
             arbeidsgrad: 0,
-        }},
+        },
+    },
     setResultat: (value: ResultInterface) => {},
 })
 
@@ -24,7 +28,7 @@ export const State = createContext({
         inntekt3: 0.0,
         antallBarn: 0,
         arbeidsgrad: 0,
-        sykmeldtAar: new Date().getFullYear()
+        sykmeldtAar: new Date().getFullYear(),
     },
     setState: (value: StateInterface) => {},
 })
@@ -34,22 +38,25 @@ export const BreadcrumbsState = createContext({
 })
 
 function MyApp({ Component, pageProps }: AppProps) {
-    const [resultat, setResultat] = useState<ResultInterface>({ resultat: 0.0, logs: [], personInfo: {
+    const [resultat, setResultat] = useState<ResultInterface>({
+        resultat: 0.0,
+        logs: [],
+        personInfo: {
             inntekt1: 0.0,
             inntekt2: 0.0,
             inntekt3: 0.0,
             antallBarn: 0,
             arbeidsgrad: 0,
-            sykmeldtAar: new Date().getFullYear()
-
-        }})
+            sykmeldtAar: new Date().getFullYear(),
+        },
+    })
     const [state, setState] = useState<StateInterface>({
         inntekt1: 0.0,
         inntekt2: 0.0,
         inntekt3: 0.0,
         antallBarn: 0,
         arbeidsgrad: 0,
-        sykmeldtAar: new Date().getFullYear()
+        sykmeldtAar: new Date().getFullYear(),
     })
     return (
         <ResultState.Provider value={{ resultat, setResultat }}>

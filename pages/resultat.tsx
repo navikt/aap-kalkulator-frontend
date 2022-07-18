@@ -25,7 +25,10 @@ const Resultat: NextPage = () => {
     useEffect(() => {
         //event.preventDefault()
 
-        const endpoint = process.env.NODE_ENV=="production" ? "https://aap-kalkulator.dev.nav.no/beregning" : "http://localhost:8080/beregning"
+        const endpoint =
+            process.env.NODE_ENV == "production"
+                ? "https://aap-kalkulator.dev.nav.no/beregning"
+                : "http://localhost:8080/beregning"
         const options = {
             method: "POST",
             headers: {
@@ -87,7 +90,9 @@ const Resultat: NextPage = () => {
                 <ReadMore size="small" header="Hvorfor får jeg denne summen?">
                     {" "}
                     <ul className=" space-y-4">
-                        {resultat.logs.map((text, index) => <li key={index}>{text}</li>)}
+                        {resultat.logs.map((text, index) => (
+                            <li key={index}>{text}</li>
+                        ))}
                     </ul>
                 </ReadMore>
             </div>

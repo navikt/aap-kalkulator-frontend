@@ -37,13 +37,12 @@ const Home: NextPage = () => {
                     </li>
 
                     <li>Kalkulatoren er ment som et hjelpeverktøy for deg.</li>
+                    <li>Resultatet er kun et anslag.</li>
                     <li>
-                        Resultatet er kun et anslag.
+                        NAV vurderer situasjonen din nærmere hvis du sender en
+                        søknad.
                     </li>
-                    <li>NAV vurderer situasjonen din nærmere hvis du sender en søknad.</li>
-                    <li>
-                        NAV lagrer ikke informasjonen du oppgir.
-                    </li>
+                    <li>NAV lagrer ikke informasjonen du oppgir.</li>
                 </ul>
 
                 <Button

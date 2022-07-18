@@ -13,6 +13,8 @@ import Divider from "../divider/Divider"
 import Breadcrumbs from "../steg/Steg"
 import Image from "next/image"
 import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
+import Sti from "../steg/Steg"
+import Tilbakeknapp from "../tilbakeknapp/Tilbakeknapp"
 
 interface BarnInterface extends HTMLFormElement {
     antallBarn: HTMLInputElement
@@ -41,15 +43,17 @@ const Barn = () => {
             inntekt3: state.inntekt3,
             arbeidsgrad: state.arbeidsgrad,
             antallBarn,
-            sykmeldtAar: state.sykmeldtAar
+            sykmeldtAar: state.sykmeldtAar,
         })
         await router.push("/resultat")
     }
-    const readmoreTekst = "Dersom du har barn kan du få et tillegg på din utbetaling."
+    const readmoreTekst =
+        "Dersom du har barn kan du få et tillegg på din utbetaling."
 
     return (
         <>
-            <Breadcrumbs />
+            <Sti />
+            <Tilbakeknapp til="/steg/3" />
             <div className=" flex flex-col pt-4">
                 <Image
                     src="/ikoner/teddy_circle.svg"
@@ -76,13 +80,15 @@ const Barn = () => {
                             Hvor mange barn under 18 år har du?
                         </Heading>
                         <div className="flex flex-row items-center gap-2 mb-4">
-                        <TextField
-                            className="mb-4 w-20"
-                            id="antallBarn"
-                            label=""
-                            size="medium"
-                            error={error}
-                        /><BodyShort>barn</BodyShort></div>
+                            <TextField
+                                className="mb-4 w-20"
+                                id="antallBarn"
+                                label=""
+                                size="medium"
+                                error={error}
+                            />
+                            <BodyShort>barn</BodyShort>
+                        </div>
                     </div>
                 )}
 

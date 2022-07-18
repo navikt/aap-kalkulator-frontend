@@ -1,8 +1,7 @@
-import {StateInterface} from "../state/State";
+import { StateInterface } from "../state/State"
 
 export interface ResultInterface {
-    resultat: number,
-    personInfo: StateInterface,
+    resultat: number
+    personInfo: StateInterface
     logs: Array<string>
-
 }

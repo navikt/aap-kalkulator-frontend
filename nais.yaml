@@ -1,13 +1,12 @@
-
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: aap-kalkulator-frontend
-  namespace: aap
-  labels:
-    team: aap
+    name: aap-kalkulator-frontend
+    namespace: aap
+    labels:
+        team: aap
 spec:
-  port: 3000
-  image: {{ image }}
-  ingresses:
-    - https://aap-kalkulator-frontend.dev.nav.no
+    port: 3000
+    image: { { image } }
+    ingresses:
+        - https://aap-kalkulator-frontend.dev.nav.no

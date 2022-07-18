@@ -6,13 +6,16 @@ import {
     Button,
     Heading,
     Radio,
-    RadioGroup, ReadMore,
+    RadioGroup,
+    ReadMore,
     TextField,
 } from "@navikt/ds-react"
 import Image from "next/image"
 import Breadcrumbs from "../steg/Steg"
 import { Text } from "@navikt/ds-react/src/form/search/search.stories"
 import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
+import Sti from "../steg/Steg"
+import Tilbakeknapp from "../tilbakeknapp/Tilbakeknapp"
 
 interface ArbeidsgradInterface extends HTMLFormElement {
     arbeidsgrad: HTMLInputElement
@@ -36,7 +39,7 @@ const Arbeidsgrad = () => {
 
         if (open == "Ja") {
             arbeidstimer = parseInt(event.currentTarget.arbeidstimer.value)
-            arbeidsgrad = arbeidstimer / arbeidsuke * 100
+            arbeidsgrad = (arbeidstimer / arbeidsuke) * 100
         }
 
         setState({
@@ -45,16 +48,18 @@ const Arbeidsgrad = () => {
             inntekt3: state.inntekt3,
             arbeidsgrad,
             antallBarn: state.antallBarn,
-            sykmeldtAar: state.sykmeldtAar
+            sykmeldtAar: state.sykmeldtAar,
         })
         await router.push("/steg/4")
     }
 
-    const readMoreTekst = "Hvor mye du får utbetalt avhenger av hvor mye du jobber. Jobber du mer enn 22,5 timer i uken får du ikke arbeidsavklaringspenger."
+    const readMoreTekst =
+        "Hvor mye du får utbetalt avhenger av hvor mye du jobber. Jobber du mer enn 22,5 timer i uken får du ikke arbeidsavklaringspenger."
 
     return (
         <>
-            <Breadcrumbs />
+            <Sti />
+            <Tilbakeknapp til="/steg/2" />
             <div className="flex flex-col pt-4 mb-4">
                 <Image
                     src="/ikoner/briefcase_circle.svg"
@@ -67,8 +72,13 @@ const Arbeidsgrad = () => {
             <Heading size="large" level="2" spacing>
                 Jobb
             </Heading>
-            <JaNeiRadio tittel="Har du jobb?" state={open} setState={setOpen} readMoreTittel="Hvorfor spør vi om du har jobb?" readMore={readMoreTekst} />
-
+            <JaNeiRadio
+                tittel="Har du jobb?"
+                state={open}
+                setState={setOpen}
+                readMoreTittel="Hvorfor spør vi om du har jobb?"
+                readMore={readMoreTekst}
+            />
 
             <form onSubmit={handleSubmit}>
                 {open == "Ja" && (

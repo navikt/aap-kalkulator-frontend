@@ -67,20 +67,16 @@ const Sti = () => {
     const sti = ["Sykmelding", "Inntekt", "Arbeid", "Barn", "Resultat"]
     return (
         <nav ref={stiRef}>
-                <ul className="flex flex-row space-x-4 justify-center pt-4 pb-4 items-center">
-                    {sti.map((steg, index) => {
-                        return (
-                            <>
-                                {index > 0 && <Divider />}
-                                <Steg
-                                    key={index}
-                                    tittel={steg}
-                                    steg={index + 1}
-                                />
-                            </>
-                        )
-                    })}
-                </ul>
+            <ul className="flex flex-row gap-2 justify-center pb-4 items-center">
+                {sti.map((steg, index) => {
+                    return (
+                        <>
+                            {index > 0 && <Divider />}
+                            <Steg key={index} tittel={steg} steg={index + 1} />
+                        </>
+                    )
+                })}
+            </ul>
         </nav>
     )
 }
