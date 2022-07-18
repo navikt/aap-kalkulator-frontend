@@ -1,5 +1,5 @@
-import "../styles/globals.css"
 import "@navikt/ds-css"
+import "../styles/globals.css"
 import type { AppProps } from "next/app"
 import { createContext, useState } from "react"
 import { ResultInterface } from "../components/result/Result"

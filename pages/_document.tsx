@@ -35,6 +35,7 @@ class MyDocument extends Document<Props> {
         const initialProps = await Document.getInitialProps(ctx)
 
         const Decorator = await fetchDecoratorReact({
+            // @ts-ignore
             dekoratorenUrl: "https://dekoratoren.ekstern.dev.nav.no/",
             env: "dev",
             simple: false,

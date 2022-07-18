@@ -4,14 +4,24 @@ import React, { useEffect, useRef, useState } from "react"
 import Divider from "../divider/Divider"
 import { useRouter } from "next/router"
 
-const Steg = ({ tittel, steg, last }: { tittel: string; steg: number, last: boolean }) => {
+const Steg = ({
+    tittel,
+    steg,
+    last,
+}: {
+    tittel: string
+    steg: number
+    last: boolean
+}) => {
     const router = useRouter()
     const path = router.asPath
     const current_steg = parseInt(path.split("/").at(-1)!!)
     const isCurrentPage = steg === current_steg
     const circleStyling =
         "flex rounded-full w-8 h-8 md:w-8 md:h-8  items-center justify-center mb-2"
-    const crumbStyling = `flex flex-col items-center justify-center row-span-2 w-20 ${last && "col-span-2"}`
+    const crumbStyling = `flex flex-col items-center justify-center row-span-2 w-20 ${
+        last && "col-span-2"
+    } gap-0`
 
     const isCompleted = current_steg > steg
 
@@ -39,20 +49,18 @@ const Steg = ({ tittel, steg, last }: { tittel: string; steg: number, last: bool
         return (
             <div className={`${crumbStyling}`}>
                 {circle}
-                <BodyShort as="span" size="small" className="grid row-start-2">
-                    <span>{tittel}</span>
+                <BodyShort as="span" size="small">
+                    {tittel}
                 </BodyShort>
             </div>
         )
     }
     return (
-        <Link href={`/steg/${steg}`}>
-            <div className={`${crumbStyling}`}>
-                {circle}
-                <BodyShort as="span" size="small">
-                    {tittel}
-                </BodyShort>
-            </div>
+        <Link href={`/steg/${steg}`} className={`${crumbStyling}`}>
+            {circle}
+            <BodyShort as="span" size="small">
+                {tittel}
+            </BodyShort>
         </Link>
     )
 }
@@ -65,9 +73,16 @@ const Sti = () => {
             <ul className="flex flex-row justify-center pb-4 items-center md:px-8 px-0">
                 {sti.map((steg, index) => {
                     return (
-                        <div className="grid grid-cols-2 grid-rows-2 place-items-center justify-items-center" key={index}>
-                            <Steg last={index == sti.length-1} tittel={steg} steg={index + 1}/>
-                            {index !== sti.length-1 && <Divider />}
+                        <div
+                            className="grid grid-cols-2 grid-rows-2 place-items-center justify-items-center"
+                            key={index}
+                        >
+                            <Steg
+                                last={index == sti.length - 1}
+                                tittel={steg}
+                                steg={index + 1}
+                            />
+                            {index !== sti.length - 1 && <Divider />}
                         </div>
                     )
                 })}
