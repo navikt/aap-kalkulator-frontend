@@ -25,7 +25,7 @@ const Resultat: NextPage = () => {
     useEffect(() => {
         //event.preventDefault()
 
-        const endpoint = "https://aap-kalkulator.dev.nav.no/beregning"
+        const endpoint = process.env.NODE_ENV=="production" ? "https://aap-kalkulator.dev.nav.no/beregning" : "http://localhost:8080/beregning"
         const options = {
             method: "POST",
             headers: {

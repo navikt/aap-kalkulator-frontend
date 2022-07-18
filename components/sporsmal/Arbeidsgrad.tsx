@@ -25,28 +25,18 @@ const Arbeidsgrad = () => {
     const [open, setOpen] = useState("")
     const [aapen, setAapen] = useState("")
 
+    const arbeidsuke = 37.5
+
     const handleSubmit = async (
         event: React.FormEvent<ArbeidsgradInterface>
     ) => {
         event.preventDefault()
-        let arbeidsuke = 0
         let arbeidstimer = 0
         let arbeidsgrad = 0
 
         if (open == "Ja") {
-            arbeidsuke = parseInt(event.currentTarget.arbeidsuke.value)
-        }
-
-        if (aapen == "Timer" && (arbeidsuke || arbeidstimer) !== 0) {
             arbeidstimer = parseInt(event.currentTarget.arbeidstimer.value)
-            setError(
-                (arbeidstimer == 0 || arbeidsuke == 0) && open
-                    ? ""
-                    : "Ugyldig verdi"
-            )
-            arbeidsgrad = (arbeidstimer / arbeidsuke) * 100
-        } else if (aapen == "Prosent") {
-            arbeidsgrad = parseInt(event.currentTarget.arbeidsprosent.value)
+            arbeidsgrad = arbeidstimer / arbeidsuke * 100
         }
 
         setState({
@@ -84,8 +74,7 @@ const Arbeidsgrad = () => {
                 {open == "Ja" && (
                     <div className="mb-4">
                         <Heading size="small">
-                            Hvor mange timer i uken jobber du vanligvis når du
-                            er frisk?
+                            Hvor mange timer i uken jobber du?
                         </Heading>
                         <BodyShort>
                             Varierer det, kan du oppgi gjennomsnittet
@@ -93,54 +82,13 @@ const Arbeidsgrad = () => {
                         <div className="flex flex-row items-center gap-2 mb-4">
                             <TextField
                                 className="mb-4 md:w-28"
-                                id="arbeidsuke"
+                                id="arbeidstimer"
                                 label=""
                                 size="medium"
                                 error={error}
                             />
                             <BodyShort>timer per uke</BodyShort>
                         </div>
-                        <Heading size="small">Hvor mye jobber du nå?</Heading>
-                        <BodyShort>Velg timer eller prosent</BodyShort>
-                        <RadioGroup
-                            value={aapen}
-                            onChange={(v) => setAapen(v)}
-                            legend=""
-                            size="medium"
-                        >
-                            <div className="flex flex-col">
-                                <Radio className="border-1" value="Timer">
-                                    Timer
-                                </Radio>
-                                <Radio className="border-1" value="Prosent">
-                                    Prosent
-                                </Radio>
-                            </div>
-                        </RadioGroup>
-                        {aapen == "Timer" && (
-                            <div className="flex-row flex gap-2 items-center">
-                                <TextField
-                                    className="mb-4 md:w-28"
-                                    id="arbeidstimer"
-                                    label=""
-                                    size="medium"
-                                    error={error}
-                                />
-                                <BodyShort>timer</BodyShort>
-                            </div>
-                        )}
-                        {aapen == "Prosent" && (
-                            <div className="flex-row flex gap-2 items-center">
-                                <TextField
-                                    className="mb-4 md:w-28"
-                                    id="arbeidsprosent"
-                                    label=""
-                                    size="medium"
-                                    error={error}
-                                />
-                                <BodyShort>%</BodyShort>
-                            </div>
-                        )}
                     </div>
                 )}
                 <Button variant="primary">Neste</Button>
