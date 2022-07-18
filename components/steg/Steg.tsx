@@ -4,13 +4,14 @@ import React, { useEffect, useRef, useState } from "react"
 import Divider from "../divider/Divider"
 import { useRouter } from "next/router"
 
-const Steg = ({ tittel, steg }: { tittel: string; steg: number }) => {
+const Steg = ({ tittel, steg, last }: { tittel: string; steg: number, last: boolean }) => {
     const router = useRouter()
     const path = router.asPath
     const current_steg = parseInt(path.split("/").at(-1)!!)
     const isCurrentPage = steg === current_steg
     const circleStyling =
         "flex rounded-full w-8 h-8 md:w-8 md:h-8  items-center justify-center mb-2"
+    const crumbStyling = `flex flex-col items-center justify-center row-span-2 w-20 ${last && "col-span-2"}`
 
     const isCompleted = current_steg > steg
 
@@ -34,31 +35,25 @@ const Steg = ({ tittel, steg }: { tittel: string; steg: number }) => {
         </div>
     )
 
-    const link = (
-        <Link href={`/steg/${steg}`}>
-            <div className="flex flex-col items-center">
-                {circle}
-                <BodyShort as="span" size="small">
-                    {tittel}
-                </BodyShort>
-            </div>
-        </Link>
-    )
-
     if (!isCompleted) {
         return (
-            <div className="flex flex-col items-center">
+            <div className={`${crumbStyling}`}>
                 {circle}
-                <BodyShort as="span" size="small" className="smule">
+                <BodyShort as="span" size="small" className="grid row-start-2">
                     <span>{tittel}</span>
                 </BodyShort>
             </div>
         )
     }
     return (
-        <BodyShort as="span" size="small" className="smule">
-            {link}
-        </BodyShort>
+        <Link href={`/steg/${steg}`}>
+            <div className={`${crumbStyling}`}>
+                {circle}
+                <BodyShort as="span" size="small">
+                    {tittel}
+                </BodyShort>
+            </div>
+        </Link>
     )
 }
 
@@ -67,13 +62,13 @@ const Sti = () => {
     const sti = ["Sykmelding", "Inntekt", "Arbeid", "Barn", "Resultat"]
     return (
         <nav ref={stiRef}>
-            <ul className="flex flex-row gap-2 justify-center pb-4 items-center">
+            <ul className="flex flex-row justify-center pb-4 items-center md:px-8 px-0">
                 {sti.map((steg, index) => {
                     return (
-                        <>
-                            {index > 0 && <Divider />}
-                            <Steg key={index} tittel={steg} steg={index + 1} />
-                        </>
+                        <div className="grid grid-cols-2 grid-rows-2 place-items-center justify-items-center" key={index}>
+                            <Steg last={index == sti.length-1} tittel={steg} steg={index + 1}/>
+                            {index !== sti.length-1 && <Divider />}
+                        </div>
                     )
                 })}
             </ul>
