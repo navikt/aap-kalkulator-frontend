@@ -1,7 +1,7 @@
 import { Success } from "@navikt/ds-icons"
 import { BodyShort, Link } from "@navikt/ds-react"
 import React, { useRef } from "react"
-import Divider from "../divider/Divider"
+import DividerSteg from "../divider/DividerSteg"
 import { useRouter } from "next/router"
 
 const Steg = ({
@@ -82,7 +82,7 @@ const Sti = () => {
                                 tittel={steg}
                                 steg={index + 1}
                             />
-                            {index !== sti.length - 1 && <Divider />}
+                            {index !== sti.length - 1 && <DividerSteg />}
                         </div>
                     )
                 })}
