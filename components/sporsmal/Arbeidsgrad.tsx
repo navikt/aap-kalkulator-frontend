@@ -94,7 +94,7 @@ const Arbeidsgrad = () => {
                         <BodyShort>
                             Varierer det, kan du oppgi gjennomsnittet
                         </BodyShort>
-                        <div className="grid grid-rows-1 gap-2 mb-4 items-center justify-start">
+                        <div className="flex flex-row gap-2 mb-4 items-center">
                             <TextField
                                 className="mb-4 md:w-28 col-start-1"
                                 id="arbeidstimer"
@@ -108,10 +108,10 @@ const Arbeidsgrad = () => {
                                     )
                                 }
                             />
-                            <BodyShort className="col-start-2 row-start-1 ">timer per uke</BodyShort>
+                            <BodyShort className={`${(error && "-mt-8")}`}>timer per uke</BodyShort>
                         </div>
                         {error && (
-                            <div className=" row-start-2 list-disc ml-5 font-bold text-red-500 mb-4 -mt-14 ">
+                            <div className="list-disc ml-5 font-bold text-red-500 mb-4 -mt-14">
                                 {error}
                             </div>
                         )}
