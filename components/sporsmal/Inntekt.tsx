@@ -26,9 +26,9 @@ const Inntekt = () => {
         event.preventDefault()
 
         const error_message = "ugyldig verdi"
-        const inntekt1 = parseFloat(event.currentTarget.inntekt1.value)
-        const inntekt2 = parseFloat(event.currentTarget.inntekt2.value)
-        const inntekt3 = parseFloat(event.currentTarget.inntekt3.value)
+        const inntekt1 = parseFloat(event.currentTarget.inntekt1.value.replaceAll(".", "").replaceAll(",", ""))
+        const inntekt2 = parseFloat(event.currentTarget.inntekt2.value.replaceAll(".", "").replaceAll(",", ""))
+        const inntekt3 = parseFloat(event.currentTarget.inntekt3.value.replaceAll(".", "").replaceAll(",", ""))
 
         const errors = [
             !isNaN(inntekt1) ? "" : error_message,
@@ -47,6 +47,9 @@ const Inntekt = () => {
             arbeidsgrad: state.arbeidsgrad,
             sykmeldtAar: state.sykmeldtAar,
         })
+        console.log("int", inntekt1)
+        console.log("int2", inntekt2)
+        console.log("int3", inntekt3)
         await router.push("/steg/3")
     }
     const currentYear = state.sykmeldtAar

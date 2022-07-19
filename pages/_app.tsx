@@ -5,6 +5,7 @@ import { createContext, useState } from "react"
 import { ResultInterface } from "../components/result/Result"
 import Container from "../components/container/Container"
 import { StateInterface } from "../components/state/State"
+import Head from 'next/head'
 
 export const ResultState = createContext({
     resultat: {
@@ -58,6 +59,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         <ResultState.Provider value={{ resultat, setResultat }}>
             <State.Provider value={{ state, setState }}>
+                <Head>
+                    <title>
+                        Aap-kalkulator
+                    </title>
+                </Head>
                 <Container>
                     <Component {...pageProps} />
                 </Container>
