@@ -34,7 +34,7 @@ const Brodsmuler = () => {
 
     return (
         <nav ref={smulesti} aria-label="Du er her: ">
-            <ul className="flex flex-row gap-1 my-4 items-center">
+            <ul className="flex flex-row gap-1 my-4 items-center ml-2">
                 <BrodsmuleBit
                     sti="https://www.nav.no/aap"
                     tittel="Arbeidsavklaringspenger"

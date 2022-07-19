@@ -77,14 +77,26 @@ const Barn = () => {
                         </Heading>
                         <div className="flex flex-row items-center gap-2 mb-4">
                             <TextField
+                                inputMode="numeric"
                                 className="mb-4 w-20"
                                 id="antallBarn"
                                 label=""
                                 size="medium"
-                                error={error}
+                                error={
+                                    error && (
+                                        <div className=" row-start-2 list-disc font-bold w-full text-red-500">
+                                            {}
+                                        </div>
+                                    )
+                                }
                             />
-                            <BodyShort>barn</BodyShort>
+                            <BodyShort className={`${(error && "-mt-8")}`}>barn</BodyShort>
                         </div>
+                        {error && (
+                            <div className="list-disc ml-5 font-bold text-red-500 mb-4 -mt-14">
+                                {error}
+                            </div>
+                        )}
                     </div>
                 )}
 

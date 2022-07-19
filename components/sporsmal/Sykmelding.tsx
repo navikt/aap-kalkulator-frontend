@@ -85,6 +85,7 @@ const Sykmelding = () => {
                             Hvilket år ble du sykmeldt?
                         </Heading>
                         <TextField
+                            inputMode="numeric"
                             size="medium"
                             label=""
                             id="sykmelding"
