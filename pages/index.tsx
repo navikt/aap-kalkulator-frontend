@@ -31,7 +31,7 @@ const Home: NextPage = () => {
                 <Divider />
             </div>
             <div className="flex flex-col items-center mt-4 gap-4">
-                <ul className="list-disc space-y-2 mb-8">
+                <ul className="list-disc space-y-2 mb-8 pl-4">
                     <li>
                         Regn ut hvor mye du kan få i arbeidsavklaringspenger.
                     </li>

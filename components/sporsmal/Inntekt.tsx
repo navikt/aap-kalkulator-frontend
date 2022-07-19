@@ -81,6 +81,7 @@ const Inntekt = () => {
                 <div className="flex flex-row space-x-8 mt-8">
                     {years.reverse().map((year, index) => (
                         <TextField
+                            type="number"
                             className="mb-4 w-40 "
                             key={index}
                             id={`inntekt${2 - index + 1}`}

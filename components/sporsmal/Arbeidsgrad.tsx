@@ -31,9 +31,19 @@ const Arbeidsgrad = () => {
         let arbeidstimer = 0
         let arbeidsgrad = 0
 
+        if ( open != "Ja" && open != "Nei"){
+            setOpen("not Open")
+            return
+        }
+
         if (open == "Ja") {
             arbeidstimer = parseInt(event.currentTarget.arbeidstimer.value)
             arbeidsgrad = (arbeidstimer / arbeidsuke) * 100
+        }
+        setError(isNaN(arbeidstimer) || arbeidstimer < 0 ? "Ugyldig verdi" : "")
+
+        if (isNaN(arbeidstimer) || arbeidstimer < 0) {
+            return
         }
 
         setState({
@@ -72,8 +82,9 @@ const Arbeidsgrad = () => {
                 setState={setOpen}
                 readMoreTittel="Hvorfor spør vi om du har jobb?"
                 readMore={readMoreTekst}
-            />
 
+            />
+            {(open == "not Open") && (<ul className="list-disc"><li className="ml-5 font-bold text-red-500 mb-4">you shall not pass?</li></ul>)}
             <form onSubmit={handleSubmit}>
                 {open == "Ja" && (
                     <div className="mb-4">
@@ -83,16 +94,27 @@ const Arbeidsgrad = () => {
                         <BodyShort>
                             Varierer det, kan du oppgi gjennomsnittet
                         </BodyShort>
-                        <div className="flex flex-row items-center gap-2 mb-4">
+                        <div className="grid grid-rows-1 gap-2 mb-4 items-center justify-start">
                             <TextField
-                                className="mb-4 md:w-28"
+                                className="mb-4 md:w-28 col-start-1"
                                 id="arbeidstimer"
                                 label=""
                                 size="medium"
-                                error={error}
+                                error={
+                                    error && (
+                                        <div className=" row-start-2 list-disc font-bold w-full text-red-500">
+                                            {}
+                                        </div>
+                                    )
+                                }
                             />
-                            <BodyShort>timer per uke</BodyShort>
+                            <BodyShort className="col-start-2 row-start-1 ">timer per uke</BodyShort>
                         </div>
+                        {error && (
+                            <div className=" row-start-2 list-disc ml-5 font-bold text-red-500 mb-4 -mt-14 ">
+                                {error}
+                            </div>
+                        )}
                     </div>
                 )}
                 <Button variant="primary">Neste</Button>
