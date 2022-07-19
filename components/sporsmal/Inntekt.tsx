@@ -75,17 +75,17 @@ const Inntekt = () => {
                 <Heading size="small">
                     Hvor mye tjente du de tre siste årene før du ble sykmeldt?
                 </Heading>
-                <BodyShort spacing>Oppgi inntekt før skatt</BodyShort>
+                <BodyShort spacing>Oppgi inntekt før skatt, i kroner</BodyShort>
                 <ReadMore size="small" header="Hvorfor spør vi om inntekt?">
                     {" "}
                     Inntekten din brukes til å regne ut hva du kan få i
                     arbeidsavklaringspenger.
                 </ReadMore>
-                <div className="flex flex-row space-x-8 mt-8">
+                <div className="flex md:flex-row flex-col md:space-x-8 mt-8 md:mb-8  ">
                     {years.reverse().map((year, index) => (
                         <TextField
                             inputMode="numeric"
-                            className="mb-4 w-40 "
+                            className={`md:mb-4 w-40 h-20 ${error && ("mb-12")}`}
                             key={index}
                             id={`inntekt${2 - index + 1}`}
                             label={`Inntekt ${year}`}
