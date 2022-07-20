@@ -12,11 +12,6 @@ import Image from "next/image"
 import Sti from "../steg/Steg"
 import Tilbakeknapp from "../tilbakeknapp/Tilbakeknapp"
 
-interface InntektsForm extends HTMLFormElement {
-    readonly inntekt1: HTMLInputElement
-    readonly inntekt2: HTMLInputElement
-    readonly inntekt3: HTMLInputElement
-}
 interface Inntekt {
     inntekt1: string,
     inntekt2: string,
@@ -36,13 +31,13 @@ const Inntekt = () => {
             [begivenhet.target.name]: !isNaN(verdi) ? verdi.toLocaleString("nb-NO"): ""
         })
     }
-    const handleSubmit = async (event: React.FormEvent<InntektsForm>) => {
+    const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
 
-        const error_message = "ugyldig verdi"
-        const inntekt1 = parseFloat(event.currentTarget.inntekt1.value.replace(/[\.,\s]/g, ""))
-        const inntekt2 = parseFloat(event.currentTarget.inntekt2.value.replace(/[\.,\s]/g, ""))
-        const inntekt3 = parseFloat(event.currentTarget.inntekt3.value.replace(/[\.,\s]/g, ""))
+        const error_message = "Oppgi inntekt"
+        const inntekt1 = parseFloat(inntektstilstand.inntekt1.replace(/\s/g, ""))
+        const inntekt2 = parseFloat(inntektstilstand.inntekt2.replace(/\s/g, ""))
+        const inntekt3 = parseFloat(inntektstilstand.inntekt3.replace(/\s/g, ""))
 
         const errors = [
             !isNaN(inntekt1) ? "" : error_message,
@@ -61,9 +56,6 @@ const Inntekt = () => {
             arbeidsgrad: state.arbeidsgrad,
             sykmeldtAar: state.sykmeldtAar,
         })
-        console.log("int", inntekt1)
-        console.log("int2", inntekt2)
-        console.log("int3", inntekt3)
         await router.push("/steg/3")
     }
     const currentYear = state.sykmeldtAar
