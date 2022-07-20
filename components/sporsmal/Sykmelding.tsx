@@ -75,7 +75,8 @@ const Sykmelding = () => {
             <form onSubmit={handleSubmit}>
                 <JaNeiRadio
                     tittel="Er du sykmeldt?"
-                    readMoreTittel="Hvorfor spør vi om du er sykmeldt."
+                    readMoreTittel="Hvorfor spør vi om du er sykmeldt?"
+                    readMore="Inntektsårene på neste side bestemmes ut i fra året du ble sykmeldt."
                     state={open}
                     setState={setOpen}
                 />

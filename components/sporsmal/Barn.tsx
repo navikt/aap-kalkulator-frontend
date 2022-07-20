@@ -73,8 +73,9 @@ const Barn = () => {
                 {open == "Ja" && (
                     <div>
                         <Heading size="small">
-                            Hvor mange barn under 18 år har du?
+                            Hvor mange barn har du?
                         </Heading>
+                        <BodyShort>Barnet må være under 18 år og bo hos deg.</BodyShort>
                         <div className="flex flex-row items-center gap-2 mb-4">
                             <TextField
                                 inputMode="numeric"
