@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, {ChangeEvent, useContext, useState} from "react"
 import { State } from "../../pages/_app"
 import {
     BodyShort,
@@ -17,18 +17,32 @@ interface InntektsForm extends HTMLFormElement {
     readonly inntekt2: HTMLInputElement
     readonly inntekt3: HTMLInputElement
 }
+interface Inntekt {
+    inntekt1: string,
+    inntekt2: string,
+    inntekt3: string
+}
 
 const Inntekt = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [error, setError] = useState<string[]>(["", "", ""])
+    const [inntektstilstand, settInntektstilstand] = useState<Inntekt>({inntekt1: "", inntekt2: "", inntekt3: ""})
+
+    const vedForandring = (begivenhet: ChangeEvent<HTMLInputElement>) => {
+        const verdi = parseFloat(begivenhet.target.value.replace(/[\.,\s]/g, ""))
+        settInntektstilstand({
+            ...inntektstilstand,
+            [begivenhet.target.name]: !isNaN(verdi) ? verdi.toLocaleString("nb-NO"): ""
+        })
+    }
     const handleSubmit = async (event: React.FormEvent<InntektsForm>) => {
         event.preventDefault()
 
         const error_message = "ugyldig verdi"
-        const inntekt1 = parseFloat(event.currentTarget.inntekt1.value.replaceAll(".", "").replaceAll(",", ""))
-        const inntekt2 = parseFloat(event.currentTarget.inntekt2.value.replaceAll(".", "").replaceAll(",", ""))
-        const inntekt3 = parseFloat(event.currentTarget.inntekt3.value.replaceAll(".", "").replaceAll(",", ""))
+        const inntekt1 = parseFloat(event.currentTarget.inntekt1.value.replace(/[\.,\s]/g, ""))
+        const inntekt2 = parseFloat(event.currentTarget.inntekt2.value.replace(/[\.,\s]/g, ""))
+        const inntekt3 = parseFloat(event.currentTarget.inntekt3.value.replace(/[\.,\s]/g, ""))
 
         const errors = [
             !isNaN(inntekt1) ? "" : error_message,
@@ -87,14 +101,16 @@ const Inntekt = () => {
                             inputMode="numeric"
                             className={`md:mb-4 w-40 h-20 ${error && ("mb-12")}`}
                             key={index}
-                            id={`inntekt${2 - index + 1}`}
+                            id={`inntekt${3 - index }`}
+                            name={`inntekt${3 - index }`}
                             label={`Inntekt ${year}`}
                             size="medium"
                             error={error[2 - index]}
+                            value={Object.values(inntektstilstand)[2-index]}
+                            onChange={vedForandring}
                         />
                     ))}
                 </div>
-
                 <Button variant="primary">Neste</Button>
             </form>
         </>
