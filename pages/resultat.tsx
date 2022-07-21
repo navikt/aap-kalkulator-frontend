@@ -48,16 +48,17 @@ const Resultat: NextPage = () => {
                     className={" flex items-center"}
                 ></Image>
             </div>
+            <div className="place-items-start md:w-5/6">
+            <Heading
+                level="2"
+                size="large"
+                spacing
+                aria-label="Hvor mye kan jeg få?"
+            >
+                Dette kan du få
+            </Heading>
+            </div>
             <div className="rounded-2xl bg-feedback-success-background p-6 w-full md:w-5/6">
-                <Heading
-                    level="2"
-                    size="large"
-                    spacing
-                    aria-label="Hvor mye kan jeg få?"
-                    className="pb-4"
-                >
-                    Dette kan du få
-                </Heading>
                 <div className="grid grid-cols-2 md:grid-cols-3 mb-4 gap-4 justify-center items-baseline">
                     <span className="text-4xl md:text-5xl  md:col-start-2 justify-self-end">
                         {(perDag * 10).toLocaleString("nb-NO")}&nbsp;kr
