@@ -5,6 +5,7 @@ import {
     Accordion,
     Alert,
     Heading,
+    Label,
     Link,
     ReadMore,
     ToggleGroup,
@@ -37,7 +38,7 @@ const Resultat: NextPage = () => {
     }, [])
     const perDag = Math.ceil(resultat.resultat / 260)
     return (
-        <>
+        <div className="flex flex-col items-center">
             <div className="flex flex-col pt-4 mb-4">
                 <Image
                     src="/ikoner/money_circle.svg"
@@ -47,37 +48,29 @@ const Resultat: NextPage = () => {
                     className={" flex items-center"}
                 ></Image>
             </div>
-            <Heading
-                level="2"
-                size="large"
-                spacing
-                aria-label="Hvor mye kan jeg få?"
-                className="pb-4"
-            >
-                Dette kan du få:
-            </Heading>
-            <div className="flex md:flex-row flex-col mb-4 gap-4 justify-center md:justify-start">
-                <p className="flex text-5xl pl-8 w-64 justify-end">
-                {value == "14dag" && (
-                        `${(perDag * 10).toLocaleString("nb-NO")} kr`
-                )}
-                {value == "arlig" && (
-                        `${Math.ceil(resultat.resultat).toLocaleString("nb-NO")} kr`
-                )}
-                </p>
-                <ToggleGroup
-                    onChange={(x) => setValue(x)}
-                    value={value}
-                    size="medium"
-                    className="justify-center w-full"
+            <div className="rounded-2xl bg-feedback-success-background p-6 w-full md:w-5/6">
+                <Heading
+                    level="2"
+                    size="large"
+                    spacing
+                    aria-label="Hvor mye kan jeg få?"
+                    className="pb-4"
                 >
-                    <ToggleGroup.Item value="14dag">
-                        Hver&nbsp;14.&nbsp;dag
-                    </ToggleGroup.Item>
-                    <ToggleGroup.Item value="arlig">Årlig</ToggleGroup.Item>
-                </ToggleGroup>
+                    Dette kan du få
+                </Heading>
+                <div className="grid grid-cols-2 md:grid-cols-3 mb-4 gap-4 justify-center items-baseline">
+                    <span className="text-4xl md:text-5xl  md:col-start-2 justify-self-end">
+                        {(perDag * 10).toLocaleString("nb-NO")}&nbsp;kr
+                    </span>
+                    <Label>hver&nbsp;14.&nbsp;dag</Label>
+
+                    <span className="text-2xl md:text-3xl md:col-start-2 justify-self-end">
+                        {Math.ceil(resultat.resultat).toLocaleString("nb-NO")}&nbsp;kr
+                    </span>
+                    <Label>årlig</Label>
+                </div>
             </div>
-            <div className="py-4 ">
+            <div className="py-4 md:w-5/6">
                 <Accordion>
                     <Accordion.Item>
                         <Accordion.Header>
@@ -106,7 +99,7 @@ const Resultat: NextPage = () => {
                     </Link>
                 </Alert>
             </div>
-        </>
+        </div>
     )
 }
 
