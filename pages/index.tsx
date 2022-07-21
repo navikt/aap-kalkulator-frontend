@@ -38,7 +38,7 @@ const Home: NextPage = () => {
 
                     <li>Kalkulatoren er ment som et hjelpeverktøy for deg.</li>
                     <li>Resultatet er kun et anslag.</li>
-                    <li>Du kan få støtte selv om du svarer "Nei" på noen av spørsmålene.</li>
+                    <li>Du kan få støtte selv om du svarer &quot;Nei&quot; på noen av spørsmålene.</li>
                     <li>
                         NAV vurderer situasjonen din nærmere hvis du sender en
                         søknad.
