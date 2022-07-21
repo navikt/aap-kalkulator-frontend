@@ -74,7 +74,7 @@ const Barn = () => {
                         <div className="flex flex-row items-center gap-2 mb-4">
                             <TextField
                                 inputMode="numeric"
-                                className="mb-4 w-20"
+                                className="mb-4 w-16"
                                 id="antallBarn"
                                 label=""
                                 size="medium"

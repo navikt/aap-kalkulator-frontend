@@ -32,7 +32,7 @@ const Arbeidsgrad = () => {
         }
 
         if (open == "Ja") {
-            arbeidstimer = parseInt(event.currentTarget.arbeidstimer.value)
+            arbeidstimer = parseFloat(event.currentTarget.arbeidstimer.value.replace(",","."))
             arbeidsgrad = (arbeidstimer / arbeidsuke) * 100
         }
         setError(isNaN(arbeidstimer) || arbeidstimer < 0 ? "Ugyldig verdi" : "")
@@ -97,7 +97,7 @@ const Arbeidsgrad = () => {
                         <div className="flex flex-row gap-2 mb-4 items-center">
                             <TextField
                                 inputMode="numeric"
-                                className="mb-4 md:w-28 col-start-1"
+                                className="mb-4 md:w-16 col-start-1"
                                 id="arbeidstimer"
                                 label=""
                                 size="medium"
