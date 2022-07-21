@@ -1,12 +1,7 @@
 import { useRouter } from "next/router"
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import {
-    BodyShort,
-    Button,
-    Heading,
-    TextField,
-} from "@navikt/ds-react"
+import { BodyShort, Button, Heading, TextField } from "@navikt/ds-react"
 import Image from "next/image"
 import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
 import Sti from "../steg/Steg"
@@ -72,10 +67,10 @@ const Barn = () => {
                 />
                 {open == "Ja" && (
                     <div>
-                        <Heading size="small">
-                            Hvor mange barn har du?
-                        </Heading>
-                        <BodyShort>Barnet må være under 18 år og bo hos deg.</BodyShort>
+                        <Heading size="small">Hvor mange barn har du?</Heading>
+                        <BodyShort>
+                            Barnet må være under 18 år og bo hos deg.
+                        </BodyShort>
                         <div className="flex flex-row items-center gap-2 mb-4">
                             <TextField
                                 inputMode="numeric"
@@ -91,7 +86,9 @@ const Barn = () => {
                                     )
                                 }
                             />
-                            <BodyShort className={`${(error && "-mt-8")}`}>barn</BodyShort>
+                            <BodyShort className={`${error && "-mt-8"}`}>
+                                barn
+                            </BodyShort>
                         </div>
                         {error && (
                             <div className="list-disc ml-5 font-bold text-red-500 mb-4 -mt-14">

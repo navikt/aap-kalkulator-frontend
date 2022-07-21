@@ -1,12 +1,7 @@
 import { useRouter } from "next/router"
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import {
-    BodyShort,
-    Button,
-    Heading,
-    TextField,
-} from "@navikt/ds-react"
+import { BodyShort, Button, Heading, TextField } from "@navikt/ds-react"
 import Image from "next/image"
 import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
 import Sti from "../steg/Steg"
@@ -31,7 +26,7 @@ const Arbeidsgrad = () => {
         let arbeidstimer = 0
         let arbeidsgrad = 0
 
-        if ( open != "Ja" && open != "Nei"){
+        if (open != "Ja" && open != "Nei") {
             setOpen("not Open")
             return
         }
@@ -82,9 +77,14 @@ const Arbeidsgrad = () => {
                 setState={setOpen}
                 readMoreTittel="Hvorfor spør vi om du har jobb?"
                 readMore={readMoreTekst}
-
             />
-            {(open == "not Open") && (<ul className="list-disc"><li className="ml-5 font-bold text-red-500 mb-4">you shall not pass?</li></ul>)}
+            {open == "not Open" && (
+                <ul className="list-disc">
+                    <li className="ml-5 font-bold text-red-500 mb-4">
+                        you shall not pass?
+                    </li>
+                </ul>
+            )}
             <form onSubmit={handleSubmit}>
                 {open == "Ja" && (
                     <div className="mb-4">
@@ -109,7 +109,9 @@ const Arbeidsgrad = () => {
                                     )
                                 }
                             />
-                            <BodyShort className={`${(error && "-mt-8")}`}>timer per uke</BodyShort>
+                            <BodyShort className={`${error && "-mt-8"}`}>
+                                timer per uke
+                            </BodyShort>
                         </div>
                         {error && (
                             <div className="list-disc ml-5 font-bold text-red-500 mb-4 -mt-14">

@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useContext, useState} from "react"
+import React, { ChangeEvent, useContext, useState } from "react"
 import { State } from "../../pages/_app"
 import {
     BodyShort,
@@ -13,8 +13,8 @@ import Sti from "../steg/Steg"
 import Tilbakeknapp from "../tilbakeknapp/Tilbakeknapp"
 
 interface Inntekt {
-    inntekt1: string,
-    inntekt2: string,
+    inntekt1: string
+    inntekt2: string
     inntekt3: string
 }
 
@@ -22,22 +22,36 @@ const Inntekt = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [error, setError] = useState<string[]>(["", "", ""])
-    const [inntektstilstand, settInntektstilstand] = useState<Inntekt>({inntekt1: "", inntekt2: "", inntekt3: ""})
+    const [inntektstilstand, settInntektstilstand] = useState<Inntekt>({
+        inntekt1: "",
+        inntekt2: "",
+        inntekt3: "",
+    })
 
     const vedForandring = (begivenhet: ChangeEvent<HTMLInputElement>) => {
-        const verdi = parseFloat(begivenhet.target.value.replace(/[\.,\s]/g, ""))
+        const verdi = parseFloat(
+            begivenhet.target.value.replace(/[\.,\s]/g, "")
+        )
         settInntektstilstand({
             ...inntektstilstand,
-            [begivenhet.target.name]: !isNaN(verdi) ? verdi.toLocaleString("nb-NO"): ""
+            [begivenhet.target.name]: !isNaN(verdi)
+                ? verdi.toLocaleString("nb-NO")
+                : "",
         })
     }
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
 
         const error_message = "Oppgi inntekt"
-        const inntekt1 = parseFloat(inntektstilstand.inntekt1.replace(/\s/g, ""))
-        const inntekt2 = parseFloat(inntektstilstand.inntekt2.replace(/\s/g, ""))
-        const inntekt3 = parseFloat(inntektstilstand.inntekt3.replace(/\s/g, ""))
+        const inntekt1 = parseFloat(
+            inntektstilstand.inntekt1.replace(/\s/g, "")
+        )
+        const inntekt2 = parseFloat(
+            inntektstilstand.inntekt2.replace(/\s/g, "")
+        )
+        const inntekt3 = parseFloat(
+            inntektstilstand.inntekt3.replace(/\s/g, "")
+        )
 
         const errors = [
             !isNaN(inntekt1) ? "" : error_message,
@@ -91,14 +105,14 @@ const Inntekt = () => {
                     {years.reverse().map((year, index) => (
                         <TextField
                             inputMode="numeric"
-                            className={`md:mb-4 w-40 h-20 ${error && ("mb-12")}`}
+                            className={`md:mb-4 w-40 h-20 ${error && "mb-12"}`}
                             key={index}
-                            id={`inntekt${3 - index }`}
-                            name={`inntekt${3 - index }`}
+                            id={`inntekt${3 - index}`}
+                            name={`inntekt${3 - index}`}
                             label={`Inntekt ${year}`}
                             size="medium"
                             error={error[2 - index]}
-                            value={Object.values(inntektstilstand)[2-index]}
+                            value={Object.values(inntektstilstand)[2 - index]}
                             onChange={vedForandring}
                         />
                     ))}

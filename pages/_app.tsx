@@ -5,7 +5,7 @@ import { createContext, useState } from "react"
 import { ResultInterface } from "../components/result/Result"
 import Container from "../components/container/Container"
 import { StateInterface } from "../components/state/State"
-import Head from 'next/head'
+import Head from "next/head"
 
 export const ResultState = createContext({
     resultat: {
@@ -34,7 +34,6 @@ export const State = createContext({
     setState: (value: StateInterface) => {},
 })
 
-
 function MyApp({ Component, pageProps }: AppProps) {
     const [resultat, setResultat] = useState<ResultInterface>({
         resultat: 0.0,
@@ -60,9 +59,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ResultState.Provider value={{ resultat, setResultat }}>
             <State.Provider value={{ state, setState }}>
                 <Head>
-                    <title>
-                        Aap-kalkulator
-                    </title>
+                    <title>Aap-kalkulator</title>
                 </Head>
                 <Container>
                     <Component {...pageProps} />

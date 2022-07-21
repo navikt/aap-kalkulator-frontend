@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { ResultState, State } from "./_app"
 import { NextPage } from "next"
 import {
+    Accordion,
     Alert,
     Heading,
     Link,
@@ -55,7 +56,15 @@ const Resultat: NextPage = () => {
             >
                 Dette kan du få:
             </Heading>
-            <div className="grid md:grid-cols-2 grid-cols-1 mb-4 gap-4">
+            <div className="flex md:flex-row flex-col mb-4 gap-4 justify-center md:justify-start">
+                <p className="flex text-5xl pl-8 w-64 justify-end">
+                {value == "14dag" && (
+                        `${(perDag * 10).toLocaleString("nb-NO")} kr`
+                )}
+                {value == "arlig" && (
+                        `${Math.ceil(resultat.resultat).toLocaleString("nb-NO")} kr`
+                )}
+                </p>
                 <ToggleGroup
                     onChange={(x) => setValue(x)}
                     value={value}
@@ -63,31 +72,26 @@ const Resultat: NextPage = () => {
                     className="justify-center w-full"
                 >
                     <ToggleGroup.Item value="14dag">
-                        Hver 14. dag
+                        Hver&nbsp;14.&nbsp;dag
                     </ToggleGroup.Item>
                     <ToggleGroup.Item value="arlig">Årlig</ToggleGroup.Item>
                 </ToggleGroup>
-                {value == "14dag" && (
-                    <p className="flex text-5xl justify-center items-center">
-                        {(perDag * 10).toLocaleString("nb-NO")} kr
-                    </p>
-                )}
-                {value == "arlig" && (
-                    <p className="flex text-5xl justify-center items-center">
-                        {Math.ceil(resultat.resultat).toLocaleString("nb-NO")}{" "}
-                        kr
-                    </p>
-                )}
             </div>
-            <div className="pb-4">
-                <ReadMore size="small" header="Hvorfor får jeg denne summen?">
-                    {" "}
-                    <ul className=" space-y-4">
-                        {resultat.logs.map((text, index) => (
-                            <li key={index}>{text}</li>
-                        ))}
-                    </ul>
-                </ReadMore>
+            <div className="py-4 ">
+                <Accordion>
+                    <Accordion.Item>
+                        <Accordion.Header>
+                            Hvorfor får jeg denne summen?
+                        </Accordion.Header>
+                        <Accordion.Content>
+                            <ul className=" space-y-4 list-disc">
+                                {resultat.logs.map((text, index) => (
+                                    <li key={index}>{text}</li>
+                                ))}
+                            </ul>
+                        </Accordion.Content>
+                    </Accordion.Item>
+                </Accordion>
             </div>
             <div className="pt-4">
                 <Alert variant="info" size="small">
