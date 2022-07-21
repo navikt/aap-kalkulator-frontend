@@ -32,7 +32,9 @@ const Arbeidsgrad = () => {
         }
 
         if (open == "Ja") {
-            arbeidstimer = parseFloat(event.currentTarget.arbeidstimer.value.replace(",","."))
+            arbeidstimer = parseFloat(
+                event.currentTarget.arbeidstimer.value.replace(",", ".")
+            )
             arbeidsgrad = (arbeidstimer / arbeidsuke) * 100
         }
         setError(isNaN(arbeidstimer) || arbeidstimer < 0 ? "Ugyldig verdi" : "")
@@ -52,8 +54,17 @@ const Arbeidsgrad = () => {
         await router.push("/steg/4")
     }
 
-    const readMoreTekst =
-        "Hvor mye du får utbetalt avhenger av hvor mye du jobber. Jobber du mer enn 22,5 timer i uken får du ikke arbeidsavklaringspenger."
+    const readMoreTekst = (
+        <ul>
+            {" "}
+            <li> Hvor mye du får utbetalt avhenger av hvor mye du jobber.</li>
+            <li>Vi vurderer en arbeidsuke til å være 37,5 timer.</li>
+            <li>
+                Jobber du mer enn 22,5 timer i uken får du ikke
+                arbeidsavklaringspenger.{" "}
+            </li>
+        </ul>
+    )
 
     return (
         <>

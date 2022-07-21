@@ -1,4 +1,5 @@
 import { Radio, RadioGroup, ReadMore } from "@navikt/ds-react"
+import React from "react"
 
 const JaNeiRadio = ({
     tittel,
@@ -9,7 +10,7 @@ const JaNeiRadio = ({
 }: {
     tittel: string
     readMoreTittel?: string
-    readMore?: string
+    readMore?: string | React.ReactElement
     state: string
     setState: (newState: string) => void
 }) => {

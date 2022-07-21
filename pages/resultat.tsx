@@ -49,14 +49,14 @@ const Resultat: NextPage = () => {
                 ></Image>
             </div>
             <div className="place-items-start md:w-5/6">
-            <Heading
-                level="2"
-                size="large"
-                spacing
-                aria-label="Hvor mye kan jeg få?"
-            >
-                Dette kan du få
-            </Heading>
+                <Heading
+                    level="2"
+                    size="large"
+                    spacing
+                    aria-label="Hvor mye kan jeg få?"
+                >
+                    Dette kan du få
+                </Heading>
             </div>
             <div className="rounded-2xl bg-feedback-success-background p-6 w-full md:w-5/6">
                 <div className="grid grid-cols-2 md:grid-cols-3 mb-4 gap-4 justify-center items-baseline">
@@ -66,7 +66,8 @@ const Resultat: NextPage = () => {
                     <Label>hver&nbsp;14.&nbsp;dag</Label>
 
                     <span className="text-2xl md:text-3xl md:col-start-2 justify-self-end">
-                        {Math.ceil(resultat.resultat).toLocaleString("nb-NO")}&nbsp;kr
+                        {Math.ceil(resultat.resultat).toLocaleString("nb-NO")}
+                        &nbsp;kr
                     </span>
                     <Label>årlig</Label>
                 </div>
