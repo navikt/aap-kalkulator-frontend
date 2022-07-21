@@ -109,7 +109,7 @@ const Inntekt = () => {
                         />
                     ))}
                 </div>
-                <Button variant="primary">Neste</Button>
+                <Button variant="primary">Gå videre</Button>
             </form>
         </>
     )

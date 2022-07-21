@@ -67,7 +67,7 @@ const Step = ({
 
 const Stepper = () => {
     const stepperRef = useRef<HTMLElement>(null)
-    const steps = ["Sykmelding", "Inntekt", "Arbeid", "Barn", "Resultat"]
+    const steps = ["Helse", "Inntekt", "Arbeid", "Barn", "Resultat"]
     return (
         <nav ref={stepperRef}>
             <ul className="flex flex-row justify-center pb-4 items-center md:px-8 px-0">

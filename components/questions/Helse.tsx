@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import { Button, Heading, TextField } from "@navikt/ds-react"
+import {Button, Heading, ReadMore, TextField} from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Image from "next/image"
 import Stepper from "../stepper/Stepper"
@@ -13,7 +13,7 @@ interface InntektsForm extends HTMLFormElement {
     readonly inntekt3: HTMLInputElement
 }
 
-const Sykmelding = () => {
+const Helse = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
@@ -61,30 +61,26 @@ const Sykmelding = () => {
             <BackLink target="/" />
             <div className="items flex flex-col pt-4">
                 <Image
-                    src="/ikoner/wallet_circle.svg"
+                    src="/ikoner/helse_circle.svg"
                     height="100"
                     width="100"
-                    alt="lommebok ikon"
+                    alt="helse ikon"
                     className={" flex items-center"}
                 ></Image>
                 <Heading size="large" level="2" spacing>
-                    Sykmelding
+                    Helse
                 </Heading>
             </div>
 
             <form onSubmit={handleSubmit}>
-                <Radio
-                    title="Er du sykmeldt?"
-                    readMoreTitle="Hvorfor spør vi om du er sykmeldt?"
-                    readMore="Inntektsårene på neste side bestemmes ut i fra året du ble sykmeldt."
-                    state={open}
-                    setState={setOpen}
-                />
-                {open == "Ja" && (
-                    <>
+
                         <Heading size="small">
-                            Hvilket år ble du sykmeldt?
+                            Hvilket år fikk du først nedsatt arbeidsevne?
                         </Heading>
+                        <ReadMore size="small" header="Hvorfor spør vi om når du fikk nedsatt arbeidsevne?">
+                            {" "}
+                            Inntektsårene på neste side bestemmes ut fra året du fikk nedsatt arbeidsevne.
+                        </ReadMore>
                         <TextField
                             inputMode="numeric"
                             size="medium"
@@ -104,14 +100,12 @@ const Sykmelding = () => {
                                 {error}
                             </div>
                         )}
-                    </>
-                )}
                 <div className="mt-4">
-                    <Button variant="primary">Neste</Button>
+                    <Button variant="primary">Gå videre</Button>
                 </div>
             </form>
         </>
     )
 }
 
-export default Sykmelding
+export default Helse
