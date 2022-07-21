@@ -3,9 +3,9 @@ import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
 import { BodyShort, Button, Heading, TextField } from "@navikt/ds-react"
 import Image from "next/image"
-import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
-import Sti from "../steg/Steg"
-import Tilbakeknapp from "../tilbakeknapp/Tilbakeknapp"
+import Radio from "../radio/Radio"
+import Stepper from "../stepper/Stepper"
+import BackLink from "../backlink/BackLink"
 
 interface BarnInterface extends HTMLFormElement {
     antallBarn: HTMLInputElement
@@ -43,8 +43,8 @@ const Barn = () => {
 
     return (
         <>
-            <Sti />
-            <Tilbakeknapp til="/steg/3" />
+            <Stepper />
+            <BackLink target="/steg/3" />
             <div className=" flex flex-col pt-4">
                 <Image
                     src="/ikoner/teddy_circle.svg"
@@ -58,9 +58,9 @@ const Barn = () => {
                 </Heading>
             </div>
             <form onSubmit={handleSubmit}>
-                <JaNeiRadio
-                    tittel="Har du barn?"
-                    readMoreTittel="Hvorfor spør vi om du har barn?"
+                <Radio
+                    title="Har du barn?"
+                    readMoreTitle="Hvorfor spør vi om du har barn?"
                     readMore={readmoreTekst}
                     state={open}
                     setState={setOpen}

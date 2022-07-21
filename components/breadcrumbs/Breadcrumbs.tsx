@@ -2,23 +2,23 @@ import { BodyShort } from "@navikt/ds-react"
 import React, { useRef } from "react"
 import { Next } from "@navikt/ds-icons"
 
-interface Brodsmule {
-    sti: string
-    tittel: string
-    erKlikkbar: boolean
+interface CrumbInterface {
+    path: string
+    title: string
+    isClickable: boolean
 }
 
-const BrodsmuleBit = ({ sti, tittel, erKlikkbar }: Brodsmule) => {
+const Crumb = ({ path, title, isClickable }: CrumbInterface) => {
     const link = (
-        <a href={sti} className="navds-link">
-            {tittel}
+        <a href={path} className="navds-link">
+            {title}
         </a>
     )
 
-    if (!erKlikkbar) {
+    if (!isClickable) {
         return (
             <BodyShort as="li" size="small" className="smule">
-                <span>{tittel}</span>
+                <span>{title}</span>
             </BodyShort>
         )
     }
@@ -29,26 +29,26 @@ const BrodsmuleBit = ({ sti, tittel, erKlikkbar }: Brodsmule) => {
     )
 }
 
-const Brodsmuler = () => {
-    const smulesti = useRef<HTMLElement>(null)
+const Breadcrumbs = () => {
+    const breadcrumbRef = useRef<HTMLElement>(null)
 
     return (
-        <nav ref={smulesti} aria-label="Du er her: ">
+        <nav ref={breadcrumbRef} aria-label="Du er her: ">
             <ul className="flex flex-row gap-1 my-4 items-center ml-2">
-                <BrodsmuleBit
-                    sti="https://www.nav.no/aap"
-                    tittel="Arbeidsavklaringspenger"
-                    erKlikkbar={true}
+                <Crumb
+                    path="https://www.nav.no/aap"
+                    title="Arbeidsavklaringspenger"
+                    isClickable={true}
                 />
                 <Next />
-                <BrodsmuleBit
-                    sti="https://aap-kalkulator-frontend.dev.nav.no"
-                    tittel="Hvor mye kan du få?"
-                    erKlikkbar={false}
+                <Crumb
+                    path="https://aap-kalkulator-frontend.dev.nav.no"
+                    title="Hvor mye kan du få?"
+                    isClickable={false}
                 />
             </ul>
         </nav>
     )
 }
 
-export default Brodsmuler
+export default Breadcrumbs

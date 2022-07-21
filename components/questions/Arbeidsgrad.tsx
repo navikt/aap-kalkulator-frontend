@@ -3,9 +3,9 @@ import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
 import { BodyShort, Button, Heading, TextField } from "@navikt/ds-react"
 import Image from "next/image"
-import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
-import Sti from "../steg/Steg"
-import Tilbakeknapp from "../tilbakeknapp/Tilbakeknapp"
+import Radio from "../radio/Radio"
+import Stepper from "../stepper/Stepper"
+import BackLink from "../backlink/BackLink"
 
 interface ArbeidsgradInterface extends HTMLFormElement {
     arbeidsgrad: HTMLInputElement
@@ -54,7 +54,7 @@ const Arbeidsgrad = () => {
         await router.push("/steg/4")
     }
 
-    const readMoreTekst = (
+    const readMoreText = (
         <ul>
             {" "}
             <li> Hvor mye du får utbetalt avhenger av hvor mye du jobber.</li>
@@ -68,8 +68,8 @@ const Arbeidsgrad = () => {
 
     return (
         <>
-            <Sti />
-            <Tilbakeknapp til="/steg/2" />
+            <Stepper />
+            <BackLink target="/steg/2" />
             <div className="flex flex-col pt-4 mb-4">
                 <Image
                     src="/ikoner/briefcase_circle.svg"
@@ -82,12 +82,12 @@ const Arbeidsgrad = () => {
             <Heading size="large" level="2" spacing>
                 Jobb
             </Heading>
-            <JaNeiRadio
-                tittel="Har du jobb?"
+            <Radio
+                title="Har du jobb?"
                 state={open}
                 setState={setOpen}
-                readMoreTittel="Hvorfor spør vi om du har jobb?"
-                readMore={readMoreTekst}
+                readMoreTitle="Hvorfor spør vi om du har jobb?"
+                readMore={readMoreText}
             />
             {open == "not Open" && (
                 <ul className="list-disc">

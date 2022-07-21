@@ -9,8 +9,8 @@ import {
 } from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Image from "next/image"
-import Sti from "../steg/Steg"
-import Tilbakeknapp from "../tilbakeknapp/Tilbakeknapp"
+import Stepper from "../stepper/Stepper"
+import BackLink from "../backlink/BackLink"
 
 interface Inntekt {
     inntekt1: string
@@ -22,19 +22,17 @@ const Inntekt = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [error, setError] = useState<string[]>(["", "", ""])
-    const [inntektstilstand, settInntektstilstand] = useState<Inntekt>({
+    const [inntekt, setInntekt] = useState<Inntekt>({
         inntekt1: "",
         inntekt2: "",
         inntekt3: "",
     })
 
-    const vedForandring = (begivenhet: ChangeEvent<HTMLInputElement>) => {
-        const verdi = parseFloat(
-            begivenhet.target.value.replace(/[\.,\s]/g, "")
-        )
-        settInntektstilstand({
-            ...inntektstilstand,
-            [begivenhet.target.name]: !isNaN(verdi)
+    const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const verdi = parseFloat(event.target.value.replace(/[\.,\s]/g, ""))
+        setInntekt({
+            ...inntekt,
+            [event.target.name]: !isNaN(verdi)
                 ? verdi.toLocaleString("nb-NO")
                 : "",
         })
@@ -42,21 +40,15 @@ const Inntekt = () => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
 
-        const error_message = "Oppgi inntekt"
-        const inntekt1 = parseFloat(
-            inntektstilstand.inntekt1.replace(/\s/g, "")
-        )
-        const inntekt2 = parseFloat(
-            inntektstilstand.inntekt2.replace(/\s/g, "")
-        )
-        const inntekt3 = parseFloat(
-            inntektstilstand.inntekt3.replace(/\s/g, "")
-        )
+        const errorMessage = "Oppgi inntekt"
+        const inntekt1 = parseFloat(inntekt.inntekt1.replace(/\s/g, ""))
+        const inntekt2 = parseFloat(inntekt.inntekt2.replace(/\s/g, ""))
+        const inntekt3 = parseFloat(inntekt.inntekt3.replace(/\s/g, ""))
 
         const errors = [
-            !isNaN(inntekt1) ? "" : error_message,
-            !isNaN(inntekt2) ? "" : error_message,
-            !isNaN(inntekt3) ? "" : error_message,
+            !isNaN(inntekt1) ? "" : errorMessage,
+            !isNaN(inntekt2) ? "" : errorMessage,
+            !isNaN(inntekt3) ? "" : errorMessage,
         ]
         setError(errors)
         if (errors.some((v) => v.length > 0)) {
@@ -72,13 +64,13 @@ const Inntekt = () => {
         })
         await router.push("/steg/3")
     }
-    const currentYear = state.sykmeldtAar
-    const years = [currentYear - 1, currentYear - 2, currentYear - 3]
+    const sykmeldtAar = state.sykmeldtAar
+    const inntektsAar = [sykmeldtAar - 1, sykmeldtAar - 2, sykmeldtAar - 3]
 
     return (
         <>
-            <Sti />
-            <Tilbakeknapp til="/steg/1" />
+            <Stepper />
+            <BackLink target="/steg/1" />
             <div className="items flex flex-col pt-4">
                 <Image
                     src="/ikoner/wallet_circle.svg"
@@ -102,18 +94,18 @@ const Inntekt = () => {
                     arbeidsavklaringspenger.
                 </ReadMore>
                 <div className="flex md:flex-row flex-col md:space-x-8 mt-8 md:mb-8  ">
-                    {years.reverse().map((year, index) => (
+                    {inntektsAar.reverse().map((aar, index) => (
                         <TextField
                             inputMode="numeric"
                             className={`md:mb-4 w-40 h-20 ${error && "mb-12"}`}
                             key={index}
                             id={`inntekt${3 - index}`}
                             name={`inntekt${3 - index}`}
-                            label={`Inntekt ${year}`}
+                            label={`Inntekt ${aar}`}
                             size="medium"
                             error={error[2 - index]}
-                            value={Object.values(inntektstilstand)[2 - index]}
-                            onChange={vedForandring}
+                            value={Object.values(inntekt)[2 - index]}
+                            onChange={onChange}
                         />
                     ))}
                 </div>

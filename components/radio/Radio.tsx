@@ -1,15 +1,15 @@
-import { Radio, RadioGroup, ReadMore } from "@navikt/ds-react"
+import { Radio as DSRadio, RadioGroup, ReadMore } from "@navikt/ds-react"
 import React from "react"
 
-const JaNeiRadio = ({
-    tittel,
+const Radio = ({
+    title,
     readMore,
-    readMoreTittel,
+    readMoreTitle,
     state,
     setState,
 }: {
-    tittel: string
-    readMoreTittel?: string
+    title: string
+    readMoreTitle?: string
     readMore?: string | React.ReactElement
     state: string
     setState: (newState: string) => void
@@ -17,36 +17,36 @@ const JaNeiRadio = ({
     const radioStyle = "flex-grow border-[1px] px-2 rounded-md hover:shadow"
     const selectedStyle =
         "bg-interaction-primary-hover-subtle border-interaction-primary"
-    const description = <ReadMore header={readMoreTittel}>{readMore}</ReadMore>
+    const description = <ReadMore header={readMoreTitle}>{readMore}</ReadMore>
 
     return (
         <RadioGroup
             className="grow"
-            legend={tittel}
+            legend={title}
             description={readMore !== undefined && description}
             onChange={setState}
             value={state}
         >
             <div className="flex flex-row gap-4 mb-4 mt-4">
-                <Radio
+                <DSRadio
                     className={`${radioStyle} ${
                         state == "Ja" && selectedStyle
                     }`}
                     value="Ja"
                 >
                     Ja
-                </Radio>
-                <Radio
+                </DSRadio>
+                <DSRadio
                     className={`${radioStyle} ${
                         state == "Nei" && selectedStyle
                     }`}
                     value="Nei"
                 >
                     Nei
-                </Radio>
+                </DSRadio>
             </div>
         </RadioGroup>
     )
 }
 
-export default JaNeiRadio
+export default Radio

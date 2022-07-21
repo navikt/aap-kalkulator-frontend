@@ -3,9 +3,9 @@ import { State } from "../../pages/_app"
 import { Button, Heading, TextField } from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Image from "next/image"
-import Sti from "../steg/Steg"
-import JaNeiRadio from "../jaNeiRadio/JaNeiRadio"
-import Tilbakeknapp from "../tilbakeknapp/Tilbakeknapp"
+import Stepper from "../stepper/Stepper"
+import Radio from "../radio/Radio"
+import BackLink from "../backlink/BackLink"
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -20,8 +20,8 @@ const Sykmelding = () => {
     const [open, setOpen] = useState("")
     const handleSubmit = async (event: React.FormEvent<InntektsForm>) => {
         event.preventDefault()
-        const currentAar = new Date().getFullYear()
-        let sykmeldtAar = currentAar
+        const detteAaret = new Date().getFullYear()
+        let sykmeldtAar = detteAaret
         if (open == "Ja") {
             sykmeldtAar = parseInt(event.currentTarget.sykmelding.value)
         }
@@ -29,17 +29,17 @@ const Sykmelding = () => {
 
         const errors = isNaN(sykmeldtAar)
             ? "Sykmeldingsår må være et tall"
-            : sykmeldtAar > currentAar
+            : sykmeldtAar > detteAaret
             ? "Sykmeldingsår må være året vi er i nå eller tidligere"
-            : sykmeldtAar < currentAar - aapGrense
+            : sykmeldtAar < detteAaret - aapGrense
             ? `Du får ikke arbeidsavklaringspenger dersom du ble sykmeldt for mer enn ${aapGrense} år siden.`
             : ""
 
         setError(errors)
         if (
             (isNaN(sykmeldtAar) ||
-                sykmeldtAar > currentAar ||
-                sykmeldtAar < currentAar - aapGrense) &&
+                sykmeldtAar > detteAaret ||
+                sykmeldtAar < detteAaret - aapGrense) &&
             open
         ) {
             return
@@ -57,8 +57,8 @@ const Sykmelding = () => {
 
     return (
         <>
-            <Sti />
-            <Tilbakeknapp til="/" />
+            <Stepper />
+            <BackLink target="/" />
             <div className="items flex flex-col pt-4">
                 <Image
                     src="/ikoner/wallet_circle.svg"
@@ -73,9 +73,9 @@ const Sykmelding = () => {
             </div>
 
             <form onSubmit={handleSubmit}>
-                <JaNeiRadio
-                    tittel="Er du sykmeldt?"
-                    readMoreTittel="Hvorfor spør vi om du er sykmeldt?"
+                <Radio
+                    title="Er du sykmeldt?"
+                    readMoreTitle="Hvorfor spør vi om du er sykmeldt?"
                     readMore="Inntektsårene på neste side bestemmes ut i fra året du ble sykmeldt."
                     state={open}
                     setState={setOpen}

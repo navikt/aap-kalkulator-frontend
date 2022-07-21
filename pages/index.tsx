@@ -28,7 +28,7 @@ const Home: NextPage = () => {
                 >
                     Hvor mye kan du få?
                 </Heading>
-                <Divider />
+                <Divider isTitle={true} />
             </div>
             <div className="flex flex-col items-center mt-4 gap-4">
                 <ul className="list-disc space-y-2 mb-8 pl-4">

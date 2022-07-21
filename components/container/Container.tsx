@@ -1,11 +1,12 @@
 import { ReactNode } from "react"
-import Sidebanner from "../sidebanner/Sidebanner"
+import Banner from "../banner/Banner"
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
+import React from "react"
 
 const Container = ({ children }: { children: ReactNode }) => {
     return (
         <div className="min-h-container bg-canvas-background">
-            <Sidebanner tittel="Beregning av arbeidsavklaringspenger" />
+            <Banner title="Beregning av arbeidsavklaringspenger" />
 
             <div className="md:w-3/5 lg:w-2/5 mx-auto pb-8">
                 <Breadcrumbs />

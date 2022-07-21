@@ -1,25 +1,15 @@
 import React, { useContext, useEffect, useState } from "react"
-import { ResultState, State } from "./_app"
+import { State } from "./_app"
 import { NextPage } from "next"
-import {
-    Accordion,
-    Alert,
-    Heading,
-    Label,
-    Link,
-    ReadMore,
-    ToggleGroup,
-} from "@navikt/ds-react"
+import { Accordion, Alert, Heading, Label, Link } from "@navikt/ds-react"
 import Image from "next/image"
+import { ResultInterface } from "../components/result/Result"
 
 const Resultat: NextPage = () => {
-    const { resultat, setResultat } = useContext(ResultState)
-    const { state, setState } = useContext(State)
-    const [value, setValue] = useState("14dag")
+    const [result, setResult] = useState<ResultInterface | null>(null)
+    const { state } = useContext(State)
 
     useEffect(() => {
-        //event.preventDefault()
-
         const endpoint =
             process.env.NODE_ENV == "production"
                 ? "https://aap-kalkulator-api.ekstern.dev.nav.no/beregning"
@@ -34,9 +24,9 @@ const Resultat: NextPage = () => {
 
         fetch(endpoint, options)
             .then((response) => response.json())
-            .then((data) => setResultat(data))
+            .then((data) => setResult(data))
     }, [])
-    const perDag = Math.ceil(resultat.resultat / 260)
+    const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
     return (
         <div className="flex flex-col items-center">
             <div className="flex flex-col pt-4 mb-4">
@@ -61,33 +51,37 @@ const Resultat: NextPage = () => {
             <div className="rounded-2xl bg-feedback-success-background p-6 w-full md:w-5/6">
                 <div className="grid grid-cols-2 md:grid-cols-3 mb-4 gap-4 justify-center items-baseline">
                     <span className="text-4xl md:text-5xl  md:col-start-2 justify-self-end">
-                        {(perDag * 10).toLocaleString("nb-NO")}&nbsp;kr
+                        {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
                     </span>
                     <Label>hver&nbsp;14.&nbsp;dag</Label>
 
                     <span className="text-2xl md:text-3xl md:col-start-2 justify-self-end">
-                        {Math.ceil(resultat.resultat).toLocaleString("nb-NO")}
+                        {Math.ceil(
+                            result == null ? 0 : result.resultat
+                        ).toLocaleString("nb-NO")}
                         &nbsp;kr
                     </span>
                     <Label>årlig</Label>
                 </div>
             </div>
-            <div className="py-4 md:w-5/6">
-                <Accordion>
-                    <Accordion.Item>
-                        <Accordion.Header>
-                            Hvorfor får jeg denne summen?
-                        </Accordion.Header>
-                        <Accordion.Content>
-                            <ul className=" space-y-4 list-disc">
-                                {resultat.logs.map((text, index) => (
-                                    <li key={index}>{text}</li>
-                                ))}
-                            </ul>
-                        </Accordion.Content>
-                    </Accordion.Item>
-                </Accordion>
-            </div>
+            {result != null && (
+                <div className="py-4 md:w-5/6">
+                    <Accordion>
+                        <Accordion.Item>
+                            <Accordion.Header>
+                                Hvorfor får jeg denne summen?
+                            </Accordion.Header>
+                            <Accordion.Content>
+                                <ul className=" space-y-4 list-disc">
+                                    {result?.logs.map((text, index) => (
+                                        <li key={index}>{text}</li>
+                                    ))}
+                                </ul>
+                            </Accordion.Content>
+                        </Accordion.Item>
+                    </Accordion>
+                </div>
+            )}
             <div className="pt-4">
                 <Alert variant="info" size="small">
                     <p>
