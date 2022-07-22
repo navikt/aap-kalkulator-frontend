@@ -23,9 +23,9 @@ const Inntekt = () => {
     const { state, setState } = useContext(State)
     const [error, setError] = useState<string[]>(["", "", ""])
     const [inntekt, setInntekt] = useState<Inntekt>({
-        inntekt1: "",
-        inntekt2: "",
-        inntekt3: "",
+        inntekt1: state.inntekt1? state.inntekt1.toLocaleString("nb-NO"):"",
+        inntekt2: state.inntekt2? state.inntekt2.toLocaleString("nb-NO"):"",
+        inntekt3: state.inntekt3? state.inntekt3.toLocaleString("nb-NO"):"",
     })
 
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {

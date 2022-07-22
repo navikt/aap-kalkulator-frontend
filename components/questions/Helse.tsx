@@ -4,7 +4,6 @@ import {Button, Heading, ReadMore, TextField} from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Image from "next/image"
 import Stepper from "../stepper/Stepper"
-import Radio from "../radio/Radio"
 import BackLink from "../backlink/BackLink"
 
 interface InntektsForm extends HTMLFormElement {
@@ -22,6 +21,7 @@ const Helse = () => {
         const parsed = parseInt(text)
         setState({
             ...state,
+            // @ts-ignore
             sykmeldtAar: isNaN(parsed) ? undefined : parsed
         })
     }
