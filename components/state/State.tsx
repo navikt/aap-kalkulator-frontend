@@ -1,8 +1,8 @@
 export interface StateInterface {
-    inntekt1: number
-    inntekt2: number
-    inntekt3: number
-    antallBarn: number
-    arbeidsgrad: number
-    sykmeldtAar: number
+    inntekt1: number | undefined
+    inntekt2: number | undefined
+    inntekt3: number | undefined
+    antallBarn: number | undefined
+    arbeidsgrad: number | undefined
+    sykmeldtAar: number | undefined
 }

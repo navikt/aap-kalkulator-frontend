@@ -17,14 +17,20 @@ const Helse = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
-    const [open, setOpen] = useState("")
+
+    const onChange = (text: string) => {
+        const parsed = parseInt(text)
+        setState({
+            ...state,
+            sykmeldtAar: isNaN(parsed) ? undefined : parsed
+        })
+    }
+
     const handleSubmit = async (event: React.FormEvent<InntektsForm>) => {
         event.preventDefault()
         const detteAaret = new Date().getFullYear()
-        let sykmeldtAar = detteAaret
-        if (open == "Ja") {
-            sykmeldtAar = parseInt(event.currentTarget.sykmelding.value)
-        }
+        const sykmeldtAar = parseInt(event.currentTarget.sykmelding.value)
+
         const aapGrense = 10
 
         const errors = isNaN(sykmeldtAar)
@@ -39,8 +45,7 @@ const Helse = () => {
         if (
             (isNaN(sykmeldtAar) ||
                 sykmeldtAar > detteAaret ||
-                sykmeldtAar < detteAaret - aapGrense) &&
-            open
+                sykmeldtAar < detteAaret - aapGrense)
         ) {
             return
         }
@@ -87,6 +92,8 @@ const Helse = () => {
                             label=""
                             id="sykmelding"
                             className="w-1/5 "
+                            value={state.sykmeldtAar == undefined ? "" : state.sykmeldtAar.toString()}
+                            onChange={event => onChange(event.target.value)}
                             error={
                                 error && (
                                     <div className="list-disc font-bold w-full text-red-500">

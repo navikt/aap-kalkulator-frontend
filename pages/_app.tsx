@@ -7,28 +7,20 @@ import { StateInterface } from "../components/state/State"
 import Head from "next/head"
 import React from "react"
 
-export const State = createContext({
-    state: {
-        inntekt1: 0.0,
-        inntekt2: 0.0,
-        inntekt3: 0.0,
-        antallBarn: 0,
-        arbeidsgrad: 0,
-        sykmeldtAar: new Date().getFullYear(),
-    },
-    setState: (value: StateInterface) => {},
-})
+export const State = createContext(null)
 
 function MyApp({ Component, pageProps }: AppProps) {
     const [state, setState] = useState<StateInterface>({
-        inntekt1: 0.0,
-        inntekt2: 0.0,
-        inntekt3: 0.0,
-        antallBarn: 0,
-        arbeidsgrad: 0,
-        sykmeldtAar: new Date().getFullYear(),
+        antallBarn: undefined,
+        arbeidsgrad: undefined,
+        inntekt1: undefined,
+        inntekt2: undefined,
+        inntekt3: undefined,
+        sykmeldtAar: undefined
     })
+
     return (
+       // @ts-ignore
         <State.Provider value={{ state, setState }}>
             <Head>
                 <title>Aap-kalkulator</title>
