@@ -16,6 +16,15 @@ const Barn = () => {
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
     const [open, setOpen] = useState(state.antallBarn ? "Ja" : "Nei")
+    const [radioError, setRadioError] = useState<string | undefined>(undefined)
+
+    const onRadioChange = (value: string) => {
+        setState({
+            ...state,
+            harBarn: value == "Ja",
+        })
+    }
+
     const onChange = (text: string) => {
         const parsed = parseInt(text)
         setState({
@@ -26,12 +35,18 @@ const Barn = () => {
     const handleSubmit = async (event: React.FormEvent<BarnInterface>) => {
         event.preventDefault()
         let antallBarn = 0
+
+        if (state.harArbeid == undefined) {
+            setRadioError("You shall not pass:)")
+            return
+        }
+
         if (open == "Ja") {
             antallBarn = parseInt(event.currentTarget.antallBarn.value)
         }
-        setError(isNaN(antallBarn) || antallBarn < 0 ? "Ugyldig verdi" : "")
 
         if (isNaN(antallBarn) || antallBarn < 0) {
+            setError("Ugyldig verdi")
             return
         }
 
@@ -65,10 +80,17 @@ const Barn = () => {
                     title="Har du barn?"
                     readMoreTitle="Hvorfor spør vi om du har barn?"
                     readMore={readmoreTekst}
-                    state={open}
-                    onChange={setOpen}
+                    state={state.harBarn}
+                    onChange={onRadioChange}
                 />
-                {open == "Ja" && (
+                {radioError != undefined && (
+                    <ul className="list-disc">
+                        <li className="ml-5 font-bold text-red-500 mb-4">
+                            {radioError}
+                        </li>
+                    </ul>
+                )}
+                {state.harBarn && (
                     <div>
                         <Label className="text-xl">
                             Hvor mange barn har du?

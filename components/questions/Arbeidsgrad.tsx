@@ -6,7 +6,6 @@ import Image from "next/image"
 import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
-import { stat } from "fs"
 
 interface ArbeidsgradInterface extends HTMLFormElement {
     arbeidsgrad: HTMLInputElement
