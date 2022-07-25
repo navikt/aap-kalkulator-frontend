@@ -111,17 +111,18 @@ const Arbeidsgrad = () => {
             )}
             <form onSubmit={handleSubmit}>
                 {state.harArbeid && (
-                    <div className="mb-4">
+                    <div>
                         <Label className="text-xl">
                             Hvor mange timer i uken jobber du?
                         </Label>
                         <BodyShort>
                             Varierer det, kan du oppgi gjennomsnittet
                         </BodyShort>
-                        <div className="flex flex-row gap-2 mb-4 items-center">
+                        <div className="flex flex-col h-24 my-2 ">
+                        <div className="flex flex-row gap-2 items-center">
                             <TextField
                                 inputMode="numeric"
-                                className="mb-4 md:w-16 col-start-1"
+                                className="mb-2 md:w-16 col-start-1"
                                 id="arbeidstimer"
                                 label=""
                                 size="medium"
@@ -129,23 +130,18 @@ const Arbeidsgrad = () => {
                                 onChange={(event) =>
                                     onChange(event.target.value)
                                 }
-                                error={
-                                    error && (
-                                        <div className=" row-start-2 list-disc font-bold w-full text-red-500">
-                                            {}
-                                        </div>
-                                    )
-                                }
+                                error = {error && <div className="hidden"></div>}
                             />
-                            <BodyShort className={`${error && "-mt-8"}`}>
+                            <BodyShort >
                                 timer per uke
                             </BodyShort>
                         </div>
                         {error && (
-                            <div className="list-disc ml-5 font-bold text-red-500 mb-4 -mt-14">
-                                {error}
-                            </div>
+                            <ul className="list-disc ml-5 font-bold text-red-500">
+                                <li>{error}</li>
+                            </ul>
                         )}
+                    </div>
                     </div>
                 )}
                 <Button variant="primary">Gå videre</Button>

@@ -25,7 +25,7 @@ const Helse = () => {
             // @ts-ignore
             sykmeldtAar: isNaN(parsed) ? undefined : parsed,
         })
-        if(!erFeil(parsed)){
+        if(!erFeil(parsed) && error!= ""){
             setError("")
         }
     }
@@ -92,12 +92,13 @@ const Helse = () => {
                     Inntektsårene på neste side bestemmes ut fra året du fikk
                     nedsatt arbeidsevne.
                 </ReadMore>
+                <div className="flex flex-col h-24 my-2">
                 <TextField
                     inputMode="numeric"
                     size="medium"
                     label=""
                     id="sykmelding"
-                    className="w-1/5 "
+                    className="w-1/5 mb-2"
                     value={
                         state.sykmeldtAar == undefined
                             ? ""
@@ -106,14 +107,13 @@ const Helse = () => {
                     onChange={(event) => onChange(event.target.value)}
                     error = {error && <div className="hidden"></div>}
                 />
-                {error && state.sykmeldtAar && (
-                    <ul className="list-disc ml-5 font-bold text-red-500 mb-4">
+                {error && (
+                    <ul className="list-disc ml-5 font-bold text-red-500">
                         <li>{error}</li>
                     </ul>
                 )}
-                <div className="mt-4">
-                    <Button variant="primary">Gå videre</Button>
                 </div>
+                    <Button variant="primary">Gå videre</Button>
             </form>
         </>
     )

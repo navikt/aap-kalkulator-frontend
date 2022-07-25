@@ -96,10 +96,11 @@ const Barn = () => {
                         <BodyShort>
                             Barnet må være under 18 år og bo hos deg.
                         </BodyShort>
-                        <div className="flex flex-row items-center gap-2 mb-4">
+                        <div className="flex flex-col h-24 my-2">
+                        <div className="flex flex-row items-center gap-2">
                             <TextField
                                 inputMode="numeric"
-                                className="mb-4 w-16"
+                                className="mb-2 w-16"
                                 id="antallBarn"
                                 label=""
                                 size="medium"
@@ -111,23 +112,18 @@ const Barn = () => {
                                 onChange={(event) =>
                                     onChange(event.target.value)
                                 }
-                                error={
-                                    error && (
-                                        <div className=" row-start-2 list-disc font-bold w-full text-red-500">
-                                            {}
-                                        </div>
-                                    )
-                                }
+                                error = {error && <div className="hidden"></div>}
                             />
-                            <BodyShort className={`${error && "-mt-8"}`}>
+                            <BodyShort>
                                 barn
                             </BodyShort>
                         </div>
                         {error && (
-                            <div className="list-disc ml-5 font-bold text-red-500 mb-4 -mt-14">
-                                {error}
-                            </div>
+                            <ul className="list-disc ml-5 font-bold text-red-500">
+                                <li>{error}</li>
+                            </ul>
                         )}
+                        </div>
                     </div>
                 )}
 

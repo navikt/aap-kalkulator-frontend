@@ -118,9 +118,10 @@ const Inntekt = () => {
                 </ReadMore>
                 <div className="flex md:flex-row flex-col md:space-x-8 mt-8 md:mb-8  ">
                     {inntektsAar.reverse().map((aar, index) => (
+                        <div key={index} className="flex flex-col h-24">
                         <TextField
                             inputMode="numeric"
-                            className={`md:mb-4 w-40 h-20 ${error && "mb-12"}`}
+                            className={`md:mb-2 w-40 h-20 `}
                             key={index}
                             id={`inntekt${3 - index}`}
                             name={`inntekt${3 - index}`}
@@ -130,7 +131,15 @@ const Inntekt = () => {
                             value={Object.values(inntekt)[2 - index]}
                             onChange={onChange}
                         />
+
+                    {error[2-index] && (
+                        <ul className="list-disc ml-5 font-bold text-red-500">
+                        <li>{error[2-index]}</li>
+                        </ul>
+                        )}
+                        </div>
                     ))}
+
                 </div>
                 <Button variant="primary">Gå videre</Button>
             </form>
