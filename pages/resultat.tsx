@@ -4,6 +4,7 @@ import { NextPage } from "next"
 import { Accordion, Alert, Heading, Label, Link } from "@navikt/ds-react"
 import Image from "next/image"
 import { ResultInterface } from "../components/result/Result"
+import BackLink from "../components/backlink/BackLink";
 
 const Resultat: NextPage = () => {
     const [result, setResult] = useState<ResultInterface | null>(null)
@@ -34,6 +35,8 @@ const Resultat: NextPage = () => {
     }, [])
     const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
     return (
+        <>
+        <BackLink target="/steg/4" />
         <div className="flex flex-col items-center">
             <div className="flex flex-col pt-4 mb-4" aria-hidden="true">
                 <Image
@@ -102,6 +105,7 @@ const Resultat: NextPage = () => {
                 </Alert>
             </div>
         </div>
+        </>
     )
 }
 

@@ -41,9 +41,9 @@ const Barn = () => {
         }
 
         if (
-            state.antallBarn === undefined ||
-            isNaN(state.antallBarn) ||
-            state.antallBarn < 0
+            (state.antallBarn === undefined && state.harBarn)||
+            (state.antallBarn !== undefined && (isNaN(state.antallBarn) ||
+            state.antallBarn < 0))
         ) {
             setError("Ugyldig verdi")
             return
