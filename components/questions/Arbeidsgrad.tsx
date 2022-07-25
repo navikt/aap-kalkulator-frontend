@@ -19,10 +19,14 @@ const Arbeidsgrad = () => {
 
     const arbeidsuke = 37.5
     const onChange = (text: string) => {
+        const parsed = parseFloat(text.replace(",","."))
         setState({
             ...state,
             arbeidstimer: text,
         })
+        if(!isNaN(parsed) || text==""){
+            setError("")
+        }
     }
     const onRadioChange = (value: string) => {
         setState({

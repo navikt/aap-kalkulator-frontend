@@ -16,6 +16,7 @@ const Helse = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
+    const aapGrense = 10
 
     const onChange = (text: string) => {
         const parsed = parseInt(text)
@@ -24,6 +25,15 @@ const Helse = () => {
             // @ts-ignore
             sykmeldtAar: isNaN(parsed) ? undefined : parsed,
         })
+        if(!erFeil(parsed)){
+            setError("")
+        }
+    }
+    const erFeil = (sykmeldtAar: number) => {
+        const detteAaret = new Date().getFullYear()
+        return isNaN(sykmeldtAar) ||
+        sykmeldtAar > detteAaret ||
+        sykmeldtAar < detteAaret - aapGrense
     }
 
     const handleSubmit = async (event: React.FormEvent<InntektsForm>) => {
@@ -31,7 +41,7 @@ const Helse = () => {
         const detteAaret = new Date().getFullYear()
         const sykmeldtAar = parseInt(event.currentTarget.sykmelding.value)
 
-        const aapGrense = 10
+
 
         const errors = isNaN(sykmeldtAar)
             ? "Sykmeldingsår må være et tall"
@@ -42,10 +52,7 @@ const Helse = () => {
             : ""
 
         setError(errors)
-        if (
-            isNaN(sykmeldtAar) ||
-            sykmeldtAar > detteAaret ||
-            sykmeldtAar < detteAaret - aapGrense
+        if (erFeil(sykmeldtAar)
         ) {
             return
         }
@@ -97,18 +104,12 @@ const Helse = () => {
                             : state.sykmeldtAar.toString()
                     }
                     onChange={(event) => onChange(event.target.value)}
-                    error={
-                        error && (
-                            <div className="list-disc font-bold w-full text-red-500">
-                                {}
-                            </div>
-                        )
-                    }
+                    error = {error && <div className="hidden"></div>}
                 />
                 {error && state.sykmeldtAar && (
-                    <div className="list-disc ml-5 font-bold text-red-500 mb-4 -mt-6">
-                        {error}
-                    </div>
+                    <ul className="list-disc ml-5 font-bold text-red-500 mb-4">
+                        <li>{error}</li>
+                    </ul>
                 )}
                 <div className="mt-4">
                     <Button variant="primary">Gå videre</Button>

@@ -27,10 +27,13 @@ const Barn = () => {
 
     const onChange = (text: string) => {
         const parsed = parseInt(text)
+        setError("")
+
         setState({
             ...state,
             antallBarn: isNaN(parsed) ? undefined : parsed,
         })
+
     }
     const handleSubmit = async (event: React.FormEvent<BarnInterface>) => {
         event.preventDefault()

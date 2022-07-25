@@ -39,13 +39,19 @@ const Inntekt = () => {
     })
 
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const verdi = parseFloat(event.target.value.replace(/[\.,\s]/g, ""))
+        const tekst = event.target.value.replace(/[\.,\s]/g, "")
+        const verdi = parseFloat(tekst)
+        const index = parseInt(event.target.name.at(-1)!!) - 1
+        let newErrors = error
+        newErrors[index] = ""
+        setError(newErrors)
         setInntekt({
             ...inntekt,
             [event.target.name]: !isNaN(verdi)
                 ? verdi.toLocaleString("nb-NO")
                 : "",
         })
+
     }
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
