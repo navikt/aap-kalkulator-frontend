@@ -15,13 +15,13 @@ const Barn = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
-    const [open, setOpen] = useState(state.antallBarn ? "Ja" : "Nei")
     const [radioError, setRadioError] = useState<string | undefined>(undefined)
 
     const onRadioChange = (value: string) => {
         setState({
             ...state,
             harBarn: value == "Ja",
+            antallBarn: value == "Nei" ? undefined : state.antallBarn,
         })
     }
 
@@ -34,26 +34,21 @@ const Barn = () => {
     }
     const handleSubmit = async (event: React.FormEvent<BarnInterface>) => {
         event.preventDefault()
-        let antallBarn = 0
 
-        if (state.harArbeid == undefined) {
+        if (state.harBarn == undefined) {
             setRadioError("You shall not pass:)")
             return
         }
 
-        if (open == "Ja") {
-            antallBarn = parseInt(event.currentTarget.antallBarn.value)
-        }
-
-        if (isNaN(antallBarn) || antallBarn < 0) {
+        if (
+            state.antallBarn === undefined ||
+            isNaN(state.antallBarn) ||
+            state.antallBarn < 0
+        ) {
             setError("Ugyldig verdi")
             return
         }
 
-        setState({
-            ...state,
-            antallBarn,
-        })
         await router.push("/resultat")
     }
     const readmoreTekst =

@@ -22,6 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         sykmeldtAar: undefined,
         lengsteSteg: 1,
         harArbeid: undefined,
+        arbeidstimer: undefined,
         harBarn: undefined,
     })
 

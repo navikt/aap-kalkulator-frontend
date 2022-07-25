@@ -4,6 +4,7 @@ export interface StateInterface {
     inntekt3: number | undefined
     antallBarn: number | undefined
     arbeidsgrad: number | undefined
+    arbeidstimer: string | undefined
     sykmeldtAar: number | undefined
     lengsteSteg: number
     harArbeid: boolean | undefined

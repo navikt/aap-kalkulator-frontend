@@ -11,26 +11,16 @@ interface ArbeidsgradInterface extends HTMLFormElement {
     arbeidsgrad: HTMLInputElement
 }
 
-interface Arbeidstimer {
-    arbeidstimer: string
-}
-
 const Arbeidsgrad = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState<string | undefined>(undefined)
 
-    const [arbeidstimerState, setArbeidstimerState] = useState<Arbeidstimer>({
-        arbeidstimer: state.arbeidsgrad
-            ? ((state.arbeidsgrad * 37.5) / 100).toString()
-            : "",
-    })
     const arbeidsuke = 37.5
     const onChange = (text: string) => {
-        setArbeidstimerState({
-            ...arbeidstimerState,
-            // @ts-ignore
+        setState({
+            ...state,
             arbeidstimer: text,
         })
     }
@@ -38,6 +28,7 @@ const Arbeidsgrad = () => {
         setState({
             ...state,
             harArbeid: value == "Ja",
+            arbeidstimer: value == "Nei" ? undefined : state.arbeidstimer,
         })
     }
     const handleSubmit = async (
@@ -53,14 +44,15 @@ const Arbeidsgrad = () => {
         }
 
         if (state.harArbeid) {
-            arbeidstimer = parseFloat(
-                event.currentTarget.arbeidstimer.value.replace(",", ".")
-            )
+            arbeidstimer =
+                state.arbeidstimer == undefined
+                    ? NaN
+                    : parseFloat(state.arbeidstimer.replace(",", "."))
             arbeidsgrad = (arbeidstimer / arbeidsuke) * 100
         }
-        setError(isNaN(arbeidstimer) || arbeidstimer < 0 ? "Ugyldig verdi" : "")
 
         if (isNaN(arbeidstimer) || arbeidstimer < 0) {
+            setError("Ugyldig verdi")
             return
         }
 
@@ -129,11 +121,7 @@ const Arbeidsgrad = () => {
                                 id="arbeidstimer"
                                 label=""
                                 size="medium"
-                                value={
-                                    arbeidstimerState.arbeidstimer == undefined
-                                        ? ""
-                                        : arbeidstimerState.arbeidstimer.toString()
-                                }
+                                value={state.arbeidstimer}
                                 onChange={(event) =>
                                     onChange(event.target.value)
                                 }
