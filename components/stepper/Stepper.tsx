@@ -47,6 +47,7 @@ const Step = ({
         </div>
     ) : (
         <div
+            aria-hidden="true"
             className={`border-2 border-border text-text-muted ${circleStyling}`}
         >
             {stepNumber}
@@ -55,9 +56,9 @@ const Step = ({
 
     if (!isVisited) {
         return (
-            <div className={`${stepStyling}`}>
+            <div aria-label={title} className={`${stepStyling}`}>
                 {circle}
-                <BodyShort as="span" size="small">
+                <BodyShort aria-hidden="true" as="span" size="small">
                     {title}
                 </BodyShort>
             </div>
@@ -80,12 +81,16 @@ const Step = ({
 const Stepper = () => {
     const stepperRef = useRef<HTMLElement>(null)
     const steps = ["Helse", "Inntekt", "Arbeid", "Barn", "Resultat"]
+    const router = useRouter()
+    const path = router.asPath
+    const current_step = parseInt(path.split("/").at(-1)!!)
     return (
         <nav ref={stepperRef}>
             <ul className="flex flex-row justify-center pb-4 items-center md:px-8 px-0">
                 {steps.map((step, index) => {
                     return (
-                        <div
+                        <li
+                            aria-current={current_step === index+1}
                             className="grid grid-cols-2 grid-rows-2 place-items-center justify-items-center"
                             key={index}
                         >
@@ -95,7 +100,7 @@ const Stepper = () => {
                                 stepNumber={index + 1}
                             />
                             {index !== steps.length - 1 && <Divider />}
-                        </div>
+                        </li>
                     )
                 })}
             </ul>

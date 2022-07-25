@@ -3,7 +3,7 @@ import { State } from "../../pages/_app"
 import {
     BodyShort,
     Button,
-    Heading,
+    Heading, Label,
     ReadMore,
     TextField,
 } from "@navikt/ds-react"
@@ -87,7 +87,7 @@ const Inntekt = () => {
         <>
             <Stepper />
             <BackLink target="/steg/1" />
-            <div className="items flex flex-col pt-4">
+            <div aria-hidden="true" className="items flex flex-col pt-4">
                 <Image
                     src="/ikoner/wallet_circle.svg"
                     height="100"
@@ -95,14 +95,14 @@ const Inntekt = () => {
                     alt="lommebok ikon"
                     className={" flex items-center"}
                 ></Image>
-                <Heading size="large" level="2" spacing>
-                    Inntekt
-                </Heading>
             </div>
+            <Heading size="large" level="2" spacing>
+                Inntekt
+            </Heading>
             <form onSubmit={handleSubmit}>
-                <Heading size="small">
+                <Label className="text-xl">
                     Hvor mye tjente du de tre siste årene før du ble sykmeldt?
-                </Heading>
+                </Label>
                 <BodyShort spacing>Oppgi inntekt før skatt, i kroner</BodyShort>
                 <ReadMore size="small" header="Hvorfor spør vi om inntekt?">
                     {" "}

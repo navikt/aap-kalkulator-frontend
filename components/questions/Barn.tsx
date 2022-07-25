@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import { BodyShort, Button, Heading, TextField } from "@navikt/ds-react"
+import {BodyShort, Button, Heading, Label, TextField} from "@navikt/ds-react"
 import Image from "next/image"
 import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
@@ -48,7 +48,7 @@ const Barn = () => {
         <>
             <Stepper />
             <BackLink target="/steg/3" />
-            <div className=" flex flex-col pt-4">
+            <div aria-hidden="true" className=" flex flex-col pt-4">
                 <Image
                     src="/ikoner/teddy_circle.svg"
                     height="100"
@@ -56,10 +56,10 @@ const Barn = () => {
                     alt="lommebok ikon"
                     className={" flex items-center"}
                 ></Image>
-                <Heading size="large" level="2" spacing>
-                    Barn
-                </Heading>
             </div>
+            <Heading size="large" level="2" spacing>
+                Barn
+            </Heading>
             <form onSubmit={handleSubmit}>
                 <Radio
                     title="Har du barn?"
@@ -70,7 +70,7 @@ const Barn = () => {
                 />
                 {open == "Ja" && (
                     <div>
-                        <Heading size="small">Hvor mange barn har du?</Heading>
+                        <Label className="text-xl">Hvor mange barn har du?</Label>
                         <BodyShort>
                             Barnet må være under 18 år og bo hos deg.
                         </BodyShort>

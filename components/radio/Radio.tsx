@@ -1,4 +1,4 @@
-import { Radio as DSRadio, RadioGroup, ReadMore } from "@navikt/ds-react"
+import {Label, Radio as DSRadio, RadioGroup, ReadMore} from "@navikt/ds-react"
 import React from "react"
 
 const Radio = ({
@@ -22,7 +22,7 @@ const Radio = ({
     return (
         <RadioGroup
             className="grow"
-            legend={title}
+            legend={<Label className="text-xl">{title}</Label>}
             description={readMore !== undefined && description}
             onChange={setState}
             value={state}

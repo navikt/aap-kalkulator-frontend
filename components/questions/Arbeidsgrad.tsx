@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import { BodyShort, Button, Heading, TextField } from "@navikt/ds-react"
+import {BodyShort, Button, Heading, Label, TextField} from "@navikt/ds-react"
 import Image from "next/image"
 import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
@@ -81,7 +81,7 @@ const Arbeidsgrad = () => {
         <>
             <Stepper />
             <BackLink target="/steg/2" />
-            <div className="flex flex-col pt-4 mb-4">
+            <div aria-hidden="true" className="flex flex-col pt-4 mb-4">
                 <Image
                     src="/ikoner/briefcase_circle.svg"
                     height="100"
@@ -110,9 +110,9 @@ const Arbeidsgrad = () => {
             <form onSubmit={handleSubmit}>
                 {open == "Ja" && (
                     <div className="mb-4">
-                        <Heading size="small">
+                        <Label className="text-xl">
                             Hvor mange timer i uken jobber du?
-                        </Heading>
+                        </Label>
                         <BodyShort>
                             Varierer det, kan du oppgi gjennomsnittet
                         </BodyShort>

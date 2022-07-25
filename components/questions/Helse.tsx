@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import { Button, Heading, ReadMore, TextField } from "@navikt/ds-react"
+import { Button, Heading, Label, ReadMore, TextField } from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Image from "next/image"
 import Stepper from "../stepper/Stepper"
@@ -60,7 +60,7 @@ const Helse = () => {
         <>
             <Stepper />
             <BackLink target="/" />
-            <div className="items flex flex-col pt-4">
+            <div aria-hidden="true" className="items flex flex-col pt-4">
                 <Image
                     src="/ikoner/helse_circle.svg"
                     height="100"
@@ -68,15 +68,16 @@ const Helse = () => {
                     alt="helse ikon"
                     className={" flex items-center"}
                 ></Image>
-                <Heading size="large" level="2" spacing>
-                    Helse
-                </Heading>
+
             </div>
+            <Heading size="large" level="2" spacing>
+                Helse
+            </Heading>
 
             <form onSubmit={handleSubmit}>
-                <Heading size="small">
+                <Label className="text-xl">
                     Hvilket år fikk du først nedsatt arbeidsevne?
-                </Heading>
+                </Label>
                 <ReadMore
                     size="small"
                     header="Hvorfor spør vi om når du fikk nedsatt arbeidsevne?"
