@@ -59,12 +59,8 @@ const Arbeidsgrad = () => {
         }
 
         setState({
-            inntekt1: state.inntekt1,
-            inntekt2: state.inntekt2,
-            inntekt3: state.inntekt3,
+            ...state,
             arbeidsgrad,
-            antallBarn: state.antallBarn,
-            sykmeldtAar: state.sykmeldtAar,
         })
         await router.push("/steg/4")
     }

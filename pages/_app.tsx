@@ -20,6 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         inntekt2: undefined,
         inntekt3: undefined,
         sykmeldtAar: undefined,
+        lengsteSteg: 1,
     })
 
     return (

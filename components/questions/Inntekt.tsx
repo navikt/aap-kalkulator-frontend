@@ -64,19 +64,17 @@ const Inntekt = () => {
             return
         }
         setState({
+            ...state,
             inntekt1,
             inntekt2,
             inntekt3,
-            antallBarn: state.antallBarn,
-            arbeidsgrad: state.arbeidsgrad,
-            sykmeldtAar: state.sykmeldtAar,
         })
         await router.push("/steg/3")
     }
 
     if (state.sykmeldtAar === undefined) {
         router.push("/")
-        return
+        return <></>
     }
 
     const inntektsAar = [

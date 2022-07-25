@@ -20,7 +20,6 @@ const Barn = () => {
         const parsed = parseInt(text)
         setState({
             ...state,
-            // @ts-ignore
             antallBarn: isNaN(parsed) ? undefined : parsed,
         })
     }
@@ -37,12 +36,8 @@ const Barn = () => {
         }
 
         setState({
-            inntekt1: state.inntekt1,
-            inntekt2: state.inntekt2,
-            inntekt3: state.inntekt3,
-            arbeidsgrad: state.arbeidsgrad,
+            ...state,
             antallBarn,
-            sykmeldtAar: state.sykmeldtAar,
         })
         await router.push("/resultat")
     }

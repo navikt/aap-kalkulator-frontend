@@ -1,8 +1,9 @@
-import { Success } from "@navikt/ds-icons"
+import {Edit, Notes, NotesFilled, Success} from "@navikt/ds-icons"
 import { BodyShort, Link } from "@navikt/ds-react"
-import React, { useRef } from "react"
+import React, { useContext, useRef } from "react"
 import Divider from "../divider/Divider"
 import { useRouter } from "next/router"
+import { State } from "../../pages/_app"
 
 const Step = ({
     title,
@@ -13,6 +14,7 @@ const Step = ({
     stepNumber: number
     isLast: boolean
 }) => {
+    const { state } = useContext(State)
     const router = useRouter()
     const path = router.asPath
     const current_step = parseInt(path.split("/").at(-1)!!)
@@ -23,7 +25,13 @@ const Step = ({
         isLast && "col-span-2"
     } gap-0`
 
-    const isCompleted = current_step > stepNumber
+    const isVisited = state.lengsteSteg >= stepNumber
+    const isCompleted = state.lengsteSteg > stepNumber
+
+    const onClick = async (url: string, e: React.MouseEvent) => {
+        e.preventDefault()
+        await router.push(url)
+    }
 
     const circle = isCompleted ? (
         <div
@@ -31,11 +39,11 @@ const Step = ({
         >
             <Success className="w-8 h-8" />
         </div>
-    ) : isCurrentPage ? (
+    ) : isVisited ? (
         <div
             className={`bg-feedback-info-background border-feedback-info-border border-2 ${circleStyling}`}
         >
-            {stepNumber}
+            <Edit className="w-4 h-4"/>
         </div>
     ) : (
         <div
@@ -45,7 +53,7 @@ const Step = ({
         </div>
     )
 
-    if (!isCompleted) {
+    if (!isVisited) {
         return (
             <div className={`${stepStyling}`}>
                 {circle}
@@ -55,8 +63,12 @@ const Step = ({
             </div>
         )
     }
+
     return (
-        <Link href={`/steg/${stepNumber}`} className={`${stepStyling}`}>
+        <Link
+            onClick={(e) => onClick(`/steg/${stepNumber}`, e)}
+            className={`${stepStyling}`}
+        >
             {circle}
             <BodyShort as="span" size="small">
                 {title}

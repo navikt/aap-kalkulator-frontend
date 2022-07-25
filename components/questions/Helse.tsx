@@ -50,11 +50,7 @@ const Helse = () => {
             return
         }
         setState({
-            inntekt1: state.inntekt1,
-            inntekt2: state.inntekt2,
-            inntekt3: state.inntekt3,
-            antallBarn: state.antallBarn,
-            arbeidsgrad: state.arbeidsgrad,
+            ...state,
             sykmeldtAar,
         })
         await router.push("/steg/2")

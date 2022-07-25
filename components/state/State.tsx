@@ -5,4 +5,5 @@ export interface StateInterface {
     antallBarn: number | undefined
     arbeidsgrad: number | undefined
     sykmeldtAar: number | undefined
+    lengsteSteg: number
 }

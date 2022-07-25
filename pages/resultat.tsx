@@ -19,7 +19,13 @@ const Resultat: NextPage = () => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(state),
+            body: JSON.stringify({
+                inntekt1: state.inntekt1,
+                inntekt2: state.inntekt2,
+                inntekt3: state.inntekt3,
+                arbeidsgrad: state.arbeidsgrad,
+                antallBarn: state.antallBarn,
+            }),
         }
 
         fetch(endpoint, options)
