@@ -1,4 +1,4 @@
-import {Edit, Notes, NotesFilled, Success} from "@navikt/ds-icons"
+import { Edit, Notes, NotesFilled, Success } from "@navikt/ds-icons"
 import { BodyShort, Link } from "@navikt/ds-react"
 import React, { useContext, useRef } from "react"
 import Divider from "../divider/Divider"
@@ -43,7 +43,7 @@ const Step = ({
         <div
             className={`bg-feedback-info-background border-feedback-info-border border-2 ${circleStyling}`}
         >
-            <Edit className="w-4 h-4"/>
+            <Edit className="w-4 h-4" />
         </div>
     ) : (
         <div
@@ -90,7 +90,7 @@ const Stepper = () => {
                 {steps.map((step, index) => {
                     return (
                         <li
-                            aria-current={current_step === index+1}
+                            aria-current={current_step === index + 1}
                             className="grid grid-cols-2 grid-rows-2 place-items-center justify-items-center"
                             key={index}
                         >

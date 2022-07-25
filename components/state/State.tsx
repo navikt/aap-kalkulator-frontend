@@ -6,4 +6,6 @@ export interface StateInterface {
     arbeidsgrad: number | undefined
     sykmeldtAar: number | undefined
     lengsteSteg: number
+    harArbeid: boolean | undefined
+    harBarn: boolean | undefined
 }

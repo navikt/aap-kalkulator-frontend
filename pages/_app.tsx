@@ -21,6 +21,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         inntekt3: undefined,
         sykmeldtAar: undefined,
         lengsteSteg: 1,
+        harArbeid: undefined,
+        harBarn: undefined,
     })
 
     return (

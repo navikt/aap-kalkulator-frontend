@@ -19,6 +19,7 @@ const Home: NextPage = () => {
                     width="120"
                     alt="kalkulator ikon"
                     className="flex items-center pb-4"
+                    aria-hidden="true"
                 ></Image>
                 <Heading
                     level="2"

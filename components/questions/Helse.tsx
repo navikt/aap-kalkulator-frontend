@@ -68,7 +68,6 @@ const Helse = () => {
                     alt="helse ikon"
                     className={" flex items-center"}
                 ></Image>
-
             </div>
             <Heading size="large" level="2" spacing>
                 Helse

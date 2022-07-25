@@ -3,7 +3,8 @@ import { State } from "../../pages/_app"
 import {
     BodyShort,
     Button,
-    Heading, Label,
+    Heading,
+    Label,
     ReadMore,
     TextField,
 } from "@navikt/ds-react"

@@ -1,10 +1,10 @@
 import { useRouter } from "next/router"
-import React, {useContext, useEffect} from "react"
+import React, { useContext, useEffect } from "react"
 import Inntekt from "../../components/questions/Inntekt"
 import Barn from "../../components/questions/Barn"
 import Arbeidsgrad from "../../components/questions/Arbeidsgrad"
 import Helse from "../../components/questions/Helse"
-import {State} from "../_app";
+import { State } from "../_app"
 
 const Steg = () => {
     const { state, setState } = useContext(State)

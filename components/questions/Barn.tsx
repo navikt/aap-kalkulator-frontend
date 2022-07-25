@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import {BodyShort, Button, Heading, Label, TextField} from "@navikt/ds-react"
+import { BodyShort, Button, Heading, Label, TextField } from "@navikt/ds-react"
 import Image from "next/image"
 import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
@@ -66,11 +66,13 @@ const Barn = () => {
                     readMoreTitle="Hvorfor spør vi om du har barn?"
                     readMore={readmoreTekst}
                     state={open}
-                    setState={setOpen}
+                    onChange={setOpen}
                 />
                 {open == "Ja" && (
                     <div>
-                        <Label className="text-xl">Hvor mange barn har du?</Label>
+                        <Label className="text-xl">
+                            Hvor mange barn har du?
+                        </Label>
                         <BodyShort>
                             Barnet må være under 18 år og bo hos deg.
                         </BodyShort>

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import {BodyShort, Button, Heading, Label, TextField} from "@navikt/ds-react"
+import { BodyShort, Button, Heading, Label, TextField } from "@navikt/ds-react"
 import Image from "next/image"
 import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
@@ -20,7 +20,8 @@ const Arbeidsgrad = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
-    const [open, setOpen] = useState(state.arbeidsgrad ? "Ja" : "Nei")
+    const [radioError, setRadioError] = useState<string | undefined>(undefined)
+
     const [arbeidstimerState, setArbeidstimerState] = useState<Arbeidstimer>({
         arbeidstimer: state.arbeidsgrad
             ? ((state.arbeidsgrad * 37.5) / 100).toString()
@@ -34,6 +35,12 @@ const Arbeidsgrad = () => {
             arbeidstimer: text,
         })
     }
+    const onRadioChange = (value: string) => {
+        setState({
+            ...state,
+            harArbeid: value == "Ja",
+        })
+    }
     const handleSubmit = async (
         event: React.FormEvent<ArbeidsgradInterface>
     ) => {
@@ -41,12 +48,12 @@ const Arbeidsgrad = () => {
         let arbeidstimer = 0
         let arbeidsgrad = 0
 
-        if (open != "Ja" && open != "Nei") {
-            setOpen("not Open")
+        if (state.harArbeid == undefined) {
+            setRadioError("You shall not pass:)")
             return
         }
 
-        if (open == "Ja") {
+        if (state.harArbeid) {
             arbeidstimer = parseFloat(
                 event.currentTarget.arbeidstimer.value.replace(",", ".")
             )
@@ -95,20 +102,20 @@ const Arbeidsgrad = () => {
             </Heading>
             <Radio
                 title="Har du jobb?"
-                state={open}
-                setState={setOpen}
+                state={state.harArbeid}
+                onChange={onRadioChange}
                 readMoreTitle="Hvorfor spør vi om du har jobb?"
                 readMore={readMoreText}
             />
-            {open == "not Open" && (
+            {radioError != undefined && (
                 <ul className="list-disc">
                     <li className="ml-5 font-bold text-red-500 mb-4">
-                        you shall not pass?
+                        {radioError}
                     </li>
                 </ul>
             )}
             <form onSubmit={handleSubmit}>
-                {open == "Ja" && (
+                {state.harArbeid && (
                     <div className="mb-4">
                         <Label className="text-xl">
                             Hvor mange timer i uken jobber du?
