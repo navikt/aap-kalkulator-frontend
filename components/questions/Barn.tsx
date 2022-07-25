@@ -15,13 +15,13 @@ const Barn = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
-    const [open, setOpen] = useState(state.antallBarn? "Ja" : "Nei")
+    const [open, setOpen] = useState(state.antallBarn ? "Ja" : "Nei")
     const onChange = (text: string) => {
         const parsed = parseInt(text)
         setState({
             ...state,
             // @ts-ignore
-            antallBarn: isNaN(parsed) ? undefined : parsed
+            antallBarn: isNaN(parsed) ? undefined : parsed,
         })
     }
     const handleSubmit = async (event: React.FormEvent<BarnInterface>) => {
@@ -35,7 +35,6 @@ const Barn = () => {
         if (isNaN(antallBarn) || antallBarn < 0) {
             return
         }
-
 
         setState({
             inntekt1: state.inntekt1,
@@ -87,8 +86,14 @@ const Barn = () => {
                                 id="antallBarn"
                                 label=""
                                 size="medium"
-                                value={state.antallBarn == undefined ? "" : state.antallBarn.toString()}
-                                onChange={event => onChange(event.target.value)}
+                                value={
+                                    state.antallBarn == undefined
+                                        ? ""
+                                        : state.antallBarn.toString()
+                                }
+                                onChange={(event) =>
+                                    onChange(event.target.value)
+                                }
                                 error={
                                     error && (
                                         <div className=" row-start-2 list-disc font-bold w-full text-red-500">

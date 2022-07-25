@@ -7,7 +7,10 @@ import { StateInterface } from "../components/state/State"
 import Head from "next/head"
 import React from "react"
 
-export const State = createContext(null)
+export const State = createContext({
+    state: {} as StateInterface,
+    setState: (value: any) => {},
+})
 
 function MyApp({ Component, pageProps }: AppProps) {
     const [state, setState] = useState<StateInterface>({
@@ -16,11 +19,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         inntekt1: undefined,
         inntekt2: undefined,
         inntekt3: undefined,
-        sykmeldtAar: undefined
+        sykmeldtAar: undefined,
     })
 
     return (
-       // @ts-ignore
+        // @ts-ignore
         <State.Provider value={{ state, setState }}>
             <Head>
                 <title>Aap-kalkulator</title>

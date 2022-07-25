@@ -6,7 +6,7 @@ import Image from "next/image"
 import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
-import { stat } from "fs";
+import { stat } from "fs"
 
 interface ArbeidsgradInterface extends HTMLFormElement {
     arbeidsgrad: HTMLInputElement
@@ -20,16 +20,18 @@ const Arbeidsgrad = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
-    const [open, setOpen] = useState(state.arbeidsgrad? "Ja" : "Nei")
+    const [open, setOpen] = useState(state.arbeidsgrad ? "Ja" : "Nei")
     const [arbeidstimerState, setArbeidstimerState] = useState<Arbeidstimer>({
-        arbeidstimer: state.arbeidsgrad?(state.arbeidsgrad*37.5/100).toString():""
-        })
+        arbeidstimer: state.arbeidsgrad
+            ? ((state.arbeidsgrad * 37.5) / 100).toString()
+            : "",
+    })
     const arbeidsuke = 37.5
     const onChange = (text: string) => {
         setArbeidstimerState({
             ...arbeidstimerState,
             // @ts-ignore
-            arbeidstimer: text
+            arbeidstimer: text,
         })
     }
     const handleSubmit = async (
@@ -125,8 +127,14 @@ const Arbeidsgrad = () => {
                                 id="arbeidstimer"
                                 label=""
                                 size="medium"
-                                value={arbeidstimerState.arbeidstimer == undefined ? "" : arbeidstimerState.arbeidstimer.toString()}
-                                onChange={event => onChange(event.target.value)}
+                                value={
+                                    arbeidstimerState.arbeidstimer == undefined
+                                        ? ""
+                                        : arbeidstimerState.arbeidstimer.toString()
+                                }
+                                onChange={(event) =>
+                                    onChange(event.target.value)
+                                }
                                 error={
                                     error && (
                                         <div className=" row-start-2 list-disc font-bold w-full text-red-500">

@@ -23,9 +23,18 @@ const Inntekt = () => {
     const { state, setState } = useContext(State)
     const [error, setError] = useState<string[]>(["", "", ""])
     const [inntekt, setInntekt] = useState<Inntekt>({
-        inntekt1: state.inntekt1? state.inntekt1.toLocaleString("nb-NO"):"",
-        inntekt2: state.inntekt2? state.inntekt2.toLocaleString("nb-NO"):"",
-        inntekt3: state.inntekt3? state.inntekt3.toLocaleString("nb-NO"):"",
+        inntekt1:
+            state.inntekt1 != undefined
+                ? state.inntekt1.toLocaleString("nb-NO")
+                : "",
+        inntekt2:
+            state.inntekt2 != undefined
+                ? state.inntekt2.toLocaleString("nb-NO")
+                : "",
+        inntekt3:
+            state.inntekt3 != undefined
+                ? state.inntekt3.toLocaleString("nb-NO")
+                : "",
     })
 
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -64,8 +73,17 @@ const Inntekt = () => {
         })
         await router.push("/steg/3")
     }
-    const sykmeldtAar = state.sykmeldtAar
-    const inntektsAar = [sykmeldtAar - 1, sykmeldtAar - 2, sykmeldtAar - 3]
+
+    if (state.sykmeldtAar === undefined) {
+        router.push("/")
+        return
+    }
+
+    const inntektsAar = [
+        state.sykmeldtAar - 1,
+        state.sykmeldtAar - 2,
+        state.sykmeldtAar - 3,
+    ]
 
     return (
         <>

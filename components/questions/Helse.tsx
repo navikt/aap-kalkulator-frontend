@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import {Button, Heading, ReadMore, TextField} from "@navikt/ds-react"
+import { Button, Heading, ReadMore, TextField } from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Image from "next/image"
 import Stepper from "../stepper/Stepper"
@@ -22,7 +22,7 @@ const Helse = () => {
         setState({
             ...state,
             // @ts-ignore
-            sykmeldtAar: isNaN(parsed) ? undefined : parsed
+            sykmeldtAar: isNaN(parsed) ? undefined : parsed,
         })
     }
 
@@ -43,9 +43,9 @@ const Helse = () => {
 
         setError(errors)
         if (
-            (isNaN(sykmeldtAar) ||
-                sykmeldtAar > detteAaret ||
-                sykmeldtAar < detteAaret - aapGrense)
+            isNaN(sykmeldtAar) ||
+            sykmeldtAar > detteAaret ||
+            sykmeldtAar < detteAaret - aapGrense
         ) {
             return
         }
@@ -78,35 +78,42 @@ const Helse = () => {
             </div>
 
             <form onSubmit={handleSubmit}>
-
-                        <Heading size="small">
-                            Hvilket år fikk du først nedsatt arbeidsevne?
-                        </Heading>
-                        <ReadMore size="small" header="Hvorfor spør vi om når du fikk nedsatt arbeidsevne?">
-                            {" "}
-                            Inntektsårene på neste side bestemmes ut fra året du fikk nedsatt arbeidsevne.
-                        </ReadMore>
-                        <TextField
-                            inputMode="numeric"
-                            size="medium"
-                            label=""
-                            id="sykmelding"
-                            className="w-1/5 "
-                            value={state.sykmeldtAar == undefined ? "" : state.sykmeldtAar.toString()}
-                            onChange={event => onChange(event.target.value)}
-                            error={
-                                error && (
-                                    <div className="list-disc font-bold w-full text-red-500">
-                                        {}
-                                    </div>
-                                )
-                            }
-                        />
-                        {error && state.sykmeldtAar && (
-                            <div className="list-disc ml-5 font-bold text-red-500 mb-4 -mt-6">
-                                {error}
+                <Heading size="small">
+                    Hvilket år fikk du først nedsatt arbeidsevne?
+                </Heading>
+                <ReadMore
+                    size="small"
+                    header="Hvorfor spør vi om når du fikk nedsatt arbeidsevne?"
+                >
+                    {" "}
+                    Inntektsårene på neste side bestemmes ut fra året du fikk
+                    nedsatt arbeidsevne.
+                </ReadMore>
+                <TextField
+                    inputMode="numeric"
+                    size="medium"
+                    label=""
+                    id="sykmelding"
+                    className="w-1/5 "
+                    value={
+                        state.sykmeldtAar == undefined
+                            ? ""
+                            : state.sykmeldtAar.toString()
+                    }
+                    onChange={(event) => onChange(event.target.value)}
+                    error={
+                        error && (
+                            <div className="list-disc font-bold w-full text-red-500">
+                                {}
                             </div>
-                        )}
+                        )
+                    }
+                />
+                {error && state.sykmeldtAar && (
+                    <div className="list-disc ml-5 font-bold text-red-500 mb-4 -mt-6">
+                        {error}
+                    </div>
+                )}
                 <div className="mt-4">
                     <Button variant="primary">Gå videre</Button>
                 </div>
