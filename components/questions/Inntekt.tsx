@@ -116,9 +116,9 @@ const Inntekt = () => {
                     Inntekten din brukes til å regne ut hva du kan få i
                     arbeidsavklaringspenger.
                 </ReadMore>
-                <div className="flex md:flex-row flex-col md:space-x-8 mt-8 md:mb-8  ">
+                <div className="flex md:flex-row flex-col md:space-x-8 mt-8 mb-4 md:mb-8 ">
                     {inntektsAar.reverse().map((aar, index) => (
-                        <div key={index} className="flex flex-col h-24">
+                        <div key={index} className="flex flex-col md:h-24 h-28">
                         <TextField
                             inputMode="numeric"
                             className={`md:mb-2 w-40 h-20 `}
