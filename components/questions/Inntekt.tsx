@@ -115,6 +115,7 @@ const Inntekt = () => {
                     {" "}
                     Inntekten din brukes til å regne ut hva du kan få i
                     arbeidsavklaringspenger.
+                    <br/>Dette bestemmes av de tidligere inntektene dine, eller minstesatsen (to ganger grunnbeløpet).
                 </ReadMore>
                 <div className="flex md:flex-row flex-col md:space-x-8 mt-8 mb-4 md:mb-8 ">
                     {inntektsAar.reverse().map((aar, index) => (
@@ -133,7 +134,7 @@ const Inntekt = () => {
                         />
 
                     {error[2-index] && (
-                        <ul className="list-disc ml-5 font-bold text-red-500">
+                        <ul  aria-live="assertive" className="list-disc ml-5 font-bold text-red-500">
                         <li>{error[2-index]}</li>
                         </ul>
                         )}

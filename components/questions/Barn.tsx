@@ -83,7 +83,7 @@ const Barn = () => {
                     onChange={onRadioChange}
                 />
                 {radioError != undefined && (
-                    <ul className="list-disc">
+                    <ul  aria-live="assertive" className="list-disc">
                         <li className="ml-5 font-bold text-red-500 mb-4">
                             {radioError}
                         </li>
@@ -91,15 +91,17 @@ const Barn = () => {
                 )}
                 {state.harBarn && (
                     <div>
-                        <Label className="text-xl">
+                        <Label id="l1" className="text-xl">
                             Hvor mange barn har du?
                         </Label>
-                        <BodyShort>
+                        <BodyShort id="bs1">
                             Barnet må være under 18 år og bo hos deg.
                         </BodyShort>
                         <div className="flex flex-col h-24 my-2">
                         <div className="flex flex-row items-center gap-2">
                             <TextField
+                                aria-labelledby="l1"
+                                aria-describedby="bs1"
                                 inputMode="numeric"
                                 className="mb-2 md:w-1/5 w-1/4"
                                 id="antallBarn"
@@ -120,7 +122,7 @@ const Barn = () => {
                             </BodyShort>
                         </div>
                         {error && (
-                            <ul className="list-disc ml-5 font-bold text-red-500">
+                            <ul  aria-live="assertive" className="list-disc ml-5 font-bold text-red-500">
                                 <li>{error}</li>
                             </ul>
                         )}

@@ -81,7 +81,7 @@ const Helse = () => {
             </Heading>
 
             <form onSubmit={handleSubmit}>
-                <Label className="text-xl">
+                <Label id="l1" className="text-xl">
                     Hvilket år fikk du først nedsatt arbeidsevne?
                 </Label>
                 <ReadMore
@@ -94,6 +94,7 @@ const Helse = () => {
                 </ReadMore>
                 <div className="flex flex-col h-24 my-2">
                 <TextField
+                    aria-labelledby="l1"
                     inputMode="numeric"
                     size="medium"
                     label=""
@@ -108,7 +109,7 @@ const Helse = () => {
                     error = {error && <div className="hidden"></div>}
                 />
                 {error && (
-                    <ul className="list-disc ml-5 font-bold text-red-500">
+                    <ul aria-live="assertive" className="list-disc ml-5 font-bold text-red-500">
                         <li>{error}</li>
                     </ul>
                 )}

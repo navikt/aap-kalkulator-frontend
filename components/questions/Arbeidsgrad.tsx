@@ -94,17 +94,17 @@ const Arbeidsgrad = () => {
                 ></Image>
             </div>
             <Heading size="large" level="2" spacing>
-                Jobb
+                Arbeid
             </Heading>
             <Radio
-                title="Har du jobb?"
+                title="Er du i jobb nå?"
                 state={state.harArbeid}
                 onChange={onRadioChange}
                 readMoreTitle="Hvorfor spør vi om du har jobb?"
                 readMore={readMoreText}
             />
             {radioError != undefined && (
-                <ul className="list-disc">
+                <ul  aria-live="assertive" className="list-disc">
                     <li className="ml-5 font-bold text-red-500 mb-4">
                         {radioError}
                     </li>
@@ -113,7 +113,7 @@ const Arbeidsgrad = () => {
             <form onSubmit={handleSubmit}>
                 {state.harArbeid && (
                     <div>
-                        <Label className="text-xl">
+                        <Label id="l1" className="text-xl">
                             Hvor mange timer i uken jobber du?
                         </Label>
                         <BodyShort>
@@ -122,10 +122,11 @@ const Arbeidsgrad = () => {
                         <div className="flex flex-col h-24 my-2 ">
                         <div className="flex flex-row gap-2 items-center">
                             <TextField
+                                aria-labelledby="l1"
                                 inputMode="decimal"
                                 className="mb-2 md:w-1/5 col-start-1 w-1/4"
                                 id="arbeidstimer"
-                                label=""
+                                label= ""
                                 size="medium"
                                 value={state.arbeidstimer}
                                 onChange={(event) =>
@@ -138,7 +139,7 @@ const Arbeidsgrad = () => {
                             </BodyShort>
                         </div>
                         {error && (
-                            <ul className="list-disc ml-5 font-bold text-red-500">
+                            <ul  aria-live="assertive" className="list-disc ml-5 font-bold text-red-500">
                                 <li>{error}</li>
                             </ul>
                         )}

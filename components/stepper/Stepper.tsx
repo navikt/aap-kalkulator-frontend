@@ -69,6 +69,7 @@ const Step = ({
         <Link
             onClick={(e) => onClick(`/steg/${stepNumber}`, e)}
             className={`${stepStyling}`}
+            aria-current={isCurrentPage}
         >
             {circle}
             <BodyShort as="span" size="small">
@@ -85,12 +86,11 @@ const Stepper = () => {
     const path = router.asPath
     const current_step = parseInt(path.split("/").at(-1)!!)
     return (
-        <nav ref={stepperRef}>
+        <nav aria-label="Steg i skjema" ref={stepperRef}>
             <ul className="flex flex-row justify-center pb-4 items-center md:px-8 px-0">
                 {steps.map((step, index) => {
                     return (
                         <li
-                            aria-current={current_step === index + 1}
                             className="grid grid-cols-2 grid-rows-2 place-items-center justify-items-center"
                             key={index}
                         >
