@@ -23,6 +23,7 @@ const Barn = () => {
             harBarn: value == "Ja",
             antallBarn: value == "Nei" ? undefined : state.antallBarn,
         })
+        setRadioError(undefined)
     }
 
     const onChange = (text: string) => {
@@ -39,7 +40,7 @@ const Barn = () => {
         event.preventDefault()
 
         if (state.harBarn == undefined) {
-            setRadioError("You shall not pass:)")
+            setRadioError("Du må velge enten ja eller nei")
             return
         }
 
@@ -48,7 +49,7 @@ const Barn = () => {
             (state.antallBarn !== undefined && (isNaN(state.antallBarn) ||
             state.antallBarn < 0))
         ) {
-            setError("Ugyldig verdi")
+            setError("Antall barn må være et tall")
             return
         }
 
