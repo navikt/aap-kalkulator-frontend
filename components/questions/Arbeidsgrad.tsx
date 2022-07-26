@@ -34,6 +34,7 @@ const Arbeidsgrad = () => {
             harArbeid: value == "Ja",
             arbeidstimer: value == "Nei" ? undefined : state.arbeidstimer,
         })
+        setRadioError(undefined)
     }
     const handleSubmit = async (
         event: React.FormEvent<ArbeidsgradInterface>
@@ -43,7 +44,7 @@ const Arbeidsgrad = () => {
         let arbeidsgrad = 0
 
         if (state.harArbeid == undefined) {
-            setRadioError("You shall not pass:)")
+            setRadioError("Du må velge enten ja eller nei for å gå videre.")
             return
         }
 
@@ -56,7 +57,7 @@ const Arbeidsgrad = () => {
         }
 
         if (isNaN(arbeidstimer) || arbeidstimer < 0) {
-            setError("Ugyldig verdi")
+            setError("Antall timer må være et tall, 0 eller høyere.")
             return
         }
 
@@ -122,7 +123,7 @@ const Arbeidsgrad = () => {
                         <div className="flex flex-row gap-2 items-center">
                             <TextField
                                 inputMode="decimal"
-                                className="mb-2 md:w-16 col-start-1"
+                                className="mb-2 md:w-1/5 col-start-1 w-1/4"
                                 id="arbeidstimer"
                                 label=""
                                 size="medium"

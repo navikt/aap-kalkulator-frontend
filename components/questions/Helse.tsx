@@ -98,7 +98,7 @@ const Helse = () => {
                     size="medium"
                     label=""
                     id="sykmelding"
-                    className="w-1/5 mb-2"
+                    className="md:w-1/5 mb-2 w-1/4"
                     value={
                         state.sykmeldtAar == undefined
                             ? ""
