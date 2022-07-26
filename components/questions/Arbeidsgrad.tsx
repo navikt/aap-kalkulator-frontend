@@ -121,7 +121,7 @@ const Arbeidsgrad = () => {
                         <div className="flex flex-col h-24 my-2 ">
                         <div className="flex flex-row gap-2 items-center">
                             <TextField
-                                inputMode="numeric"
+                                inputMode="decimal"
                                 className="mb-2 md:w-16 col-start-1"
                                 id="arbeidstimer"
                                 label=""
