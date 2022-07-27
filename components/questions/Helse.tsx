@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import { Button, Heading, Label, ReadMore, TextField } from "@navikt/ds-react"
+import {Button, Heading, Label, Radio, RadioGroup, ReadMore, TextField} from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Image from "next/image"
 import Stepper from "../stepper/Stepper"
@@ -16,6 +16,8 @@ const Helse = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
+    const [radioError, setRadioError] = useState("")
+
     const aapGrense = 10
 
     const onChange = (text: string) => {
@@ -51,16 +53,33 @@ const Helse = () => {
             ? `Du får ikke arbeidsavklaringspenger dersom du ble sykmeldt for mer enn ${aapGrense} år siden.`
             : ""
 
+        if(state.over25 == undefined) {
+            setRadioError("Velg enten ja eller nei.")
+
+        }
+
         setError(errors)
+
+        if(state.over25 == undefined) {
+            return
+        }
+
         if (erFeil(sykmeldtAar)
         ) {
             return
         }
+
+
         setState({
             ...state,
             sykmeldtAar,
         })
         await router.push("/steg/2")
+    }
+
+    const handleChange = (val: string) =>  {
+        setState({...state, over25: val == "ja"})
+        setRadioError("")
     }
 
     return (
@@ -81,7 +100,34 @@ const Helse = () => {
             </Heading>
 
             <form onSubmit={handleSubmit}>
+                <div className=" h-48">
                 <Label id="l1" className="text-xl">
+                    Er du over 25 år?
+                </Label>
+                <ReadMore
+                    size="small"
+                    header="Hvorfor spør vi om du er over 25 år?"
+                >
+                    {" "}
+                    Det er forskjellige regler for hvor mye du kan få dersom du er under 25 år.
+                </ReadMore>
+                <RadioGroup
+
+                    aria-labelledby="l1"
+                    legend=""
+                    size="medium"
+                    onChange={(val: any) => handleChange(val)}
+                >
+                    <Radio value="ja">Ja</Radio>
+                    <Radio value="nei">Nei</Radio>
+                </RadioGroup>
+                {radioError && (
+                    <ul aria-live="assertive" className="list-disc ml-5 font-bold text-red-500">
+                        <li>{radioError}</li>
+                    </ul>
+                )}
+                </div>
+                <Label id="l2" className="text-xl">
                     Hvilket år fikk du først nedsatt arbeidsevne?
                 </Label>
                 <ReadMore
@@ -94,7 +140,7 @@ const Helse = () => {
                 </ReadMore>
                 <div className="flex flex-col h-24 my-2">
                 <TextField
-                    aria-labelledby="l1"
+                    aria-labelledby="l2"
                     inputMode="numeric"
                     size="medium"
                     label=""

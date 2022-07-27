@@ -24,6 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         harArbeid: undefined,
         arbeidstimer: undefined,
         harBarn: undefined,
+        over25: undefined,
     })
 
     return (

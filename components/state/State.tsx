@@ -9,4 +9,5 @@ export interface StateInterface {
     lengsteSteg: number
     harArbeid: boolean | undefined
     harBarn: boolean | undefined
+    over25: boolean | undefined
 }
