@@ -28,6 +28,7 @@ const Resultat: NextPage = () => {
                 antallBarn: state.antallBarn,
                 over25: state.over25,
                 sykmeldtAar: state.sykmeldtAar,
+                arbeidstimer: state.arbeidstimer,
             }),
         }
 
