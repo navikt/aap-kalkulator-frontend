@@ -86,7 +86,7 @@ const Resultat: NextPage = () => {
                             <Accordion.Content>
                                 <ul className=" space-y-4 list-disc">
                                     {result?.logs.map((text, index) => (
-                                        <li key={index}>{text}</li>
+                                        <li key={index} ><div dangerouslySetInnerHTML={{__html: text}}/></li>
                                     ))}
                                 </ul>
                             </Accordion.Content>
