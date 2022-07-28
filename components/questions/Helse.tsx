@@ -117,6 +117,7 @@ const Helse = () => {
                     legend=""
                     size="medium"
                     onChange={(val: any) => handleChange(val)}
+                    value={state.over25 === undefined? undefined: state.over25? "ja" : "nei"}
                 >
                     <Radio value="ja">Ja</Radio>
                     <Radio value="nei">Nei</Radio>
