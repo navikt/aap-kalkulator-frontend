@@ -80,6 +80,7 @@ const Inntekt = () => {
     }
 
     if (state.sykmeldtAar === undefined) {
+        state.lengsteSteg =  1
         router.push("/")
         return <></>
     }
