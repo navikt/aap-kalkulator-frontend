@@ -33,19 +33,23 @@ const Step = ({
         await router.push(url)
     }
 
-    const circle = isCompleted ? (
+    const circle = isCompleted && !isCurrentPage ? (
         <div
             className={`text-feedback-success-icon bg-feedback-success-background ${circleStyling}`}
         >
             <Success className="w-8 h-8" />
         </div>
-    ) : isVisited ? (
+    ) : isCurrentPage ? (
         <div
             className={`bg-feedback-info-background border-feedback-info-border border-2 ${circleStyling}`}
         >
             <Edit className="w-4 h-4" />
         </div>
-    ) : (
+    ) : isVisited ? (
+        <div className={`border-2 border-border border-feedback-info-border ${circleStyling}`}>
+            {stepNumber}
+        </div>
+    ):(
         <div
             aria-hidden="true"
             className={`border-2 border-border text-text-muted ${circleStyling}`}
