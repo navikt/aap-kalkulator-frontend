@@ -100,7 +100,7 @@ const Helse = () => {
             </Heading>
 
             <form onSubmit={handleSubmit}>
-                <div className=" h-48">
+                <div className="">
                 <Label id="l1" className="text-xl">
                     Er du over 25 år?
                 </Label>
@@ -138,7 +138,7 @@ const Helse = () => {
                     Inntektsårene på neste side bestemmes ut fra året du fikk
                     nedsatt arbeidsevne.
                 </ReadMore>
-                <div className="flex flex-col h-24 my-2">
+                <div className="flex flex-col my-2">
                 <TextField
                     aria-labelledby="l2"
                     inputMode="numeric"

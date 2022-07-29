@@ -122,7 +122,7 @@ const Inntekt = () => {
                         <div key={index} className="flex flex-col md:h-24 h-28">
                         <TextField
                             inputMode="numeric"
-                            className={`md:mb-2 w-40 h-20 `}
+                            className={`shrink md:mb-2 max-w-[160px] h-20`}
                             key={index}
                             id={`inntekt${3 - index}`}
                             name={`inntekt${3 - index}`}

@@ -119,7 +119,7 @@ const Arbeidsgrad = () => {
                         <BodyShort>
                             Varierer det, kan du oppgi gjennomsnittet
                         </BodyShort>
-                        <div className="flex flex-col h-24 my-2 ">
+                        <div className="flex flex-col my-2 ">
                         <div className="flex flex-row gap-2 items-center">
                             <TextField
                                 aria-labelledby="l1"
