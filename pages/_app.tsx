@@ -31,7 +31,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         // @ts-ignore
         <State.Provider value={{ state, setState }}>
             <Head>
-                <title>Aap-kalkulator</title>
+                <title>Aap-kalkulator - www.nav.no</title>
             </Head>
             <Container>
                 <Component {...pageProps} />
