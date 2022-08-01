@@ -3,10 +3,16 @@ import { Button, Heading } from "@navikt/ds-react"
 import Divider from "../components/divider/Divider"
 import { useRouter } from "next/router"
 import Image from "next/image"
-import React from "react"
+import React, {useContext, useEffect} from "react"
+import {State} from "./_app";
+import {StateInterface} from "../components/state/State";
 
 const Home: NextPage = () => {
     const router = useRouter()
+    const { setState } = useContext(State)
+    useEffect(() => {
+        setState({} as StateInterface )
+    }, [])
     const handleStart = async () => {
         await router.push("/steg/1")
     }
