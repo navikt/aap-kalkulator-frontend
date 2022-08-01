@@ -131,7 +131,7 @@ const Arbeidsgrad = () => {
                             <div className="flex flex-row gap-2 items-center">
                                 <TextField
                                     aria-errormessage="e1"
-                                    aria-labelledby="l1"
+                                    aria-labelledby="l1 d1"
                                     inputMode="decimal"
                                     className="mb-2 md:w-1/5 col-start-1 w-1/4"
                                     id="arbeidstimer"
@@ -145,7 +145,7 @@ const Arbeidsgrad = () => {
                                         error && <div className="hidden"></div>
                                     }
                                 />
-                                <BodyShort>timer per uke</BodyShort>
+                                <BodyShort id="d1">timer per uke</BodyShort>
                             </div>
                             {error && (
                                 <ul

@@ -36,12 +36,14 @@ const Step = ({
     const circle =
         isCompleted && !isCurrentPage ? (
             <div
+                aria-hidden="true"
                 className={`text-feedback-success-icon bg-feedback-success-background ${circleStyling}`}
             >
                 <Success className="w-8 h-8" />
             </div>
         ) : isCurrentPage ? (
             <div
+                aria-hidden="true"
                 className={`bg-feedback-info-background border-feedback-info-border border-2 ${circleStyling}`}
             >
                 <Edit className="w-4 h-4 text-feedback-info-icon" />
@@ -57,7 +59,7 @@ const Step = ({
 
     if (!isCompleted) {
         return (
-            <div aria-label={title} className={`${stepStyling}`}>
+            <div aria-label={title} aria-current={isCurrentPage} className={`${stepStyling}`}>
                 {circle}
                 <BodyShort aria-hidden="true" as="span" size="small">
                     {title}
@@ -71,7 +73,6 @@ const Step = ({
             href="#"
             onClick={(e) => onClick(`/steg/${stepNumber}`, e)}
             className={`${stepStyling}`}
-            aria-current={isCurrentPage}
         >
             {circle}
             <BodyShort as="span" size="small">

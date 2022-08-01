@@ -128,7 +128,7 @@ const Barn = () => {
                                         error && <div className="hidden"></div>
                                     }
                                 />
-                                <BodyShort>barn</BodyShort>
+                                <BodyShort id="d1">barn</BodyShort>
                             </div>
                             {error && (
                                 <ul
