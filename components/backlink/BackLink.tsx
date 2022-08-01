@@ -11,7 +11,7 @@ const BackLink = ({ target }: { target: string }) => {
         await router.push(target)
     }
     return (
-        <Link className="mt-4 " onClick={onClick}>
+        <Link href="#" className="mt-4 " onClick={onClick}>
             {" "}
             <Back /> Tilbake
         </Link>

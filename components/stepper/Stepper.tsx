@@ -68,6 +68,7 @@ const Step = ({
 
     return (
         <Link
+            href="#"
             onClick={(e) => onClick(`/steg/${stepNumber}`, e)}
             className={`${stepStyling}`}
             aria-current={isCurrentPage}
