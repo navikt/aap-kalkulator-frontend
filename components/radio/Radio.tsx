@@ -8,7 +8,7 @@ const Radio = ({
     state,
     onChange,
     errorId,
-    isError
+    isError,
 }: {
     title: string
     readMoreTitle?: string
@@ -31,9 +31,7 @@ const Radio = ({
             description={readMore !== undefined && description}
             onChange={onChange}
             value={state == undefined ? "" : state ? "Ja" : "Nei"}
-            error={
-                isError && <div className="hidden"></div>
-            }
+            error={isError && <div className="hidden"></div>}
         >
             <div className="flex flex-row gap-4 mb-4 mt-4">
                 <DSRadio

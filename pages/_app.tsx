@@ -4,12 +4,18 @@ import type { AppProps } from "next/app"
 import { createContext, useState } from "react"
 import Container from "../components/container/Container"
 import { StateInterface } from "../components/state/State"
+import { BrowserInterface } from "../components/state/BrowserInterface"
 import Head from "next/head"
 import React from "react"
 
 export const State = createContext({
     state: {} as StateInterface,
     setState: (value: any) => {},
+})
+
+export const BrowserState = createContext({
+    browserState: {} as BrowserInterface,
+    setBrowserState: (value: any) => {},
 })
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -27,9 +33,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         over25: undefined,
     })
 
+    const [browserState, setBrowserState] = useState<BrowserInterface>({
+        redirect: false,
+    })
+
     return (
         // @ts-ignore
-        <State.Provider value={{ state, setState }}>
+        <State.Provider
+            value={{ state, setState, browserState, setBrowserState }}
+        >
             <Head>
                 <title>AAP-kalkulator - www.nav.no</title>
             </Head>

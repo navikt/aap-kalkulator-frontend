@@ -59,7 +59,11 @@ const Step = ({
 
     if (!isCompleted) {
         return (
-            <div aria-label={title} aria-current={isCurrentPage} className={`${stepStyling}`}>
+            <div
+                aria-label={title}
+                aria-current={isCurrentPage}
+                className={`${stepStyling}`}
+            >
                 {circle}
                 <BodyShort aria-hidden="true" as="span" size="small">
                     {title}

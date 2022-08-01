@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useContext, useState } from "react"
-import { State } from "../../pages/_app"
+import { BrowserState, State } from "../../pages/_app"
+
 import {
     BodyShort,
     Button,
@@ -23,6 +24,7 @@ const Inntekt = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [error, setError] = useState<string[]>(["", "", ""])
+    const { browserState, setBrowserState } = useContext(BrowserState)
     const [inntekt, setInntekt] = useState<Inntekt>({
         inntekt1:
             state.inntekt1 != undefined
@@ -79,7 +81,7 @@ const Inntekt = () => {
     }
 
     if (state.sykmeldtAar === undefined) {
-        state.lengsteSteg = 1
+        browserState.redirect = true
         router.push("/")
         return <></>
     }

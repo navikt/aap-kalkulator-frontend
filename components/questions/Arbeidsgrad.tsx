@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 import React, { useContext, useState } from "react"
-import { State } from "../../pages/_app"
+import { BrowserState, State } from "../../pages/_app"
 import { BodyShort, Button, Heading, Label, TextField } from "@navikt/ds-react"
 import Image from "next/image"
 import Radio from "../radio/Radio"
@@ -16,6 +16,7 @@ const Arbeidsgrad = () => {
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState<string>("")
+    const { browserState, setBrowserState } = useContext(BrowserState)
 
     const arbeidsuke = 37.5
     const onChange = (text: string) => {
@@ -69,7 +70,7 @@ const Arbeidsgrad = () => {
     }
 
     if (state.sykmeldtAar === undefined) {
-        state.lengsteSteg = 1
+        browserState.redirect = true
         router.push("/")
         return <></>
     }
@@ -103,7 +104,7 @@ const Arbeidsgrad = () => {
                 Arbeid
             </Heading>
             <Radio
-                isError={ radioError != ""}
+                isError={radioError != ""}
                 errorId="error1"
                 title="Er du i jobb nå?"
                 state={state.harArbeid}

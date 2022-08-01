@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 import React, { useContext, useState } from "react"
-import { State } from "../../pages/_app"
+import { BrowserState, State } from "../../pages/_app"
 import { BodyShort, Button, Heading, Label, TextField } from "@navikt/ds-react"
 import Image from "next/image"
 import Radio from "../radio/Radio"
@@ -16,6 +16,7 @@ const Barn = () => {
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState<string | undefined>(undefined)
+    const { browserState, setBrowserState } = useContext(BrowserState)
 
     const onRadioChange = (value: string) => {
         setState({
@@ -56,7 +57,7 @@ const Barn = () => {
     }
 
     if (state.sykmeldtAar === undefined) {
-        state.lengsteSteg = 1
+        browserState.redirect = true
         router.push("/")
         return <></>
     }
@@ -91,7 +92,7 @@ const Barn = () => {
                     onChange={onRadioChange}
                 />
                 {radioError != undefined && (
-                    <ul id="error1" aria-live="assertive"  className="list-disc">
+                    <ul id="error1" aria-live="assertive" className="list-disc">
                         <li className="ml-5 font-bold text-red-500 mb-4">
                             {radioError}
                         </li>

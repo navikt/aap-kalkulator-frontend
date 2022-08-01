@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react"
-import { State } from "../../pages/_app"
+import { BrowserState, State } from "../../pages/_app"
 import {
     Button,
     Heading,
@@ -119,9 +119,7 @@ const Helse = () => {
                     </ReadMore>
                     <RadioGroup
                         aria-errormessage="e1"
-                        error={
-                            radioError && <div className="hidden"></div>
-                        }
+                        error={radioError && <div className="hidden"></div>}
                         aria-labelledby="l1"
                         legend=""
                         size="medium"
@@ -139,7 +137,7 @@ const Helse = () => {
                     </RadioGroup>
                     {radioError && (
                         <ul
-                            id = "e1"
+                            id="e1"
                             aria-live="assertive"
                             className="list-disc ml-5 font-bold text-red-500"
                         >

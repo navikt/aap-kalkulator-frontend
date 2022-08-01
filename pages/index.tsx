@@ -1,24 +1,32 @@
 import type { NextPage } from "next"
-import { Button, Heading } from "@navikt/ds-react"
+import { Alert, Button, Heading } from "@navikt/ds-react"
 import Divider from "../components/divider/Divider"
 import { useRouter } from "next/router"
 import Image from "next/image"
-import React, {useContext, useEffect} from "react"
-import {State} from "./_app";
-import {StateInterface} from "../components/state/State";
+import React, { useContext, useEffect } from "react"
+import { BrowserState, State } from "./_app"
+import { StateInterface } from "../components/state/State"
 
 const Home: NextPage = () => {
     const router = useRouter()
     const { setState } = useContext(State)
+    const { browserState } = useContext(BrowserState)
     useEffect(() => {
-        setState({} as StateInterface )
+        setState({} as StateInterface)
     }, [])
     const handleStart = async () => {
+        browserState.redirect = false
         await router.push("/steg/1")
     }
     return (
         <>
             <div className="flex flex-col items-center pt-4">
+                {browserState.redirect && (
+                    <Alert variant="info" className="mb-8">
+                        Du har oppdatert siden og har derfor blitt sendt til
+                        startsiden.
+                    </Alert>
+                )}
                 <Image
                     src="/ikoner/calculator_circle.svg"
                     height="120"

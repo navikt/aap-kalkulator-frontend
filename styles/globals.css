@@ -24,6 +24,6 @@ a {
     top: 2.5rem;
 }
 
-.navds-fieldset__error{
+.navds-fieldset__error {
     @apply hidden;
 }
