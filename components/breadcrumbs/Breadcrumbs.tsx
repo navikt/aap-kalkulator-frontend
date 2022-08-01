@@ -40,7 +40,7 @@ const Breadcrumbs = () => {
                     title="Arbeidsavklaringspenger"
                     isClickable={true}
                 />
-                <Next aria-hidden="true" />
+                <li><Next aria-hidden="true" /></li>
                 <Crumb
                     path="https://aap-kalkulator-frontend.dev.nav.no"
                     title="Hvor mye kan du få?"
