@@ -54,7 +54,6 @@ const Home: NextPage = () => {
                     onClick={handleStart}
                     className="w-20"
                     variant="primary"
-                    aria-label="Start"
                 >
                     Start
                 </Button>

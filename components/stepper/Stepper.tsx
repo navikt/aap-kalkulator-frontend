@@ -9,10 +9,12 @@ const Step = ({
     title,
     stepNumber,
     isLast,
+    validation,
 }: {
     title: string
     stepNumber: number
     isLast: boolean
+    validation:()=>boolean
 }) => {
     const { state } = useContext(State)
     const router = useRouter()
@@ -30,7 +32,9 @@ const Step = ({
 
     const onClick = async (url: string, e: React.MouseEvent) => {
         e.preventDefault()
-        await router.push(url)
+        if(validation()) {
+            await router.push(url)
+        }
     }
 
     const circle = isCompleted && !isCurrentPage ? (
@@ -83,7 +87,8 @@ const Step = ({
     )
 }
 
-const Stepper = () => {
+const Stepper = ({ validation }: { validation: ()=>boolean
+}) => {
     const stepperRef = useRef<HTMLElement>(null)
     const steps = ["Helse", "Inntekt", "Arbeid", "Barn", "Resultat"]
     const router = useRouter()
@@ -99,6 +104,7 @@ const Stepper = () => {
                             key={index}
                         >
                             <Step
+                                validation={validation}
                                 isLast={index == steps.length - 1}
                                 title={step}
                                 stepNumber={index + 1}

@@ -38,6 +38,11 @@ const Inntekt = () => {
                 : "",
     })
 
+    const formvalidation = () => {
+        console.log("we validate here")
+        return true
+    }
+
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         const tekst = event.target.value.replace(/[\.,\s]/g, "")
         const verdi = parseFloat(tekst)
@@ -93,7 +98,7 @@ const Inntekt = () => {
 
     return (
         <>
-            <Stepper />
+            <Stepper validation={formvalidation}/>
             <BackLink target="/steg/1" />
             <div aria-hidden="true" className="items flex flex-col pt-4">
                 <Image

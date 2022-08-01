@@ -17,6 +17,11 @@ const Arbeidsgrad = () => {
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState<string | undefined>(undefined)
 
+    const formvalidation = () => {
+        console.log("we validate here")
+        return true
+    }
+
     const arbeidsuke = 37.5
     const onChange = (text: string) => {
         const parsed = parseFloat(text.replace(",","."))
@@ -56,8 +61,8 @@ const Arbeidsgrad = () => {
             arbeidsgrad = (arbeidstimer / arbeidsuke) * 100
         }
 
-        if (isNaN(arbeidstimer) || arbeidstimer < 0) {
-            setError("Antall timer må være et tall, 0 eller høyere.")
+        if (isNaN(arbeidstimer) || arbeidstimer < 0 || arbeidstimer > 160) {
+            setError("Antall timer må være et tall, mellom 0 og 160.")
             return
         }
 
@@ -82,7 +87,7 @@ const Arbeidsgrad = () => {
 
     return (
         <>
-            <Stepper />
+            <Stepper validation={formvalidation}/>
             <BackLink target="/steg/2" />
             <div aria-hidden="true" className="flex flex-col pt-4 mb-4">
                 <Image

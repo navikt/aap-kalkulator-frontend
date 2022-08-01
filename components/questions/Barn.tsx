@@ -17,6 +17,11 @@ const Barn = () => {
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState<string | undefined>(undefined)
 
+    const formvalidation = () => {
+        console.log("we validate here")
+        return true
+    }
+
     const onRadioChange = (value: string) => {
         setState({
             ...state,
@@ -60,7 +65,7 @@ const Barn = () => {
 
     return (
         <>
-            <Stepper />
+            <Stepper validation={formvalidation}/>
             <BackLink target="/steg/3" />
             <div aria-hidden="true" className=" flex flex-col pt-4">
                 <Image

@@ -20,6 +20,11 @@ const Helse = () => {
 
     const aapGrense = 10
 
+    const formvalidation = () => {
+        console.log("we validate here")
+        return true
+    }
+
     const onChange = (text: string) => {
         const parsed = parseInt(text)
         setState({
@@ -84,7 +89,7 @@ const Helse = () => {
 
     return (
         <>
-            <Stepper />
+            <Stepper validation={formvalidation}/>
             <BackLink target="/" />
             <div aria-hidden="true" className="items flex flex-col pt-4">
                 <Image
