@@ -9,12 +9,10 @@ const Step = ({
     title,
     stepNumber,
     isLast,
-    validation,
 }: {
     title: string
     stepNumber: number
     isLast: boolean
-    validation:()=>boolean
 }) => {
     const { state } = useContext(State)
     const router = useRouter()
@@ -27,42 +25,37 @@ const Step = ({
         isLast && "col-span-2"
     } gap-0`
 
-    const isVisited = state.lengsteSteg >= stepNumber
-    const isCompleted = state.lengsteSteg > stepNumber
+    const isCompleted = current_step > stepNumber
 
     const onClick = async (url: string, e: React.MouseEvent) => {
         e.preventDefault()
-        if(validation()) {
-            await router.push(url)
-        }
+
+        await router.push(url)
     }
 
-    const circle = isCompleted && !isCurrentPage ? (
-        <div
-            className={`text-feedback-success-icon bg-feedback-success-background ${circleStyling}`}
-        >
-            <Success className="w-8 h-8" />
-        </div>
-    ) : isCurrentPage ? (
-        <div
-            className={`bg-feedback-info-background border-feedback-info-border border-2 ${circleStyling}`}
-        >
-            <Edit className="w-4 h-4" />
-        </div>
-    ) : isVisited ? (
-        <div className={`border-2 border-border border-feedback-info-border ${circleStyling}`}>
-            {stepNumber}
-        </div>
-    ):(
-        <div
-            aria-hidden="true"
-            className={`border-2 border-border text-text-muted ${circleStyling}`}
-        >
-            {stepNumber}
-        </div>
-    )
+    const circle =
+        isCompleted && !isCurrentPage ? (
+            <div
+                className={`text-feedback-success-icon bg-feedback-success-background ${circleStyling}`}
+            >
+                <Success className="w-8 h-8" />
+            </div>
+        ) : isCurrentPage ? (
+            <div
+                className={`bg-feedback-info-background border-feedback-info-border border-2 ${circleStyling}`}
+            >
+                <Edit className="w-4 h-4" />
+            </div>
+        ) : (
+            <div
+                aria-hidden="true"
+                className={`border-2 border-border text-text-muted ${circleStyling}`}
+            >
+                {stepNumber}
+            </div>
+        )
 
-    if (!isVisited) {
+    if (!isCompleted) {
         return (
             <div aria-label={title} className={`${stepStyling}`}>
                 {circle}
@@ -87,8 +80,7 @@ const Step = ({
     )
 }
 
-const Stepper = ({ validation }: { validation: ()=>boolean
-}) => {
+const Stepper = () => {
     const stepperRef = useRef<HTMLElement>(null)
     const steps = ["Helse", "Inntekt", "Arbeid", "Barn", "Resultat"]
     const router = useRouter()
@@ -104,7 +96,6 @@ const Stepper = ({ validation }: { validation: ()=>boolean
                             key={index}
                         >
                             <Step
-                                validation={validation}
                                 isLast={index == steps.length - 1}
                                 title={step}
                                 stepNumber={index + 1}

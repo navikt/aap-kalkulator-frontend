@@ -4,7 +4,7 @@ import { NextPage } from "next"
 import { Accordion, Alert, Heading, Label, Link } from "@navikt/ds-react"
 import Image from "next/image"
 import { ResultInterface } from "../components/result/Result"
-import BackLink from "../components/backlink/BackLink";
+import BackLink from "../components/backlink/BackLink"
 
 const Resultat: NextPage = () => {
     const [result, setResult] = useState<ResultInterface | null>(null)
@@ -39,75 +39,81 @@ const Resultat: NextPage = () => {
     const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
     return (
         <>
-        <BackLink target="/steg/4" />
-        <div className="flex flex-col items-center">
-            <div className="flex flex-col pt-4 mb-4" aria-hidden="true">
-                <Image
-                    src="/ikoner/money_circle.svg"
-                    height="100"
-                    width="100"
-                    alt="penger ikon"
-                    className={" flex items-center"}
-                ></Image>
-            </div>
-            <div className="place-items-start md:w-5/6">
-                <Heading
-                    level="2"
-                    size="large"
-                    spacing
-                    aria-label="Hvor mye kan jeg få?"
-                >
-                    Dette kan du få
-                </Heading>
-            </div>
-            <div className="rounded-2xl bg-feedback-success-background p-6 w-full md:w-5/6">
-                <div className="grid grid-cols-2 md:grid-cols-3 mb-4 gap-4 justify-center items-baseline">
-                    <span className="text-4xl md:text-5xl  md:col-start-2 justify-self-end">
-                        {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
-                    </span>
-                    <Label>hver&nbsp;14.&nbsp;dag</Label>
+            <BackLink target="/steg/4" />
+            <div className="flex flex-col items-center">
+                <div className="flex flex-col pt-4 mb-4" aria-hidden="true">
+                    <Image
+                        src="/ikoner/money_circle.svg"
+                        height="100"
+                        width="100"
+                        alt="penger ikon"
+                        className={" flex items-center"}
+                    ></Image>
+                </div>
+                <div className="place-items-start md:w-5/6">
+                    <Heading
+                        level="2"
+                        size="large"
+                        spacing
+                        aria-label="Hvor mye kan jeg få?"
+                    >
+                        Dette kan du få
+                    </Heading>
+                </div>
+                <div className="rounded-2xl bg-feedback-success-background p-6 w-full md:w-5/6">
+                    <div className="grid grid-cols-2 md:grid-cols-3 mb-4 gap-4 justify-center items-baseline">
+                        <span className="text-4xl md:text-5xl  md:col-start-2 justify-self-end">
+                            {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
+                        </span>
+                        <Label>hver&nbsp;14.&nbsp;dag</Label>
 
-                    <span className="text-2xl md:text-3xl md:col-start-2 justify-self-end">
-                        {Math.ceil(
-                            result == null ? 0 : result.resultat
-                        ).toLocaleString("nb-NO")}
-                        &nbsp;kr
-                    </span>
-                    <Label>årlig</Label>
+                        <span className="text-2xl md:text-3xl md:col-start-2 justify-self-end">
+                            {Math.ceil(
+                                result == null ? 0 : result.resultat
+                            ).toLocaleString("nb-NO")}
+                            &nbsp;kr
+                        </span>
+                        <Label>årlig</Label>
+                    </div>
+                </div>
+                {result != null && (
+                    <div className="py-4 md:w-5/6">
+                        <Accordion>
+                            <Accordion.Item>
+                                <Accordion.Header>
+                                    Hvorfor får jeg denne summen?
+                                </Accordion.Header>
+                                <Accordion.Content>
+                                    <ul className=" space-y-4 list-disc">
+                                        {result?.logs.map((text, index) => (
+                                            <li key={index}>
+                                                <div
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: text,
+                                                    }}
+                                                />
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </Accordion.Content>
+                            </Accordion.Item>
+                        </Accordion>
+                    </div>
+                )}
+                <div className="pt-4">
+                    <Alert variant="info" size="small">
+                        <p>
+                            Dette er en foreløpig beregning på hva du kan få før
+                            skatt. Når du har sendt søknaden og den er
+                            ferdigbehandlet, vil du få vite hva du får utbetalt.
+                        </p>
+
+                        <Link className="pt-4" href="https://www.nav.no/aap">
+                            Les mer om hva du kan få i AAP her.
+                        </Link>
+                    </Alert>
                 </div>
             </div>
-            {result != null && (
-                <div className="py-4 md:w-5/6">
-                    <Accordion>
-                        <Accordion.Item>
-                            <Accordion.Header>
-                                Hvorfor får jeg denne summen?
-                            </Accordion.Header>
-                            <Accordion.Content>
-                                <ul className=" space-y-4 list-disc">
-                                    {result?.logs.map((text, index) => (
-                                        <li key={index} ><div dangerouslySetInnerHTML={{__html: text}}/></li>
-                                    ))}
-                                </ul>
-                            </Accordion.Content>
-                        </Accordion.Item>
-                    </Accordion>
-                </div>
-            )}
-            <div className="pt-4">
-                <Alert variant="info" size="small">
-                    <p>
-                        Dette er en foreløpig beregning på hva du kan få før
-                        skatt. Når du har sendt søknaden og den er
-                        ferdigbehandlet, vil du få vite hva du får utbetalt.
-                    </p>
-
-                    <Link className="pt-4" href="https://www.nav.no/aap">
-                        Les mer om hva du kan få i AAP her.
-                    </Link>
-                </Alert>
-            </div>
-        </div>
         </>
     )
 }

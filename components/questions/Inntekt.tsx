@@ -38,11 +38,6 @@ const Inntekt = () => {
                 : "",
     })
 
-    const formvalidation = () => {
-        console.log("we validate here")
-        return true
-    }
-
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         const tekst = event.target.value.replace(/[\.,\s]/g, "")
         const verdi = parseFloat(tekst)
@@ -56,7 +51,6 @@ const Inntekt = () => {
                 ? verdi.toLocaleString("nb-NO")
                 : "",
         })
-
     }
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
@@ -85,7 +79,7 @@ const Inntekt = () => {
     }
 
     if (state.sykmeldtAar === undefined) {
-        state.lengsteSteg =  1
+        state.lengsteSteg = 1
         router.push("/")
         return <></>
     }
@@ -98,7 +92,7 @@ const Inntekt = () => {
 
     return (
         <>
-            <Stepper validation={formvalidation}/>
+            <Stepper />
             <BackLink target="/steg/1" />
             <div aria-hidden="true" className="items flex flex-col pt-4">
                 <Image
@@ -121,32 +115,36 @@ const Inntekt = () => {
                     {" "}
                     Inntekten din brukes til å regne ut hva du kan få i
                     arbeidsavklaringspenger.
-                    <br/>Dette bestemmes av de tidligere inntektene dine, eller minstesatsen (to ganger grunnbeløpet).
+                    <br />
+                    Dette bestemmes av de tidligere inntektene dine, eller
+                    minstesatsen (to ganger grunnbeløpet).
                 </ReadMore>
                 <div className="flex md:flex-row flex-col md:space-x-8 mt-8 mb-4 md:mb-8 ">
                     {inntektsAar.reverse().map((aar, index) => (
                         <div key={index} className="flex flex-col md:h-24 h-28">
-                        <TextField
-                            inputMode="numeric"
-                            className={`shrink md:mb-2 max-w-[160px] h-20`}
-                            key={index}
-                            id={`inntekt${3 - index}`}
-                            name={`inntekt${3 - index}`}
-                            label={`Inntekt ${aar}`}
-                            size="medium"
-                            error={error[2 - index]}
-                            value={Object.values(inntekt)[2 - index]}
-                            onChange={onChange}
-                        />
+                            <TextField
+                                inputMode="numeric"
+                                className={`shrink md:mb-2 max-w-[160px] h-20`}
+                                key={index}
+                                id={`inntekt${3 - index}`}
+                                name={`inntekt${3 - index}`}
+                                label={`Inntekt ${aar}`}
+                                size="medium"
+                                error={error[2 - index]}
+                                value={Object.values(inntekt)[2 - index]}
+                                onChange={onChange}
+                            />
 
-                    {error[2-index] && (
-                        <ul  aria-live="assertive" className="list-disc ml-5 font-bold text-red-500">
-                        <li>{error[2-index]}</li>
-                        </ul>
-                        )}
+                            {error[2 - index] && (
+                                <ul
+                                    aria-live="assertive"
+                                    className="list-disc ml-5 font-bold text-red-500"
+                                >
+                                    <li>{error[2 - index]}</li>
+                                </ul>
+                            )}
                         </div>
                     ))}
-
                 </div>
                 <Button variant="primary">Gå videre</Button>
             </form>

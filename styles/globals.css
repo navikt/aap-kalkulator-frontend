@@ -16,10 +16,10 @@ a {
 * {
     box-sizing: border-box;
 }
-.navds-form-field__error{
-    @apply hidden
+.navds-form-field__error {
+    @apply hidden;
 }
 
-.decorator-wrapper .sok-knapper__container{
+.decorator-wrapper .sok-knapper__container {
     top: 2.5rem;
 }

@@ -17,11 +17,6 @@ const Barn = () => {
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState<string | undefined>(undefined)
 
-    const formvalidation = () => {
-        console.log("we validate here")
-        return true
-    }
-
     const onRadioChange = (value: string) => {
         setState({
             ...state,
@@ -39,7 +34,6 @@ const Barn = () => {
             ...state,
             antallBarn: isNaN(parsed) ? undefined : parsed,
         })
-
     }
     const handleSubmit = async (event: React.FormEvent<BarnInterface>) => {
         event.preventDefault()
@@ -50,9 +44,9 @@ const Barn = () => {
         }
 
         if (
-            (state.antallBarn === undefined && state.harBarn)||
-            (state.antallBarn !== undefined && (isNaN(state.antallBarn) ||
-            state.antallBarn < 0))
+            (state.antallBarn === undefined && state.harBarn) ||
+            (state.antallBarn !== undefined &&
+                (isNaN(state.antallBarn) || state.antallBarn < 0))
         ) {
             setError("Antall barn må være et tall")
             return
@@ -65,7 +59,7 @@ const Barn = () => {
 
     return (
         <>
-            <Stepper validation={formvalidation}/>
+            <Stepper />
             <BackLink target="/steg/3" />
             <div aria-hidden="true" className=" flex flex-col pt-4">
                 <Image
@@ -88,7 +82,7 @@ const Barn = () => {
                     onChange={onRadioChange}
                 />
                 {radioError != undefined && (
-                    <ul  aria-live="assertive" className="list-disc">
+                    <ul aria-live="assertive" className="list-disc">
                         <li className="ml-5 font-bold text-red-500 mb-4">
                             {radioError}
                         </li>
@@ -103,34 +97,37 @@ const Barn = () => {
                             Barnet må være under 18 år og bo hos deg.
                         </BodyShort>
                         <div className="flex flex-col h-24 my-2">
-                        <div className="flex flex-row items-center gap-2">
-                            <TextField
-                                aria-labelledby="l1"
-                                aria-describedby="bs1"
-                                inputMode="numeric"
-                                className="mb-2 md:w-1/5 w-1/4"
-                                id="antallBarn"
-                                label=""
-                                size="medium"
-                                value={
-                                    state.antallBarn == undefined
-                                        ? ""
-                                        : state.antallBarn.toString()
-                                }
-                                onChange={(event) =>
-                                    onChange(event.target.value)
-                                }
-                                error = {error && <div className="hidden"></div>}
-                            />
-                            <BodyShort>
-                                barn
-                            </BodyShort>
-                        </div>
-                        {error && (
-                            <ul  aria-live="assertive" className="list-disc ml-5 font-bold text-red-500">
-                                <li>{error}</li>
-                            </ul>
-                        )}
+                            <div className="flex flex-row items-center gap-2">
+                                <TextField
+                                    aria-labelledby="l1"
+                                    aria-describedby="bs1"
+                                    inputMode="numeric"
+                                    className="mb-2 md:w-1/5 w-1/4"
+                                    id="antallBarn"
+                                    label=""
+                                    size="medium"
+                                    value={
+                                        state.antallBarn == undefined
+                                            ? ""
+                                            : state.antallBarn.toString()
+                                    }
+                                    onChange={(event) =>
+                                        onChange(event.target.value)
+                                    }
+                                    error={
+                                        error && <div className="hidden"></div>
+                                    }
+                                />
+                                <BodyShort>barn</BodyShort>
+                            </div>
+                            {error && (
+                                <ul
+                                    aria-live="assertive"
+                                    className="list-disc ml-5 font-bold text-red-500"
+                                >
+                                    <li>{error}</li>
+                                </ul>
+                            )}
                         </div>
                     </div>
                 )}
