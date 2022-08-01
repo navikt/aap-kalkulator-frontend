@@ -44,7 +44,7 @@ const Step = ({
             <div
                 className={`bg-feedback-info-background border-feedback-info-border border-2 ${circleStyling}`}
             >
-                <Edit className="w-4 h-4" />
+                <Edit className="w-4 h-4 text-feedback-info-icon" />
             </div>
         ) : (
             <div
