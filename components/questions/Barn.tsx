@@ -82,6 +82,8 @@ const Barn = () => {
             </Heading>
             <form onSubmit={handleSubmit}>
                 <Radio
+                    isError={radioError != undefined}
+                    errorId="error1"
                     title="Har du barn?"
                     readMoreTitle="Hvorfor spør vi om du har barn?"
                     readMore={readmoreTekst}
@@ -89,7 +91,7 @@ const Barn = () => {
                     onChange={onRadioChange}
                 />
                 {radioError != undefined && (
-                    <ul aria-live="assertive" className="list-disc">
+                    <ul id="error1" aria-live="assertive"  className="list-disc">
                         <li className="ml-5 font-bold text-red-500 mb-4">
                             {radioError}
                         </li>

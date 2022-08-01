@@ -15,7 +15,7 @@ const Arbeidsgrad = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
-    const [radioError, setRadioError] = useState<string | undefined>(undefined)
+    const [radioError, setRadioError] = useState<string>("")
 
     const arbeidsuke = 37.5
     const onChange = (text: string) => {
@@ -34,7 +34,7 @@ const Arbeidsgrad = () => {
             harArbeid: value == "Ja",
             arbeidstimer: value == "Nei" ? undefined : state.arbeidstimer,
         })
-        setRadioError(undefined)
+        setRadioError("")
     }
     const handleSubmit = async (
         event: React.FormEvent<ArbeidsgradInterface>
@@ -103,14 +103,16 @@ const Arbeidsgrad = () => {
                 Arbeid
             </Heading>
             <Radio
+                isError={ radioError != ""}
+                errorId="error1"
                 title="Er du i jobb nå?"
                 state={state.harArbeid}
                 onChange={onRadioChange}
                 readMoreTitle="Hvorfor spør vi om du har jobb?"
                 readMore={readMoreText}
             />
-            {radioError != undefined && (
-                <ul aria-live="assertive" className="list-disc">
+            {radioError != "" && (
+                <ul id="error1" aria-live="assertive" className="list-disc">
                     <li className="ml-5 font-bold text-red-500 mb-4">
                         {radioError}
                     </li>

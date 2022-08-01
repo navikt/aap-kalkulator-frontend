@@ -23,3 +23,7 @@ a {
 .decorator-wrapper .sok-knapper__container {
     top: 2.5rem;
 }
+
+.navds-fieldset__error{
+    @apply hidden;
+}

@@ -7,12 +7,16 @@ const Radio = ({
     readMoreTitle,
     state,
     onChange,
+    errorId,
+    isError
 }: {
     title: string
     readMoreTitle?: string
     readMore?: string | React.ReactElement
     state?: boolean
     onChange: (newState: string) => void
+    errorId: string
+    isError: boolean
 }) => {
     const radioStyle = "flex-grow border-[1px] px-2 rounded-md hover:shadow"
     const selectedStyle =
@@ -21,11 +25,15 @@ const Radio = ({
 
     return (
         <RadioGroup
+            aria-errormessage={errorId}
             className="grow"
             legend={<Label className="text-xl">{title}</Label>}
             description={readMore !== undefined && description}
             onChange={onChange}
             value={state == undefined ? "" : state ? "Ja" : "Nei"}
+            error={
+                isError && <div className="hidden"></div>
+            }
         >
             <div className="flex flex-row gap-4 mb-4 mt-4">
                 <DSRadio
