@@ -123,6 +123,7 @@ const Inntekt = () => {
                     {inntektsAar.reverse().map((aar, index) => (
                         <div key={index} className="flex flex-col md:h-24 h-28">
                             <TextField
+                                aria-errormessage={`e${index}`}
                                 inputMode="numeric"
                                 className={`shrink md:mb-2 max-w-[160px] h-20`}
                                 key={index}
@@ -137,6 +138,7 @@ const Inntekt = () => {
 
                             {error[2 - index] && (
                                 <ul
+                                    id={`e${index}`}
                                     aria-live="assertive"
                                     className="list-disc ml-5 font-bold text-red-500"
                                 >

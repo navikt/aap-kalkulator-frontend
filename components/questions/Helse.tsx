@@ -118,6 +118,10 @@ const Helse = () => {
                         du er under 25 år.
                     </ReadMore>
                     <RadioGroup
+                        aria-errormessage="e1"
+                        error={
+                            radioError && <div className="hidden"></div>
+                        }
                         aria-labelledby="l1"
                         legend=""
                         size="medium"
@@ -135,6 +139,7 @@ const Helse = () => {
                     </RadioGroup>
                     {radioError && (
                         <ul
+                            id = "e1"
                             aria-live="assertive"
                             className="list-disc ml-5 font-bold text-red-500"
                         >
@@ -155,6 +160,7 @@ const Helse = () => {
                 </ReadMore>
                 <div className="flex flex-col my-2">
                     <TextField
+                        aria-errormessage="e2"
                         aria-labelledby="l2"
                         inputMode="numeric"
                         size="medium"
@@ -171,6 +177,7 @@ const Helse = () => {
                     />
                     {error && (
                         <ul
+                            id="e2"
                             aria-live="assertive"
                             className="list-disc ml-5 font-bold text-red-500"
                         >

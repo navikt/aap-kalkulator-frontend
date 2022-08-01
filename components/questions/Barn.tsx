@@ -108,6 +108,7 @@ const Barn = () => {
                         <div className="flex flex-col h-24 my-2">
                             <div className="flex flex-row items-center gap-2">
                                 <TextField
+                                    aria-errormessage="e2"
                                     aria-labelledby="l1"
                                     aria-describedby="bs1"
                                     inputMode="numeric"
@@ -131,6 +132,7 @@ const Barn = () => {
                             </div>
                             {error && (
                                 <ul
+                                    id="e2"
                                     aria-live="assertive"
                                     className="list-disc ml-5 font-bold text-red-500"
                                 >
