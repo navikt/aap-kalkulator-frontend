@@ -54,6 +54,13 @@ const Barn = () => {
 
         await router.push("/resultat")
     }
+
+    if (state.sykmeldtAar === undefined) {
+        state.lengsteSteg = 1
+        router.push("/")
+        return <></>
+    }
+
     const readmoreTekst =
         "Dersom du har barn kan du få et tillegg på din utbetaling."
 

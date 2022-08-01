@@ -68,6 +68,12 @@ const Arbeidsgrad = () => {
         await router.push("/steg/4")
     }
 
+    if (state.sykmeldtAar === undefined) {
+        state.lengsteSteg = 1
+        router.push("/")
+        return <></>
+    }
+
     const readMoreText = (
         <ul>
             {" "}

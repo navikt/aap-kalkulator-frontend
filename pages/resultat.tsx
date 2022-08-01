@@ -5,12 +5,20 @@ import { Accordion, Alert, Heading, Label, Link } from "@navikt/ds-react"
 import Image from "next/image"
 import { ResultInterface } from "../components/result/Result"
 import BackLink from "../components/backlink/BackLink"
+import { useRouter } from "next/router";
 
 const Resultat: NextPage = () => {
     const [result, setResult] = useState<ResultInterface | null>(null)
     const { state } = useContext(State)
+    const router = useRouter()
+
 
     useEffect(() => {
+        if (state.sykmeldtAar === undefined) {
+            state.lengsteSteg = 1
+            router.push("/")
+            return
+        }
         const endpoint =
             process.env.NODE_ENV == "production"
                 ? "https://aap-kalkulator-api.ekstern.dev.nav.no/beregning"
