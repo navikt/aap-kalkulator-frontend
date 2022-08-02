@@ -43,7 +43,7 @@ const Inntekt = () => {
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         const tekst = event.target.value.replace(/[\.,\s]/g, "")
         const verdi = parseFloat(tekst)
-        const index = parseInt(event.target.name.at(-1)!!) - 1
+        const index = parseInt(event.target.name[event.target.name.length-1]) -1
         let newErrors = error
         newErrors[index] = ""
         setError(newErrors)
