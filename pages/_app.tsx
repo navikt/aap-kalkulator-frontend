@@ -38,9 +38,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     })
 
     return (
-        // @ts-ignore
+        <BrowserState.Provider value={{ browserState, setBrowserState }}>
         <State.Provider
-            value={{ state, setState, browserState, setBrowserState }}
+            value={{ state, setState}}
         >
             <Head>
                 <title>AAP-kalkulator - www.nav.no</title>
@@ -49,6 +49,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <Component {...pageProps} />
             </Container>
         </State.Provider>
+        </BrowserState.Provider>
     )
 }
 

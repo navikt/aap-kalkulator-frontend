@@ -67,11 +67,7 @@ const Helse = () => {
 
         setError(errors)
 
-        if (state.over25 == undefined) {
-            return
-        }
-
-        if (erFeil(sykmeldtAar)) {
+        if (erFeil(sykmeldtAar) || state.over25 == undefined) {
             return
         }
 
@@ -126,7 +122,7 @@ const Helse = () => {
                         onChange={(val: any) => handleChange(val)}
                         value={
                             state.over25 === undefined
-                                ? undefined
+                                ? ""
                                 : state.over25
                                 ? "ja"
                                 : "nei"
