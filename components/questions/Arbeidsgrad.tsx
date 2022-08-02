@@ -59,7 +59,7 @@ const Arbeidsgrad = () => {
         }
 
         if (isNaN(arbeidstimer) || arbeidstimer < 0 || arbeidstimer > 160) {
-            setError("Antall timer må være et tall, mellom 0 og 160.")
+            setError("Antall timer må være et tall mellom 0 og 160.")
             return
         }
 
@@ -97,30 +97,30 @@ const Arbeidsgrad = () => {
                 alt="koffert ikon"
                 tittel="Arbeid"
             />
-            <Radio
-                isError={radioError != ""}
-                errorId="error1"
-                title="Er du i jobb nå?"
-                state={state.harArbeid}
-                onChange={onRadioChange}
-                readMoreTitle="Hvorfor spør vi om du har jobb?"
-                readMore={readMoreText}
-            />
-            {radioError != "" && (
-                <ul id="error1" aria-live="assertive" className="list-disc">
-                    <li className="ml-5 font-bold text-red-500 mb-4">
-                        {radioError}
-                    </li>
-                </ul>
-            )}
             <form onSubmit={handleSubmit}>
+                <Radio
+                    isError={radioError != ""}
+                    errorId="error1"
+                    title="Er du i jobb nå?"
+                    state={state.harArbeid}
+                    onChange={onRadioChange}
+                    readMoreTitle="Hvorfor spør vi om du har jobb?"
+                    readMore={readMoreText}
+                />
+                {radioError != "" && (
+                    <ul id="error1" aria-live="assertive" className="list-disc">
+                        <li className="ml-5 font-bold text-red-500 mb-4">
+                            {radioError}
+                        </li>
+                    </ul>
+                )}
                 {state.harArbeid && (
                     <div className="mb-4">
                         <Label id="l1" className="text-xl">
                             Hvor mange timer i uken jobber du?
                         </Label>
                         <BodyShort>
-                            Varierer det, kan du oppgi gjennomsnittet
+                            Varierer det, kan du oppgi gjennomsnittet.
                         </BodyShort>
                         <div className="flex flex-col my-2 ">
                             <div className="flex flex-row gap-2 items-center">

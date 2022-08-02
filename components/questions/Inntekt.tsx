@@ -8,6 +8,7 @@ import {
     Label,
     ReadMore,
     TextField,
+    Link,
 } from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Image from "next/image"
@@ -107,14 +108,26 @@ const Inntekt = () => {
                 <Label className="text-xl">
                     Hvor mye tjente du de tre siste årene før du ble sykmeldt?
                 </Label>
-                <BodyShort spacing>Oppgi inntekt før skatt, i kroner</BodyShort>
+                <BodyShort spacing>Oppgi inntekt før skatt.</BodyShort>
                 <ReadMore size="small" header="Hvorfor spør vi om inntekt?">
-                    {" "}
-                    Inntekten din brukes til å regne ut hva du kan få i
-                    arbeidsavklaringspenger.
-                    <br />
-                    Dette bestemmes av de tidligere inntektene dine, eller
-                    minstesatsen (to ganger grunnbeløpet).
+                    <div>
+                        <BodyShort spacing>
+                            Inntekten din brukes til å regne ut hva du kan få i
+                            arbeidsavklaringspenger.
+                        </BodyShort>
+                        <BodyShort>
+                            Dette bestemmes av de tidligere inntektene dine
+                            eller minstesatsen (to ganger{" "}
+                            <Link
+                                href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                grunnbeløpet
+                            </Link>
+                            ).
+                        </BodyShort>
+                    </div>
                 </ReadMore>
                 <div className="flex md:flex-row flex-col md:space-x-8 my-4">
                     {inntektsAar.reverse().map((aar, index) => (
