@@ -13,6 +13,7 @@ import { useRouter } from "next/router"
 import Image from "next/image"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
+import QuestionHeader from "../questionHeader/QuestionHeader"
 
 interface Inntekt {
     inntekt1: string
@@ -97,18 +98,11 @@ const Inntekt = () => {
         <>
             <Stepper />
             <BackLink target="/steg/1" />
-            <div aria-hidden="true" className="items flex flex-col pt-4 mb-4">
-                <Image
-                    src="/ikoner/wallet_circle.svg"
-                    height="100"
-                    width="100"
-                    alt="lommebok ikon"
-                    className={" flex items-center"}
-                ></Image>
-            </div>
-            <Heading size="large" level="2" spacing>
-                Inntekt
-            </Heading>
+            <QuestionHeader
+                image="/ikoner/wallet_circle.svg"
+                alt="lommebok ikon"
+                tittel="Inntekt"
+            />
             <form onSubmit={handleSubmit}>
                 <Label className="text-xl">
                     Hvor mye tjente du de tre siste årene før du ble sykmeldt?

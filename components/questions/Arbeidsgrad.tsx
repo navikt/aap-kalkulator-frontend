@@ -6,6 +6,7 @@ import Image from "next/image"
 import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
+import QuestionHeader from "../questionHeader/QuestionHeader"
 
 interface ArbeidsgradInterface extends HTMLFormElement {
     arbeidsgrad: HTMLInputElement
@@ -16,7 +17,7 @@ const Arbeidsgrad = () => {
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState<string>("")
-    const { browserState, setBrowserState } = useContext(BrowserState)
+    const { browserState } = useContext(BrowserState)
 
     const arbeidsuke = 37.5
     const onChange = (text: string) => {
@@ -91,18 +92,11 @@ const Arbeidsgrad = () => {
         <>
             <Stepper />
             <BackLink target="/steg/2" />
-            <div aria-hidden="true" className="flex flex-col pt-4 mb-4">
-                <Image
-                    src="/ikoner/briefcase_circle.svg"
-                    height="100"
-                    width="100"
-                    alt="lommebok ikon"
-                    className=" flex items-center"
-                ></Image>
-            </div>
-            <Heading size="large" level="2" spacing>
-                Arbeid
-            </Heading>
+            <QuestionHeader
+                image="/ikoner/briefcase_circle.svg"
+                alt="koffert ikon"
+                tittel="Arbeid"
+            />
             <Radio
                 isError={radioError != ""}
                 errorId="error1"

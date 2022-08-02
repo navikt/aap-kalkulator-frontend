@@ -13,6 +13,7 @@ import { useRouter } from "next/router"
 import Image from "next/image"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
+import QuestionHeader from "../questionHeader/QuestionHeader"
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -87,19 +88,11 @@ const Helse = () => {
         <>
             <Stepper />
             <BackLink target="/" />
-            <div aria-hidden="true" className="items flex flex-col pt-4 mb-4">
-                <Image
-                    src="/ikoner/helse_circle.svg"
-                    height="100"
-                    width="100"
-                    alt="helse ikon"
-                    className={" flex items-center"}
-                ></Image>
-            </div>
-            <Heading size="large" level="2" spacing>
-                Helse
-            </Heading>
-
+            <QuestionHeader
+                image="/ikoner/helse_circle.svg"
+                alt="helse ikon"
+                tittel="Helse"
+            />
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <Label id="l1" className="text-xl">

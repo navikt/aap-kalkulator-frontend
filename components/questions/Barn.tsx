@@ -6,6 +6,7 @@ import Image from "next/image"
 import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
+import QuestionHeader from "../questionHeader/QuestionHeader"
 
 interface BarnInterface extends HTMLFormElement {
     antallBarn: HTMLInputElement
@@ -69,18 +70,11 @@ const Barn = () => {
         <>
             <Stepper />
             <BackLink target="/steg/3" />
-            <div aria-hidden="true" className=" flex flex-col pt-4 mb-4">
-                <Image
-                    src="/ikoner/teddy_circle.svg"
-                    height="100"
-                    width="100"
-                    alt="lommebok ikon"
-                    className={" flex items-center"}
-                ></Image>
-            </div>
-            <Heading size="large" level="2" spacing>
-                Barn
-            </Heading>
+            <QuestionHeader
+                image="/ikoner/teddy_circle.svg"
+                alt="teddybjørn ikon"
+                tittel="Barn"
+            />
             <form onSubmit={handleSubmit}>
                 <Radio
                     isError={radioError != undefined}
