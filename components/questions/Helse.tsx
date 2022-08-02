@@ -87,7 +87,7 @@ const Helse = () => {
         <>
             <Stepper />
             <BackLink target="/" />
-            <div aria-hidden="true" className="items flex flex-col pt-4">
+            <div aria-hidden="true" className="items flex flex-col pt-4 mb-4">
                 <Image
                     src="/ikoner/helse_circle.svg"
                     height="100"
@@ -101,7 +101,7 @@ const Helse = () => {
             </Heading>
 
             <form onSubmit={handleSubmit}>
-                <div className="">
+                <div className="mb-4">
                     <Label id="l1" className="text-xl">
                         Er du over 25 år?
                     </Label>
@@ -141,43 +141,45 @@ const Helse = () => {
                         </ul>
                     )}
                 </div>
-                <Label id="l2" className="text-xl">
-                    Hvilket år fikk du først nedsatt arbeidsevne?
-                </Label>
-                <ReadMore
-                    size="small"
-                    header="Hvorfor spør vi om når du fikk nedsatt arbeidsevne?"
-                >
-                    {" "}
-                    Inntektsårene på neste side bestemmes ut fra året du fikk
-                    nedsatt arbeidsevne.
-                </ReadMore>
-                <div className="flex flex-col my-2">
-                    <TextField
-                        aria-errormessage="e2"
-                        aria-labelledby="l2"
-                        inputMode="numeric"
-                        size="medium"
-                        label=""
-                        id="sykmelding"
-                        className="md:w-1/5 mb-2 w-1/4"
-                        value={
-                            state.sykmeldtAar == undefined
-                                ? ""
-                                : state.sykmeldtAar.toString()
-                        }
-                        onChange={(event) => onChange(event.target.value)}
-                        error={error && <div className="hidden"></div>}
-                    />
-                    {error && (
-                        <ul
-                            id="e2"
-                            aria-live="assertive"
-                            className="list-disc ml-5 font-bold text-red-500"
-                        >
-                            <li>{error}</li>
-                        </ul>
-                    )}
+                <div className="mb-4">
+                    <Label id="l2" className="text-xl">
+                        Hvilket år fikk du først nedsatt arbeidsevne?
+                    </Label>
+                    <ReadMore
+                        size="small"
+                        header="Hvorfor spør vi om når du fikk nedsatt arbeidsevne?"
+                    >
+                        {" "}
+                        Inntektsårene på neste side bestemmes ut fra året du
+                        fikk nedsatt arbeidsevne.
+                    </ReadMore>
+                    <div className="flex flex-col my-2">
+                        <TextField
+                            aria-errormessage="e2"
+                            aria-labelledby="l2"
+                            inputMode="numeric"
+                            size="medium"
+                            label=""
+                            id="sykmelding"
+                            className="md:w-1/5 mb-2 w-1/4"
+                            value={
+                                state.sykmeldtAar == undefined
+                                    ? ""
+                                    : state.sykmeldtAar.toString()
+                            }
+                            onChange={(event) => onChange(event.target.value)}
+                            error={error && <div className="hidden"></div>}
+                        />
+                        {error && (
+                            <ul
+                                id="e2"
+                                aria-live="assertive"
+                                className="list-disc ml-5 font-bold text-red-500"
+                            >
+                                <li>{error}</li>
+                            </ul>
+                        )}
+                    </div>
                 </div>
                 <Button variant="primary">Gå videre</Button>
             </form>

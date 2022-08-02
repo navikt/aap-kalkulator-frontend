@@ -39,16 +39,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     return (
         <BrowserState.Provider value={{ browserState, setBrowserState }}>
-        <State.Provider
-            value={{ state, setState}}
-        >
-            <Head>
-                <title>AAP-kalkulator - www.nav.no</title>
-            </Head>
-            <Container>
-                <Component {...pageProps} />
-            </Container>
-        </State.Provider>
+            <State.Provider value={{ state, setState }}>
+                <Head>
+                    <title>AAP-kalkulator - www.nav.no</title>
+                </Head>
+                <Container>
+                    <Component {...pageProps} />
+                </Container>
+            </State.Provider>
         </BrowserState.Provider>
     )
 }

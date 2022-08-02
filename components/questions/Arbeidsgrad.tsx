@@ -121,7 +121,7 @@ const Arbeidsgrad = () => {
             )}
             <form onSubmit={handleSubmit}>
                 {state.harArbeid && (
-                    <div>
+                    <div className="mb-4">
                         <Label id="l1" className="text-xl">
                             Hvor mange timer i uken jobber du?
                         </Label>

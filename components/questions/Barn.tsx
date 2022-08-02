@@ -69,7 +69,7 @@ const Barn = () => {
         <>
             <Stepper />
             <BackLink target="/steg/3" />
-            <div aria-hidden="true" className=" flex flex-col pt-4">
+            <div aria-hidden="true" className=" flex flex-col pt-4 mb-4">
                 <Image
                     src="/ikoner/teddy_circle.svg"
                     height="100"
@@ -99,14 +99,14 @@ const Barn = () => {
                     </ul>
                 )}
                 {state.harBarn && (
-                    <div>
+                    <div className="mb-4">
                         <Label id="l1" className="text-xl">
                             Hvor mange barn har du?
                         </Label>
                         <BodyShort id="bs1">
                             Barnet må være under 18 år og bo hos deg.
                         </BodyShort>
-                        <div className="flex flex-col h-24 my-2">
+                        <div className="flex flex-col my-2">
                             <div className="flex flex-row items-center gap-2">
                                 <TextField
                                     aria-errormessage="e2"

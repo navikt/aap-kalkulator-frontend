@@ -43,7 +43,8 @@ const Inntekt = () => {
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         const tekst = event.target.value.replace(/[\.,\s]/g, "")
         const verdi = parseFloat(tekst)
-        const index = parseInt(event.target.name[event.target.name.length-1]) -1
+        const index =
+            parseInt(event.target.name[event.target.name.length - 1]) - 1
         let newErrors = error
         newErrors[index] = ""
         setError(newErrors)
@@ -96,7 +97,7 @@ const Inntekt = () => {
         <>
             <Stepper />
             <BackLink target="/steg/1" />
-            <div aria-hidden="true" className="items flex flex-col pt-4">
+            <div aria-hidden="true" className="items flex flex-col pt-4 mb-4">
                 <Image
                     src="/ikoner/wallet_circle.svg"
                     height="100"
@@ -121,9 +122,9 @@ const Inntekt = () => {
                     Dette bestemmes av de tidligere inntektene dine, eller
                     minstesatsen (to ganger grunnbeløpet).
                 </ReadMore>
-                <div className="flex md:flex-row flex-col md:space-x-8 mt-8 mb-4 md:mb-8 ">
+                <div className="flex md:flex-row flex-col md:space-x-8 my-4">
                     {inntektsAar.reverse().map((aar, index) => (
-                        <div key={index} className="flex flex-col md:h-24 h-28">
+                        <div key={index} className="flex flex-col">
                             <TextField
                                 aria-errormessage={`e${index}`}
                                 inputMode="numeric"
