@@ -3,7 +3,7 @@ import { Back } from "@navikt/ds-icons"
 import React from "react"
 import { useRouter } from "next/router"
 
-const BackLink = ({ target }: { target: string }) => {
+const BackLink = ({ target, tekst }: { target: string, tekst?: string}) => {
     const router = useRouter()
 
     const onClick = async (e: React.MouseEvent) => {
@@ -11,9 +11,9 @@ const BackLink = ({ target }: { target: string }) => {
         await router.push(target)
     }
     return (
-        <Link href="#" className="mt-4 " onClick={onClick}>
+        <Link href="#" className="mt-4 " onClick={onClick} >
             {" "}
-            <Back /> Tilbake
+            <Back /> {tekst ? tekst: "Tilbake"}
         </Link>
     )
 }

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import React, { useContext, useState } from "react"
 import { BrowserState, State } from "../../pages/_app"
-import { BodyShort, Button, Heading, Label, TextField } from "@navikt/ds-react"
+import {BodyShort, Button, Heading, Label, Link, TextField} from "@navikt/ds-react"
 import Image from "next/image"
 import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
@@ -63,8 +63,14 @@ const Barn = () => {
         return <></>
     }
 
-    const readmoreTekst =
-        "Dersom du har barn kan du få et tillegg på din utbetaling."
+    const readmoreTekst = (
+        <BodyShort>
+        Hvis du forsørger barn under 18 år, kan du få et barnetillegg. <Link
+            href="#fixme"
+            target="_blank"
+            rel="noreferrer"
+        >Les mer om barnetillegg her.</Link>
+        </BodyShort>)
 
     return (
         <>

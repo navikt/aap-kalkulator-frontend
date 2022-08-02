@@ -46,7 +46,7 @@ const Resultat: NextPage = () => {
     const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
     return (
         <>
-            <BackLink target="/steg/4" />
+            <BackLink target="/steg/1" tekst="Endre svar"/>
             <div className="flex flex-col items-center">
                 <div className="flex flex-col pt-4 mb-4" aria-hidden="true">
                     <Image
