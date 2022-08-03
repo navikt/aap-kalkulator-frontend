@@ -1,11 +1,12 @@
 import { useRouter } from "next/router"
 import React, { useContext, useState } from "react"
 import { BrowserState, State } from "../../pages/_app"
-import { BodyShort, Button, Heading, Label, TextField } from "@navikt/ds-react"
+import {BodyShort, Button, Heading, Label, Link, TextField} from "@navikt/ds-react"
 import Image from "next/image"
 import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
+import QuestionHeader from "../questionHeader/QuestionHeader"
 
 interface BarnInterface extends HTMLFormElement {
     antallBarn: HTMLInputElement
@@ -62,25 +63,24 @@ const Barn = () => {
         return <></>
     }
 
-    const readmoreTekst =
-        "Dersom du har barn kan du få et tillegg på din utbetaling."
+    const readmoreTekst = (
+        <BodyShort>
+        Hvis du forsørger barn under 18 år, kan du få et barnetillegg. <Link
+            href="#fixme"
+            target="_blank"
+            rel="noreferrer"
+        >Les mer om barnetillegg her.</Link>
+        </BodyShort>)
 
     return (
         <>
             <Stepper />
             <BackLink target="/steg/3" />
-            <div aria-hidden="true" className=" flex flex-col pt-4">
-                <Image
-                    src="/ikoner/teddy_circle.svg"
-                    height="100"
-                    width="100"
-                    alt="lommebok ikon"
-                    className={" flex items-center"}
-                ></Image>
-            </div>
-            <Heading size="large" level="2" spacing>
-                Barn
-            </Heading>
+            <QuestionHeader
+                image="/ikoner/teddy_circle.svg"
+                alt="teddybjørn ikon"
+                tittel="Barn"
+            />
             <form onSubmit={handleSubmit}>
                 <Radio
                     isError={radioError != undefined}
@@ -99,14 +99,14 @@ const Barn = () => {
                     </ul>
                 )}
                 {state.harBarn && (
-                    <div>
+                    <div className="mb-4">
                         <Label id="l1" className="text-xl">
                             Hvor mange barn har du?
                         </Label>
                         <BodyShort id="bs1">
                             Barnet må være under 18 år og bo hos deg.
                         </BodyShort>
-                        <div className="flex flex-col h-24 my-2">
+                        <div className="flex flex-col my-2">
                             <div className="flex flex-row items-center gap-2">
                                 <TextField
                                     aria-errormessage="e2"

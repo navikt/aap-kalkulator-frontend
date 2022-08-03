@@ -6,6 +6,7 @@ import Image from "next/image"
 import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
+import QuestionHeader from "../questionHeader/QuestionHeader"
 
 interface ArbeidsgradInterface extends HTMLFormElement {
     arbeidsgrad: HTMLInputElement
@@ -16,7 +17,7 @@ const Arbeidsgrad = () => {
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState<string>("")
-    const { browserState, setBrowserState } = useContext(BrowserState)
+    const { browserState } = useContext(BrowserState)
 
     const arbeidsuke = 37.5
     const onChange = (text: string) => {
@@ -58,7 +59,7 @@ const Arbeidsgrad = () => {
         }
 
         if (isNaN(arbeidstimer) || arbeidstimer < 0 || arbeidstimer > 160) {
-            setError("Antall timer må være et tall, mellom 0 og 160.")
+            setError("Antall timer må være et tall mellom 0 og 160.")
             return
         }
 
@@ -91,42 +92,35 @@ const Arbeidsgrad = () => {
         <>
             <Stepper />
             <BackLink target="/steg/2" />
-            <div aria-hidden="true" className="flex flex-col pt-4 mb-4">
-                <Image
-                    src="/ikoner/briefcase_circle.svg"
-                    height="100"
-                    width="100"
-                    alt="lommebok ikon"
-                    className=" flex items-center"
-                ></Image>
-            </div>
-            <Heading size="large" level="2" spacing>
-                Arbeid
-            </Heading>
-            <Radio
-                isError={radioError != ""}
-                errorId="error1"
-                title="Er du i jobb nå?"
-                state={state.harArbeid}
-                onChange={onRadioChange}
-                readMoreTitle="Hvorfor spør vi om du har jobb?"
-                readMore={readMoreText}
+            <QuestionHeader
+                image="/ikoner/briefcase_circle.svg"
+                alt="koffert ikon"
+                tittel="Arbeid"
             />
-            {radioError != "" && (
-                <ul id="error1" aria-live="assertive" className="list-disc">
-                    <li className="ml-5 font-bold text-red-500 mb-4">
-                        {radioError}
-                    </li>
-                </ul>
-            )}
             <form onSubmit={handleSubmit}>
+                <Radio
+                    isError={radioError != ""}
+                    errorId="error1"
+                    title="Er du i jobb nå?"
+                    state={state.harArbeid}
+                    onChange={onRadioChange}
+                    readMoreTitle="Hvorfor spør vi om du har jobb?"
+                    readMore={readMoreText}
+                />
+                {radioError != "" && (
+                    <ul id="error1" aria-live="assertive" className="list-disc">
+                        <li className="ml-5 font-bold text-red-500 mb-4">
+                            {radioError}
+                        </li>
+                    </ul>
+                )}
                 {state.harArbeid && (
-                    <div>
+                    <div className="mb-4">
                         <Label id="l1" className="text-xl">
                             Hvor mange timer i uken jobber du?
                         </Label>
                         <BodyShort>
-                            Varierer det, kan du oppgi gjennomsnittet
+                            Varierer det, kan du oppgi gjennomsnittet.
                         </BodyShort>
                         <div className="flex flex-col my-2 ">
                             <div className="flex flex-row gap-2 items-center">

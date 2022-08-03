@@ -16,8 +16,8 @@ const Step = ({
 }) => {
     const { state } = useContext(State)
     const router = useRouter()
-    const path = router.asPath
-    const current_step = parseInt(path.split("/").at(-1)!!)
+    const path = router.asPath.split("/")
+    const current_step = parseInt(path[path.length - 1])
     const isCurrentPage = stepNumber === current_step
     const circleStyling =
         "flex rounded-full w-8 h-8 md:w-8 md:h-8  items-center justify-center mb-2"
@@ -89,9 +89,6 @@ const Step = ({
 const Stepper = () => {
     const stepperRef = useRef<HTMLElement>(null)
     const steps = ["Helse", "Inntekt", "Arbeid", "Barn", "Resultat"]
-    const router = useRouter()
-    const path = router.asPath
-    const current_step = parseInt(path.split("/").at(-1)!!)
     return (
         <nav aria-label="Steg i skjema" ref={stepperRef}>
             <ul className="flex flex-row justify-center pb-4 items-center md:px-8 px-0">

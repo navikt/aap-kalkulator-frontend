@@ -8,11 +8,13 @@ import {
     Label,
     ReadMore,
     TextField,
+    Link,
 } from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Image from "next/image"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
+import QuestionHeader from "../questionHeader/QuestionHeader"
 
 interface Inntekt {
     inntekt1: string
@@ -43,7 +45,8 @@ const Inntekt = () => {
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         const tekst = event.target.value.replace(/[\.,\s]/g, "")
         const verdi = parseFloat(tekst)
-        const index = parseInt(event.target.name.at(-1)!!) - 1
+        const index =
+            parseInt(event.target.name[event.target.name.length - 1]) - 1
         let newErrors = error
         newErrors[index] = ""
         setError(newErrors)
@@ -96,34 +99,39 @@ const Inntekt = () => {
         <>
             <Stepper />
             <BackLink target="/steg/1" />
-            <div aria-hidden="true" className="items flex flex-col pt-4">
-                <Image
-                    src="/ikoner/wallet_circle.svg"
-                    height="100"
-                    width="100"
-                    alt="lommebok ikon"
-                    className={" flex items-center"}
-                ></Image>
-            </div>
-            <Heading size="large" level="2" spacing>
-                Inntekt
-            </Heading>
+            <QuestionHeader
+                image="/ikoner/wallet_circle.svg"
+                alt="lommebok ikon"
+                tittel="Inntekt"
+            />
             <form onSubmit={handleSubmit}>
                 <Label className="text-xl">
                     Hvor mye tjente du de tre siste årene før du ble sykmeldt?
                 </Label>
-                <BodyShort spacing>Oppgi inntekt før skatt, i kroner</BodyShort>
+                <BodyShort spacing>Oppgi inntekt før skatt.</BodyShort>
                 <ReadMore size="small" header="Hvorfor spør vi om inntekt?">
-                    {" "}
-                    Inntekten din brukes til å regne ut hva du kan få i
-                    arbeidsavklaringspenger.
-                    <br />
-                    Dette bestemmes av de tidligere inntektene dine, eller
-                    minstesatsen (to ganger grunnbeløpet).
+                    <div>
+                        <BodyShort spacing>
+                            Inntekten din brukes til å regne ut hva du kan få i
+                            arbeidsavklaringspenger.
+                        </BodyShort>
+                        <BodyShort>
+                            Dette bestemmes av de tidligere inntektene dine
+                            eller minstesatsen (to ganger{" "}
+                            <Link
+                                href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                grunnbeløpet
+                            </Link>
+                            ).
+                        </BodyShort>
+                    </div>
                 </ReadMore>
-                <div className="flex md:flex-row flex-col md:space-x-8 mt-8 mb-4 md:mb-8 ">
+                <div className="flex md:flex-row flex-col md:space-x-8 my-4">
                     {inntektsAar.reverse().map((aar, index) => (
-                        <div key={index} className="flex flex-col md:h-24 h-28">
+                        <div key={index} className="flex flex-col">
                             <TextField
                                 aria-errormessage={`e${index}`}
                                 inputMode="numeric"
