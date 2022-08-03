@@ -60,7 +60,7 @@ const Inntekt = () => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
 
-        const errorMessage = "Oppgi inntekt"
+        const errorMessage = "Fyll inn inntekt."
         const inntekt1 = parseFloat(inntekt.inntekt1.replace(/\s/g, ""))
         const inntekt2 = parseFloat(inntekt.inntekt2.replace(/\s/g, ""))
         const inntekt3 = parseFloat(inntekt.inntekt3.replace(/\s/g, ""))
@@ -106,17 +106,17 @@ const Inntekt = () => {
             />
             <form onSubmit={handleSubmit}>
                 <Label className="text-xl">
-                    Hvor mye tjente du de tre siste årene før du ble sykmeldt?
+                    Hvor mye tjente du de tre siste årene før du fikk nedsatt arbeidsevne?
                 </Label>
-                <BodyShort spacing>Oppgi inntekt før skatt.</BodyShort>
+                <BodyShort spacing>Fyll inn inntekt før skatt.</BodyShort>
                 <ReadMore size="small" header="Hvorfor spør vi om inntekt?">
                     <div>
                         <BodyShort spacing>
-                            Inntekten din brukes til å regne ut hva du kan få i
+                            Vi bruker inntekten din til å regne ut hva du kan få i
                             arbeidsavklaringspenger.
                         </BodyShort>
                         <BodyShort>
-                            Dette bestemmes av de tidligere inntektene dine
+                            Dette bestemmes av inntekten din de tre siste årene
                             eller minstesatsen (to ganger{" "}
                             <Link
                                 href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden"

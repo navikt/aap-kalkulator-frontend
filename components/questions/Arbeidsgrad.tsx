@@ -58,8 +58,8 @@ const Arbeidsgrad = () => {
             arbeidsgrad = (arbeidstimer / arbeidsuke) * 100
         }
 
-        if (isNaN(arbeidstimer) || arbeidstimer < 0 || arbeidstimer > 160) {
-            setError("Antall timer må være et tall mellom 0 og 160.")
+        if (isNaN(arbeidstimer) || arbeidstimer < 0 || arbeidstimer > 168) {
+            setError("Antall timer må være et tall mellom 0 og 168.")
             return
         }
 
@@ -77,15 +77,13 @@ const Arbeidsgrad = () => {
     }
 
     const readMoreText = (
-        <ul>
-            {" "}
-            <li> Hvor mye du får utbetalt avhenger av hvor mye du jobber.</li>
-            <li>Vi vurderer en arbeidsuke til å være 37,5 timer.</li>
-            <li>
-                Jobber du mer enn 22,5 timer i uken får du ikke
-                arbeidsavklaringspenger.{" "}
-            </li>
-        </ul>
+
+            <BodyShort>Hvor mye du får utbetalt avhenger av hvor mye du jobber.
+            En arbeidsuke er 37,5 timer.
+                Jobber du mer enn 22,5 timer i uka, kan du ikke få
+                arbeidsavklaringspenger.
+            </BodyShort>
+
     )
 
     return (
@@ -117,7 +115,7 @@ const Arbeidsgrad = () => {
                 {state.harArbeid && (
                     <div className="mb-4">
                         <Label id="l1" className="text-xl">
-                            Hvor mange timer i uken jobber du?
+                            Hvor mange timer i uka jobber du?
                         </Label>
                         <BodyShort>
                             Varierer det, kan du oppgi gjennomsnittet.

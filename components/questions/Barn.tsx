@@ -41,7 +41,7 @@ const Barn = () => {
         event.preventDefault()
 
         if (state.harBarn == undefined) {
-            setRadioError("Du må velge enten ja eller nei")
+            setRadioError("Du må velge enten ja eller nei for å gå videre.")
             return
         }
 
@@ -50,7 +50,7 @@ const Barn = () => {
             (state.antallBarn !== undefined &&
                 (isNaN(state.antallBarn) || state.antallBarn < 0))
         ) {
-            setError("Antall barn må være et tall")
+            setError("Antall barn må være et tall.")
             return
         }
 
@@ -85,8 +85,8 @@ const Barn = () => {
                 <Radio
                     isError={radioError != undefined}
                     errorId="error1"
-                    title="Har du barn?"
-                    readMoreTitle="Hvorfor spør vi om du har barn?"
+                    title="Forsørger du barn under 18 år?"
+                    readMoreTitle="Hvorfor spør vi om du forsørger barn under 18 år?"
                     readMore={readmoreTekst}
                     state={state.harBarn}
                     onChange={onRadioChange}
@@ -101,10 +101,10 @@ const Barn = () => {
                 {state.harBarn && (
                     <div className="mb-4">
                         <Label id="l1" className="text-xl">
-                            Hvor mange barn har du?
+                            Hvor mange barn forsørger du?
                         </Label>
                         <BodyShort id="bs1">
-                            Barnet må være under 18 år og bo hos deg.
+                            Barnet må være under 18 år.
                         </BodyShort>
                         <div className="flex flex-col my-2">
                             <div className="flex flex-row items-center gap-2">

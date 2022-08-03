@@ -55,15 +55,15 @@ const Helse = () => {
         const sykmeldtAar = parseInt(event.currentTarget.sykmelding.value)
 
         const errors = isNaN(sykmeldtAar)
-            ? "Sykmeldingsår må være et tall"
+            ? "Året du fikk nedsatt arbeidsevne må være et tall."
             : sykmeldtAar > detteAaret
-            ? "Sykmeldingsår må være året vi er i nå eller tidligere"
+            ? `Året du fikk nedsatt arbeidsevne må være ${detteAaret} eller tidligere.`
             : sykmeldtAar < detteAaret - aapGrense
-            ? `Du får ikke arbeidsavklaringspenger dersom du ble sykmeldt for mer enn ${aapGrense} år siden.`
+            ? `Du vil ikke få arbeidsavklaringspenger dersom du fikk nedsatt arbeidsevne for mer enn ${aapGrense} år siden.`
             : ""
 
         if (state.over25 == undefined) {
-            setRadioError("Velg enten ja eller nei.")
+            setRadioError("Velg enten ja eller nei for å gå videre.")
         }
 
         setError(errors)
@@ -104,7 +104,7 @@ const Helse = () => {
                     >
                         {" "}
                         Det er forskjellige regler for hvor mye du kan få dersom
-                        du er under 25 år.
+                        du er under eller over 25 år.
                     </ReadMore>
                     <RadioGroup
                         aria-errormessage="e1"
@@ -143,8 +143,7 @@ const Helse = () => {
                         header="Hvorfor spør vi om når du fikk nedsatt arbeidsevne?"
                     >
                         {" "}
-                        Inntektsårene på neste side bestemmes ut fra året du
-                        fikk nedsatt arbeidsevne.
+                        Vi bruker året du fikk nedsatt arbeidsevne til å justere for økning i grunnbeløpet.
                     </ReadMore>
                     <div className="flex flex-col my-2">
                         <TextField
