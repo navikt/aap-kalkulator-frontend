@@ -51,8 +51,7 @@ const Home: NextPage = () => {
                         Regn ut hvor mye du kan få i arbeidsavklaringspenger.
                     </li>
 
-                    <li>Kalkulatoren er ment som et hjelpeverktøy for deg.</li>
-                    <li>Resultatet er kun et anslag.</li>
+                    <li>Kalkulatoren er ment som et hjelpeverktøy som viser omtrent hvor mye du kan få.</li>
                     <li>
                         Du kan få støtte selv om du svarer &quot;Nei&quot; på
                         noen av spørsmålene.
