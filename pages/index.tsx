@@ -46,14 +46,15 @@ const Home: NextPage = () => {
                 <Divider isTitle={true} />
             </div>
             <div className="flex flex-col items-center mt-4 gap-4">
-                <ul className="list-disc space-y-2 mb-8 pl-4">
+                <ul className="list-disc space-y-2 mb-8 pl-4 md:w-5/6">
                     <li>
                         Regn ut hvor mye du kan få i arbeidsavklaringspenger.
                     </li>
-
                     <li>Kalkulatoren er ment som et hjelpeverktøy som viser omtrent hvor mye du kan få.</li>
+                    <li>Dette er ikke en søknad. </li>
+
                     <li>
-                        Du kan få støtte selv om du svarer &quot;Nei&quot; på
+                        Du får et resultat selv om du svarer &quot;Nei&quot; på
                         noen av spørsmålene.
                     </li>
                     <li>
