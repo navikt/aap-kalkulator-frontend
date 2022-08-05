@@ -68,7 +68,7 @@ const Resultat: NextPage = () => {
                     </Heading>
                 </div>
                 <div className="rounded-2xl bg-feedback-success-background p-6 w-full md:w-5/6">
-                    <div className="grid grid-cols-2 md:grid-cols-3 mb-4 gap-4 justify-center items-baseline">
+                    <div className="grid grid-cols-2 md:grid-cols-3 my-4 gap-4 justify-center items-baseline">
                         <span className="text-4xl md:text-5xl  md:col-start-2 justify-self-end">
                             {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
                         </span>
