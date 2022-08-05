@@ -66,7 +66,7 @@ const Barn = () => {
     const readmoreTekst = (
         <BodyShort>
         Hvis du forsørger barn under 18 år, kan du få et barnetillegg. <Link
-            href="#fixme"
+            href="https://www.nav.no/aap#hvormye-forsorgerbarn"
             target="_blank"
             rel="noreferrer"
         >Les mer om barnetillegg her.</Link>
