@@ -143,7 +143,7 @@ const Helse = () => {
                         header="Hvorfor spør vi om når du fikk nedsatt arbeidsevne?"
                     >
                         {" "}
-                        Vi bruker året du fikk nedsatt arbeidsevne til å justere for økning i grunnbeløpet.
+                        Vi bruker året du fikk nedsatt arbeidsevne, til å justere for økning i grunnbeløpet.
                     </ReadMore>
                     <div className="flex flex-col my-2">
                         <TextField

@@ -80,7 +80,7 @@ const Resultat: NextPage = () => {
                             ).toLocaleString("nb-NO")}
                             &nbsp;kr
                         </span>
-                        <Label>årlig</Label>
+                        <Label>i året</Label>
                     </div>
                 </div>
                 {result != null && (
@@ -110,9 +110,9 @@ const Resultat: NextPage = () => {
                 <div className="pt-4">
                     <Alert variant="info" size="small">
                         <p>
-                            Dette er en foreløpig beregning på hva du kan få før
-                            skatt. Når du har sendt søknaden og den er
-                            ferdigbehandlet, vil du få vite hva du får utbetalt.
+                            Dette er en foreløpig beregning på hva du kan få i AAP før
+                            skatt. Hvis du sender en søknaden og får den godkjent,
+                            vil du få vite hva du får utbetalt.
                         </p>
 
                         <Link className="pt-4" href="https://www.nav.no/aap">

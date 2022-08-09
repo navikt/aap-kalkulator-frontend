@@ -78,7 +78,7 @@ const Arbeidsgrad = () => {
 
     const readMoreText = (
 
-            <BodyShort>Hvor mye du får utbetalt avhenger av hvor mye du jobber.
+            <BodyShort>Hvor mye du får utbetalt, avhenger av hvor mye du jobber.
             En arbeidsuke er 37,5 timer.
                 Jobber du mer enn 22,5 timer i uka, kan du ikke få
                 arbeidsavklaringspenger.
