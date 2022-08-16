@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import React, { useContext, useEffect } from "react"
+import { useContext, useEffect } from "react"
 import Inntekt from "../../components/questions/Inntekt"
 import Barn from "../../components/questions/Barn"
 import Arbeidsgrad from "../../components/questions/Arbeidsgrad"

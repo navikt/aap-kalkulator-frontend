@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { State } from "./_app"
 import { NextPage } from "next"
 import { Accordion, Alert, Heading, Label, Link } from "@navikt/ds-react"
@@ -44,6 +44,7 @@ const Resultat: NextPage = () => {
             .then((data) => setResult(data))
     }, [])
     const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
+    // @ts-ignore
     return (
         <>
             <BackLink target="/steg/1" tekst="Endre svar" />

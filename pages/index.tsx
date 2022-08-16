@@ -3,7 +3,7 @@ import { Alert, Button, Heading } from "@navikt/ds-react"
 import Divider from "../components/divider/Divider"
 import { useRouter } from "next/router"
 import Image from "next/image"
-import React, { useContext, useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { BrowserState, State } from "./_app"
 import { StateInterface } from "../components/state/State"
 
