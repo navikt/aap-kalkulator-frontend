@@ -46,7 +46,7 @@ const Resultat: NextPage = () => {
     const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
     return (
         <>
-            <BackLink target="/steg/1" tekst="Endre svar"/>
+            <BackLink target="/steg/1" tekst="Endre svar" />
             <div className="flex flex-col items-center">
                 <div className="flex flex-col pt-4 mb-4" aria-hidden="true">
                     <Image
@@ -110,9 +110,9 @@ const Resultat: NextPage = () => {
                 <div className="pt-4">
                     <Alert variant="info" size="small">
                         <p>
-                            Dette er en foreløpig beregning på hva du kan få i AAP før
-                            skatt. Hvis du sender en søknaden og får den godkjent,
-                            vil du få vite hva du får utbetalt.
+                            Dette er en foreløpig beregning på hva du kan få i
+                            AAP før skatt. Hvis du sender en søknaden og får den
+                            godkjent, vil du få vite hva du får utbetalt.
                         </p>
 
                         <Link className="pt-4" href="https://www.nav.no/aap">

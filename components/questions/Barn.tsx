@@ -1,8 +1,13 @@
 import { useRouter } from "next/router"
-import React, { useContext, useState } from "react"
+import { useContext, useState } from "react"
 import { BrowserState, State } from "../../pages/_app"
-import {BodyShort, Button, Heading, Label, Link, TextField} from "@navikt/ds-react"
-import Image from "next/image"
+import {
+    BodyShort,
+    Button,
+    Label,
+    Link,
+    TextField,
+} from "@navikt/ds-react"
 import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
@@ -17,7 +22,7 @@ const Barn = () => {
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState<string | undefined>(undefined)
-    const { browserState, setBrowserState } = useContext(BrowserState)
+    const { browserState } = useContext(BrowserState)
 
     const onRadioChange = (value: string) => {
         setState({
@@ -65,12 +70,17 @@ const Barn = () => {
 
     const readmoreTekst = (
         <BodyShort>
-        Hvis du forsørger barn under 18 år, kan du få et barnetillegg. <Link
-            href="https://www.nav.no/aap#hvormye-forsorgerbarn"
-            target="_blank"
-            rel="noreferrer"
-        >Les mer om barnetillegg her.</Link>
-        </BodyShort>)
+            Hvis du forsørger barn under 18 år, kan du få et barnetillegg.{" "}
+            <Link
+                href="https://www.nav.no/aap#hvormye-forsorgerbarn"
+                target="_blank"
+                rel="noreferrer"
+                as={"a"}
+            >
+                Les mer om barnetillegg her.
+            </Link>
+        </BodyShort>
+    )
 
     return (
         <>

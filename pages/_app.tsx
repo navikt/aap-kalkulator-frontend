@@ -6,7 +6,6 @@ import Container from "../components/container/Container"
 import { StateInterface } from "../components/state/State"
 import { BrowserInterface } from "../components/state/BrowserInterface"
 import Head from "next/head"
-import React from "react"
 
 export const State = createContext({
     state: {} as StateInterface,
@@ -17,21 +16,21 @@ export const BrowserState = createContext({
     browserState: {} as BrowserInterface,
     setBrowserState: (value: any) => {},
 })
-
+export const initialState ={
+    antallBarn: undefined,
+    arbeidsgrad: undefined,
+    inntekt1: undefined,
+    inntekt2: undefined,
+    inntekt3: undefined,
+    sykmeldtAar: undefined,
+    lengsteSteg: 1,
+    harArbeid: undefined,
+    arbeidstimer: undefined,
+    harBarn: undefined,
+    over25: undefined,
+}
 function MyApp({ Component, pageProps }: AppProps) {
-    const [state, setState] = useState<StateInterface>({
-        antallBarn: undefined,
-        arbeidsgrad: undefined,
-        inntekt1: undefined,
-        inntekt2: undefined,
-        inntekt3: undefined,
-        sykmeldtAar: undefined,
-        lengsteSteg: 1,
-        harArbeid: undefined,
-        arbeidstimer: undefined,
-        harBarn: undefined,
-        over25: undefined,
-    })
+    const [state, setState] = useState<StateInterface>(initialState)
 
     const [browserState, setBrowserState] = useState<BrowserInterface>({
         redirect: false,

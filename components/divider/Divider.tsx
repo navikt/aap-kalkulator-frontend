@@ -1,5 +1,3 @@
-import React from "react"
-
 const Divider = ({ isTitle }: { isTitle?: boolean }) => {
     return isTitle ? (
         <div

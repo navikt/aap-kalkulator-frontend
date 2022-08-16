@@ -12,7 +12,6 @@ import Document, {
     Main,
     NextScript,
 } from "next/document"
-import React from "react"
 
 // The 'head'-field of the document initialProps contains data from <head> (meta-tags etc)
 const getDocumentParameter = (

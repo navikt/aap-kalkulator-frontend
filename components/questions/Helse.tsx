@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react"
-import { BrowserState, State } from "../../pages/_app"
+import { useContext, useState } from "react"
+import { State } from "../../pages/_app"
 import {
     Button,
-    Heading,
     Label,
     Radio,
     RadioGroup,
@@ -10,7 +9,6 @@ import {
     TextField,
 } from "@navikt/ds-react"
 import { useRouter } from "next/router"
-import Image from "next/image"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
@@ -143,7 +141,8 @@ const Helse = () => {
                         header="Hvorfor spør vi om når du fikk nedsatt arbeidsevne?"
                     >
                         {" "}
-                        Vi bruker året du fikk nedsatt arbeidsevne, til å justere for økning i grunnbeløpet.
+                        Vi bruker året du fikk nedsatt arbeidsevne, til å
+                        justere for økning i grunnbeløpet.
                     </ReadMore>
                     <div className="flex flex-col my-2">
                         <TextField

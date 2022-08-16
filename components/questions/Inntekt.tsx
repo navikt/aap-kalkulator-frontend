@@ -1,17 +1,15 @@
-import React, { ChangeEvent, useContext, useState } from "react"
+import { ChangeEvent, useContext, useState } from "react"
 import { BrowserState, State } from "../../pages/_app"
 
 import {
     BodyShort,
     Button,
-    Heading,
     Label,
     ReadMore,
     TextField,
     Link,
 } from "@navikt/ds-react"
 import { useRouter } from "next/router"
-import Image from "next/image"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
@@ -26,7 +24,7 @@ const Inntekt = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [error, setError] = useState<string[]>(["", "", ""])
-    const { browserState, setBrowserState } = useContext(BrowserState)
+    const { browserState } = useContext(BrowserState)
     const [inntekt, setInntekt] = useState<Inntekt>({
         inntekt1:
             state.inntekt1 != undefined
@@ -106,14 +104,15 @@ const Inntekt = () => {
             />
             <form onSubmit={handleSubmit}>
                 <Label className="text-xl">
-                    Hvor mye tjente du de tre siste årene før du fikk nedsatt arbeidsevne?
+                    Hvor mye tjente du de tre siste årene før du fikk nedsatt
+                    arbeidsevne?
                 </Label>
                 <BodyShort spacing>Fyll inn inntekt før skatt.</BodyShort>
                 <ReadMore size="small" header="Hvorfor spør vi om inntekt?">
                     <div>
                         <BodyShort spacing>
-                            Vi bruker inntekten din til å regne ut hva du kan få i
-                            arbeidsavklaringspenger.
+                            Vi bruker inntekten din til å regne ut hva du kan få
+                            i arbeidsavklaringspenger.
                         </BodyShort>
                         <BodyShort>
                             Dette bestemmes av inntekten din de tre siste årene
@@ -122,6 +121,7 @@ const Inntekt = () => {
                                 href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden"
                                 target="_blank"
                                 rel="noreferrer"
+                                as={"a"}
                             >
                                 grunnbeløpet
                             </Link>

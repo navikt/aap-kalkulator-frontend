@@ -25,6 +25,8 @@ jobs:
                   path: VERSION.txt
             - name: Install npm dependencies
               run: npm ci
+            - name: test application
+              run: npm test
             - name: Build application
               run: npm run build
             - name: Docker login

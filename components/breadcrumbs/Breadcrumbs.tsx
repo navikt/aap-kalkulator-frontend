@@ -1,5 +1,5 @@
 import { BodyShort } from "@navikt/ds-react"
-import React, { useRef } from "react"
+import { useRef } from "react"
 import { Next } from "@navikt/ds-icons"
 
 interface CrumbInterface {

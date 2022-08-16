@@ -1,20 +1,15 @@
 import { Link } from "@navikt/ds-react"
+import NextLink from "next/link"
 import { Back } from "@navikt/ds-icons"
-import React from "react"
-import { useRouter } from "next/router"
 
-const BackLink = ({ target, tekst }: { target: string, tekst?: string}) => {
-    const router = useRouter()
-
-    const onClick = async (e: React.MouseEvent) => {
-        e.preventDefault()
-        await router.push(target)
-    }
+const BackLink = ({ target, tekst }: { target: string; tekst?: string }) => {
     return (
-        <Link href="#" className="mt-4 " onClick={onClick} >
+        <NextLink href={target} className="mt-4 " passHref>
             {" "}
-            <Back /> {tekst ? tekst: "Tilbake"}
-        </Link>
+            <Link href={target} as={"a"}>
+                <Back /> {tekst ? tekst : "Tilbake"}
+            </Link>
+        </NextLink>
     )
 }
 
