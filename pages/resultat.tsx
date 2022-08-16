@@ -115,7 +115,7 @@ const Resultat: NextPage = () => {
                             godkjent, vil du få vite hva du får utbetalt.
                         </p>
 
-                        <Link className="pt-4" href="https://www.nav.no/aap">
+                        <Link className="pt-4" href="https://www.nav.no/aap" as={"a"}>
                             Les mer om hva du kan få i AAP her.
                         </Link>
                     </Alert>

@@ -67,6 +67,7 @@ const Home: NextPage = () => {
                     onClick={handleStart}
                     className="w-20"
                     variant="primary"
+                    as={"button"}
                 >
                     Start
                 </Button>
