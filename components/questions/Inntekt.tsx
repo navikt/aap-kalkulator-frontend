@@ -103,7 +103,7 @@ const Inntekt = () => {
                 tittel="Inntekt"
             />
             <form onSubmit={handleSubmit}>
-                <Label className="text-xl">
+                <Label as={"label"} className="text-xl">
                     Hvor mye tjente du de tre siste årene før du fikk nedsatt
                     arbeidsevne?
                 </Label>

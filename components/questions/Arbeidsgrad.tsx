@@ -111,7 +111,7 @@ const Arbeidsgrad = () => {
                 )}
                 {state.harArbeid && (
                     <div className="mb-4">
-                        <Label id="l1" className="text-xl">
+                        <Label as={"label"} id="l1" className="text-xl">
                             Hvor mange timer i uka jobber du?
                         </Label>
                         <BodyShort>
@@ -135,7 +135,7 @@ const Arbeidsgrad = () => {
                                         error && <div className="hidden"></div>
                                     }
                                 />
-                                <BodyShort id="d1">timer per uke</BodyShort>
+                                <BodyShort as={"p"} id="d1">timer per uke</BodyShort>
                             </div>
                             {error && (
                                 <ul

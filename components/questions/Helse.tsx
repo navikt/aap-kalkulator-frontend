@@ -93,7 +93,7 @@ const Helse = () => {
             />
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
-                    <Label id="l1" className="text-xl">
+                    <Label as={"label"} id="l1" className="text-xl">
                         Er du over 25 år?
                     </Label>
                     <ReadMore
@@ -133,7 +133,7 @@ const Helse = () => {
                     )}
                 </div>
                 <div className="mb-4">
-                    <Label id="l2" className="text-xl">
+                    <Label as="label" id="l2" className="text-xl">
                         Hvilket år fikk du først nedsatt arbeidsevne?
                     </Label>
                     <ReadMore

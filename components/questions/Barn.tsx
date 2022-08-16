@@ -110,10 +110,10 @@ const Barn = () => {
                 )}
                 {state.harBarn && (
                     <div className="mb-4">
-                        <Label id="l1" className="text-xl">
+                        <Label as={"label"} id="l1" className="text-xl">
                             Hvor mange barn forsørger du?
                         </Label>
-                        <BodyShort id="bs1">
+                        <BodyShort as={"p"} id="bs1">
                             Barnet må være under 18 år.
                         </BodyShort>
                         <div className="flex flex-col my-2">
@@ -139,7 +139,7 @@ const Barn = () => {
                                         error && <div className="hidden"></div>
                                     }
                                 />
-                                <BodyShort id="d1">barn</BodyShort>
+                                <BodyShort as={"p"} id="d1">barn</BodyShort>
                             </div>
                             {error && (
                                 <ul
