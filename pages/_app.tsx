@@ -40,6 +40,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <BrowserState.Provider value={{ browserState, setBrowserState }}>
             <State.Provider value={{ state, setState }}>
                 <Head>
+                    <meta name="robots" content="noindex"/>
                     <title>AAP-kalkulator - www.nav.no</title>
                 </Head>
                 <Container>
