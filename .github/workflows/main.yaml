@@ -41,6 +41,7 @@ jobs:
               run: |
                   docker build . -t ${IMAGE}
                   docker push ${IMAGE}
+
     build-and-test:
         runs-on: ubuntu-latest
         steps:
