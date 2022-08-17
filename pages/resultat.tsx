@@ -86,6 +86,7 @@ const Resultat: NextPage = () => {
                 </div>
                 {result != null && (
                     <div className="py-4 md:w-5/6">
+
                         <Accordion>
                             <Accordion.Item>
                                 <Accordion.Header>
