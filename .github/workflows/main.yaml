@@ -41,30 +41,6 @@ jobs:
               run: |
                   docker build . -t ${IMAGE}
                   docker push ${IMAGE}
-    build-and-test:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v1
-            - name: Generer versjon og image navn
-              run: |
-                  TIME=$(TZ="Europe/Oslo" date +%Y.%m.%d-%H.%M)
-                  COMMIT=$(git rev-parse --short=8 HEAD)
-                  VERSION=$TIME-$COMMIT
-                  echo "IMAGE=ghcr.io/navikt/$APP:$VERSION" >> $GITHUB_ENV
-                  echo "VERSION=$VERSION" >> $GITHUB_ENV
-            - run: echo $VERSION > VERSION.txt
-            - name: Last opp VERSION til neste job
-              uses: actions/upload-artifact@v1
-              with:
-                  name: VERSION.txt
-                  path: VERSION.txt
-            - name: Install npm dependencies
-              run: npm ci
-            - name: test application
-              run: npm test
-            - name: Build application
-              run: npm run build
                   
     deploy-to-dev:
         name: Deploy to dev
