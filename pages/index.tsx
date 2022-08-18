@@ -6,6 +6,7 @@ import Image from "next/image"
 import { useContext, useEffect } from "react"
 import { BrowserState, State } from "./_app"
 import { StateInterface } from "../components/state/State"
+import { logAmplitudeEvent } from "../lib/utils/amplitude"
 
 const Home: NextPage = () => {
     const router = useRouter()
@@ -15,6 +16,10 @@ const Home: NextPage = () => {
         setState({} as StateInterface)
     }, [])
     const handleStart = async () => {
+        logAmplitudeEvent("skjema startet", {
+            skjemanavn: "aap-kalkulator",
+            skjemaId: "aap-kalkulator",
+        })
         browserState.redirect = false
         await router.push("/steg/1")
     }

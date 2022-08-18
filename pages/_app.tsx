@@ -1,11 +1,12 @@
 import "@navikt/ds-css"
 import "../styles/globals.css"
 import type { AppProps } from "next/app"
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import Container from "../components/container/Container"
 import { StateInterface } from "../components/state/State"
 import { BrowserInterface } from "../components/state/BrowserInterface"
 import Head from "next/head"
+import { initAmplitude } from "../lib/utils/amplitude"
 
 export const State = createContext({
     state: {} as StateInterface,
@@ -16,7 +17,7 @@ export const BrowserState = createContext({
     browserState: {} as BrowserInterface,
     setBrowserState: (value: any) => {},
 })
-export const initialState ={
+export const initialState = {
     antallBarn: undefined,
     arbeidsgrad: undefined,
     inntekt1: undefined,
@@ -36,11 +37,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         redirect: false,
     })
 
+    useEffect(() => {
+        initAmplitude()
+    }, [])
+
     return (
         <BrowserState.Provider value={{ browserState, setBrowserState }}>
             <State.Provider value={{ state, setState }}>
                 <Head>
-                    <meta name="robots" content="noindex"/>
+                    <meta name="robots" content="noindex" />
                     <title>AAP-kalkulator - www.nav.no</title>
                 </Head>
                 <Container>
