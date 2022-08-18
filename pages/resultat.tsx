@@ -6,6 +6,7 @@ import Image from "next/image"
 import { ResultInterface } from "../components/result/Result"
 import BackLink from "../components/backlink/BackLink"
 import { useRouter } from "next/router"
+import { logAmplitudeEvent } from "../lib/utils/amplitude";
 
 const Resultat: NextPage = () => {
     const [result, setResult] = useState<ResultInterface | null>(null)
@@ -38,7 +39,10 @@ const Resultat: NextPage = () => {
                 arbeidstimer: state.arbeidstimer,
             }),
         }
-
+        logAmplitudeEvent("skjema fullført", {
+            skjemanavn: "aap-kalkulator",
+            skjemaId: "aap-kalkulator",
+        })
         fetch(endpoint, options)
             .then((response) => response.json())
             .then((data) => setResult(data))
@@ -86,7 +90,9 @@ const Resultat: NextPage = () => {
                 </div>
                 {result != null && (
                     <div className="py-4 md:w-5/6">
-                        <Accordion>
+                        <Accordion onClick={()=>logAmplitudeEvent("accordion åpnet", {
+                            tekst: "Hvorfor får jeg denne summen?",
+                        })}>
                             <Accordion.Item>
                                 <Accordion.Header>
                                     Hvorfor får jeg denne summen?

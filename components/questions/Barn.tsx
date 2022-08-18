@@ -12,6 +12,7 @@ import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
+import { logAmplitudeEvent } from "../../lib/utils/amplitude";
 
 interface BarnInterface extends HTMLFormElement {
     antallBarn: HTMLInputElement
