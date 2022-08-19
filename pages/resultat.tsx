@@ -8,11 +8,22 @@ import BackLink from "../components/backlink/BackLink"
 import { useRouter } from "next/router"
 import { logAmplitudeEvent } from "../lib/utils/amplitude";
 import { inntektsgrunnlag } from "../lib/logic/Calculate";
+import { grunnbeloep, GrunnbeloepHistorikk} from "../lib/logic/types";
 
-const Resultat: NextPage = () => {
+export const getStaticProps = async () => {
+    const res = await fetch("https://g.nav.no/api/v1/grunnbeloep")
+    const resHistorikk = await fetch("https://g.nav.no/api/v1/historikk")
+    const data = await res.json();
+    const dataHistorikk = await resHistorikk.json();
+    return { props: { G: data, Historikk: dataHistorikk } }
+}
+
+const Resultat: NextPage = ({G, Historikk } : {G: grunnbeloep, Historikk: GrunnbeloepHistorikk[] }) => {
     const [result, setResult] = useState<ResultInterface | null>(null)
     const { state } = useContext(State)
     const router = useRouter()
+
+    inntektsgrunnlag(State, G, Historikk)
 
     useEffect(() => {
         if (state.sykmeldtAar === undefined) {
@@ -20,6 +31,7 @@ const Resultat: NextPage = () => {
             router.push("/")
             return
         }
+
         const endpoint =
             process.env.NODE_ENV == "production"
                 ? "https://aap-kalkulator-api.ekstern.dev.nav.no/beregning"
@@ -47,8 +59,8 @@ const Resultat: NextPage = () => {
         fetch(endpoint, options)
             .then((response) => response.json())
             .then((data) => setResult(data))
+        console.log("data", Historikk)
     }, [])
-    console.log("DATA", result)
     const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
     //inntektsgrunnlag()
     // @ts-ignore
@@ -56,6 +68,8 @@ const Resultat: NextPage = () => {
         <>
             <BackLink target="/steg/1" tekst="Endre svar" />
             <div className="flex flex-col items-center">
+                {G.grunnbeloep}
+                {state.inntekt1}
                 <div className="flex flex-col pt-4 mb-4" aria-hidden="true">
                     <Image
                         src="/ikoner/money_circle.svg"
