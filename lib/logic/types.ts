@@ -6,7 +6,7 @@ export type grunnbeloep = {
 }
 
 export type GrunnbeloepHistorikk = {
-    grunnbeløp: number,
-    dato: string,
-    gjennomsnittPerÅr: number | undefined,
+    grunnbeloep: number,
+    dato: Date,
+    gjennomsnittPerAar: number | null,
 }

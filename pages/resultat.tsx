@@ -1,3 +1,5 @@
+// noinspection JSNonASCIINames
+
 import { useContext, useEffect, useState } from "react"
 import { State } from "./_app"
 import { NextPage } from "next"
@@ -7,23 +9,30 @@ import { ResultInterface } from "../components/result/Result"
 import BackLink from "../components/backlink/BackLink"
 import { useRouter } from "next/router"
 import { logAmplitudeEvent } from "../lib/utils/amplitude";
-import { inntektsgrunnlag } from "../lib/logic/Calculate";
+import { calculate } from "../lib/logic/Calculate";
 import { grunnbeloep, GrunnbeloepHistorikk} from "../lib/logic/types";
 
 export const getStaticProps = async () => {
     const res = await fetch("https://g.nav.no/api/v1/grunnbeloep")
     const resHistorikk = await fetch("https://g.nav.no/api/v1/historikk")
     const data = await res.json();
-    const dataHistorikk = await resHistorikk.json();
+    const dataHistorikk:GrunnbeloepHistorikk[] = await resHistorikk.json().then(res => res.map(item => {
+        // noinspection NonAsciiCharacters
+        return {
+            grunnbeloep: item.grunnbeløp,
+            dato: new Date(item.dato).getFullYear(),
+            gjennomsnittPerAar: item.gjennomsnittPerÅr? item.gjennomsnittPerÅr : null,
+        }
+    }))
+    console.log(dataHistorikk)
     return { props: { G: data, Historikk: dataHistorikk } }
 }
 
+// @ts-ignore
 const Resultat: NextPage = ({G, Historikk } : {G: grunnbeloep, Historikk: GrunnbeloepHistorikk[] }) => {
     const [result, setResult] = useState<ResultInterface | null>(null)
     const { state } = useContext(State)
     const router = useRouter()
-
-    inntektsgrunnlag(State, G, Historikk)
 
     useEffect(() => {
         if (state.sykmeldtAar === undefined) {
@@ -59,7 +68,7 @@ const Resultat: NextPage = ({G, Historikk } : {G: grunnbeloep, Historikk: Grunnb
         fetch(endpoint, options)
             .then((response) => response.json())
             .then((data) => setResult(data))
-        console.log("data", Historikk)
+        console.log("data", calculate(state,G,Historikk))
     }, [])
     const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
     //inntektsgrunnlag()

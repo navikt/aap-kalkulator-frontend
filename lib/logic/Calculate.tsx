@@ -3,6 +3,8 @@ import { State } from "../../pages/_app"
 import {grunnbeloep, GrunnbeloepHistorikk} from "./types";
 import {StateInterface} from "../../components/state/State";
 import {Result} from "../../components/result/Result";
+import inntektsgrunnlag from "./Inntekt";
+
 
 /*Tror ikke det blir noe særlig problem å kalkulere,
 men har prøvd å tenke litt på hvordan vi skal gjøre loggingen som vi nå gjør i backend og den er jeg mer usikker på.*/
@@ -11,7 +13,7 @@ men har prøvd å tenke litt på hvordan vi skal gjøre loggingen som vi nå gj�
 export const calculate = (state: StateInterface, grunnbeloep: grunnbeloep, historikk: GrunnbeloepHistorikk[]) => {
     const g = grunnbeloep.grunnbeloep
     let resultat = wrapWithRespons(state)
-
+    inntektsgrunnlag(g, historikk, resultat)
     return resultat
 
 }
