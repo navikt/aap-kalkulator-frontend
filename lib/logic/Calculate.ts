@@ -7,3 +7,10 @@ men har prøvd å tenke litt på hvordan vi skal gjøre loggingen som vi nå gj�
 const calculate = () => {
     const { state, setState } = useContext(State)
 }
+
+export const inntektsgrunnlag = (g, historikk) => {
+    const minsteGrunnlag =  2 * g / 0.66
+    const minsteGrunnlagUnder25 = 2 * g  * (2.0/3.0) / 0.66
+
+
+}

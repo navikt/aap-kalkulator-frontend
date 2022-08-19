@@ -7,6 +7,7 @@ import { ResultInterface } from "../components/result/Result"
 import BackLink from "../components/backlink/BackLink"
 import { useRouter } from "next/router"
 import { logAmplitudeEvent } from "../lib/utils/amplitude";
+import { inntektsgrunnlag } from "../lib/logic/Calculate";
 
 const Resultat: NextPage = () => {
     const [result, setResult] = useState<ResultInterface | null>(null)
@@ -47,7 +48,9 @@ const Resultat: NextPage = () => {
             .then((response) => response.json())
             .then((data) => setResult(data))
     }, [])
+    console.log("DATA", result)
     const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
+    //inntektsgrunnlag()
     // @ts-ignore
     return (
         <>
