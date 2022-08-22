@@ -2,7 +2,7 @@ import { GrunnbeloepHistorikk } from "./types";
 import { Result } from "../../components/result/Result";
 
 export const toKr = (resultat: number) => {
-    return new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(Math.round(resultat))
+    return new Intl.NumberFormat('no-NO', { style: 'decimal' }).format(Math.ceil(resultat))
 }
 
 const forAar = (historikk: GrunnbeloepHistorikk[], inntektsAar: number)=> {
@@ -46,20 +46,20 @@ const inntektsgrunnlag = (g: number, historikk: GrunnbeloepHistorikk[], resultat
     , 6 * g)
 
     switch (resultat.resultat) {
-        case minsteGrunnlag : {resultat.logs.push(`Siden inntekten din er lavere enn minstebeløpet på 2G (2 ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli oppjustert til ${toKr(resultat.resultat)}. Inntekten din er justert ut fra endring i grunnbeløpet.`)
+        case minsteGrunnlag : {resultat.logs.push(<p>Siden inntekten din er lavere enn minstebeløpet på 2G (2 ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli oppjustert til <strong>{toKr(resultat.resultat)} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.</p>)
             break}
-        case 6 * g : {resultat.logs.push(`Siden inntekten din er høyere enn maksbeløpet på 6G (6 ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli nedjustert til ${toKr(resultat.resultat)}. Inntekten din er justert ut fra endring i grunnbeløpet.`)
+        case 6 * g : {resultat.logs.push(<p>Siden inntekten din er høyere enn maksbeløpet på 6G (6 ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli nedjustert til <strong>{toKr(resultat.resultat)} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.</p>)
             break}
-        case gjennomsnittsInntekt : {resultat.logs.push(`Grunnlaget er gjennomsnittet av de tre siste inntektsårene dine: ${toKr(resultat.resultat)}. Inntekten din er justert ut fra endring i grunnbeløpet.`)
+        case gjennomsnittsInntekt : {resultat.logs.push(<p>Grunnlaget er gjennomsnittet av de tre siste inntektsårene dine: <strong>{toKr(resultat.resultat)} kr</strong> . Inntekten din er justert ut fra endring i grunnbeløpet.</p>)
             break}
-        case minsteGrunnlagUnder25 : {resultat.logs.push(`Siden inntekten din er lavere enn grensen for minste utbetaling for de under 25 år blir beregningsgrunnlaget ditt oppjustert til ${toKr(resultat.resultat)}. Inntekten din er justert ut fra endring i grunnbeløpet.`)
+        case minsteGrunnlagUnder25 : {resultat.logs.push(<p>Siden inntekten din er lavere enn grensen for minste utbetaling for de under 25 år blir beregningsgrunnlaget ditt oppjustert til <strong>{toKr(resultat.resultat)} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.</p>)
             break}
-    default : {resultat.logs.push(`beregningsgrunnlaget er basert på det siste inntektsåret ditt: ${toKr(resultat.resultat)}. Inntekten din er justert ut fra endring i grunnbeløpet.`)}
+        default : {resultat.logs.push(<p>beregningsgrunnlaget er basert på det siste inntektsåret ditt: <strong>{toKr(resultat.resultat)} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.</p>)}
     }
 
     const resultatEtterFradrag = resultat.resultat * 2.0 / 3.0
     resultat.logs.push(
-        `Arbeidsavklaringspengene utgjør 66 %% av beregningsgrunnlaget, og blir derfor ${toKr(resultatEtterFradrag)}.`
+        <p>Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og blir derfor <strong>{toKr(resultatEtterFradrag)} kr</strong>.</p>
         )
 
 

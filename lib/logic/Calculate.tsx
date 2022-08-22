@@ -1,5 +1,3 @@
-import { useContext } from "react"
-import { State } from "../../pages/_app"
 import {grunnbeloep, GrunnbeloepHistorikk} from "./types";
 import {StateInterface} from "../../components/state/State";
 import {Result} from "../../components/result/Result";
