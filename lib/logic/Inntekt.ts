@@ -10,18 +10,18 @@ const forAar = (historikk: GrunnbeloepHistorikk[], inntektsAar: number)=> {
     return historikk.find(h => parseInt(h.dato.toString()) == inntektsAar)
 }
 
-const juster = (g: number, historikk: GrunnbeloepHistorikk[], inntektsAar: number, resultat:Result)=> {
+const juster = (g: number, historikk: GrunnbeloepHistorikk[], inntektsAar: number, inntekt:number)=> {
     const grunnbeloepForInntektsAar = forAar(historikk,inntektsAar)!!
     const gammelG = grunnbeloepForInntektsAar.grunnbeloep
-    const inntekt = Math.min(resultat.resultat,6 * gammelG)
+    const inntektMax = Math.min(inntekt,6 * gammelG)
 
-    return Math.min(inntekt * g / grunnbeloepForInntektsAar.gjennomsnittPerAar!! , 6 * g)
+    return Math.min(inntektMax * g / grunnbeloepForInntektsAar.gjennomsnittPerAar!! , 6 * g)
 }
 
 const inntektsjustering = (g: number, historikk: GrunnbeloepHistorikk[], inntektsIndeks: number, resultat: Result) =>{
     const inntektsAar = resultat.personInfo!!.sykmeldtAar!! - (inntektsIndeks)
     const inntekt = [resultat.personInfo!!.inntekt1, resultat.personInfo!!.inntekt2, resultat.personInfo!!.inntekt3].at(-1)
-    return juster(g, historikk, inntektsAar, resultat)
+    return juster(g, historikk, inntektsAar, inntekt!!)
 }
 
 const inntektsgrunnlag = (g: number, historikk: GrunnbeloepHistorikk[], resultat: Result) => {
