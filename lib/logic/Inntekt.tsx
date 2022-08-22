@@ -6,7 +6,6 @@ export const toKr = (resultat: number) => {
 }
 
 const forAar = (historikk: GrunnbeloepHistorikk[], inntektsAar: number)=> {
-    console.log("hello")
     return historikk.find(h => parseInt(h.dato.toString()) == inntektsAar)
 }
 
@@ -32,17 +31,17 @@ const inntektsgrunnlag = (g: number, historikk: GrunnbeloepHistorikk[], resultat
     const gjennomsnittsInntektFoerOppjustering = (resultat.personInfo!!.inntekt1!! + resultat.personInfo!!.inntekt2!! + resultat.personInfo!!.inntekt3!!) / 3
 
     const gjennomsnittHoyest = gjennomsnittsInntektFoerOppjustering >= resultat.personInfo!!.inntekt1!!
-
+    console.log("før", resultat)
     const inntekt1 = inntektsjustering(g, historikk, 1, resultat)
     const inntekt2 = inntektsjustering(g, historikk, 2, resultat)
     const inntekt3 = inntektsjustering(g, historikk, 3, resultat)
-
+    console.log("etter", inntekt1, inntekt2, inntekt3)
     const gjennomsnittsInntekt = (inntekt1 + inntekt2 + inntekt3) / 3
 
     resultat.resultat = Math.min(!resultat.personInfo!!.over25?
         Math.max(gjennomsnittHoyest? gjennomsnittsInntekt : inntekt1, minsteGrunnlagUnder25)
      :
-        Math.min(gjennomsnittHoyest? gjennomsnittsInntekt : inntekt1, minsteGrunnlag)
+        Math.max(gjennomsnittHoyest? gjennomsnittsInntekt : inntekt1, minsteGrunnlag)
     , 6 * g)
 
     switch (resultat.resultat) {
