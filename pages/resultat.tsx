@@ -24,7 +24,6 @@ export const getStaticProps = async () => {
             gjennomsnittPerAar: item.gjennomsnittPerÅr? item.gjennomsnittPerÅr : null,
         }
     }))
-    console.log(dataHistorikk)
     return { props: { G: data, Historikk: dataHistorikk } }
 }
 
@@ -40,6 +39,7 @@ const Resultat: NextPage = ({G, Historikk } : {G: grunnbeloep, Historikk: Grunnb
             router.push("/")
             return
         }
+
 
         const endpoint =
             process.env.NODE_ENV == "production"
@@ -68,6 +68,7 @@ const Resultat: NextPage = ({G, Historikk } : {G: grunnbeloep, Historikk: Grunnb
         fetch(endpoint, options)
             .then((response) => response.json())
             .then((data) => setResult(data))
+
         console.log("data", calculate(state,G,Historikk))
     }, [])
     const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)

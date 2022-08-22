@@ -1,7 +1,7 @@
 import { GrunnbeloepHistorikk } from "./types";
 import { Result } from "../../components/result/Result";
 
-const toKr = (resultat: number) => {
+export const toKr = (resultat: number) => {
     return new Intl.NumberFormat('no-NO', { style: 'currency', currency: 'NOK' }).format(Math.round(resultat))
 }
 
