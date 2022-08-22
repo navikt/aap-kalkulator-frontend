@@ -4,7 +4,7 @@ import { toKr} from "./Inntekt";
 
 const satsPerBarnPerDag: number = 27
 
-const barnetillegg = (antallBarn: number) => (antallBarn * satsPerBarnPerDag * ytelsesdager)
+export const barnetillegg = (antallBarn: number) => (antallBarn * satsPerBarnPerDag * ytelsesdager)
 
 
 export const leggTilBarnetillegg = (resultat: Result) => {
