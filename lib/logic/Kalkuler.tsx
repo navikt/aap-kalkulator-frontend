@@ -2,8 +2,8 @@ import {grunnbeloep, GrunnbeloepHistorikk} from "./types";
 import {StateInterface} from "../../components/state/State";
 import {Result} from "../../components/result/Result";
 import inntektsgrunnlag from "./Inntekt";
-import {leggTilBarnetillegg} from "./barn";
-import {arbeidsgrad} from "./arbeidsgrad";
+import {leggTilBarnetillegg} from "./Barn";
+import {arbeidsgrad} from "./Arbeidsgrad";
 
 export const kalkuler = (state: StateInterface, grunnbeloep: grunnbeloep, historikk: GrunnbeloepHistorikk[]) => {
     const g = grunnbeloep.grunnbeloep

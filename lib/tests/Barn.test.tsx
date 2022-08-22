@@ -1,4 +1,4 @@
-import { barnetillegg, leggTilBarnetillegg } from "../logic/barn";
+import { barnetillegg, leggTilBarnetillegg } from "../logic/Barn";
 import { Result } from "../../components/result/Result";
 import { render, screen } from "@testing-library/react";
 
@@ -41,7 +41,13 @@ describe("Barnetillegg med wrapped funksjon", () => {
         const barn = new Result({...(initialState), antallBarn: 1})
         barn.resultat = 100_000
         leggTilBarnetillegg(barn)
-        render(barn.logs[0])
         expect(barn.resultat).toBe(107_020)
+    })
+    it("Med maks barn", () => {
+        const barn = new Result({...(initialState), antallBarn: 12})
+        barn.resultat = 222954.0 * (2.0 / 3.0)
+        leggTilBarnetillegg(barn)
+        expect(barn.resultat).toBe(200_659)
+
     })
 })

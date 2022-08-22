@@ -5,7 +5,9 @@ import {toKr} from "./Inntekt";
 
 export const arbeidsgrad = (resultat: Result) => {
     const gammeltResultat = resultat.resultat
-
+    if(resultat.personInfo!!.arbeidsgrad!! < 0) {
+        throw new Error("Arbeidsgrad kan ikke være mindre enn 0")
+    }
     if (resultat.personInfo!!.arbeidsgrad!! > 60.0) {
         resultat.resultat = 0.0
         resultat.logs = [<p key="first">Arbeidsgraden din er høyere enn 60 % og du kan derfor ikke få arbeidsavklaringspenger.</p>]

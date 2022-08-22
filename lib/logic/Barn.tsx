@@ -30,4 +30,5 @@ export const leggTilBarnetillegg = (resultat: Result) => {
             )
         }
     }
+    resultat.resultat = Math.ceil(Math.min(muligBarnetillegg, maksBarnetillegg))
 }
