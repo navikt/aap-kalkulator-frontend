@@ -9,7 +9,7 @@ import { Result, ResultInterface } from "../components/result/Result";
 import BackLink from "../components/backlink/BackLink"
 import { useRouter } from "next/router"
 import { logAmplitudeEvent } from "../lib/utils/amplitude";
-import { calculate } from "../lib/logic/Calculate";
+import { kalkuler } from "../lib/logic/Kalkuler";
 import { grunnbeloep, GrunnbeloepHistorikk} from "../lib/logic/types";
 
 export const getStaticProps = async () => {
@@ -45,13 +45,13 @@ const Resultat: NextPage = ({G, Historikk } : {G: grunnbeloep, Historikk: Grunnb
             skjemanavn: "aap-kalkulator",
             skjemaId: "aap-kalkulator",
         })
-        const res:Result = calculate(state, G, Historikk)
+        const res:Result = kalkuler(state, G, Historikk)
         setResult({
             resultat: res.resultat,
             personInfo: res.personInfo!!,
             logs: res.logs,
         })
-        console.log("data", calculate(state,G,Historikk))
+        console.log("data", kalkuler(state,G,Historikk))
     }, [])
     const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
     //inntektsgrunnlag()
