@@ -63,10 +63,8 @@ const Resultat: NextPage = ({
             personInfo: res.personInfo!!,
             logs: res.logs,
         })
-        console.log("data", kalkuler(state, G, Historikk))
     }, [])
     const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
-    //inntektsgrunnlag()
     // @ts-ignore
     return (
         <>
