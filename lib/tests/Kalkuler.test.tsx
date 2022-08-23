@@ -3,8 +3,6 @@
 import { grunnbeloep, GrunnbeloepHistorikk } from "../utils/types"
 import { StateInterface } from "../../components/state/State"
 import { kalkuler } from "../logic/Kalkuler"
-import { Simulate } from "react-dom/test-utils";
-import touchEnd = Simulate.touchEnd;
 import { toKr } from "../logic/Inntekt";
 
 export const getG = () => {
@@ -62,6 +60,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(445908)
+        expect(resultat.logs.length).toBe(2)
     })
     it("ytelse med grunnbeløp 2g, 7 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
@@ -77,6 +76,10 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(274346)
+        expect(resultat.logs.length).toBe(3)
+        expect(resultat.logs[0]).toEqual(<p>Siden inntekten din er lavere enn minstebeløpet på 2G (2 ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli oppjustert til <strong>{toKr(337809)} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.</p>)
+        expect(resultat.logs[1]).toEqual(<p>Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og blir derfor <strong>{toKr(225206)} kr</strong>.</p>)
+        expect(resultat.logs[2]).toEqual(<p>For hvert barn får du {toKr(7020)} kr per år. Siden du har {7} barn, kan du få {toKr(49140)} kr i tillegg. Dette blir til sammen <strong>{toKr(274346)} kr</strong>.</p>)
     })
     it("ytelse med grunnbeløp 2g, 8 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
@@ -92,6 +95,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(281366)
+        expect(resultat.logs.length).toBe(3)
     })
     it("ytelse med grunnbeløp 6g, 22 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
@@ -107,6 +111,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(600348)
+        expect(resultat.logs.length).toBe(3)
     })
     it("ytelse med grunnbeløp 6g, 23 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
@@ -122,6 +127,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(601976)
+        expect(resultat.logs.length).toBe(3)
     })
     it("ytelse med grunnbeløp 6g, 24 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
@@ -137,6 +143,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(601976)
+        expect(resultat.logs.length).toBe(3)
     })
     it("ytelse med grunnbeløp 2g, 0 barn og 40% arbeidsgrad", () => {
         const state: StateInterface = {
@@ -153,6 +160,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(135124)
+        expect(resultat.logs.length).toBe(3)
     })
     it("ytelse med grunnbeløp 2g, 15 barn og 50% arbeidsgrad", () => {
         const state: StateInterface = {
@@ -169,6 +177,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(152014)
+        expect(resultat.logs.length).toBe(4)
         expect(resultat.logs[0]).toEqual(<p>Siden inntekten din er lavere enn minstebeløpet på 2G (2 ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli oppjustert til <strong>{toKr(337809)} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.</p>)
         expect(resultat.logs[1]).toEqual(<p>Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og blir derfor <strong>{toKr(225206)} kr</strong>.</p>)
         expect(resultat.logs[2]).toEqual(<p>For hvert barn kan du få {toKr(7020)} kr per år. Arbeidsavklaringspenger pluss barnetillegg kan ikke være mer enn 90 % av beregningsgrunnlaget. Derfor får du {toKr(78823)} kr i tillegg. Dette blir til sammen <strong>{toKr(304028)} kr</strong>.</p>)
@@ -190,6 +199,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(356726)
+        expect(resultat.logs.length).toBe(3)
     })
     it("ytelse med grunnbeløp 6g, 5 barn og 61% arbeidsgrad", () => {
         const state: StateInterface = {
@@ -206,5 +216,6 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(0)
+        expect(resultat.logs.length).toBe(1)
     })
 })

@@ -1,5 +1,6 @@
 import { arbeidsgrad } from "../logic/Arbeidsgrad"
 import { Result } from "../../components/result/Result"
+import { toKr } from "../logic/Inntekt";
 
 const initialState = {
     antallBarn: undefined,
@@ -25,6 +26,8 @@ describe("arbeidsgrad", () => {
         resultat.resultat = 100_000
         arbeidsgrad(resultat)
         expect(resultat.resultat).toBe(60_000)
+        expect(resultat.logs.length).toBe(1)
+        expect(resultat.logs[0]).toEqual(<p>En arbeidsuke er 37,5 timer. Siden du jobber {15} timer i uka, som er {40} % av en vanlig arbeidsuke, blir arbeidsavklaringspengene redusert med {40} %, fra {toKr(100000)} kr til <strong>{toKr(60000)} kr</strong>.</p>)
     })
     it("arbeidsgrad 70% med 100000 i grunnlag", () => {
         const resultat = new Result({
@@ -35,6 +38,8 @@ describe("arbeidsgrad", () => {
         resultat.resultat = 100_000
         arbeidsgrad(resultat)
         expect(resultat.resultat).toBe(0)
+        expect(resultat.logs.length).toBe(1)
+        expect(resultat.logs[0]).toEqual(<p>Arbeidsgraden din er høyere enn 60 % og du kan derfor ikke få arbeidsavklaringspenger.</p>)
     })
     test("arbeidsgrad er -10%", () => {
         const resultat = new Result({
