@@ -3,6 +3,9 @@
 import { grunnbeloep, GrunnbeloepHistorikk } from "../utils/types"
 import { StateInterface } from "../../components/state/State"
 import { kalkuler } from "../logic/Kalkuler"
+import { Simulate } from "react-dom/test-utils";
+import touchEnd = Simulate.touchEnd;
+import { toKr } from "../logic/Inntekt";
 
 export const getG = () => {
     const dataG: grunnbeloep = JSON.parse(
@@ -166,6 +169,11 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(152014)
+        expect(resultat.logs[0]).toEqual(<p>Siden inntekten din er lavere enn minstebeløpet på 2G (2 ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli oppjustert til <strong>{toKr(337809)} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.</p>)
+        expect(resultat.logs[1]).toEqual(<p>Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og blir derfor <strong>{toKr(225206)} kr</strong>.</p>)
+        expect(resultat.logs[2]).toEqual(<p>For hvert barn kan du få {toKr(7020)} kr per år. Arbeidsavklaringspenger pluss barnetillegg kan ikke være mer enn 90 % av beregningsgrunnlaget. Derfor får du {toKr(78823)} kr i tillegg. Dette blir til sammen <strong>{toKr(304028)} kr</strong>.</p>)
+        expect(resultat.logs[3]).toEqual(<p>En arbeidsuke er 37,5 timer. Siden du jobber {18.75} timer i uka, som er {50} % av en vanlig arbeidsuke, blir arbeidsavklaringspengene redusert med {50} %, fra {toKr(304028)} kr til <strong>{toKr(152014)} kr</strong>.</p>)
+
     })
     it("ytelse med grunnbeløp 6g, 0 barn og 20% arbeidsgrad", () => {
         const state: StateInterface = {

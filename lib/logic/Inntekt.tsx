@@ -3,7 +3,7 @@ import { Result } from "../../components/result/Result"
 
 export const toKr = (resultat: number) => {
     return new Intl.NumberFormat("no-NO", { style: "decimal" }).format(
-        Math.ceil(resultat)
+        Math.round(resultat)
     )
 }
 
@@ -85,8 +85,7 @@ const inntektsgrunnlag = (
                 <p>
                     Siden inntekten din er lavere enn minstebeløpet på 2G (2
                     ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli
-                    oppjustert til <strong>{toKr(resultat.resultat)} kr</strong>
-                    . Inntekten din er justert ut fra endring i grunnbeløpet.
+                    oppjustert til <strong>{toKr(resultat.resultat)} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.
                 </p>
             )
             break

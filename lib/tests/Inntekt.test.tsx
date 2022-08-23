@@ -1,7 +1,7 @@
 // noinspection JSNonASCIINames
 
 import { Result } from "../../components/result/Result"
-import inntektsgrunnlag from "../logic/Inntekt"
+import inntektsgrunnlag, { toKr } from "../logic/Inntekt";
 import { grunnbeloep, GrunnbeloepHistorikk } from "../utils/types"
 
 export const getG = () => {
@@ -57,6 +57,20 @@ describe("kalkulere inntektsgrunnlag", () => {
         resultat.resultat = 0
         inntektsgrunnlag(g, historikk, resultat)
         expect(Math.round(resultat.resultat)).toBe(225206)
+        expect(resultat.logs[0]).toEqual(
+            <p>
+            Siden inntekten din er lavere enn minstebeløpet på 2G (2
+            ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli
+                oppjustert til <strong>{toKr(337809)} kr</strong>
+            . Inntekten din er justert ut fra endring i grunnbeløpet.
+            </p>
+        )
+        expect(resultat.logs[1]).toEqual(
+            <p>
+                Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og
+                blir derfor <strong>{toKr(225206)} kr</strong>.
+            </p>
+        )
     })
     it("inntektsgrunnlag med en mill i inntekt", async () => {
         const enMill = 1_000_000.0

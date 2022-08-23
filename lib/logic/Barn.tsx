@@ -41,10 +41,8 @@ export const leggTilBarnetillegg = (resultat: Result) => {
                 <p>
                     For hvert barn kan du få {toKr(barnetillegg(1))} kr per år.
                     Arbeidsavklaringspenger pluss barnetillegg kan ikke være mer
-                    enn 90 % av beregningsgrunnlaget. Derfor får du{" "}
-                    {toKr(maksBarnetilleggUtenGrunnlag)} kr i tillegg. Dette
-                    blir til sammen{" "}
-                    <strong>{toKr(resultat.resultat)} kr</strong>.
+                    enn 90 % av beregningsgrunnlaget. Derfor får du {toKr(maksBarnetilleggUtenGrunnlag)} kr i tillegg. Dette
+                    blir til sammen <strong>{toKr(resultat.resultat)} kr</strong>.
                 </p>
             )
         }
