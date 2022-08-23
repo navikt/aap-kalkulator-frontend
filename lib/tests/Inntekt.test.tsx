@@ -1,7 +1,5 @@
 // noinspection JSNonASCIINames
 
-import { enableFetchMocks } from "jest-fetch-mock"
-enableFetchMocks()
 import { Result } from "../../components/result/Result"
 import inntektsgrunnlag from "../logic/Inntekt"
 import { grunnbeloep, GrunnbeloepHistorikk } from "../utils/types"
