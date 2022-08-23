@@ -1,4 +1,3 @@
-import "node-fetch"
 
 import {
     Components,

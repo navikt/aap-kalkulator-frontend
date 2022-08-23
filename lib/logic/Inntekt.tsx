@@ -6,7 +6,7 @@ export const toKr = (resultat: number) => {
 }
 
 const forAar = (historikk: GrunnbeloepHistorikk[], inntektsAar: number)=> {
-    return historikk.find(h => parseInt(h.dato.toString()) == inntektsAar)
+    return Array.from(historikk).filter(h => parseInt(h.dato.toString()) == inntektsAar)[0]
 }
 
 const juster = (g: number, historikk: GrunnbeloepHistorikk[], inntektsAar: number, inntekt:number)=> {
@@ -19,7 +19,7 @@ const juster = (g: number, historikk: GrunnbeloepHistorikk[], inntektsAar: numbe
 
 const inntektsjustering = (g: number, historikk: GrunnbeloepHistorikk[], inntektsIndeks: number, resultat: Result) =>{
     const inntektsAar = resultat.personInfo!!.sykmeldtAar!! - (inntektsIndeks)
-    const inntekt = [resultat.personInfo!!.inntekt1, resultat.personInfo!!.inntekt2, resultat.personInfo!!.inntekt3].at(-1)
+    const inntekt = [resultat.personInfo!!.inntekt1, resultat.personInfo!!.inntekt2, resultat.personInfo!!.inntekt3].at(inntektsIndeks-1)
     return juster(g, historikk, inntektsAar, inntekt!!)
 }
 
@@ -31,11 +31,10 @@ const inntektsgrunnlag = (g: number, historikk: GrunnbeloepHistorikk[], resultat
     const gjennomsnittsInntektFoerOppjustering = (resultat.personInfo!!.inntekt1!! + resultat.personInfo!!.inntekt2!! + resultat.personInfo!!.inntekt3!!) / 3
 
     const gjennomsnittHoyest = gjennomsnittsInntektFoerOppjustering >= resultat.personInfo!!.inntekt1!!
-    console.log("før", resultat)
+
     const inntekt1 = inntektsjustering(g, historikk, 1, resultat)
     const inntekt2 = inntektsjustering(g, historikk, 2, resultat)
     const inntekt3 = inntektsjustering(g, historikk, 3, resultat)
-    console.log("etter", inntekt1, inntekt2, inntekt3)
     const gjennomsnittsInntekt = (inntekt1 + inntekt2 + inntekt3) / 3
 
     resultat.resultat = Math.min(!resultat.personInfo!!.over25?

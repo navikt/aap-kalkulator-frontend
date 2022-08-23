@@ -8,7 +8,7 @@ export const barnetillegg = (antallBarn: number) => (antallBarn * satsPerBarnPer
 
 
 export const leggTilBarnetillegg = (resultat: Result) => {
-    if (resultat.personInfo!!.antallBarn == 0) {
+    if (!resultat.personInfo!!.harBarn || resultat.personInfo!!.antallBarn == 0) {
         return
     }
 
