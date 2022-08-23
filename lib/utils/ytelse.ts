@@ -1,4 +1,3 @@
-
 export const ytelsesdager = 260
 
 export const ytelseTilGrunnlag = (ytelse: number) => {

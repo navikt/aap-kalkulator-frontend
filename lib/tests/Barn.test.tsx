@@ -1,6 +1,6 @@
-import { barnetillegg, leggTilBarnetillegg } from "../logic/Barn";
-import { Result } from "../../components/result/Result";
-import { render, screen } from "@testing-library/react";
+import { barnetillegg, leggTilBarnetillegg } from "../logic/Barn"
+import { Result } from "../../components/result/Result"
+import { render, screen } from "@testing-library/react"
 
 const initialState = {
     antallBarn: undefined,
@@ -33,21 +33,32 @@ describe("Barnetilegg", () => {
 
 describe("Barnetillegg med wrapped funksjon", () => {
     it("Med 0 barn", () => {
-        const barn = new Result({...(initialState), antallBarn: 0})
+        const barn = new Result({
+            ...initialState,
+            harBarn: false,
+            antallBarn: 0,
+        })
         leggTilBarnetillegg(barn)
         expect(barn.resultat).toBe(0)
     })
     it("Med 1 barn", () => {
-        const barn = new Result({...(initialState), antallBarn: 1})
+        const barn = new Result({
+            ...initialState,
+            harBarn: true,
+            antallBarn: 1,
+        })
         barn.resultat = 100_000
         leggTilBarnetillegg(barn)
         expect(barn.resultat).toBe(107_020)
     })
     it("Med maks barn", () => {
-        const barn = new Result({...(initialState), antallBarn: 12})
+        const barn = new Result({
+            ...initialState,
+            harBarn: true,
+            antallBarn: 12,
+        })
         barn.resultat = 222954.0 * (2.0 / 3.0)
         leggTilBarnetillegg(barn)
-        expect(barn.resultat).toBe(200_659)
-
+        expect(Math.ceil(barn.resultat)).toBe(200_659)
     })
 })

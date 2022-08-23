@@ -1,18 +1,12 @@
 import { useRouter } from "next/router"
 import { useContext, useState } from "react"
 import { BrowserState, State } from "../../pages/_app"
-import {
-    BodyShort,
-    Button,
-    Label,
-    Link,
-    TextField,
-} from "@navikt/ds-react"
+import { BodyShort, Button, Label, Link, TextField } from "@navikt/ds-react"
 import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
-import { logAmplitudeEvent } from "../../lib/utils/amplitude";
+import { logAmplitudeEvent } from "../../lib/utils/amplitude"
 
 interface BarnInterface extends HTMLFormElement {
     antallBarn: HTMLInputElement
@@ -140,7 +134,9 @@ const Barn = () => {
                                         error && <div className="hidden"></div>
                                     }
                                 />
-                                <BodyShort as={"p"} id="d1">barn</BodyShort>
+                                <BodyShort as={"p"} id="d1">
+                                    barn
+                                </BodyShort>
                             </div>
                             {error && (
                                 <ul

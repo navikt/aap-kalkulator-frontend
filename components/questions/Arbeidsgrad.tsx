@@ -135,7 +135,9 @@ const Arbeidsgrad = () => {
                                         error && <div className="hidden"></div>
                                     }
                                 />
-                                <BodyShort as={"p"} id="d1">timer per uke</BodyShort>
+                                <BodyShort as={"p"} id="d1">
+                                    timer per uke
+                                </BodyShort>
                             </div>
                             {error && (
                                 <ul
