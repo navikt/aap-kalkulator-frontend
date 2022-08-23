@@ -3,6 +3,7 @@
 import { Result } from "../../components/result/Result"
 import inntektsgrunnlag, { toKr } from "../logic/Inntekt";
 import { grunnbeloep, GrunnbeloepHistorikk } from "../utils/types"
+import {ytelseTilGrunnlag} from "../utils/ytelse";
 
 export const getG = () => {
     const dataG: grunnbeloep = JSON.parse(
@@ -45,7 +46,7 @@ describe("kalkulere inntektsgrunnlag", () => {
     const res = getG()
     const g = res.props.G
     const historikk = res.props.Historikk
-    it("inntektsgrunnlag med 0 i inntekt", async () => {
+    it("inntektsgrunnlag med 0 i inntekt", () => {
         const resultat = new Result({
             ...initialState,
             inntekt1: 0,
@@ -57,6 +58,7 @@ describe("kalkulere inntektsgrunnlag", () => {
         resultat.resultat = 0
         inntektsgrunnlag(g, historikk, resultat)
         expect(Math.round(resultat.resultat)).toBe(225206)
+        expect(resultat.logs.length).toBe(2)
         expect(resultat.logs[0]).toEqual(
             <p>
             Siden inntekten din er lavere enn minstebeløpet på 2G (2
@@ -72,7 +74,7 @@ describe("kalkulere inntektsgrunnlag", () => {
             </p>
         )
     })
-    it("inntektsgrunnlag med en mill i inntekt", async () => {
+    it("inntektsgrunnlag med en mill i inntekt", () => {
         const enMill = 1_000_000.0
         const resultat = new Result({
             ...initialState,
@@ -85,8 +87,17 @@ describe("kalkulere inntektsgrunnlag", () => {
         resultat.resultat = 0
         inntektsgrunnlag(g, historikk, resultat)
         expect(Math.round(resultat.resultat)).toBe(445908)
+        expect(resultat.logs.length).toBe(2)
+        expect(resultat.logs[0]).toEqual(
+            <p>
+                Siden inntekten din er høyere enn maksbeløpet på 6G (6
+                ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli
+                nedjustert til <strong>{toKr(ytelseTilGrunnlag(resultat.resultat))} kr</strong>
+                . Inntekten din er justert ut fra endring i grunnbeløpet.
+            </p>
+        )
     })
-    it("inntektsgrunnlag med variert inntekt", async () => {
+    it("inntektsgrunnlag med variert inntekt", () => {
         const resultat = new Result({
             ...initialState,
             inntekt1: 350000,
@@ -98,8 +109,16 @@ describe("kalkulere inntektsgrunnlag", () => {
         resultat.resultat = 0
         inntektsgrunnlag(g, historikk, resultat)
         expect(Math.round(resultat.resultat)).toBe(331146)
+        expect(resultat.logs.length).toBe(2)
+        expect(resultat.logs[0]).toEqual(
+            <p>
+                Grunnlaget er gjennomsnittet av de tre siste inntektsårene
+                dine: <strong>{toKr(496719.0)} kr</strong> .
+                Inntekten din er justert ut fra endring i grunnbeløpet.
+            </p>
+        )
     })
-    it("inntektsgrunnlag med mest lønn siste år", async () => {
+    it("inntektsgrunnlag med mest lønn siste år", () => {
         const resultat = new Result({
             ...initialState,
             inntekt1: 600000,
@@ -111,8 +130,22 @@ describe("kalkulere inntektsgrunnlag", () => {
         resultat.resultat = 0
         inntektsgrunnlag(g, historikk, resultat)
         expect(Math.round(resultat.resultat)).toBe(425826)
+        expect(resultat.logs.length).toBe(2)
+        expect(resultat.logs[0]).toEqual(
+            <p>
+                beregningsgrunnlaget er basert på det siste inntektsåret
+                ditt: <strong>{toKr(638739.0)} kr</strong>.
+                Inntekten din er justert ut fra endring i grunnbeløpet.
+            </p>
+        )
+        expect(resultat.logs[1]).toEqual(
+            <p>
+                Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og
+                blir derfor <strong>{toKr((425826))} kr</strong>.
+            </p>
+        )
     })
-    it("inntektsgrunnlag med minstelønn under 25", async () => {
+    it("inntektsgrunnlag med minstelønn under 25", () => {
         const resultat = new Result({
             ...initialState,
             inntekt1: 0,
@@ -124,8 +157,17 @@ describe("kalkulere inntektsgrunnlag", () => {
         resultat.resultat = 0
         inntektsgrunnlag(g, historikk, resultat)
         expect(Math.round(resultat.resultat)).toBe(150137)
+        expect(resultat.logs.length).toBe(2)
+        expect(resultat.logs[0]).toEqual(
+            <p>
+                Siden inntekten din er lavere enn grensen for minste
+                utbetaling for de under 25 år blir beregningsgrunnlaget ditt
+                oppjustert til <strong>{toKr(225206)} kr</strong>
+                . Inntekten din er justert ut fra endring i grunnbeløpet.
+            </p>
+        )
     })
-    it("inntektsgrunnlag med minstelønn under 25", async () => {
+    it("Inntektsgrunnlag med oppjustering fra 2018", () => {
         const resultat = new Result({
             ...initialState,
             inntekt1: 400000,
@@ -137,5 +179,6 @@ describe("kalkulere inntektsgrunnlag", () => {
         resultat.resultat = 0
         inntektsgrunnlag(g, historikk, resultat)
         expect(Math.round(resultat.resultat)).toBe(301915)
+        expect(resultat.logs.length).toBe(2)
     })
 })
