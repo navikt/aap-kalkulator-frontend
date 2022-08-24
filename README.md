@@ -1,3 +1,24 @@
+# aap-kalkulator
+Kort beskrivelse av hva prosjektet dreier seg om.
+
+# Komme i gang
+
+Hvordan bygge, teste og kjøre koden viss aktuelt.
+
+---
+
+# Henvendelser
+
+Enten:
+Spørsmål knyttet til koden eller prosjektet kan stilles som issues her på GitHub
+
+Eller:
+Spørsmål knyttet til koden eller prosjektet kan stilles til teamalias@nav.no
+
+## For NAV-ansatte
+
+Interne henvendelser kan sendes via Slack i kanalen #po-aap-innbygger.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
