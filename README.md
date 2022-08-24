@@ -1,5 +1,6 @@
 # aap-kalkulator
-Kort beskrivelse av hva prosjektet dreier seg om.
+AAP-Kalkulatoren er et hjelpemiddel som kan bli brukt for å få et estimat om hva du kan få i AAP støtte.
+Kalkulatoren kan ikke gi korrekte resultater ved yrkes skade, og kan gi andre resultater en det en kan få i en faktisk søknad
 
 # Komme i gang
 
@@ -10,17 +11,13 @@ npm run dev
 # or
 yarn dev
 ```
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Åpne [http://localhost:3000](http://localhost:3000) i nettleser for å gå gjennom kalkulatoren
 
 ---
 
 # Henvendelser
 
-Enten:
 Spørsmål knyttet til koden eller prosjektet kan stilles som issues her på GitHub
-
-Eller:
-Spørsmål knyttet til koden eller prosjektet kan stilles til @nav
 
 ## For NAV-ansatte
 
