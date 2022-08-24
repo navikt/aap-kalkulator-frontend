@@ -8,7 +8,7 @@ env:
   branchname: ${{ github.ref_name }}
 jobs:
   build-and-publish:
-    name: Bygg og push Docker image
+    name: test og build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
