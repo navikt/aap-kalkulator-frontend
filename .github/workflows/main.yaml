@@ -6,6 +6,7 @@ on:
 env:
     APP: aap-kalkulator-frontend
     branchname: ${{ github.ref_name }}
+    SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 jobs:
     build-and-publish:
         name: Bygg og push Docker image
