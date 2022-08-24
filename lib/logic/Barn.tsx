@@ -1,6 +1,7 @@
 import { Result } from "../../components/result/Result"
 import { ytelsesdager, ytelseTilGrunnlag } from "../utils/ytelse"
 import { toKr } from "./Inntekt"
+import {closeSync} from "fs";
 
 const satsPerBarnPerDag: number = 27
 
@@ -21,7 +22,6 @@ export const leggTilBarnetillegg = (resultat: Result) => {
     const maksBarnetilleggUtenGrunnlag = Math.ceil(
         maksBarnetillegg - resultat.resultat
     )
-
     resultat.resultat = Math.min(muligBarnetillegg, maksBarnetillegg)
 
     switch (resultat.resultat) {
