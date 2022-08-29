@@ -57,7 +57,7 @@ describe("kalkulere inntektsgrunnlag", () => {
         })
         resultat.resultat = 0
         inntektsgrunnlag(g, historikk, resultat)
-        expect(Math.round(resultat.resultat)).toBe(225206)
+        expect(Math.round(resultat.resultat)).toBe(222954)
         expect(resultat.logs.length).toBe(2)
         expect(resultat.logs[0]).toEqual(
             <p>
@@ -70,7 +70,7 @@ describe("kalkulere inntektsgrunnlag", () => {
         expect(resultat.logs[1]).toEqual(
             <p>
                 Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og
-                blir derfor <strong>{toKr(225206)} kr</strong>.
+                blir derfor <strong>{toKr(222954)} kr</strong>.
             </p>
         )
     })
@@ -86,7 +86,7 @@ describe("kalkulere inntektsgrunnlag", () => {
         })
         resultat.resultat = 0
         inntektsgrunnlag(g, historikk, resultat)
-        expect(Math.round(resultat.resultat)).toBe(445908)
+        expect(Math.round(resultat.resultat)).toBe(441449)
         expect(resultat.logs.length).toBe(2)
         expect(resultat.logs[0]).toEqual(
             <p>
@@ -108,7 +108,7 @@ describe("kalkulere inntektsgrunnlag", () => {
         })
         resultat.resultat = 0
         inntektsgrunnlag(g, historikk, resultat)
-        expect(Math.round(resultat.resultat)).toBe(331146)
+        expect(Math.round(resultat.resultat)).toBe(327835)
         expect(resultat.logs.length).toBe(2)
         expect(resultat.logs[0]).toEqual(
             <p>
@@ -129,7 +129,7 @@ describe("kalkulere inntektsgrunnlag", () => {
         })
         resultat.resultat = 0
         inntektsgrunnlag(g, historikk, resultat)
-        expect(Math.round(resultat.resultat)).toBe(425826)
+        expect(Math.round(resultat.resultat)).toBe(421568)
         expect(resultat.logs.length).toBe(2)
         expect(resultat.logs[0]).toEqual(
             <p>
@@ -141,7 +141,7 @@ describe("kalkulere inntektsgrunnlag", () => {
         expect(resultat.logs[1]).toEqual(
             <p>
                 Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og
-                blir derfor <strong>{toKr((425826))} kr</strong>.
+                blir derfor <strong>{toKr((421568))} kr</strong>.
             </p>
         )
     })
@@ -156,7 +156,7 @@ describe("kalkulere inntektsgrunnlag", () => {
         })
         resultat.resultat = 0
         inntektsgrunnlag(g, historikk, resultat)
-        expect(Math.round(resultat.resultat)).toBe(150137)
+        expect(Math.round(resultat.resultat)).toBe(148636)
         expect(resultat.logs.length).toBe(2)
         expect(resultat.logs[0]).toEqual(
             <p>
@@ -178,7 +178,7 @@ describe("kalkulere inntektsgrunnlag", () => {
         })
         resultat.resultat = 0
         inntektsgrunnlag(g, historikk, resultat)
-        expect(Math.round(resultat.resultat)).toBe(301915)
+        expect(Math.round(resultat.resultat)).toBe(298896)
         expect(resultat.logs.length).toBe(2)
     })
 })

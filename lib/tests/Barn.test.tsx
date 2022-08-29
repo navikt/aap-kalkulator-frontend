@@ -68,13 +68,13 @@ describe("Barnetillegg med wrapped funksjon", () => {
         })
         barn.resultat = 222954.0 * (2.0 / 3.0)
         leggTilBarnetillegg(barn)
-        expect(Math.ceil(barn.resultat)).toBe(200_659)
+        expect(Math.ceil(barn.resultat)).toBe(202_686)
         expect(barn.logs[0]).toEqual(<p>
             For hvert barn kan du få {toKr(barnetillegg(1))} kr per år.
             Arbeidsavklaringspenger pluss barnetillegg kan ikke være mer
-            enn 90 % av beregningsgrunnlaget. Derfor får du {toKr(52023
+            enn 90 % av beregningsgrunnlaget. Derfor får du {toKr(54_050
         )} kr i tillegg. Dette
-            blir til sammen <strong>{toKr(200_659)} kr</strong>.
+            blir til sammen <strong>{toKr(202_685)} kr</strong>.
         </p>)
     })
 })

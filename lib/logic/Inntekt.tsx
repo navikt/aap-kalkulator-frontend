@@ -52,19 +52,12 @@ const inntektsgrunnlag = (
     const minsteGrunnlag = (2 * g) / 0.66
     const minsteGrunnlagUnder25 = (2 * g * (2.0 / 3.0)) / 0.66
 
-    const gjennomsnittsInntektFoerOppjustering =
-        (resultat.personInfo!!.inntekt1!! +
-            resultat.personInfo!!.inntekt2!! +
-            resultat.personInfo!!.inntekt3!!) /
-        3
-
-    const gjennomsnittHoyest =
-        gjennomsnittsInntektFoerOppjustering >= resultat.personInfo!!.inntekt1!!
-
     const inntekt1 = inntektsjustering(g, historikk, 1, resultat)
     const inntekt2 = inntektsjustering(g, historikk, 2, resultat)
     const inntekt3 = inntektsjustering(g, historikk, 3, resultat)
     const gjennomsnittsInntekt = (inntekt1 + inntekt2 + inntekt3) / 3
+    const gjennomsnittHoyest =
+        gjennomsnittsInntekt >= resultat.personInfo!!.inntekt1!!
 
     resultat.resultat = Math.min(
         !resultat.personInfo!!.over25
@@ -133,7 +126,7 @@ const inntektsgrunnlag = (
         }
     }
 
-    const resultatEtterFradrag = (resultat.resultat * 2.0) / 3.0
+    const resultatEtterFradrag = (resultat.resultat * 0.66)
     resultat.logs.push(
         <p>
             Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og
