@@ -57,7 +57,7 @@ const Helse = () => {
             : sykmeldtAar > detteAaret
             ? `Året du fikk nedsatt arbeidsevne må være ${detteAaret} eller tidligere.`
             : sykmeldtAar < detteAaret - aapGrense
-            ? `Du vil ikke få arbeidsavklaringspenger dersom du fikk nedsatt arbeidsevne for mer enn ${aapGrense} år siden.`
+            ? `Kalkulatoren kan ikke beregne arbeidsavklaringspenger dersom du fikk nedsatt arbeidsevne for mer enn ${aapGrense} år siden.`
             : ""
 
         if (state.over25 == undefined) {
@@ -94,7 +94,7 @@ const Helse = () => {
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <Label as={"label"} id="l1" className="text-xl">
-                        Er du over 25 år?
+                        Er du 25 år eller eldre?
                     </Label>
                     <ReadMore
                         size="small"
@@ -134,7 +134,7 @@ const Helse = () => {
                 </div>
                 <div className="mb-4">
                     <Label as="label" id="l2" className="text-xl">
-                        Hvilket år fikk du først nedsatt arbeidsevne?
+                        Hvilket år fikk du først nedsatt arbeidsevne med minst 50%?
                     </Label>
                     <ReadMore
                         size="small"
