@@ -57,7 +57,7 @@ const Helse = () => {
             : sykmeldtAar > detteAaret
             ? `Året du fikk nedsatt arbeidsevne må være ${detteAaret} eller tidligere.`
             : sykmeldtAar < detteAaret - aapGrense
-            ? `Kalkulatoren kan ikke beregne arbeidsavklaringspenger dersom du fikk nedsatt arbeidsevne for mer en ${aapGrense} år siden.`
+            ? `Kalkulatoren kan ikke beregne arbeidsavklaringspenger dersom du fikk nedsatt arbeidsevne for mer enn ${aapGrense} år siden.`
             : ""
 
         if (state.over25 == undefined) {
