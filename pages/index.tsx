@@ -53,19 +53,24 @@ const Home: NextPage = () => {
             <div className="flex flex-col items-center mt-4 gap-4">
                 <ul className="list-disc space-y-2 mb-8 pl-4 md:w-5/6">
                     <li>
-                        Regn ut hvor mye du kan få i arbeidsavklaringspenger
-                        (AAP).
+                        Kalkulatoren er ment som et hjelpeverktøy for deg, du
+                        får vite hva du får utbetalt hvis du søker og får
+                        innvilget arbeidsavklaringspenger (AAP).
                     </li>
                     <li>
-                        Kalkulatoren er ment som et hjelpeverktøy som viser
-                        omtrent hvor mye du kan få.
+                        Dette er ikke en søknad om AAP. Det er alltid vedtaket
+                        du får som er korrekt, denne kalkulatoren gir kun et
+                        estimat.
                     </li>
-                    <li>Dette er ikke en søknad om AAP.</li>
                     <li>
                         Du får et resultat selv om du svarer &quot;Nei&quot; på
                         noen av spørsmålene.
                     </li>
                     <li>NAV lagrer ikke informasjonen du oppgir.</li>
+                    <li>
+                        Kalkulatoren tar ikke høyde for reduksjon av AAP hvis du
+                        mottar andre ytelser.
+                    </li>
                 </ul>
 
                 <Button
