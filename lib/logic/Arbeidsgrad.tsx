@@ -16,12 +16,8 @@ export const arbeidsgrad = (resultat: Result) => {
     }
     if (resultat.personInfo!!.arbeidsgrad!! > 60.0) {
         resultat.resultat = 0.0
-        resultat.logs = [
-            <p key="first">
-                Arbeidsgraden din er høyere enn 60 % og du kan derfor ikke få
-                arbeidsavklaringspenger.
-            </p>,
-        ]
+        resultat.logs = []
+        resultat.logs.push(<p>Arbeidsgraden din er høyere enn 60 % og du kan derfor ikke få arbeidsavklaringspenger.</p>)
         return
     }
 
