@@ -133,8 +133,10 @@ const Resultat: NextPage = ({
                     <Alert variant="info" size="small">
                         <p>
                             Dette er en foreløpig beregning på hva du kan få i
-                            AAP før skatt. Hvis du sender en søknad og får den
-                            godkjent, vil du få vite hva du får utbetalt.
+                            AAP før skatt. Hvis du søker og får innvilget AAP,
+                            vil du få vite hva du faktisk får utbetalt. Merk:
+                            Det er alltid vedtaket du får som er korrekt, denne
+                            kalkulatoren gir kun et estimat.
                         </p>
 
                         <Link
