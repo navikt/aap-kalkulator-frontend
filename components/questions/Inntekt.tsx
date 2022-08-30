@@ -1,5 +1,5 @@
-import { ChangeEvent, useContext, useState } from "react"
-import { BrowserState, State } from "../../pages/_app"
+import { ChangeEvent, SetStateAction, useContext, useState} from "react"
+import {BrowserState, State} from "../../pages/_app"
 
 import {
     BodyShort,
@@ -9,10 +9,11 @@ import {
     TextField,
     Link,
 } from "@navikt/ds-react"
-import { useRouter } from "next/router"
+import {useRouter} from "next/router"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
+import Radio from "../radio/Radio";
 
 interface Inntekt {
     inntekt1: string
@@ -22,20 +23,21 @@ interface Inntekt {
 
 const Inntekt = () => {
     const router = useRouter()
-    const { state, setState } = useContext(State)
+    const {state, setState} = useContext(State)
     const [error, setError] = useState<string[]>(["", "", ""])
-    const { browserState } = useContext(BrowserState)
+    const {browserState} = useContext(BrowserState)
+    const [radioError, setRadioError] = useState<string>("")
     const [inntekt, setInntekt] = useState<Inntekt>({
         inntekt1:
-            state.inntekt1 != undefined
+            state.inntekt1 != undefined && !isNaN(state.inntekt1)
                 ? state.inntekt1.toLocaleString("nb-NO")
                 : "",
         inntekt2:
-            state.inntekt2 != undefined
+            state.inntekt2 != undefined && !isNaN(state.inntekt2)
                 ? state.inntekt2.toLocaleString("nb-NO")
                 : "",
         inntekt3:
-            state.inntekt3 != undefined
+            state.inntekt3 != undefined && !isNaN(state.inntekt3)
                 ? state.inntekt3.toLocaleString("nb-NO")
                 : "",
     })
@@ -68,10 +70,15 @@ const Inntekt = () => {
             !isNaN(inntekt2) ? "" : errorMessage,
             !isNaN(inntekt3) ? "" : errorMessage,
         ]
+
         setError(errors)
-        if (errors.some((v) => v.length > 0)) {
+        if (state.harLoenn == undefined) {
+            setRadioError("Du må velge enten ja eller nei for å gå videre.")
+        }
+        if ((errors.some((v) => v.length > 0) && state.harLoenn == true) || state.harLoenn == undefined  ) {
             return
         }
+
         setState({
             ...state,
             inntekt1,
@@ -93,6 +100,46 @@ const Inntekt = () => {
         state.sykmeldtAar - 3,
     ]
 
+
+    const onRadioChange = (value: string) => {
+        setState({
+            ...state,
+            harLoenn: value == "Ja",
+            inntekt1:
+                state.inntekt1 !== undefined && !isNaN(state.inntekt1)
+                    ? state.inntekt1.toLocaleString("nb-NO")
+                    : "",
+            inntekt2:
+                state.inntekt2 !== undefined && !isNaN(state.inntekt2)
+                    ? state.inntekt2.toLocaleString("nb-NO")
+                    : "",
+            inntekt3:
+                state.inntekt3 !== undefined && !isNaN(state.inntekt3)
+                    ? state.inntekt3.toLocaleString("nb-NO")
+                    : "",
+        })
+        setRadioError("")
+    }
+
+    const readMoreText = <div>
+        <BodyShort spacing>
+            Vi bruker inntekten din til å regne ut hva du kan få
+            i arbeidsavklaringspenger.
+        </BodyShort>
+        <BodyShort>
+            Dette bestemmes av inntekten din de tre siste årene
+            eller minstesatsen (to ganger{" "}
+            <Link
+                href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden"
+                target="_blank"
+                rel="noreferrer"
+                as={"a"}
+            >
+                grunnbeløpet
+            </Link>
+            ).
+        </BodyShort>
+    </div>
     return (
         <>
             <Stepper />
@@ -103,61 +150,59 @@ const Inntekt = () => {
                 tittel="Inntekt"
             />
             <form onSubmit={handleSubmit}>
-                <Label as={"label"} className="text-xl">
-                    Hvor mye tjente du de tre siste årene før du fikk nedsatt
-                    arbeidsevne?
-                </Label>
-                <BodyShort spacing>Fyll inn inntekt før skatt.</BodyShort>
-                <ReadMore size="small" header="Hvorfor spør vi om inntekt?">
-                    <div>
-                        <BodyShort spacing>
-                            Vi bruker inntekten din til å regne ut hva du kan få
-                            i arbeidsavklaringspenger.
-                        </BodyShort>
-                        <BodyShort>
-                            Dette bestemmes av inntekten din de tre siste årene
-                            eller minstesatsen (to ganger{" "}
-                            <Link
-                                href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden"
-                                target="_blank"
-                                rel="noreferrer"
-                                as={"a"}
-                            >
-                                grunnbeløpet
-                            </Link>
-                            ).
-                        </BodyShort>
-                    </div>
-                </ReadMore>
-                <div className="flex md:flex-row flex-col md:space-x-8 my-4">
-                    {inntektsAar.reverse().map((aar, index) => (
-                        <div key={index} className="flex flex-col">
-                            <TextField
-                                aria-errormessage={`e${index}`}
-                                inputMode="numeric"
-                                className={`shrink md:mb-2 max-w-[160px] h-20`}
-                                key={index}
-                                id={`inntekt${3 - index}`}
-                                name={`inntekt${3 - index}`}
-                                label={`Inntekt ${aar}`}
-                                size="medium"
-                                error={error[2 - index]}
-                                value={Object.values(inntekt)[2 - index]}
-                                onChange={onChange}
-                            />
+                <Radio
+                    isError={radioError != ""}
+                    errorId="error1"
+                    title={`Hadde du inntekt i årene fra ${state.sykmeldtAar-3} til ${state.sykmeldtAar-1}?`}
+                    state={state.harLoenn}
+                    onChange={onRadioChange}
+                    readMoreTitle="Hvorfor spør vi om inntekt?"
+                    readMore={readMoreText}
+                />
+                {radioError != "" && (
+                    <ul id="error1" aria-live="assertive" className="list-disc">
+                        <li className="ml-5 font-bold text-red-500 mb-4">
+                            {radioError}
+                        </li>
+                    </ul>
+                )}
 
-                            {error[2 - index] && (
-                                <ul
-                                    id={`e${index}`}
-                                    aria-live="assertive"
-                                    className="list-disc ml-5 font-bold text-red-500"
-                                >
-                                    <li>{error[2 - index]}</li>
-                                </ul>
-                            )}
+                {state.harLoenn &&
+
+                    <>
+                        <Label className="text-xl" >Hvor mye tjente du?</Label>
+                        <BodyShort spacing>Fyll inn inntekt før skatt.</BodyShort>
+                        <div className="flex md:flex-row flex-col md:space-x-8 my-4">
+                            {inntektsAar.reverse().map((aar, index) => (
+                                <div key={index} className="flex flex-col">
+                                    <TextField
+                                        aria-errormessage={`e${index}`}
+                                        inputMode="numeric"
+                                        className={`shrink md:mb-2 max-w-[160px] h-20`}
+                                        key={index}
+                                        id={`inntekt${3 - index}`}
+                                        name={`inntekt${3 - index}`}
+                                        label={`Inntekt ${aar}`}
+                                        size="medium"
+                                        error={error[2 - index]}
+                                        value={Object.values(inntekt)[2 - index]}
+                                        onChange={onChange}/>
+
+                                    {error[2 - index] && (
+                                        <ul
+                                            id={`e${index}`}
+                                            aria-live="assertive"
+                                            className="list-disc ml-5 font-bold text-red-500"
+                                        >
+                                            <li>{error[2 - index]}</li>
+                                        </ul>
+                                    )}
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
+                    </>
+                }
+
                 <Button variant="primary">Gå videre</Button>
             </form>
         </>

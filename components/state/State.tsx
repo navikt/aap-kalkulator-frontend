@@ -10,4 +10,5 @@ export interface StateInterface {
     harArbeid: boolean | undefined
     harBarn: boolean | undefined
     over25: boolean | undefined
+    harLoenn: boolean | undefined
 }
