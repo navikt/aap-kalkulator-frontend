@@ -20,7 +20,7 @@ const juster = (
     inntekt: number
 ) => {
     const grunnbeloepForInntektsAar = forAar(historikk, inntektsAar)!!
-    const gammelG = grunnbeloepForInntektsAar.grunnbeloep
+    const gammelG = grunnbeloepForInntektsAar.gjennomsnittPerAar!!
     const inntektMax = Math.min(inntekt, 6 * gammelG)
 
     return Math.min(
