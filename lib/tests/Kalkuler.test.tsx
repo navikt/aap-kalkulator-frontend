@@ -265,4 +265,19 @@ describe("integrasjon", () => {
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(281_045)
     })
+    it("400k siste år, 0 barn og 0 arbeidsgrad", () => {
+        const state: StateInterface = {
+            ...initialState,
+            inntekt1: 0,
+            inntekt2: 0,
+            inntekt3: 0,
+            antallBarn: 0,
+            harBarn: false,
+            harArbeid: false,
+            sykmeldtAar: aar,
+            over25: false,
+        }
+        const resultat = kalkuler(state, g, historikk)
+        expect(resultat.resultat).toBe(148_636)
+    })
 })
