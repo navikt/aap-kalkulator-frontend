@@ -69,7 +69,6 @@ const Resultat: NextPage = ({
     const handleAccordion = () => {
         setOpen((current) => {
             if(!current) {
-                console.log("ÅPENT")
                 logAmplitudeEvent("accordion åpnet", {
                     tekst: "Hvorfor får jeg denne summen?",
                 })
