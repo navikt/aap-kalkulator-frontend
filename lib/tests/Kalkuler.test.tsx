@@ -218,4 +218,66 @@ describe("integrasjon", () => {
         expect(resultat.resultat).toBe(0)
         expect(resultat.logs.length).toBe(1)
     })
+    it("over 6g siste år, 2 barn og 0 arbeidsgrad", () => {
+        const state: StateInterface = {
+            ...initialState,
+            inntekt1: 700_000,
+            inntekt2: 26_880,
+            inntekt3: 219_799,
+            antallBarn: 2,
+            harBarn: true,
+            harArbeid: false,
+            sykmeldtAar: aar,
+            over25: true,
+        }
+        const resultat = kalkuler(state, g, historikk)
+        //expect(resultat.resultat).toBe(455520)
+        expect(resultat.resultat).toBe(455489)
+
+    })
+    it("400k avg, 2 barn og 0 arbeidsgrad", () => {
+        const state: StateInterface = {
+            ...initialState,
+            inntekt1: 400_000,
+            inntekt2: 400_000,
+            inntekt3: 400_000,
+            antallBarn: 0,
+            harBarn: false,
+            harArbeid: false,
+            sykmeldtAar: aar,
+            over25: true,
+        }
+        const resultat = kalkuler(state, g, historikk)
+        expect(resultat.resultat).toBe(290_177)
+    })
+    it("400k siste år, 0 barn og 0 arbeidsgrad", () => {
+        const state: StateInterface = {
+            ...initialState,
+            inntekt1: 400_000,
+            inntekt2: 0,
+            inntekt3: 0,
+            antallBarn: 0,
+            harBarn: false,
+            harArbeid: false,
+            sykmeldtAar: aar,
+            over25: true,
+        }
+        const resultat = kalkuler(state, g, historikk)
+        expect(resultat.resultat).toBe(281_045)
+    })
+    it("400k siste år, 0 barn og 0 arbeidsgrad", () => {
+        const state: StateInterface = {
+            ...initialState,
+            inntekt1: 0,
+            inntekt2: 0,
+            inntekt3: 0,
+            antallBarn: 0,
+            harBarn: false,
+            harArbeid: false,
+            sykmeldtAar: aar,
+            over25: false,
+        }
+        const resultat = kalkuler(state, g, historikk)
+        expect(resultat.resultat).toBe(148_636)
+    })
 })
