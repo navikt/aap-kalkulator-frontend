@@ -35,6 +35,11 @@ const inntektsjustering = (
     inntektsIndeks: number,
     resultat: Result
 ) => {
+    if(!resultat.personInfo!!.harLoenn) {
+        resultat.personInfo!!.inntekt1 = 0
+        resultat.personInfo!!.inntekt2 = 0
+        resultat.personInfo!!.inntekt3 = 0
+    }
     const inntektsAar = resultat.personInfo!!.sykmeldtAar!! - inntektsIndeks
     const inntekt = [
         resultat.personInfo!!.inntekt1,

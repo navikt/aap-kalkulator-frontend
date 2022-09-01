@@ -50,6 +50,7 @@ describe("integrasjon", () => {
     it("ytelse med grunnbeløp 6g, 0 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
             ...initialState,
+            harLoenn: true,
             inntekt1: enMill,
             inntekt2: enMill,
             inntekt3: enMill,
@@ -65,6 +66,7 @@ describe("integrasjon", () => {
     it("ytelse med grunnbeløp 2g, 7 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
             ...initialState,
+            harLoenn: false,
             inntekt1: 0,
             inntekt2: 0,
             inntekt3: 0,
@@ -100,6 +102,7 @@ describe("integrasjon", () => {
     it("ytelse med grunnbeløp 6g, 22 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
             ...initialState,
+            harLoenn: true,
             inntekt1: enMill,
             inntekt2: enMill,
             inntekt3: enMill,
@@ -115,6 +118,7 @@ describe("integrasjon", () => {
     })
     it("ytelse med grunnbeløp 6g, 23 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
+            harLoenn: true,
             ...initialState,
             inntekt1: enMill,
             inntekt2: enMill,
@@ -132,6 +136,7 @@ describe("integrasjon", () => {
     it("ytelse med grunnbeløp 6g, 24 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
             ...initialState,
+            harLoenn: true,
             inntekt1: enMill,
             inntekt2: enMill,
             inntekt3: enMill,
@@ -148,6 +153,7 @@ describe("integrasjon", () => {
     it("ytelse med grunnbeløp 2g, 0 barn og 40% arbeidsgrad", () => {
         const state: StateInterface = {
             ...initialState,
+            harLoenn: false,
             inntekt1: 0,
             inntekt2: 0,
             inntekt3: 0,
@@ -164,6 +170,7 @@ describe("integrasjon", () => {
     })
     it("ytelse med grunnbeløp 2g, 15 barn og 50% arbeidsgrad", () => {
         const state: StateInterface = {
+            harLoenn: false,
             ...initialState,
             inntekt1: 0,
             inntekt2: 0,
@@ -187,6 +194,7 @@ describe("integrasjon", () => {
     it("ytelse med grunnbeløp 6g, 0 barn og 20% arbeidsgrad", () => {
         const state: StateInterface = {
             ...initialState,
+            harLoenn: true,
             inntekt1: enMill,
             inntekt2: enMill,
             inntekt3: enMill,
@@ -221,6 +229,7 @@ describe("integrasjon", () => {
     it("over 6g siste år, 2 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
             ...initialState,
+            harLoenn: true,
             inntekt1: 700_000,
             inntekt2: 26_880,
             inntekt3: 219_799,
@@ -238,6 +247,7 @@ describe("integrasjon", () => {
     it("400k avg, 2 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
             ...initialState,
+            harLoenn: true,
             inntekt1: 400_000,
             inntekt2: 400_000,
             inntekt3: 400_000,
@@ -253,6 +263,7 @@ describe("integrasjon", () => {
     it("400k siste år, 0 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
             ...initialState,
+            harLoenn: true,
             inntekt1: 400_000,
             inntekt2: 0,
             inntekt3: 0,
@@ -268,6 +279,7 @@ describe("integrasjon", () => {
     it("400k siste år, 0 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
             ...initialState,
+            harLoenn: false,
             inntekt1: 0,
             inntekt2: 0,
             inntekt3: 0,
