@@ -15,13 +15,13 @@ const Home: NextPage = () => {
     useEffect(() => {
         setState({} as StateInterface)
     }, [])
-    const handleStart = async () => {
+    const handleStart = () => {
         logAmplitudeEvent("skjema startet", {
             skjemanavn: "aap-kalkulator",
             skjemaId: "aap-kalkulator",
         })
         browserState.redirect = false
-        await router.push("/steg/1")
+        router.push("/steg/1")
     }
     return (
         <>

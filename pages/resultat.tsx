@@ -43,6 +43,7 @@ const Resultat: NextPage = ({
     Historikk: GrunnbeloepHistorikk[]
 }) => {
     const [result, setResult] = useState<ResultInterface | null>(null)
+    const [open, setOpen] = useState(false)
     const { state } = useContext(State)
     const router = useRouter()
 
@@ -64,6 +65,19 @@ const Resultat: NextPage = ({
             logs: res.logs,
         })
     }, [])
+
+    const handleAccordion = () => {
+        setOpen((current) => {
+            if(!current) {
+                console.log("ÅPENT")
+                logAmplitudeEvent("accordion åpnet", {
+                    tekst: "Hvorfor får jeg denne summen?",
+                })
+            }
+            return !current
+        })
+    }
+
     const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
     // @ts-ignore
     return (
@@ -108,11 +122,7 @@ const Resultat: NextPage = ({
                 {result != null && (
                     <div className="py-4 md:w-5/6">
                         <Accordion
-                            onClick={() =>
-                                logAmplitudeEvent("accordion åpnet", {
-                                    tekst: "Hvorfor får jeg denne summen?",
-                                })
-                            }
+                            onClick={handleAccordion}
                         >
                             <Accordion.Item>
                                 <Accordion.Header>
