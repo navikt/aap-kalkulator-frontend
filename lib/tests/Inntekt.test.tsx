@@ -78,6 +78,7 @@ describe("kalkulere inntektsgrunnlag", () => {
         const enMill = 1_000_000.0
         const resultat = new Result({
             ...initialState,
+            harLoenn: true,
             inntekt1: enMill,
             inntekt2: enMill,
             inntekt3: enMill,
@@ -100,6 +101,7 @@ describe("kalkulere inntektsgrunnlag", () => {
     it("inntektsgrunnlag med variert inntekt", () => {
         const resultat = new Result({
             ...initialState,
+            harLoenn: true,
             inntekt1: 350000,
             inntekt2: 450000,
             inntekt3: 550000,
@@ -121,6 +123,7 @@ describe("kalkulere inntektsgrunnlag", () => {
     it("inntektsgrunnlag med mest lønn siste år", () => {
         const resultat = new Result({
             ...initialState,
+            harLoenn: true,
             inntekt1: 600000,
             inntekt2: 100000,
             inntekt3: 200000,
@@ -170,6 +173,7 @@ describe("kalkulere inntektsgrunnlag", () => {
     it("Inntektsgrunnlag med oppjustering fra 2018", () => {
         const resultat = new Result({
             ...initialState,
+            harLoenn: true,
             inntekt1: 400000,
             inntekt2: 400000,
             inntekt3: 400000,
