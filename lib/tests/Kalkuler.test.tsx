@@ -92,6 +92,7 @@ describe("integrasjon", () => {
             antallBarn: 8,
             harBarn: true,
             harArbeid: false,
+            harLoenn: false,
             sykmeldtAar: aar,
             over25: true,
         }
@@ -219,6 +220,7 @@ describe("integrasjon", () => {
             harBarn: true,
             harArbeid: true,
             arbeidsgrad: 61,
+            harLoenn: false,
             sykmeldtAar: aar,
             over25: true,
         }

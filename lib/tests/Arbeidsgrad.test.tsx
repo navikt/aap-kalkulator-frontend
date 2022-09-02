@@ -20,6 +20,7 @@ describe("arbeidsgrad", () => {
     it("arbeidsgrad 40% med 100000 i grunnlag", () => {
         const resultat = new Result({
             ...initialState,
+            harLoenn: false,
             harArbeid: true,
             arbeidsgrad: 40,
         })
@@ -27,11 +28,12 @@ describe("arbeidsgrad", () => {
         arbeidsgrad(resultat)
         expect(resultat.resultat).toBe(60_000)
         expect(resultat.logs.length).toBe(1)
-        expect(resultat.logs[0]).toEqual(<p>En arbeidsuke er 37,5 timer. Siden du jobber {15} timer i uka, som er {40} % av en vanlig arbeidsuke, blir arbeidsavklaringspengene redusert med {40} %, fra {toKr(100000)} kr til <strong>{toKr(60000)} kr</strong>.</p>)
+        expect(resultat.logs[0]).toEqual(<p>En arbeidsuke er 37,5 timer. Siden du jobber {15} timer i uka, som er {(40).toFixed(0)} % av en vanlig arbeidsuke, blir arbeidsavklaringspengene redusert med {(40).toFixed(0)} %, fra {toKr(100000)} kr til <strong>{toKr(60000)} kr</strong>.</p>)
     })
     it("arbeidsgrad 70% med 100000 i grunnlag", () => {
         const resultat = new Result({
             ...initialState,
+            harLoenn: false,
             harArbeid: true,
             arbeidsgrad: 70,
         })
@@ -44,6 +46,7 @@ describe("arbeidsgrad", () => {
     test("arbeidsgrad er -10%", () => {
         const resultat = new Result({
             ...initialState,
+            harLoenn: false,
             harArbeid: true,
             arbeidsgrad: -10,
         })

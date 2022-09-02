@@ -38,6 +38,7 @@ describe("Barnetillegg med wrapped funksjon", () => {
     it("Med 0 barn", () => {
         const barn = new Result({
             ...initialState,
+            harLoenn: false,
             harBarn: false,
             antallBarn: 0,
         })
@@ -47,6 +48,7 @@ describe("Barnetillegg med wrapped funksjon", () => {
     it("Med 1 barn", () => {
         const barn = new Result({
             ...initialState,
+            harLoenn: false,
             harBarn: true,
             antallBarn: 1,
         })
@@ -63,6 +65,7 @@ describe("Barnetillegg med wrapped funksjon", () => {
     it("Med maks barn", () => {
         const barn = new Result({
             ...initialState,
+            harLoenn: false,
             harBarn: true,
             antallBarn: 12,
         })

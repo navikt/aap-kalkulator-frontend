@@ -49,6 +49,7 @@ describe("kalkulere inntektsgrunnlag", () => {
     it("inntektsgrunnlag med 0 i inntekt", () => {
         const resultat = new Result({
             ...initialState,
+            harLoenn: false,
             inntekt1: 0,
             inntekt2: 0,
             inntekt3: 0,
@@ -151,6 +152,7 @@ describe("kalkulere inntektsgrunnlag", () => {
     it("inntektsgrunnlag med minstelønn under 25", () => {
         const resultat = new Result({
             ...initialState,
+            harLoenn: false,
             inntekt1: 0,
             inntekt2: 0,
             inntekt3: 0,

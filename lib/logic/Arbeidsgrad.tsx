@@ -24,8 +24,8 @@ export const arbeidsgrad = (resultat: Result) => {
     resultat.resultat *= (100 - resultat.personInfo!!.arbeidsgrad!!) / 100
     resultat.logs.push(
         <p>
-            En arbeidsuke er 37,5 timer. Siden du jobber {resultat.personInfo!!.arbeidsgrad!!/100*37.5} timer i uka, som er {resultat.personInfo!!.arbeidsgrad} % av en vanlig arbeidsuke, blir
-            arbeidsavklaringspengene redusert med {resultat.personInfo!!.arbeidsgrad} %, fra {toKr(gammeltResultat)} kr til <strong>{toKr(resultat.resultat)} kr</strong>.
+            En arbeidsuke er 37,5 timer. Siden du jobber {resultat.personInfo!!.arbeidsgrad!!/100*37.5} timer i uka, som er {(resultat.personInfo!!.arbeidsgrad)?.toFixed(0)} % av en vanlig arbeidsuke, blir
+            arbeidsavklaringspengene redusert med {(resultat.personInfo!!.arbeidsgrad)?.toFixed(0)} %, fra {toKr(gammeltResultat)} kr til <strong>{toKr(resultat.resultat)} kr</strong>.
         </p>
     )
 }
