@@ -189,7 +189,7 @@ describe("integrasjon", () => {
         expect(resultat.logs[0]).toEqual(<p>Siden inntekten din er lavere enn minstebeløpet på 2G (2 ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli oppjustert til <strong>{toKr(337809)} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.</p>)
         expect(resultat.logs[1]).toEqual(<p>Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og blir derfor <strong>{toKr(222954)} kr</strong>.</p>)
         expect(resultat.logs[2]).toEqual(<p>For hvert barn kan du få {toKr(7020)} kr per år. Arbeidsavklaringspenger pluss barnetillegg kan ikke være mer enn 90 % av beregningsgrunnlaget. Derfor får du {toKr(81075)} kr i tillegg. Dette blir til sammen <strong>{toKr(304028)} kr</strong>.</p>)
-        expect(resultat.logs[3]).toEqual(<p>En arbeidsuke er 37,5 timer. Siden du jobber {18.75} timer i uka, som er {50} % av en vanlig arbeidsuke, blir arbeidsavklaringspengene redusert med {50} %, fra {toKr(304028)} kr til <strong>{toKr(152014)} kr</strong>.</p>)
+        expect(resultat.logs[3]).toEqual(<p>En arbeidsuke er 37,5 timer. Siden du jobber {18.75} timer i uka, som er {(50).toFixed(0)} % av en vanlig arbeidsuke, blir arbeidsavklaringspengene redusert med {(50).toFixed(0)} %, fra {toKr(304028)} kr til <strong>{toKr(152014)} kr</strong>.</p>)
 
     })
     it("ytelse med grunnbeløp 6g, 0 barn og 20% arbeidsgrad", () => {
