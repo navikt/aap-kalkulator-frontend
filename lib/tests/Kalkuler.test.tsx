@@ -6,25 +6,44 @@ import { kalkuler } from "../logic/Kalkuler"
 import { toKr } from "../utils/HjelpeFunksjoner"
 
 export const getG = () => {
-    const dataG: grunnbeloep = JSON.parse(
-        '{"dato":"2022-05-01","grunnbeloep":111477,"grunnbeloepPerMaaned":9290,"gjennomsnittPerAar":109784,"omregningsfaktor":1.047726,"virkningstidspunktForMinsteinntekt":"2022-05-23"}'
-    )
-    const dataHistorikk = JSON.parse(
-        '[{"dato":"2022-05-01","grunnbeløp":111477,"grunnbeløpPerMåned":9290,"gjennomsnittPerÅr":109784,"omregningsfaktor":1.047726,"virkningstidspunktForMinsteinntekt":"2022-05-23"},{"dato":"2021-05-01","grunnbeløp":106399,"grunnbeløpPerMåned":8867,"gjennomsnittPerÅr":104716,"omregningsfaktor":1.049807,"virkningstidspunktForMinsteinntekt":"2021-05-24"},{"dato":"2020-05-01","grunnbeløp":101351,"grunnbeløpPerMåned":8446,"gjennomsnittPerÅr":100853,"omregningsfaktor":1.014951,"virkningstidspunktForMinsteinntekt":"2020-09-21"},{"dato":"2019-05-01","grunnbeløp":99858,"grunnbeløpPerMåned":8322,"gjennomsnittPerÅr":98866,"omregningsfaktor":1.030707,"virkningstidspunktForMinsteinntekt":"2019-05-27"},{"dato":"2018-05-01","grunnbeløp":96883,"grunnbeløpPerMåned":8074,"gjennomsnittPerÅr":95800,"omregningsfaktor":1.034699,"virkningstidspunktForMinsteinntekt":"2018-06-04"}]'
-    )
-    const resG = dataG
+    const dataG: grunnbeloep = { grunnbeloep:111477}
+
+    const dataHistorikk = [{
+            dato:"2022-05-01",
+            grunnbeloep:111477,
+            gjennomsnittPerAar:109784
+        }, {
+            dato:"2021-05-01",
+            grunnbeloep:106399,
+            gjennomsnittPerAar:104716,
+        }, {
+            dato:"2020-05-01",
+            grunnbeloep:101351,
+            gjennomsnittPerAar:100853,
+        }, {
+            dato:"2019-05-01",
+            grunnbeloep:99858,
+            gjennomsnittPerAar:98866,
+        }, {
+            dato:"2018-05-01",
+            grunnbeloep:96883,
+            grunnbeloepPerMaaned:8074,
+            gjennomsnittPerAar:95800,
+        }]
+
+
     // @ts-ignore
     const resHis: GrunnbeloepHistorikk[] = dataHistorikk.map((item) => {
         // noinspection NonAsciiCharacters
         return {
-            grunnbeloep: item.grunnbeløp,
+            grunnbeloep: item.grunnbeloep,
             dato: new Date(item.dato).getFullYear(),
-            gjennomsnittPerAar: item.gjennomsnittPerÅr
-                ? item.gjennomsnittPerÅr
+            gjennomsnittPerAar: item.gjennomsnittPerAar
+                ? item.gjennomsnittPerAar
                 : null,
         }
     })
-    return { props: { G: resG, Historikk: resHis } }
+    return { props: { G: dataG, Historikk: resHis } }
 }
 
 const aar = new Date().getFullYear()
