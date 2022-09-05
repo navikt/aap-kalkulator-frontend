@@ -100,6 +100,12 @@ const Inntekt = () => {
         state.sykmeldtAar - 3,
     ]
 
+    const idKorreksjon = (index:number) => {
+        return 3-index
+    }
+    const indexKorrektsjon = (index:number) => {
+        return 2-index
+    }
 
     const onRadioChange = (value: string) => {
         setState({
@@ -153,7 +159,7 @@ const Inntekt = () => {
                 <Radio
                     isError={radioError != ""}
                     errorId="error1"
-                    title={`Hadde du inntekt i årene fra ${state.sykmeldtAar-3} til ${state.sykmeldtAar-1}?`}
+                    title={`Hadde du inntekt i årene fra ${inntektsAar[2]} til ${inntektsAar[0]}?`}
                     state={state.harLoenn}
                     onChange={onRadioChange}
                     readMoreTitle="Hvorfor spør vi om inntekt?"
@@ -180,12 +186,12 @@ const Inntekt = () => {
                                         inputMode="numeric"
                                         className={`shrink md:mb-2 max-w-[160px] h-20`}
                                         key={index}
-                                        id={`inntekt${3 - index}`}
-                                        name={`inntekt${3 - index}`}
+                                        id={`inntekt${idKorreksjon(index)}`}
+                                        name={`inntekt${idKorreksjon(index)}`}
                                         label={`Inntekt ${aar}`}
                                         size="medium"
-                                        error={error[2 - index]}
-                                        value={Object.values(inntekt)[2 - index]}
+                                        error={error[indexKorrektsjon(index)]}
+                                        value={Object.values(inntekt)[indexKorrektsjon(index)]}
                                         onChange={onChange}/>
 
                                     {error[2 - index] && (
@@ -194,7 +200,7 @@ const Inntekt = () => {
                                             aria-live="assertive"
                                             className="list-disc ml-5 font-bold text-red-500"
                                         >
-                                            <li>{error[2 - index]}</li>
+                                            <li>{error[indexKorrektsjon(index)]}</li>
                                         </ul>
                                     )}
                                 </div>
