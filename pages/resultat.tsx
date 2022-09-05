@@ -20,7 +20,8 @@ export const getStaticProps = async () => {
     const dataHistorikk: GrunnbeloepHistorikk[] = await resHistorikk
         .json()
         .then((res) =>
-            res.map((item) => {
+
+            res.map((item: { grunnbeløp: any; dato: string | number | Date; gjennomsnittPerÅr: any }) => {
                 // noinspection NonAsciiCharacters
                 return {
                     grunnbeloep: item.grunnbeløp,
@@ -31,7 +32,7 @@ export const getStaticProps = async () => {
                 }
             })
         )
-    return { props: { G: data, Historikk: dataHistorikk } }
+    return { props: { G: data, Historikk: dataHistorikk }, revalidate: 7200 }
 }
 
 // @ts-ignore

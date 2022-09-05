@@ -1,11 +1,11 @@
 import { GrunnbeloepHistorikk } from "../utils/types"
 import { Result } from "../../components/result/Result"
-
-export const toKr = (resultat: number) => {
-    return new Intl.NumberFormat("no-NO", { style: "decimal" }).format(
-        Math.round(resultat)
-    )
-}
+import {
+    maksGrunnlagFraG,
+    minsteGrunnlagFraG,
+    minsteGrunnlagUnder25FraG,
+    prosentReduksjon, toKr
+} from "../utils/HjelpeFunksjoner";
 
 const forAar = (historikk: GrunnbeloepHistorikk[], inntektsAar: number) => {
     return Array.from(historikk).filter(
@@ -21,11 +21,11 @@ const juster = (
 ) => {
     const grunnbeloepForInntektsAar = forAar(historikk, inntektsAar)!!
     const gammelG = grunnbeloepForInntektsAar.gjennomsnittPerAar!!
-    const inntektMax = Math.min(inntekt, 6 * gammelG)
+    const inntektMax = Math.min(inntekt, maksGrunnlagFraG(gammelG))
 
     return Math.min(
         (inntektMax * g) / grunnbeloepForInntektsAar.gjennomsnittPerAar!!,
-        6 * g
+        maksGrunnlagFraG(g)
     )
 }
 
@@ -54,8 +54,9 @@ const inntektsgrunnlag = (
     historikk: GrunnbeloepHistorikk[],
     resultat: Result
 ) => {
-    const minsteGrunnlag = (2 * g) / 0.66
-    const minsteGrunnlagUnder25 = (2 * g * (2.0 / 3.0)) / 0.66
+    const minsteGrunnlag = minsteGrunnlagFraG(g)
+    const minsteGrunnlagUnder25 = minsteGrunnlagUnder25FraG(g)
+    const maksGrunnlag = maksGrunnlagFraG(g)
 
     const inntekt1 = inntektsjustering(g, historikk, 1, resultat)
     const inntekt2 = inntektsjustering(g, historikk, 2, resultat)
@@ -74,7 +75,7 @@ const inntektsgrunnlag = (
                   gjennomsnittHoyest ? gjennomsnittsInntekt : inntekt1,
                   minsteGrunnlag
               ),
-        6 * g
+        maksGrunnlag
     )
 
     switch (resultat.resultat) {
@@ -88,7 +89,7 @@ const inntektsgrunnlag = (
             )
             break
         }
-        case 6 * g: {
+        case maksGrunnlag: {
             resultat.logs.push(
                 <p>
                     Siden inntekten din er høyere enn maksbeløpet på 6G (6
@@ -131,7 +132,7 @@ const inntektsgrunnlag = (
         }
     }
 
-    const resultatEtterFradrag = (resultat.resultat * 0.66)
+    const resultatEtterFradrag = prosentReduksjon(resultat.resultat)
     resultat.logs.push(
         <p>
             Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og

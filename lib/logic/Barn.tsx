@@ -1,12 +1,11 @@
 import { Result } from "../../components/result/Result"
-import { ytelsesdager, ytelseTilGrunnlag } from "../utils/ytelse"
-import { toKr } from "./Inntekt"
-import {closeSync} from "fs";
+import { toKr, YTELSESDAGER, ytelseTilGrunnlag } from "../utils/HjelpeFunksjoner"
 
-const satsPerBarnPerDag: number = 27
+
+const SATS_PER_BARN_PER_DAG: number = 27
 
 export const barnetillegg = (antallBarn: number) =>
-    antallBarn * satsPerBarnPerDag * ytelsesdager
+    antallBarn * SATS_PER_BARN_PER_DAG * YTELSESDAGER
 
 export const leggTilBarnetillegg = (resultat: Result) => {
     if (
