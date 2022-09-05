@@ -103,7 +103,7 @@ const Inntekt = () => {
     const idKorreksjon = (index:number) => {
         return 3-index
     }
-    const indexKorrektsjon = (index:number) => {
+    const indexKorreksjon = (index:number) => {
         return 2-index
     }
 
@@ -190,8 +190,8 @@ const Inntekt = () => {
                                         name={`inntekt${idKorreksjon(index)}`}
                                         label={`Inntekt ${aar}`}
                                         size="medium"
-                                        error={error[indexKorrektsjon(index)]}
-                                        value={Object.values(inntekt)[indexKorrektsjon(index)]}
+                                        error={error[indexKorreksjon(index)]}
+                                        value={Object.values(inntekt)[indexKorreksjon(index)]}
                                         onChange={onChange}/>
 
                                     {error[2 - index] && (
@@ -200,7 +200,7 @@ const Inntekt = () => {
                                             aria-live="assertive"
                                             className="list-disc ml-5 font-bold text-red-500"
                                         >
-                                            <li>{error[indexKorrektsjon(index)]}</li>
+                                            <li>{error[indexKorreksjon(index)]}</li>
                                         </ul>
                                     )}
                                 </div>
