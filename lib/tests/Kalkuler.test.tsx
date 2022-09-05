@@ -27,7 +27,6 @@ export const getG = () => {
         }, {
             dato:"2018-05-01",
             grunnbeloep:96883,
-            grunnbeloepPerMaaned:8074,
             gjennomsnittPerAar:95800,
         }]
 
