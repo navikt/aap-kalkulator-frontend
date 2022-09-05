@@ -31,7 +31,7 @@ export const getStaticProps = async () => {
                 }
             })
         )
-    return { props: { G: data, Historikk: dataHistorikk } }
+    return { props: { G: data, Historikk: dataHistorikk }, revalidate: 7200 }
 }
 
 // @ts-ignore
