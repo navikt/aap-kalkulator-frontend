@@ -1,0 +1,36 @@
+{
+  "test": "Test",
+  "start": {
+    "title": "Hvor mye kan du få?",
+    "points": [
+      "Kalkulatoren er ment som et hjelpeverktøy for deg, du får vite hva du får utbetalt hvis du søker og får innvilget arbeidsavklaringspenger (AAP).",
+      "Dette er ikke en søknad om AAP. Det er alltid vedtaket du får som er korrekt, denne kalkulatoren gir kun et estimat.",
+      "Du får et resultat selv om du svarer \"Nei\" på noen av spørsmålene.",
+      "NAV lagrer ikke informasjonen du oppgir.",
+      "Kalkulatoren tar ikke høyde for reduksjon av AAP hvis du mottar andre ytelser."
+    ]
+  },
+  "helse": {
+    "title":"Helse",
+    "over25":
+    {
+      "title": "Er du 25 år eller eldre?",
+      "readMoreTitle": "Hvorfor spør vi om du er over 25 år?",
+      "readMore": "Det er forskjellige regler for hvor mye du kan få dersom du er under eller over 25 år."
+    },
+    "nedsattArbeidsevne":
+      {
+        "title": "Hvilket år fikk du først nedsatt arbeidsevne med minst 50%?",
+        "readMoreTitle": "Hvorfor spør vi om når du fikk nedsatt arbeidsevne?",
+        "readMore": "Vi bruker året du fikk nedsatt arbeidsevne, til å justere for økning i grunnbeløpet."
+      }
+  },
+  "navigation": {
+    "start": "Start",
+    "next": "Neste steg",
+    "back": "Forrige steg",
+    "send": "Send søknad",
+    "save": "Fortsett senere",
+    "cancel": "Slett søknad"
+  }
+}
