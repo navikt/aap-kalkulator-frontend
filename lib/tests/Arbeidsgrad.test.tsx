@@ -1,6 +1,6 @@
 import { arbeidsgrad } from "../logic/Arbeidsgrad"
 import { Result } from "../../components/result/Result"
-import { toKr } from "../logic/Inntekt";
+import { toKr } from "../utils/HjelpeFunksjoner"
 
 const initialState = {
     antallBarn: undefined,

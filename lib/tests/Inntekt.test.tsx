@@ -1,9 +1,9 @@
 // noinspection JSNonASCIINames
 
 import { Result } from "../../components/result/Result"
-import inntektsgrunnlag, { toKr } from "../logic/Inntekt";
+import inntektsgrunnlag from "../logic/Inntekt";
 import { grunnbeloep, GrunnbeloepHistorikk } from "../utils/types"
-import {ytelseTilGrunnlag} from "../utils/ytelse";
+import {ytelseTilGrunnlag, toKr} from "../utils/HjelpeFunksjoner";
 
 export const getG = () => {
     const dataG: grunnbeloep = JSON.parse(

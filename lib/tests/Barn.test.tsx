@@ -1,9 +1,6 @@
 import { barnetillegg, leggTilBarnetillegg } from "../logic/Barn"
 import { Result } from "../../components/result/Result"
-import { render, screen } from "@testing-library/react"
-import resultat from "../../pages/resultat";
-import {toKr} from "../logic/Inntekt";
-import {ytelseTilGrunnlag} from "../utils/ytelse";
+import {toKr} from "../utils/HjelpeFunksjoner";
 
 const initialState = {
     antallBarn: undefined,

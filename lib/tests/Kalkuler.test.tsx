@@ -3,7 +3,7 @@
 import { grunnbeloep, GrunnbeloepHistorikk } from "../utils/types"
 import { StateInterface } from "../../components/state/State"
 import { kalkuler } from "../logic/Kalkuler"
-import { toKr } from "../logic/Inntekt";
+import { toKr } from "../utils/HjelpeFunksjoner"
 
 export const getG = () => {
     const dataG: grunnbeloep = JSON.parse(
