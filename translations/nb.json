@@ -45,7 +45,7 @@
     "howMany": {
       "title": "Hvor mange barn forsørger du?",
       "description": "Barnet må være under 18 år.",
-      "trail": "barn",
+      "unit": "barn",
       "validation": {
         "required": "Antall barn må være et tall."
       }
@@ -79,16 +79,14 @@
       "readMore1": "Vi bruker inntekten din til å regne ut hva du kan få i arbeidsavklaringspenger.",
       "readMore2": "<BodyShort>Dette bestemmes av inntekten din de tre siste årene eller minstesatsen (to ganger <Link href=\"https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden\" target=\"_blank\" rel=\"noreferrer\" as={\"a\"}>grunnbeløpet</Link>).</BodyShort>",
       "validation": {
-        "required": "Velg enten ja eller nei for å gå videre."
+        "required": "Du må velge enten ja eller nei for å gå videre."
       }
     },
     "howMuch": {
       "title": "Hvor mye tjener du i måneden?",
-      "description": "Tallet du oppgir, skal være bruttoinntekt.",
-      "trail": "kr per måned",
+      "description": "Fyll inn inntekt før skatt.",
       "validation": {
-        "required": "Inntekt må være et tall.",
-        "limits": "Inntekt må være et tall mellom 0 og 999999."
+        "required": "Inntekt må være et tall."
       }
     }
   },

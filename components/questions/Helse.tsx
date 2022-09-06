@@ -140,8 +140,6 @@ const Helse = () => {
                         size="small"
                         header={`${formatMessage("helse.nedsattArbeidsevne.readMoreTitle")}`}
                     >
-                        <div dangerouslySetInnerHTML={{__html:formatMessage("income.gotIncome.readMore2")}}/>
-                        {" "}
                         {formatMessage("helse.nedsattArbeidsevne.readMore")}
                     </ReadMore>
                     <div className="flex flex-col my-2">

@@ -7,6 +7,7 @@ import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import { logAmplitudeEvent } from "../../lib/utils/amplitude"
+import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl";
 
 interface BarnInterface extends HTMLFormElement {
     antallBarn: HTMLInputElement
@@ -18,7 +19,7 @@ const Barn = () => {
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState<string | undefined>(undefined)
     const { browserState } = useContext(BrowserState)
-
+    const { formatMessage } = useFeatureToggleIntl();
     const onRadioChange = (value: string) => {
         setState({
             ...state,
@@ -84,15 +85,15 @@ const Barn = () => {
             <QuestionHeader
                 image="/ikoner/teddy_circle.svg"
                 alt="teddybjørn ikon"
-                tittel="Barn"
+                tittel={formatMessage("barn.title")}
             />
             <form onSubmit={handleSubmit}>
                 <Radio
                     isError={radioError != undefined}
                     errorId="error1"
-                    title="Forsørger du barn under 18 år?"
-                    readMoreTitle="Hvorfor spør vi om du forsørger barn under 18 år?"
-                    readMore={readmoreTekst}
+                    title={formatMessage("children.gotChildren.title")}
+                    readMoreTitle={formatMessage("children.gotChildren.readMoreTitle")}
+                    readMore={<div dangerouslySetInnerHTML={{__html:formatMessage("children.gotChildren.readMore")}}/>}
                     state={state.harBarn}
                     onChange={onRadioChange}
                 />
@@ -106,10 +107,10 @@ const Barn = () => {
                 {state.harBarn && (
                     <div className="mb-4">
                         <Label as={"label"} id="l1" className="text-xl">
-                            Hvor mange barn forsørger du?
+                            {formatMessage("children.howMany.title")}
                         </Label>
                         <BodyShort as={"p"} id="bs1">
-                            Barnet må være under 18 år.
+                            {formatMessage("children.howMany.description")}
                         </BodyShort>
                         <div className="flex flex-col my-2">
                             <div className="flex flex-row items-center gap-2">
@@ -135,7 +136,7 @@ const Barn = () => {
                                     }
                                 />
                                 <BodyShort as={"p"} id="d1">
-                                    barn
+                                    {formatMessage("children.howMany.unit")}
                                 </BodyShort>
                             </div>
                             {error && (

@@ -14,6 +14,7 @@ import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import Radio from "../radio/Radio";
+import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl";
 
 interface Inntekt {
     inntekt1: string
@@ -23,6 +24,7 @@ interface Inntekt {
 
 const Inntekt = () => {
     const router = useRouter()
+    const { formatMessage } = useFeatureToggleIntl();
     const {state, setState} = useContext(State)
     const [error, setError] = useState<string[]>(["", "", ""])
     const {browserState} = useContext(BrowserState)
@@ -73,7 +75,7 @@ const Inntekt = () => {
 
         setError(errors)
         if (state.harLoenn == undefined) {
-            setRadioError("Du må velge enten ja eller nei for å gå videre.")
+            setRadioError(formatMessage("income.gotIncome.validation.required"))
         }
         if ((errors.some((v) => v.length > 0) && state.harLoenn == true) || state.harLoenn == undefined  ) {
             return
@@ -159,10 +161,10 @@ const Inntekt = () => {
                 <Radio
                     isError={radioError != ""}
                     errorId="error1"
-                    title={`Hadde du inntekt i årene fra ${inntektsAar[2]} til ${inntektsAar[0]}?`}
+                    title={formatMessage("income.gotIncome.title",{inntektsAar2:inntektsAar[2].toString(),inntektsAar0:inntektsAar[0].toString()})}
                     state={state.harLoenn}
                     onChange={onRadioChange}
-                    readMoreTitle="Hvorfor spør vi om inntekt?"
+                    readMoreTitle={formatMessage("income.gotIncome.readMoreTitle")}
                     readMore={readMoreText}
                 />
                 {radioError != "" && (
@@ -176,8 +178,8 @@ const Inntekt = () => {
                 {state.harLoenn &&
 
                     <>
-                        <Label className="text-xl" >Hvor mye tjente du?</Label>
-                        <BodyShort spacing>Fyll inn inntekt før skatt.</BodyShort>
+                        <Label className="text-xl" >{formatMessage("income.howMuch.title")}</Label>
+                        <BodyShort spacing>{formatMessage("income.howMuch.description")}</BodyShort>
                         <div className="flex md:flex-row flex-col md:space-x-8 my-4">
                             {inntektsAar.reverse().map((aar, index) => (
                                 <div key={index} className="flex flex-col">
