@@ -2,13 +2,12 @@
   "test": "Test",
   "start": {
     "title": "Hvor mye kan du få?",
-    "points": [
-      "Kalkulatoren er ment som et hjelpeverktøy for deg, du får vite hva du får utbetalt hvis du søker og får innvilget arbeidsavklaringspenger (AAP).",
-      "Dette er ikke en søknad om AAP. Det er alltid vedtaket du får som er korrekt, denne kalkulatoren gir kun et estimat.",
-      "Du får et resultat selv om du svarer \"Nei\" på noen av spørsmålene.",
-      "NAV lagrer ikke informasjonen du oppgir.",
-      "Kalkulatoren tar ikke høyde for reduksjon av AAP hvis du mottar andre ytelser."
-    ]
+    "refreshed": "Du har oppdatert siden og har derfor blitt sendt til startsiden.",
+    "firstPoint": "Kalkulatoren er ment som et hjelpeverktøy for deg, du får vite hva du får utbetalt hvis du søker og får innvilget arbeidsavklaringspenger (AAP).",
+    "secondPoint": "Dette er ikke en søknad om AAP. Det er alltid vedtaket du får som gjelder, denne kalkulatoren gir kun et estimat.",
+    "thirdPoint":  "Du får et resultat selv om du svarer \"Nei\" på noen av spørsmålene.",
+    "fourthPoint": "NAV lagrer ikke informasjonen du oppgir.",
+    "fifthPoint":  "Kalkulatoren tar ikke høyde for reduksjon av AAP hvis du mottar andre ytelser."
   },
   "helse": {
     "title":"Helse",
@@ -16,21 +15,104 @@
     {
       "title": "Er du 25 år eller eldre?",
       "readMoreTitle": "Hvorfor spør vi om du er over 25 år?",
-      "readMore": "Det er forskjellige regler for hvor mye du kan få dersom du er under eller over 25 år."
+      "readMore": "Det er forskjellige regler for hvor mye du kan få dersom du er under eller over 25 år.",
+      "validation": {
+        "required": "Velg enten ja eller nei for å gå videre."
+      }
     },
     "nedsattArbeidsevne":
       {
         "title": "Hvilket år fikk du først nedsatt arbeidsevne med minst 50%?",
         "readMoreTitle": "Hvorfor spør vi om når du fikk nedsatt arbeidsevne?",
-        "readMore": "Vi bruker året du fikk nedsatt arbeidsevne, til å justere for økning i grunnbeløpet."
+        "readMore": "Vi bruker året du fikk nedsatt arbeidsevne, til å justere for økning i grunnbeløpet.",
+        "validation": {
+          "required": "Året du fikk nedsatt arbeidsevne må være et tall.",
+            "max": "Året du fikk nedsatt arbeidsevne må være {Aar} eller tidligere.`",
+            "min": "Kalkulatoren kan ikke beregne arbeidsavklaringspenger dersom du fikk nedsatt arbeidsevne for mer enn {Aar} år siden."
+        }
       }
+  },
+  "children": {
+    "title": "Barn",
+    "gotChildren": {
+      "title": "Har du barn?",
+      "readMoreTitle": "Hvorfor spør vi om du har barn?",
+      "readMore": "<BodyShort>Hvis du forsørger barn under 18 år, kan du få et barnetillegg. <Link href=\"https://www.nav.no/aap#hvormye-forsorgerbarn\" target=\"_blank\" rel=\"noreferrer\" as={\"a\"}>Les mer om barnetillegg her.</Link></BodyShort>",
+      "validation": {
+        "required": "Velg enten ja eller nei for å gå videre."
+      }
+    },
+    "howMany": {
+      "title": "Hvor mange barn forsørger du?",
+      "description": "Barnet må være under 18 år.",
+      "trail": "barn",
+      "validation": {
+        "required": "Antall barn må være et tall."
+      }
+    }
+  },
+  "work": {
+    "title": "Arbeid",
+    "gotWork": {
+      "title": "Er du i jobb nå?",
+      "readMoreTitle": "Hvorfor spør vi om du har jobb?",
+      "readMore": "Hvor mye du får utbetalt, avhenger av hvor mye du jobber. En arbeidsuke er 37,5 timer. Jobber du mer enn 22,5 timer i uka, kan du ikke få arbeidsavklaringspenger.",
+      "validation": {
+        "required": "Velg enten ja eller nei for å gå videre."
+      }
+    },
+    "howManyHours": {
+      "title": "Hvor mange timer jobber du i uka?",
+      "description": "Varierer det, kan du oppgi gjennomsnittet.",
+      "trail": "timer per uke",
+      "validation": {
+        "required": "Antall timer må være et tall.",
+        "limits": "antall timer må være et tall mellom 0 og 168."
+      }
+    }
+  },
+  "income": {
+    "title": "Inntekt",
+    "gotIncome": {
+      "title": "Hadde du inntekt i årene fra {inntektsAar2} til {inntektsAar0}?",
+      "readMoreTitle": "Hvorfor spør vi om inntekt?",
+      "readMore1": "Vi bruker inntekten din til å regne ut hva du kan få i arbeidsavklaringspenger.",
+      "readMore2": "<BodyShort>Dette bestemmes av inntekten din de tre siste årene eller minstesatsen (to ganger <Link href=\"https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden\" target=\"_blank\" rel=\"noreferrer\" as={\"a\"}>grunnbeløpet</Link>).</BodyShort>",
+      "validation": {
+        "required": "Velg enten ja eller nei for å gå videre."
+      }
+    },
+    "howMuch": {
+      "title": "Hvor mye tjener du i måneden?",
+      "description": "Tallet du oppgir, skal være bruttoinntekt.",
+      "trail": "kr per måned",
+      "validation": {
+        "required": "Inntekt må være et tall.",
+        "limits": "Inntekt må være et tall mellom 0 og 999999."
+      }
+    }
+  },
+  "logic": {
+    "salery": {
+      "minsteGrunnlag": "<p>Siden inntekten din er lavere enn minstebeløpet på 2G (2 ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli oppjustert til <strong>{res} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet. </p>",
+      "maksGrunnlag": "<p>Siden inntekten din er høyere enn maksbeløpet på 6G (6 ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli nedjustert til <strong>{res)} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.</p>",
+      "gjennomsnittInntekt": "<p>Grunnlaget er gjennomsnittet av de tre siste inntektsårene dine: <strong>{res} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.</p>",
+      "minsteGrunnlagUnder25": "<p>Siden inntekten din er lavere enn grensen for minste utbetaling for de under 25 år blir beregningsgrunnlaget ditt oppjustert til <strong>{res} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.</p>",
+      "lastYear": "<p>beregningsgrunnlaget er basert på det siste inntektsåret ditt: <strong>{res} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.</p>",
+      "reduction": "<p>Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og blir derfor <strong>{res} kr</strong>.</p>"
+    },
+    "children": {
+      "possibleChildsupport":"<p>For hvert barn får du {perChild} kr per år. Siden du har {childAmount} barn, kan du få {totChild} kr i tillegg. Dette blir til sammen <strong>{res} kr</strong>.</p>",
+      "maxChildren": "For hvert barn kan du få {perChild} kr per år. Arbeidsavklaringspenger pluss barnetillegg kan ikke være mer enn 90 % av beregningsgrunnlaget. Derfor får du {maksBarneTillegg} kr i tillegg. Dette blir til sammen <strong>{res} kr</strong>."
+    },
+    "work": {
+      "tooMuch": "<p>Arbeidsgraden din er høyere enn 60 % og du kan derfor ikke få arbeidsavklaringspenger.</p>",
+      "justEnough": "<p>En arbeidsuke er 37,5 timer. Siden du jobber {hoursWorked} timer i uka, som er {percentWorked} % av en vanlig arbeidsuke, blir arbeidsavklaringspengene redusert med {percentWorked} %, fra {oldRes} kr til <strong>{res} kr</strong>.</p>"
+    }
   },
   "navigation": {
     "start": "Start",
-    "next": "Neste steg",
-    "back": "Forrige steg",
-    "send": "Send søknad",
-    "save": "Fortsett senere",
-    "cancel": "Slett søknad"
+    "next": "Gå videre",
+    "back": "Tilbake"
   }
 }

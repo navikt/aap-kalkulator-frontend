@@ -7,6 +7,7 @@ import { useContext, useEffect } from "react"
 import { BrowserState, State } from "./_app"
 import { StateInterface } from "../components/state/State"
 import { logAmplitudeEvent } from "../lib/utils/amplitude"
+import { useFeatureToggleIntl } from "../hooks/useFeatureToggleIntl";
 
 const Home: NextPage = () => {
     const router = useRouter()
@@ -15,6 +16,7 @@ const Home: NextPage = () => {
     useEffect(() => {
         setState({} as StateInterface)
     }, [])
+    const { formatMessage } = useFeatureToggleIntl();
     const handleStart = () => {
         logAmplitudeEvent("skjema startet", {
             skjemanavn: "aap-kalkulator",
@@ -28,8 +30,7 @@ const Home: NextPage = () => {
             <div className="flex flex-col items-center pt-4">
                 {browserState.redirect && (
                     <Alert variant="info" className="mb-8">
-                        Du har oppdatert siden og har derfor blitt sendt til
-                        startsiden.
+                        {formatMessage("start.refreshed")}
                     </Alert>
                 )}
                 <Image
@@ -46,30 +47,24 @@ const Home: NextPage = () => {
                     spacing
                     aria-label="Hvor mye kan du få?"
                 >
-                    Hvor mye kan du få?
+                    {formatMessage("start.title")}
                 </Heading>
                 <Divider isTitle={true} />
             </div>
             <div className="flex flex-col items-center mt-4 gap-4">
                 <ul className="list-disc space-y-2 mb-8 pl-4 md:w-5/6">
                     <li>
-                        Kalkulatoren er ment som et hjelpeverktøy for deg, du
-                        får vite hva du får utbetalt hvis du søker og får
-                        innvilget arbeidsavklaringspenger (AAP).
+                        {formatMessage("start.firstPoint" )}
                     </li>
                     <li>
-                        Dette er ikke en søknad om AAP. Det er alltid vedtaket
-                        du får som er korrekt, denne kalkulatoren gir kun et
-                        estimat.
+                        {formatMessage("start.secondPoint" )}
                     </li>
                     <li>
-                        Du får et resultat selv om du svarer &quot;Nei&quot; på
-                        noen av spørsmålene.
+                        {formatMessage("start.thirdPoint" )}
                     </li>
-                    <li>NAV lagrer ikke informasjonen du oppgir.</li>
+                    <li>{formatMessage("start.fourthPoint")}</li>
                     <li>
-                        Kalkulatoren tar ikke høyde for reduksjon av AAP hvis du
-                        mottar andre ytelser.
+                        {formatMessage("start.fifthPoint" )}
                     </li>
                 </ul>
 
@@ -79,7 +74,7 @@ const Home: NextPage = () => {
                     variant="primary"
                     as={"button"}
                 >
-                    Start
+                    {formatMessage("navigation.start")}
                 </Button>
             </div>
         </>

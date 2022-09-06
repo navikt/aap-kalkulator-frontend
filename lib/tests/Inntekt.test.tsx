@@ -1,7 +1,7 @@
 // noinspection JSNonASCIINames
 
 import { Result } from "../../components/result/Result"
-import inntektsgrunnlag from "../logic/Inntekt";
+import inntektsgrunnlag from "../logic/useInntekt";
 import { grunnbeloep, GrunnbeloepHistorikk } from "../utils/types"
 import {ytelseTilGrunnlag, toKr} from "../utils/HjelpeFunksjoner";
 

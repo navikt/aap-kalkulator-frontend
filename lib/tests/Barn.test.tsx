@@ -1,4 +1,4 @@
-import { barnetillegg, leggTilBarnetillegg } from "../logic/Barn"
+import { barnetillegg, Barnetillegg } from "../logic/Barn"
 import { Result } from "../../components/result/Result"
 import {toKr} from "../utils/HjelpeFunksjoner";
 
@@ -39,7 +39,7 @@ describe("Barnetillegg med wrapped funksjon", () => {
             harBarn: false,
             antallBarn: 0,
         })
-        leggTilBarnetillegg(barn)
+        Barnetillegg(barn)
         expect(barn.resultat).toBe(0)
     })
     it("Med 1 barn", () => {
@@ -50,7 +50,7 @@ describe("Barnetillegg med wrapped funksjon", () => {
             antallBarn: 1,
         })
         barn.resultat = 100_000
-        leggTilBarnetillegg(barn)
+        Barnetillegg(barn)
         expect(barn.resultat).toBe(107_020)
         expect(barn.logs[0]).toEqual(<p>
             For hvert barn får du {toKr(barnetillegg(1))} kr per år.
@@ -67,7 +67,7 @@ describe("Barnetillegg med wrapped funksjon", () => {
             antallBarn: 12,
         })
         barn.resultat = 222954.0 * (2.0 / 3.0)
-        leggTilBarnetillegg(barn)
+        Barnetillegg(barn)
         expect(Math.ceil(barn.resultat)).toBe(202_686)
         expect(barn.logs[0]).toEqual(<p>
             For hvert barn kan du få {toKr(barnetillegg(1))} kr per år.
