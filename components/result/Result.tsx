@@ -4,13 +4,13 @@ import React, { ReactElement } from "react"
 export interface ResultInterface {
     resultat: number
     personInfo: StateInterface
-    logs: Array<ReactElement>
+    logs: Array<{ id:string, values?: Record<string, string | undefined> }>
 }
 
 export class Result {
     resultat: number = 0
     personInfo: StateInterface | undefined
-    logs: Array<ReactElement> = []
+    logs: Array<{ id:string, values?: Record<string, string | undefined> }> = []
     constructor(personInfo: StateInterface) {
         this.personInfo = personInfo
     }

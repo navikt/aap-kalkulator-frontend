@@ -1,4 +1,4 @@
-import { Arbeidsgrad } from "../logic/Arbeidsgrad"
+import { arbeidsgrad } from "../logic/Arbeidsgrad";
 import { Result } from "../../components/result/Result"
 import { toKr } from "../utils/HjelpeFunksjoner"
 
@@ -25,7 +25,7 @@ describe("arbeidsgrad", () => {
             arbeidsgrad: 40,
         })
         resultat.resultat = 100_000
-        Arbeidsgrad(resultat)
+        arbeidsgrad(resultat)
         expect(resultat.resultat).toBe(60_000)
         expect(resultat.logs.length).toBe(1)
         expect(resultat.logs[0]).toEqual(<p>En arbeidsuke er 37,5 timer. Siden du jobber {15} timer i uka, som er {(40).toFixed(0)} % av en vanlig arbeidsuke, blir arbeidsavklaringspengene redusert med {(40).toFixed(0)} %, fra {toKr(100000)} kr til <strong>{toKr(60000)} kr</strong>.</p>)
@@ -38,7 +38,7 @@ describe("arbeidsgrad", () => {
             arbeidsgrad: 70,
         })
         resultat.resultat = 100_000
-        Arbeidsgrad(resultat)
+        arbeidsgrad(resultat)
         expect(resultat.resultat).toBe(0)
         expect(resultat.logs.length).toBe(1)
         expect(resultat.logs[0]).toEqual(<p>Arbeidsgraden din er høyere enn 60 % og du kan derfor ikke få arbeidsavklaringspenger.</p>)
@@ -52,7 +52,7 @@ describe("arbeidsgrad", () => {
         })
         resultat.resultat = 100_000
         expect(() => {
-            Arbeidsgrad(resultat)
+            arbeidsgrad(resultat)
         }).toThrow(new Error("Arbeidsgrad kan ikke være mindre enn 0"))
     })
 })

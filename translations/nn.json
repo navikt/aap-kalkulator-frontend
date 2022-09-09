@@ -1,11 +1,11 @@
 {
   "test": "Test",
   "start": {
-    "title": "Hvor mye kan du få?",
-    "refreshed": "Du har oppdatert siden og har derfor blitt sendt til startsiden.",
-    "firstPoint": "Kalkulatoren er ment som et hjelpeverktøy for deg, du får vite hva du får utbetalt hvis du søker og får innvilget arbeidsavklaringspenger (AAP).",
-    "secondPoint": "Dette er ikke en søknad om AAP. Det er alltid vedtaket du får som gjelder, denne kalkulatoren gir kun et estimat.",
-    "thirdPoint":  "Du får et resultat selv om du svarer \"Nei\" på noen av spørsmålene.",
+    "title": "Kor mykje kan du få?",
+    "refreshed": "Du har oppdatert sida og har derfor blitt sendt til startsida.",
+    "firstPoint": "Kalkulatoren er meint som eit hjelpeverktøy for deg, du får vite kva du får utbetalt hvis du søker og får innvilga arbeidsavklaringspenger (AAP).",
+    "secondPoint": "Dette er ikkje ein søknad om AAP. Det er alltid vedtaket du får som gjelder, denne kalkulatoren gir kun eit estimat.",
+    "thirdPoint":  "Du får et resultat sjølv om du svara \"Nei\" på noen av spørsmålene.",
     "fourthPoint": "NAV lagrer ikke informasjonen du oppgir.",
     "fifthPoint":  "Kalkulatoren tar ikke høyde for reduksjon av AAP hvis du mottar andre ytelser."
   },
@@ -21,16 +21,16 @@
       }
     },
     "nedsattArbeidsevne":
-      {
-        "title": "Hvilket år fikk du først nedsatt arbeidsevne med minst 50%?",
-        "readMoreTitle": "Hvorfor spør vi om når du fikk nedsatt arbeidsevne?",
-        "readMore": "Vi bruker året du fikk nedsatt arbeidsevne, til å justere for økning i grunnbeløpet.",
-        "validation": {
-          "required": "Året du fikk nedsatt arbeidsevne må være et tall.",
-            "max": "Året du fikk nedsatt arbeidsevne må være {Aar} eller tidligere.`",
-            "min": "Kalkulatoren kan ikke beregne arbeidsavklaringspenger dersom du fikk nedsatt arbeidsevne for mer enn {Aar} år siden."
-        }
+    {
+      "title": "Hvilket år fikk du først nedsatt arbeidsevne med minst 50%?",
+      "readMoreTitle": "Hvorfor spør vi om når du fikk nedsatt arbeidsevne?",
+      "readMore": "Vi bruker året du fikk nedsatt arbeidsevne, til å justere for økning i grunnbeløpet.",
+      "validation": {
+        "required": "Året du fikk nedsatt arbeidsevne må være et tall.",
+        "max": "Året du fikk nedsatt arbeidsevne må være {Aar} eller tidligere.`",
+        "min": "Kalkulatoren kan ikke beregne arbeidsavklaringspenger dersom du fikk nedsatt arbeidsevne for mer enn {Aar} år siden."
       }
+    }
   },
   "children": {
     "title": "Barn",
