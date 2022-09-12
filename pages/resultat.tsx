@@ -12,6 +12,7 @@ import { logAmplitudeEvent } from "../lib/utils/amplitude"
 import { kalkuler } from "../lib/logic/Kalkuler"
 import { grunnbeloep, GrunnbeloepHistorikk } from "../lib/utils/types"
 import { useFeatureToggleIntl } from "../hooks/useFeatureToggleIntl";
+import { useIntl } from "react-intl";
 
 export const getStaticProps = async () => {
     const res = await fetch("https://g.nav.no/api/v1/grunnbeloep")
@@ -44,7 +45,7 @@ const Resultat: NextPage = ({
     G: grunnbeloep
     Historikk: GrunnbeloepHistorikk[]
 }) => {
-    const { formatMessage } = useFeatureToggleIntl();
+    const { formatMessage } = useFeatureToggleIntl()
     const [result, setResult] = useState<ResultInterface | null>(null)
     const [open, setOpen] = useState(false)
     const { state } = useContext(State)
@@ -81,6 +82,7 @@ const Resultat: NextPage = ({
     }
 
     const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
+    // @ts-ignore
     // @ts-ignore
     return (
         <>
@@ -133,7 +135,7 @@ const Resultat: NextPage = ({
                                 <Accordion.Content>
                                     <ul className=" space-y-4 list-disc">
                                         {result?.logs.map((text, index) => (
-                                            <li key={index}><div dangerouslySetInnerHTML={{__html:formatMessage(text.id,text.values.arguments)}}></div></li>
+                                            <li key={index}><div>{formatMessage(text.id,{...text.values,strong:(...chunks:any)=><strong>{chunks}</strong>})}</div></li>
                                         ))}
                                     </ul>
                                 </Accordion.Content>

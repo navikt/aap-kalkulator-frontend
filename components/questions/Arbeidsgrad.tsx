@@ -6,6 +6,7 @@ import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
+import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl";
 
 interface ArbeidsgradInterface extends HTMLFormElement {
     arbeidsgrad: HTMLInputElement
@@ -16,6 +17,7 @@ const Arbeidsgrad = () => {
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState<string>("")
+    const { formatMessage } = useFeatureToggleIntl();
     const { browserState } = useContext(BrowserState)
 
     const arbeidsuke = 37.5
@@ -45,7 +47,7 @@ const Arbeidsgrad = () => {
         let arbeidsgrad = 0
 
         if (state.harArbeid == undefined) {
-            setRadioError("Du må velge enten ja eller nei for å gå videre.")
+            setRadioError(formatMessage("work.gotWork.validation.required"))
             return
         }
 
@@ -58,7 +60,7 @@ const Arbeidsgrad = () => {
         }
 
         if (isNaN(arbeidstimer) || arbeidstimer < 0 || arbeidstimer > 168) {
-            setError("Antall timer må være et tall mellom 0 og 168.")
+            setError(formatMessage("work.howManyHours.validation.limits"))
             return
         }
 
@@ -90,16 +92,16 @@ const Arbeidsgrad = () => {
             <QuestionHeader
                 image="/ikoner/briefcase_circle.svg"
                 alt="koffert ikon"
-                tittel="Arbeid"
+                tittel={formatMessage("work.title")}
             />
             <form onSubmit={handleSubmit}>
                 <Radio
                     isError={radioError != ""}
                     errorId="error1"
-                    title="Er du i jobb nå?"
+                    title={formatMessage("work.gotWork.title")}
                     state={state.harArbeid}
                     onChange={onRadioChange}
-                    readMoreTitle="Hvorfor spør vi om du har jobb?"
+                    readMoreTitle={formatMessage("work.gotWork.readMoreTitle")}
                     readMore={readMoreText}
                 />
                 {radioError != "" && (
@@ -112,10 +114,10 @@ const Arbeidsgrad = () => {
                 {state.harArbeid && (
                     <div className="mb-4">
                         <Label as={"label"} id="l1" className="text-xl">
-                            Hvor mange timer i uka jobber du?
+                            {formatMessage("work.howManyHours.title")}
                         </Label>
                         <BodyShort>
-                            Varierer det, kan du oppgi gjennomsnittet.
+                            {formatMessage("work.howManyHours.description")}
                         </BodyShort>
                         <div className="flex flex-col my-2 ">
                             <div className="flex flex-row gap-2 items-center">
@@ -136,7 +138,7 @@ const Arbeidsgrad = () => {
                                     }
                                 />
                                 <BodyShort as={"p"} id="d1">
-                                    timer per uke
+                                    {formatMessage("work.howManyHours.trail")}
                                 </BodyShort>
                             </div>
                             {error && (
@@ -151,7 +153,7 @@ const Arbeidsgrad = () => {
                         </div>
                     </div>
                 )}
-                <Button variant="primary">Gå videre</Button>
+                <Button variant="primary">{formatMessage("navigation.next")}</Button>
             </form>
         </>
     )

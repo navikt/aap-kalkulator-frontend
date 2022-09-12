@@ -155,7 +155,7 @@ const Inntekt = () => {
             <QuestionHeader
                 image="/ikoner/wallet_circle.svg"
                 alt="lommebok ikon"
-                tittel="Inntekt"
+                tittel={formatMessage("income.title")}
             />
             <form onSubmit={handleSubmit}>
                 <Radio

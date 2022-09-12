@@ -4,17 +4,19 @@ import React from 'react';
 export const useFeatureToggleIntl = () => {
     const intl = useIntl();
 
-    const formatMessage = (id: string, values?: Record<string, string | undefined>) =>
-        intl.formatMessage({ id: id }, values);
-    // @ts-ignore
+    const formatMessage = (id: string, values?: Record<string, unknown>) => {
+        //@ts-ignore
+        return intl.formatMessage({ id: id }, values);
+    }
     const formatElement = (
         id: string,
         values?:
-            | Record<
+        | Record<
             string,
-            string | number | boolean | {} | Date | React.ReactElement<any, any> | undefined
+        string | number | boolean | {} | Date | React.ReactElement<any, any> | undefined
             >
             | undefined
+        // @ts-ignore
     ) => intl.formatMessage({ id: id }, values);
     return { formatMessage, formatElement };
 };

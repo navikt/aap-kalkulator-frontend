@@ -90,7 +90,7 @@ const Helse = () => {
             <QuestionHeader
                 image="/ikoner/helse_circle.svg"
                 alt="helse ikon"
-                tittel="Helse"
+                tittel={formatMessage("helse.title")}
             />
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">

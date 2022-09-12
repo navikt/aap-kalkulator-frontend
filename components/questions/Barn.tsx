@@ -85,7 +85,7 @@ const Barn = () => {
             <QuestionHeader
                 image="/ikoner/teddy_circle.svg"
                 alt="teddybjørn ikon"
-                tittel={formatMessage("barn.title")}
+                tittel={formatMessage("children.title")}
             />
             <form onSubmit={handleSubmit}>
                 <Radio
