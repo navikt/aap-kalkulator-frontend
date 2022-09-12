@@ -5,9 +5,8 @@
     "refreshed": "Du har oppdatert siden og har derfor blitt sendt til startsiden.",
     "firstPoint": "Kalkulatoren er ment som et hjelpeverktøy for deg, du får vite hva du får utbetalt hvis du søker og får innvilget arbeidsavklaringspenger (AAP).",
     "secondPoint": "Dette er ikke en søknad om AAP. Det er alltid vedtaket du får som gjelder, denne kalkulatoren gir kun et estimat.",
-    "thirdPoint":  "Du får et resultat selv om du svarer \"Nei\" på noen av spørsmålene.",
-    "fourthPoint": "NAV lagrer ikke informasjonen du oppgir.",
-    "fifthPoint":  "Kalkulatoren tar ikke høyde for reduksjon av AAP hvis du mottar andre ytelser."
+    "thirdPoint": "NAV lagrer ikke informasjonen du oppgir.",
+    "fourthPoint":  "Kalkulatoren tar ikke høyde for reduksjon av AAP hvis du mottar andre ytelser."
   },
   "helse": {
     "title":"Helse",
