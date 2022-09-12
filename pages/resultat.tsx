@@ -48,6 +48,7 @@ const Resultat: NextPage = ({
     const { formatMessage } = useFeatureToggleIntl()
     const [result, setResult] = useState<ResultInterface | null>(null)
     const [open, setOpen] = useState(false)
+    const [time, setTime] = useState(0)
     const { state } = useContext(State)
     const router = useRouter()
 
@@ -70,12 +71,31 @@ const Resultat: NextPage = ({
         })
     }, [])
 
+    useEffect(() => {
+        let interval
+        if (open) {
+            interval = setInterval(() => {
+                setTime((seconds) => seconds + 1)
+            }, 1000)
+        } else if (!open) {
+            clearInterval(interval)
+        }
+        return () => clearInterval(interval)
+    }, [open])
+
     const handleAccordion = () => {
         setOpen((current) => {
-            if(!current) {
+            if (!current) {
+                console.log("ÅPNET", time)
                 logAmplitudeEvent("accordion åpnet", {
                     tekst: "Hvorfor får jeg denne summen?",
                 })
+            } else {
+                console.log(`Accordion var åpent i ${time} sekunder`)
+                logAmplitudeEvent("accordion lukket", {
+                    tekst: `Accordion var åpent i ${time} sekunder`,
+                })
+                setTime(0)
             }
             return !current
         })
