@@ -1,4 +1,4 @@
-import { arbeidsgrad } from "../logic/Arbeidsgrad"
+import { arbeidsgrad } from "../logic/Arbeidsgrad";
 import { Result } from "../../components/result/Result"
 import { toKr } from "../utils/HjelpeFunksjoner"
 
@@ -28,7 +28,7 @@ describe("arbeidsgrad", () => {
         arbeidsgrad(resultat)
         expect(resultat.resultat).toBe(60_000)
         expect(resultat.logs.length).toBe(1)
-        expect(resultat.logs[0]).toEqual(<p>En arbeidsuke er 37,5 timer. Siden du jobber {15} timer i uka, som er {(40).toFixed(0)} % av en vanlig arbeidsuke, blir arbeidsavklaringspengene redusert med {(40).toFixed(0)} %, fra {toKr(100000)} kr til <strong>{toKr(60000)} kr</strong>.</p>)
+        expect(resultat.logs[0]).toEqual({id:"logic.work.justEnough", values:{hoursWorked:"15", oldRes:"100 000",percentWorked:"40",percentWorked2:"40",res:"60 000"}})
     })
     it("arbeidsgrad 70% med 100000 i grunnlag", () => {
         const resultat = new Result({
@@ -41,7 +41,11 @@ describe("arbeidsgrad", () => {
         arbeidsgrad(resultat)
         expect(resultat.resultat).toBe(0)
         expect(resultat.logs.length).toBe(1)
-        expect(resultat.logs[0]).toEqual(<p>Arbeidsgraden din er høyere enn 60 % og du kan derfor ikke få arbeidsavklaringspenger.</p>)
+        expect(resultat.logs[0]).toEqual({
+            id: "logic.work.tooMuch",
+            values: {},
+        }
+    )
     })
     test("arbeidsgrad er -10%", () => {
         const resultat = new Result({

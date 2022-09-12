@@ -97,9 +97,9 @@ describe("integrasjon", () => {
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(272094)
         expect(resultat.logs.length).toBe(3)
-        expect(resultat.logs[0]).toEqual(<p>Siden inntekten din er lavere enn minstebeløpet på 2G (2 ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli oppjustert til <strong>{toKr(337809)} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.</p>)
-        expect(resultat.logs[1]).toEqual(<p>Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og blir derfor <strong>{toKr(222954)} kr</strong>.</p>)
-        expect(resultat.logs[2]).toEqual(<p>For hvert barn får du {toKr(7020)} kr per år. Siden du har {7} barn, kan du få {toKr(49140)} kr i tillegg. Dette blir til sammen <strong>{toKr(272094)} kr</strong>.</p>)
+        expect(resultat.logs[0]).toEqual({id:"logic.salery.minsteGrunnlag", values:{res:"337 809"}})
+        expect(resultat.logs[1]).toEqual({id:"logic.salery.reduction", values:{res:"222 954"}})
+        expect(resultat.logs[2]).toEqual({id:"logic.children.possibleChildsupport", values:{childAmount:"7",perChild:"7 020",res:"272 094", totChild: "49 140"}})
     })
     it("ytelse med grunnbeløp 2g, 8 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
@@ -151,6 +151,23 @@ describe("integrasjon", () => {
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(601976)
         expect(resultat.logs.length).toBe(3)
+    })
+    it("ytelse med grunnbeløp 6g, sykemeldt 2021", () => {
+        const state: StateInterface = {
+            harLoenn: true,
+            ...initialState,
+            inntekt1: 250000,
+            inntekt2: 300000,
+            inntekt3: 350000,
+            antallBarn: 0,
+            harBarn: true,
+            harArbeid: false,
+            sykmeldtAar: aar-1,
+            over25: true,
+        }
+        const resultat = kalkuler(state, g, historikk)
+        expect(resultat.resultat).toBe(224813)
+        expect(resultat.logs.length).toBe(2)
     })
     it("ytelse med grunnbeløp 6g, 24 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
@@ -204,10 +221,10 @@ describe("integrasjon", () => {
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(152014)
         expect(resultat.logs.length).toBe(4)
-        expect(resultat.logs[0]).toEqual(<p>Siden inntekten din er lavere enn minstebeløpet på 2G (2 ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli oppjustert til <strong>{toKr(337809)} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.</p>)
-        expect(resultat.logs[1]).toEqual(<p>Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og blir derfor <strong>{toKr(222954)} kr</strong>.</p>)
-        expect(resultat.logs[2]).toEqual(<p>For hvert barn kan du få {toKr(7020)} kr per år. Arbeidsavklaringspenger pluss barnetillegg kan ikke være mer enn 90 % av beregningsgrunnlaget. Derfor får du {toKr(81075)} kr i tillegg. Dette blir til sammen <strong>{toKr(304028)} kr</strong>.</p>)
-        expect(resultat.logs[3]).toEqual(<p>En arbeidsuke er 37,5 timer. Siden du jobber {18.75} timer i uka, som er {(50).toFixed(0)} % av en vanlig arbeidsuke, blir arbeidsavklaringspengene redusert med {(50).toFixed(0)} %, fra {toKr(304028)} kr til <strong>{toKr(152014)} kr</strong>.</p>)
+        expect(resultat.logs[0]).toEqual({id:"logic.salery.minsteGrunnlag", values:{res:"337 809"}})
+        expect(resultat.logs[1]).toEqual({id:"logic.salery.reduction", values:{res:"222 954"}})
+        expect(resultat.logs[2]).toEqual({id:"logic.children.maxChildren", values:{maksBarneTillegg:"81 075",perChild:"7 020",res:"304 028"}})
+        expect(resultat.logs[3]).toEqual({id:"logic.work.justEnough", values:{hoursWorked:"18.75", oldRes:"304 028",percentWorked:"50",percentWorked2:"50",res:"152 014"}})
 
     })
     it("ytelse med grunnbeløp 6g, 0 barn og 20% arbeidsgrad", () => {

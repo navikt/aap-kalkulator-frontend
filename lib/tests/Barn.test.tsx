@@ -1,4 +1,4 @@
-import { barnetillegg, leggTilBarnetillegg } from "../logic/Barn"
+import { barnetillegg, leggTilBarnetillegg } from "../logic/Barn";
 import { Result } from "../../components/result/Result"
 import {toKr} from "../utils/HjelpeFunksjoner";
 
@@ -52,12 +52,7 @@ describe("Barnetillegg med wrapped funksjon", () => {
         barn.resultat = 100_000
         leggTilBarnetillegg(barn)
         expect(barn.resultat).toBe(107_020)
-        expect(barn.logs[0]).toEqual(<p>
-            For hvert barn får du {toKr(barnetillegg(1))} kr per år.
-            Siden du har {barn.personInfo!!.antallBarn} barn, kan du
-            få {toKr(barnetillegg(barn.personInfo!!.antallBarn!!))} kr i tillegg. Dette blir til
-            sammen <strong>{toKr(107_020)} kr</strong>.
-        </p>)
+        expect(barn.logs[0]).toEqual({id:"logic.children.possibleChildsupport", values:{childAmount: "1", perChild: "7 020", res:"107 020",totChild:"7 020"}})
     })
     it("Med maks barn", () => {
         const barn = new Result({
@@ -69,12 +64,6 @@ describe("Barnetillegg med wrapped funksjon", () => {
         barn.resultat = 222954.0 * (2.0 / 3.0)
         leggTilBarnetillegg(barn)
         expect(Math.ceil(barn.resultat)).toBe(202_686)
-        expect(barn.logs[0]).toEqual(<p>
-            For hvert barn kan du få {toKr(barnetillegg(1))} kr per år.
-            Arbeidsavklaringspenger pluss barnetillegg kan ikke være mer
-            enn 90 % av beregningsgrunnlaget. Derfor får du {toKr(54_050
-        )} kr i tillegg. Dette
-            blir til sammen <strong>{toKr(202_685)} kr</strong>.
-        </p>)
+        expect(barn.logs[0]).toEqual({id:"logic.children.maxChildren", values:{maksBarneTillegg:"54 050", perChild:"7 020", res:"202 685"}})
     })
 })

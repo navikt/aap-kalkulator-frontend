@@ -81,63 +81,38 @@ const inntektsgrunnlag = (
     switch (resultat.resultat) {
         case minsteGrunnlag: {
             resultat.logs.push(
-                <p>
-                    Siden inntekten din er lavere enn minstebeløpet på 2G (2
-                    ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli
-                    oppjustert til <strong>{toKr(resultat.resultat)} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.
-                </p>
+                {id:"logic.salery.minsteGrunnlag",values:{res:toKr(resultat.resultat)}}
             )
             break
         }
         case maksGrunnlag: {
             resultat.logs.push(
-                <p>
-                    Siden inntekten din er høyere enn maksbeløpet på 6G (6
-                    ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli
-                    nedjustert til <strong>{toKr(resultat.resultat)} kr</strong>
-                    . Inntekten din er justert ut fra endring i grunnbeløpet.
-                </p>
+                {id:"logic.salery.maksGrunnlag",values:{res:toKr(resultat.resultat)}}
             )
             break
         }
         case gjennomsnittsInntekt: {
             resultat.logs.push(
-                <p>
-                    Grunnlaget er gjennomsnittet av de tre siste inntektsårene
-                    dine: <strong>{toKr(resultat.resultat)} kr</strong> .
-                    Inntekten din er justert ut fra endring i grunnbeløpet.
-                </p>
+                {id:"logic.salery.gjennomsnittInntekt",values:{res:toKr(resultat.resultat)}}
             )
             break
         }
         case minsteGrunnlagUnder25: {
             resultat.logs.push(
-                <p>
-                    Siden inntekten din er lavere enn grensen for minste
-                    utbetaling for de under 25 år blir beregningsgrunnlaget ditt
-                    oppjustert til <strong>{toKr(resultat.resultat)} kr</strong>
-                    . Inntekten din er justert ut fra endring i grunnbeløpet.
-                </p>
+                {id:"logic.salery.minsteGrunnlagUnder25",values:{res:toKr(resultat.resultat)}}
             )
             break
         }
         default: {
             resultat.logs.push(
-                <p>
-                    beregningsgrunnlaget er basert på det siste inntektsåret
-                    ditt: <strong>{toKr(resultat.resultat)} kr</strong>.
-                    Inntekten din er justert ut fra endring i grunnbeløpet.
-                </p>
+                {id:"logic.salery.lastYear",values:{res:toKr(resultat.resultat)}}
             )
         }
     }
 
     const resultatEtterFradrag = prosentReduksjon(resultat.resultat)
     resultat.logs.push(
-        <p>
-            Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og
-            blir derfor <strong>{toKr(resultatEtterFradrag)} kr</strong>.
-        </p>
+        {id:"logic.salery.reduction",values:{res:toKr(resultatEtterFradrag)}}
     )
 
     resultat.resultat = resultatEtterFradrag

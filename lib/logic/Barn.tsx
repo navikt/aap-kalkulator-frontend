@@ -26,23 +26,13 @@ export const leggTilBarnetillegg = (resultat: Result) => {
     switch (resultat.resultat) {
         case muligBarnetillegg: {
             resultat.logs.push(
-                <p>
-                    For hvert barn får du {toKr(barnetillegg(1))} kr per år.
-                    Siden du har {resultat.personInfo!!.antallBarn} barn, kan du
-                    få {toKr(faktiskBarnetillegg)} kr i tillegg. Dette blir til
-                    sammen <strong>{toKr(resultat.resultat)} kr</strong>.
-                </p>
+                {id:"logic.children.possibleChildsupport",values:{perChild:toKr(barnetillegg(1)),childAmount:(resultat.personInfo!!.antallBarn!!).toString(),totChild:toKr(faktiskBarnetillegg),res:toKr(resultat.resultat)}}
             )
             break
         }
         default: {
             resultat.logs.push(
-                <p>
-                    For hvert barn kan du få {toKr(barnetillegg(1))} kr per år.
-                    Arbeidsavklaringspenger pluss barnetillegg kan ikke være mer
-                    enn 90 % av beregningsgrunnlaget. Derfor får du {toKr(maksBarnetilleggUtenGrunnlag)} kr i tillegg. Dette
-                    blir til sammen <strong>{toKr(resultat.resultat)} kr</strong>.
-                </p>
+                {id:"logic.children.maxChildren",values:{perChild:toKr(barnetillegg(1)), maksBarneTillegg:toKr(maksBarnetilleggUtenGrunnlag),res:toKr(resultat.resultat)}}
             )
         }
     }

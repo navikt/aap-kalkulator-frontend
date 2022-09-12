@@ -60,20 +60,8 @@ describe("kalkulere inntektsgrunnlag", () => {
         inntektsgrunnlag(g, historikk, resultat)
         expect(Math.round(resultat.resultat)).toBe(222954)
         expect(resultat.logs.length).toBe(2)
-        expect(resultat.logs[0]).toEqual(
-            <p>
-            Siden inntekten din er lavere enn minstebeløpet på 2G (2
-            ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli
-                oppjustert til <strong>{toKr(337809)} kr</strong>
-            . Inntekten din er justert ut fra endring i grunnbeløpet.
-            </p>
-        )
-        expect(resultat.logs[1]).toEqual(
-            <p>
-                Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og
-                blir derfor <strong>{toKr(222954)} kr</strong>.
-            </p>
-        )
+        expect(resultat.logs[0]).toEqual({id:"logic.salery.minsteGrunnlag",values:{res: "337 809",}})
+        expect(resultat.logs[1]).toEqual({id:"logic.salery.reduction",values:{res: "222 954",}})
     })
     it("inntektsgrunnlag med en mill i inntekt", () => {
         const enMill = 1_000_000.0
@@ -90,14 +78,7 @@ describe("kalkulere inntektsgrunnlag", () => {
         inntektsgrunnlag(g, historikk, resultat)
         expect(Math.round(resultat.resultat)).toBe(441449)
         expect(resultat.logs.length).toBe(2)
-        expect(resultat.logs[0]).toEqual(
-            <p>
-                Siden inntekten din er høyere enn maksbeløpet på 6G (6
-                ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli
-                nedjustert til <strong>{toKr(ytelseTilGrunnlag(resultat.resultat))} kr</strong>
-                . Inntekten din er justert ut fra endring i grunnbeløpet.
-            </p>
-        )
+        expect(resultat.logs[0]).toEqual({id:"logic.salery.maksGrunnlag",values:{res:"668 862"}})
     })
     it("inntektsgrunnlag med variert inntekt", () => {
         const resultat = new Result({
@@ -113,13 +94,7 @@ describe("kalkulere inntektsgrunnlag", () => {
         inntektsgrunnlag(g, historikk, resultat)
         expect(Math.round(resultat.resultat)).toBe(327835)
         expect(resultat.logs.length).toBe(2)
-        expect(resultat.logs[0]).toEqual(
-            <p>
-                Grunnlaget er gjennomsnittet av de tre siste inntektsårene
-                dine: <strong>{toKr(496719.0)} kr</strong> .
-                Inntekten din er justert ut fra endring i grunnbeløpet.
-            </p>
-        )
+        expect(resultat.logs[0]).toEqual({id:"logic.salery.gjennomsnittInntekt", values:{res:"496 719"}})
     })
     it("inntektsgrunnlag med mest lønn siste år", () => {
         const resultat = new Result({
@@ -135,19 +110,8 @@ describe("kalkulere inntektsgrunnlag", () => {
         inntektsgrunnlag(g, historikk, resultat)
         expect(Math.round(resultat.resultat)).toBe(421568)
         expect(resultat.logs.length).toBe(2)
-        expect(resultat.logs[0]).toEqual(
-            <p>
-                beregningsgrunnlaget er basert på det siste inntektsåret
-                ditt: <strong>{toKr(638739.0)} kr</strong>.
-                Inntekten din er justert ut fra endring i grunnbeløpet.
-            </p>
-        )
-        expect(resultat.logs[1]).toEqual(
-            <p>
-                Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og
-                blir derfor <strong>{toKr((421568))} kr</strong>.
-            </p>
-        )
+        expect(resultat.logs[0]).toEqual({id:"logic.salery.lastYear", values:{res:"638 739"}})
+        expect(resultat.logs[1]).toEqual({id:"logic.salery.reduction", values:{res:"421 568"}})
     })
     it("inntektsgrunnlag med minstelønn under 25", () => {
         const resultat = new Result({
@@ -163,14 +127,7 @@ describe("kalkulere inntektsgrunnlag", () => {
         inntektsgrunnlag(g, historikk, resultat)
         expect(Math.round(resultat.resultat)).toBe(148636)
         expect(resultat.logs.length).toBe(2)
-        expect(resultat.logs[0]).toEqual(
-            <p>
-                Siden inntekten din er lavere enn grensen for minste
-                utbetaling for de under 25 år blir beregningsgrunnlaget ditt
-                oppjustert til <strong>{toKr(225206)} kr</strong>
-                . Inntekten din er justert ut fra endring i grunnbeløpet.
-            </p>
-        )
+        expect(resultat.logs[0]).toEqual({id:"logic.salery.minsteGrunnlagUnder25", values:{res:"225 206"}})
     })
     it("Inntektsgrunnlag med oppjustering fra 2018", () => {
         const resultat = new Result({

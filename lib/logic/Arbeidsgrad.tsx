@@ -21,15 +21,12 @@ export const arbeidsgrad = (resultat: Result) => {
     if (resultat.personInfo!!.arbeidsgrad!! > ARBEIDSGRENSE) {
         resultat.resultat = 0.0
         resultat.logs = []
-        resultat.logs.push(<p>Arbeidsgraden din er høyere enn 60 % og du kan derfor ikke få arbeidsavklaringspenger.</p>)
+        resultat.logs.push({id:"logic.work.tooMuch",values:{}})
         return
     }
 
     resultat.resultat *= invertedPercent(resultat.personInfo!!.arbeidsgrad!!)
     resultat.logs.push(
-        <p>
-            En arbeidsuke er 37,5 timer. Siden du jobber {resultat.personInfo!!.arbeidsgrad!!/100*37.5} timer i uka, som er {(resultat.personInfo!!.arbeidsgrad)?.toFixed(0)} % av en vanlig arbeidsuke, blir
-            arbeidsavklaringspengene redusert med {(resultat.personInfo!!.arbeidsgrad)?.toFixed(0)} %, fra {toKr(gammeltResultat)} kr til <strong>{toKr(resultat.resultat)} kr</strong>.
-        </p>
+        {id:"logic.work.justEnough",values:{hoursWorked:(resultat.personInfo!!.arbeidsgrad!!/100*37.5).toString(), percentWorked:(resultat.personInfo!!.arbeidsgrad)?.toFixed(0),percentWorked2:(resultat.personInfo!!.arbeidsgrad)?.toFixed(0),oldRes:toKr(gammeltResultat),res:toKr(resultat.resultat)}}
     )
 }

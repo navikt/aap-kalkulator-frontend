@@ -12,6 +12,7 @@ import { useRouter } from "next/router"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
+import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl";
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -24,7 +25,7 @@ const Helse = () => {
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState("")
-
+    const { formatMessage } = useFeatureToggleIntl();
     const aapGrense = 10
 
     const onChange = (text: string) => {
@@ -53,15 +54,15 @@ const Helse = () => {
         const sykmeldtAar = parseInt(event.currentTarget.sykmelding.value)
 
         const errors = isNaN(sykmeldtAar)
-            ? "Året du fikk nedsatt arbeidsevne må være et tall."
+            ? formatMessage("helse.nedsattArbeidsevne.validation.required")
             : sykmeldtAar > detteAaret
-            ? `Året du fikk nedsatt arbeidsevne må være ${detteAaret} eller tidligere.`
+            ? formatMessage("helse.nedsattArbeidsevne.validation.max", {Aar: detteAaret.toString()})
             : sykmeldtAar < detteAaret - aapGrense
-            ? `Kalkulatoren kan ikke beregne arbeidsavklaringspenger dersom du fikk nedsatt arbeidsevne for mer enn ${aapGrense} år siden.`
+            ? formatMessage("helse.nedsattArbeidsevne.validation.min", {Aar: aapGrense.toString()})
             : ""
 
         if (state.over25 == undefined) {
-            setRadioError("Velg enten ja eller nei for å gå videre.")
+            setRadioError(formatMessage("helse.over25.validation.required"))
         }
 
         setError(errors)
@@ -89,20 +90,19 @@ const Helse = () => {
             <QuestionHeader
                 image="/ikoner/helse_circle.svg"
                 alt="helse ikon"
-                tittel="Helse"
+                tittel={formatMessage("helse.title")}
             />
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <Label as={"label"} id="l1" className="text-xl">
-                        Er du 25 år eller eldre?
+                        {formatMessage("helse.over25.title")}
                     </Label>
                     <ReadMore
                         size="small"
-                        header="Hvorfor spør vi om du er over 25 år?"
+                        header={`${formatMessage("helse.over25.readMoreTitle")}`}
                     >
                         {" "}
-                        Det er forskjellige regler for hvor mye du kan få dersom
-                        du er under eller over 25 år.
+                        {formatMessage("helse.over25.readMore")}
                     </ReadMore>
                     <RadioGroup
                         aria-errormessage="e1"
@@ -134,15 +134,13 @@ const Helse = () => {
                 </div>
                 <div className="mb-4">
                     <Label as="label" id="l2" className="text-xl">
-                        Hvilket år fikk du først nedsatt arbeidsevne med minst 50%?
+                        {formatMessage("helse.nedsattArbeidsevne.title")}
                     </Label>
                     <ReadMore
                         size="small"
-                        header="Hvorfor spør vi om når du fikk nedsatt arbeidsevne?"
+                        header={`${formatMessage("helse.nedsattArbeidsevne.readMoreTitle")}`}
                     >
-                        {" "}
-                        Vi bruker året du fikk nedsatt arbeidsevne, til å
-                        justere for økning i grunnbeløpet.
+                        {formatMessage("helse.nedsattArbeidsevne.readMore")}
                     </ReadMore>
                     <div className="flex flex-col my-2">
                         <TextField
@@ -172,7 +170,7 @@ const Helse = () => {
                         )}
                     </div>
                 </div>
-                <Button variant="primary">Gå videre</Button>
+                <Button variant="primary">{formatMessage("navigation.next")}</Button>
             </form>
         </>
     )
