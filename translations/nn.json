@@ -96,15 +96,15 @@
       "gjennomsnittInntekt": "Grunnlaget er gjennomsnittet av dei tre siste inntektsåra dine: <strong>{res} kr</strong>. Inntekta di er justert ut frå endring i grunnbeløpet.",
       "minsteGrunnlagUnder25": "Sidan inntekta di er lavere enn grensen for minste utbetaling for dei under 25 år blir utrekningsgrunnlaget ditt oppjustert til <strong>{res} kr</strong>. Inntekta di er justert ut frå endring i grunnbeløpet.",
       "lastYear": "beregningsgrunnlaget er basert på det siste inntektsåret ditt: <strong>{res} kr</strong>. Inntekta di er justert ut frå endring i grunnbeløpet.",
-      "reduction": "Arbeidsavklaringspengene utgjer 66 % av utrekningsgrunnlaget, og blir derfor <strong>{res} kr</strong>."
+      "reduction": "Arbeidsavklaringspengane utgjer 66 % av utrekningsgrunnlaget, og blir derfor <strong>{res} kr</strong>."
     },
     "children": {
       "possibleChildsupport":"For kvart barn får du {perChild} kr per år. Sidan du har {childAmount} barn, kan du få {totChild} kr i tillegg. Dette blir til saman <strong>{res} kr</strong>.",
-      "maxChildren": "For kvart barn kan du få {perChild} kr per år. Arbeidsavklaringspenger pluss barnetillegg kan ikkje vera meir enn 90 % av beregningsgrunnlaget. Derfor får du {maksBarneTillegg} kr i tillegg. Dette blir til saman <strong>{res} kr</strong>."
+      "maxChildren": "For kvart barn kan du få {perChild} kr per år. Arbeidsavklaringspengar pluss barnetillegg kan ikkje vera meir enn 90 % av beregningsgrunnlaget. Derfor får du {maksBarneTillegg} kr i tillegg. Dette blir til saman <strong>{res} kr</strong>."
     },
     "work": {
-      "tooMuch": "Arbeidsgraden din er høgare enn 60 % og du kan derfor ikkje få arbeidsavklaringspenger.",
-      "justEnough": "Ei arbeidsveke er 37,5 timer. Siden du jobber {hoursWorked} timer i uka, som er {percentWorked} % av en vanlig arbeidsveke, blir arbeidsavklaringspengene redusert med {percentWorked2} %, fra {oldRes} kr til <strong>{res} kr</strong>.",
+      "tooMuch": "Arbeidsgraden din er høgare enn 60 % og du kan derfor ikkje få arbeidsavklaringspengar.",
+      "justEnough": "Ei arbeidsveke er 37,5 timer. Siden du jobber {hoursWorked} timer i uka, som er {percentWorked} % av en vanlig arbeidsveke, blir arbeidsavklaringspengane redusert med {percentWorked2} %, fra {oldRes} kr til <strong>{res} kr</strong>."
     }
   },
   "navigation": {
