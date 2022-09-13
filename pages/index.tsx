@@ -62,7 +62,9 @@ const Home: NextPage = () => {
                     <li>
                         {formatMessage("start.thirdPoint" )}
                     </li>
-                    <li>{formatMessage("start.fourthPoint")}</li>
+                    <li>
+                        {formatMessage("start.fourthPoint")}
+                    </li>
                 </ul>
 
                 <Button
