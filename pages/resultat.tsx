@@ -70,10 +70,15 @@ const Resultat: NextPage = ({
         })
     }, [])
 
+
     const handleAccordion = () => {
         setOpen((current) => {
-            if(!current) {
+            if (!current) {
                 logAmplitudeEvent("accordion åpnet", {
+                    tekst: "Hvorfor får jeg denne summen?",
+                })
+            } else {
+                logAmplitudeEvent("accordion lukket", {
                     tekst: "Hvorfor får jeg denne summen?",
                 })
             }

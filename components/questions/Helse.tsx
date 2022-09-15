@@ -13,6 +13,7 @@ import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl";
+import {logAmplitudeEvent} from "../../lib/utils/amplitude";
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
