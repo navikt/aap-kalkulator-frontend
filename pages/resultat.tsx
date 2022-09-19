@@ -135,7 +135,7 @@ const Resultat: NextPage = ({
                         >
                             <Accordion.Item>
                                 <Accordion.Header>
-                                    Hvorfor får jeg denne summen?
+                                    Hvordan er beregningen gjort?
                                 </Accordion.Header>
                                 <Accordion.Content>
                                     <ul className=" space-y-4 list-disc">
