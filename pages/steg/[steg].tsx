@@ -22,9 +22,8 @@ const Steg = () => {
     }, [step])
 
     const questions = [
-        <Helse key={3} />,
+        <Helse key={2} />,
         <Inntekt key={0} />,
-        <Arbeidsgrad key={2} />,
         <Barn key={1} />,
     ]
 

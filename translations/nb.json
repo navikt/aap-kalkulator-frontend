@@ -103,6 +103,7 @@
       "maxChildren": "For hvert barn kan du få {perChild} kr per år. Arbeidsavklaringspenger pluss barnetillegg kan ikke være mer enn 90 % av beregningsgrunnlaget. Derfor får du {maksBarneTillegg} kr i tillegg. Dette blir til sammen <strong>{res} kr</strong>."
     },
     "work": {
+      "any": "Viss du jobbar, kan dette redusera arbeidsavklaringspengane dine. Denne reduksjonen blir gjort ved innlevering av meldekort kvar 14. dag.",
       "tooMuch": "Arbeidsgraden din er høyere enn 60 % og du kan derfor ikke få arbeidsavklaringspenger.",
       "justEnough": "En arbeidsuke er 37,5 timer. Siden du jobber {hoursWorked} timer i uka, som er {percentWorked} % av en vanlig arbeidsuke, blir arbeidsavklaringspengene redusert med {percentWorked2} %, fra {oldRes} kr til <strong>{res} kr</strong>."
     }
