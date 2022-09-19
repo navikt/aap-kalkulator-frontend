@@ -14,6 +14,16 @@ yarn dev
 
 ---
 
+#Teknisk beskrivelse
+Kalkulatoren er strukturert rundt 5 sider.
+![frontend](https://user-images.githubusercontent.com/4377955/190972181-75a44980-846f-4db9-bc46-4f17e2d8c6f7.png)
+[Blå](https://github.com/navikt/aap-kalkulator-frontend/blob/main/pages/index.tsx)
+[Oransje](https://github.com/navikt/aap-kalkulator-frontend/tree/main/components/questions)
+[Grønn](https://github.com/navikt/aap-kalkulator-frontend/blob/main/pages/resultat.tsx)
+
+
+---
+
 # Henvendelser
 
 Spørsmål knyttet til koden eller prosjektet kan stilles som issues her på GitHub
