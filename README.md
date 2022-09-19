@@ -1,6 +1,5 @@
 # aap-kalkulator
-AAP-Kalkulatoren er et hjelpemiddel som kan bli brukt for å få et estimat om hva du kan få i AAP støtte.
-Kalkulatoren kan ikke gi korrekte resultater ved yrkes skade, og kan gi andre resultater en det en kan få i en faktisk søknad
+Vi ser i dag at det er mange henvendelser til NKS hvor brukerne lurer på hvor mye de kan få i AAP, og hvorfor de får akkurat denne summen. Denne kalkulatoren vil kunne gi en forhåndsberegning av AAP til brukere, med en enkel forklaring av hva som ligger til grunn for utregningen. Vi håper kalkulatoren kan redusere noen av henvendelsene til NKS. Vi legger vekt på at kalkulatoren kun er et hjelpeverktøy og ikke en nøyaktig utregning. Den vil ikke kreve innlogging. 
 
 # Komme i gang
 
