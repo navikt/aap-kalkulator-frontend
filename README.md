@@ -32,7 +32,7 @@ flowchart LR
     A[Start] <--> B[Helse]
     B <--> C[Inntekt]
     C <--> D[Barn]
-    D <--> E[Resultat]
+    D --> E[Resultat]
     E --> B
 ```
 
