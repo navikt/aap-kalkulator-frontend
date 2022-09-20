@@ -81,7 +81,7 @@ const Barn = () => {
     return (
         <>
             <Stepper />
-            <BackLink target="/steg/3" />
+            <BackLink target="/steg/2" />
             <QuestionHeader
                 image="/ikoner/teddy_circle.svg"
                 alt="teddybjørn ikon"
