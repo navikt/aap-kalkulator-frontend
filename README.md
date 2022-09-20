@@ -10,6 +10,7 @@ Bruker starter på en startside hvor de blir informert om informasjonene nevt i 
 
 <img width="490" alt="Screenshot 2022-09-20 at 12 21 22" src="https://user-images.githubusercontent.com/4377955/191233614-1ce4335f-ea3d-4686-8e2e-b2b1ddebf121.png">
 
+---
 
 # Komme i gang
 
