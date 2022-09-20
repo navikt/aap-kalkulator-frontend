@@ -89,6 +89,11 @@
       }
     }
   },
+  "result": {
+    "Title": "Dette kan du få",
+    "description": "Korleis er utrekninga gjort?",
+    "disclamer": "Dette er ei foreløpig utrekning på kva du kan få i AAP før skatt. Hvis du søkar og får innvilga AAP, vil du få vite kva du faktisk får utbetalt. Merk: Det er alltid vedtaket du får som gjeld, denne kalkulatoren gir kun eit estimat."
+  },
   "logic": {
     "salery": {
       "minsteGrunnlag": "Sidan inntekta di er lågare enn minstebeløpet på 2G (2 ganger grunnbeløpet), vil utrekningsgrunnlaget ditt bli oppjustert til <strong>{res} kr</strong>. Inntekta di er justert ut frå endring i grunnbeløpet.",
@@ -105,7 +110,7 @@
     "work": {
       "any": "Hvis du jobber, kan dette redusere arbeidsavklaringspengene dine. Dette blir gjort ved innlevering av meldekort.",
       "tooMuch": "Arbeidsgraden din er høgare enn 60 % og du kan derfor ikkje få arbeidsavklaringspenger.",
-      "justEnough": "Ei arbeidsveke er 37,5 timer. Siden du jobber {hoursWorked} timer i uka, som er {percentWorked} % av en vanlig arbeidsveke, blir arbeidsavklaringspengene redusert med {percentWorked2} %, fra {oldRes} kr til <strong>{res} kr</strong>.",
+      "justEnough": "Ei arbeidsveke er 37,5 timer. Siden du jobber {hoursWorked} timer i uka, som er {percentWorked} % av en vanlig arbeidsveke, blir arbeidsavklaringspengene redusert med {percentWorked2} %, fra {oldRes} kr til <strong>{res} kr</strong>."
     }
   },
   "navigation": {

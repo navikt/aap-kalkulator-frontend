@@ -89,6 +89,11 @@
       }
     }
   },
+  "result": {
+    "title": "Dette kan du få",
+    "description": "Hvordan er beregningen gjort?",
+    "disclamer": "Dette er en foreløpig beregning på hva du kan få i AAP før skatt. Hvis du søker og får innvilget AAP, vil du få vite hva du faktisk får utbetalt. Merk: Det er alltid vedtaket du får som gjelder, denne kalkulatoren gir kun et estimat."
+  },
   "logic": {
     "salery": {
       "minsteGrunnlag": "Siden inntekten din er lavere enn minstebeløpet på 2G (2 ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli oppjustert til <strong>{res} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.",
