@@ -3,6 +3,8 @@ on:
   pull_request:
     branches:
       - "main"
+    paths-ignore:
+      - '**.md'
 env:
   APP: aap-kalkulator-frontend
   branchname: ${{ github.ref_name }}

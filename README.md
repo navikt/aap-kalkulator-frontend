@@ -14,16 +14,32 @@ yarn dev
 
 ---
 
-#Teknisk beskrivelse
+# Teknisk beskrivelse
 Kalkulatoren er strukturert rundt 5 sider.
-![frontend](https://user-images.githubusercontent.com/4377955/190972181-75a44980-846f-4db9-bc46-4f17e2d8c6f7.png)
 
-[Blå](https://github.com/navikt/aap-kalkulator-frontend/blob/main/pages/index.tsx)
+```mermaid
+flowchart LR
+    A[Start] <--> B[Helse]
+    B <--> C[Inntekt]
+    C <--> D[Barn]
+    D <--> E[Resultat]
+    E --> B
+```
 
-[Oransje](https://github.com/navikt/aap-kalkulator-frontend/tree/main/components/questions)
+[Start](https://github.com/navikt/aap-kalkulator-frontend/blob/main/pages/index.tsx)
+--> [Spørsmål](https://github.com/navikt/aap-kalkulator-frontend/tree/main/components/questions)
+--> [Resultat](https://github.com/navikt/aap-kalkulator-frontend/blob/main/pages/resultat.tsx)
 
-[Grønn](https://github.com/navikt/aap-kalkulator-frontend/blob/main/pages/resultat.tsx)
-
+## Logikk
+```mermaid
+flowchart TD
+    s[Innput data] <--> A
+    A[Kalkuler] -->|1| B[Beregnings Grunnlag]
+    A -->|2| C[Barnetilegg]
+    A -->|3| D[Arbeid]
+```
+Kalkuler wrapper state (brukers input) i en type, som inneholder tekst log og resultat per år i kroner.
+wrappet state blir da sendt inn i 3 funksjoner som regner Beregningsgrunnlag, evt. Baretilegg og Reduksjon pga. arbeid
 
 ---
 
