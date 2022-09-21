@@ -109,7 +109,7 @@ const Resultat: NextPage = ({
                         spacing
                         aria-label="Hvor mye kan jeg få?"
                     >
-                        Dette kan du få
+                        {formatMessage("result.title")}
                     </Heading>
                 </div>
                 <div className="rounded-2xl bg-feedback-success-background p-6 w-full md:w-5/6">
@@ -135,7 +135,7 @@ const Resultat: NextPage = ({
                         >
                             <Accordion.Item>
                                 <Accordion.Header>
-                                    Hvordan er beregningen gjort?
+                                    {formatMessage("result.description")}
                                 </Accordion.Header>
                                 <Accordion.Content>
                                     <ul className=" space-y-4 list-disc">
@@ -151,11 +151,7 @@ const Resultat: NextPage = ({
                 <div className="pt-4">
                     <Alert variant="info" size="small">
                         <p>
-                            Dette er en foreløpig beregning på hva du kan få i
-                            AAP før skatt. Hvis du søker og får innvilget AAP,
-                            vil du få vite hva du faktisk får utbetalt. Merk:
-                            Det er alltid vedtaket du får som er korrekt, denne
-                            kalkulatoren gir kun et estimat.
+                            {formatMessage("result.disclamer")}
                         </p>
 
                         <Link
