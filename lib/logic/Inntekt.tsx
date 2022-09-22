@@ -48,7 +48,32 @@ const inntektsjustering = (
     ].at(inntektsIndeks - 1)
     return juster(g, historikk, inntektsAar, inntekt!!)
 }
+const gjennomsnittEllerSisteInntekt = (gjennomsnittHoyest:boolean, gjennomsnitt:number, inntekt1:number) => {
+    return gjennomsnittHoyest ? gjennomsnitt : inntekt1
+}
 
+const minGrunnlag = (res:number, minstegrunnlag:number) => {
+    return Math.max(res, minstegrunnlag)
+}
+
+const maxGrunnlag = (res:number, maksGrunnlag:number) =>{
+    return Math.min(res, maksGrunnlag)
+}
+
+const overEllerUnder25 = (gjennomsnittHoyest:boolean, over25:boolean,gjennomsnittsInntekt:number, inntekt1:number, minsteGrunnlag:number) => {
+    return minGrunnlag(
+        gjennomsnittEllerSisteInntekt(gjennomsnittHoyest, gjennomsnittsInntekt, inntekt1),
+        minsteGrunnlag
+    )
+}
+
+const beregningsgrunnlag = (gjennomsnittHoyest:boolean, over25:boolean,gjennomsnittsInntekt:number, inntekt1:number,minsteGrunnlag:number, minsteGrunnlagUnder25:number, maksGrunnlag:number)=> {
+    const minGrunnlag = over25? minsteGrunnlag : minsteGrunnlagUnder25
+    return maxGrunnlag(
+        overEllerUnder25(gjennomsnittHoyest, over25, gjennomsnittsInntekt, inntekt1, minGrunnlag),
+        maksGrunnlag
+    )
+}
 const inntektsgrunnlag = (
     g: number,
     historikk: GrunnbeloepHistorikk[],
@@ -65,18 +90,7 @@ const inntektsgrunnlag = (
     const gjennomsnittHoyest =
         gjennomsnittsInntekt >= resultat.personInfo!!.inntekt1!!
 
-    resultat.resultat = Math.min(
-        !resultat.personInfo!!.over25
-            ? Math.max(
-                  gjennomsnittHoyest ? gjennomsnittsInntekt : inntekt1,
-                  minsteGrunnlagUnder25
-              )
-            : Math.max(
-                  gjennomsnittHoyest ? gjennomsnittsInntekt : inntekt1,
-                  minsteGrunnlag
-              ),
-        maksGrunnlag
-    )
+    resultat.resultat = beregningsgrunnlag(gjennomsnittHoyest, resultat.personInfo!!.over25!!, gjennomsnittsInntekt, inntekt1, minsteGrunnlag, minsteGrunnlagUnder25, maksGrunnlag)
 
     switch (resultat.resultat) {
         case minsteGrunnlag: {
