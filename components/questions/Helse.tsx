@@ -137,12 +137,12 @@ const Helse = () => {
                     <Label as="label" id="l2" className="text-xl">
                         {formatMessage("helse.nedsattArbeidsevne.title")}
                     </Label>
-                    <ReadMore
+                    {/*<ReadMore
                         size="small"
                         header={`${formatMessage("helse.nedsattArbeidsevne.readMoreTitle")}`}
                     >
                         {formatMessage("helse.nedsattArbeidsevne.readMore")}
-                    </ReadMore>
+                    </ReadMore>*/}
                     <div className="flex flex-col my-2">
                         <TextField
                             aria-errormessage="e2"

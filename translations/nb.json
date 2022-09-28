@@ -19,8 +19,8 @@
             }
         },
         "nedsattArbeidsevne": {
-            "title": "Hvilket år fikk du først nedsatt arbeidsevne med minst 50%?",
-            "readMoreTitle": "Hvorfor spør vi om når du fikk nedsatt arbeidsevne?",
+            "title": "Når ble du så syk at du måtte jobbe mindre en 50%?",
+            "readMoreTitle": "Hvorfor spør vi om når du ble syk?",
             "readMore": "Vi bruker året du fikk nedsatt arbeidsevne, til å justere for økning i grunnbeløpet.",
             "validation": {
                 "required": "Året du fikk nedsatt arbeidsevne må være et tall.",
@@ -80,7 +80,7 @@
             }
         },
         "howMuch": {
-            "title": "Hvor mye tjener du i måneden?",
+            "title": "Hvor mye tjente du?",
             "description": "Fyll inn inntekt før skatt.",
             "validation": {
                 "required": "Inntekt må være et tall."
