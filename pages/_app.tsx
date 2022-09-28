@@ -10,6 +10,9 @@ import { initAmplitude } from "../lib/utils/amplitude"
 import { IntlProvider } from "react-intl";
 import { flattenMessages, messages } from "../utils/message";
 import links from '../translations/links.json'
+import { useRouter } from "next/router"
+import { Locale } from "@navikt/nav-dekoratoren-moduler"
+import { Dekorator } from "../components/dekorator/Dekorator"
 
 export const State = createContext({
     state: {} as StateInterface,
@@ -34,13 +37,19 @@ export const initialState = {
     over25: undefined,
     harLoenn: undefined,
 }
+
+const getLocaleOrFallback = (locale?: string) => {
+    if (locale && ["nb", "nn"].includes(locale)) {
+        return locale;
+    }
+
+    return 'nb';
+};
+
 function MyApp({ Component, pageProps }: AppProps) {
     const [state, setState] = useState<StateInterface>(initialState)
-    const locale = 'nb';
-    const currentMessages = useMemo(
-        () => ({ ...messages[locale], ...flattenMessages({ applinks: links }) }),
-        [locale]
-    );
+    const router = useRouter()
+    const locale = getLocaleOrFallback(router.locale)
 
     const [browserState, setBrowserState] = useState<BrowserInterface>({
         redirect: false,
@@ -51,7 +60,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     }, [])
 
     return (
-        <IntlProvider locale={locale} messages={currentMessages}>
+        <IntlProvider locale={locale} messages={messages[locale]}>
+            <Dekorator>
             <BrowserState.Provider value={{ browserState, setBrowserState }}>
                 <State.Provider value={{ state, setState }}>
                     <Head>
@@ -63,6 +73,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     </Container>
                 </State.Provider>
             </BrowserState.Provider>
+            </Dekorator>
         </IntlProvider>
     )
 }

@@ -8,6 +8,10 @@ const sentryWebpackPluginOptions = {
 
 const nextConfig = {
     reactStrictMode: true,
+    i18n: {
+        locales: ['nb', 'nn'],
+        defaultLocale: 'nb',
+    },
 }
 
 if (process.env.ENABLE_SENTRY === "enabled") {
