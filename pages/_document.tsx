@@ -3,6 +3,7 @@ import "node-fetch"
 import {
     Components,
     fetchDecoratorReact,
+    Env,
 } from "@navikt/nav-dekoratoren-moduler/ssr"
 import Document, {
     DocumentContext,
@@ -12,6 +13,8 @@ import Document, {
     Main,
     NextScript,
 } from "next/document"
+
+const decoratorEnv = process.env.DEKORATOR_ENV as Exclude<Env, "localhost">
 
 // The 'head'-field of the document initialProps contains data from <head> (meta-tags etc)
 const getDocumentParameter = (
@@ -34,9 +37,7 @@ class MyDocument extends Document<Props> {
         const initialProps = await Document.getInitialProps(ctx)
 
         const Decorator = await fetchDecoratorReact({
-            // @ts-ignore
-            dekoratorenUrl: "https://dekoratoren.ekstern.dev.nav.no/",
-            env: "dev",
+            env: decoratorEnv ?? "prod",
             simple: false,
             chatbot: false,
             feedback: false,

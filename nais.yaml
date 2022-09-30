@@ -9,5 +9,12 @@ spec:
     port: 3000
     image: {{ image }}
     ingresses:
-        - https://aap-kalkulator.dev.nav.no
-        - https://aap-kalkulator.ekstern.dev.nav.no
+    {{#each ingresses as |url|}}
+        - {{url}}
+    {{/each}}
+    env: 
+    {{#each env}}
+        - name: {{this.name}}
+          value: {{this.value}}
+    {{/each}}
+

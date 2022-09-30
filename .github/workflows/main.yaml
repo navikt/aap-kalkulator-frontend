@@ -63,3 +63,23 @@ jobs:
                   APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
                   CLUSTER: dev-gcp
                   RESOURCE: nais.yaml
+                  VARS: .nais/dev.yaml
+    deploy-to-prod:
+        name: Deploy to prod
+        needs: [build-and-publish]
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - uses: actions/download-artifact@v1
+              with:
+                  name: VERSION.txt
+                  path: .
+            - run: echo "VERSION=`cat VERSION.txt`" >> $GITHUB_ENV
+            - run: echo "IMAGE=ghcr.io/navikt/$APP:$VERSION" >> $GITHUB_ENV
+            - name: Deploy to prod-gcp
+              uses: nais/deploy/actions/deploy@v1
+              env:
+                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+                  CLUSTER: prod-gcp
+                  RESOURCE: nais.yaml
+                  VARS: .nais/prod.yaml
