@@ -11,8 +11,8 @@ import { useRouter } from "next/router"
 import { logAmplitudeEvent } from "../lib/utils/amplitude"
 import { kalkuler } from "../lib/logic/Kalkuler"
 import { grunnbeloep, GrunnbeloepHistorikk } from "../lib/utils/types"
-import { useFeatureToggleIntl } from "../hooks/useFeatureToggleIntl";
-import { useIntl } from "react-intl";
+import { useFeatureToggleIntl } from "../hooks/useFeatureToggleIntl"
+import { useIntl } from "react-intl"
 
 export const getStaticProps = async () => {
     const res = await fetch("https://g.nav.no/api/v1/grunnbeloep")
@@ -22,17 +22,22 @@ export const getStaticProps = async () => {
     const dataHistorikk: GrunnbeloepHistorikk[] = await resHistorikk
         .json()
         .then((res) =>
-
-            res.map((item: { grunnbeløp: any; dato: string | number | Date; gjennomsnittPerÅr: any }) => {
-                // noinspection NonAsciiCharacters
-                return {
-                    grunnbeloep: item.grunnbeløp,
-                    dato: new Date(item.dato).getFullYear(),
-                    gjennomsnittPerAar: item.gjennomsnittPerÅr
-                        ? item.gjennomsnittPerÅr
-                        : null,
+            res.map(
+                (item: {
+                    grunnbeløp: any
+                    dato: string | number | Date
+                    gjennomsnittPerÅr: any
+                }) => {
+                    // noinspection NonAsciiCharacters
+                    return {
+                        grunnbeloep: item.grunnbeløp,
+                        dato: new Date(item.dato).getFullYear(),
+                        gjennomsnittPerAar: item.gjennomsnittPerÅr
+                            ? item.gjennomsnittPerÅr
+                            : null,
+                    }
                 }
-            })
+            )
         )
     return { props: { G: data, Historikk: dataHistorikk }, revalidate: 7200 }
 }
@@ -70,7 +75,6 @@ const Resultat: NextPage = ({
         })
     }, [])
 
-
     const handleAccordion = () => {
         setOpen((current) => {
             if (!current) {
@@ -87,15 +91,13 @@ const Resultat: NextPage = ({
     }
 
     const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
-    // @ts-ignore
-    // @ts-ignore
     return (
         <>
             <BackLink target="/steg/1" tekst="Endre svar" />
             <div className="flex flex-col items-center">
                 <div className="flex flex-col pt-4 mb-4" aria-hidden="true">
                     <Image
-                        src="/ikoner/money_circle.svg"
+                        src="/aap/kalkulator/ikoner/money_circle.svg"
                         height="100"
                         width="100"
                         alt="penger ikon"
@@ -130,9 +132,7 @@ const Resultat: NextPage = ({
                 </div>
                 {result != null && (
                     <div className="py-4 md:w-5/6">
-                        <Accordion
-                            onClick={handleAccordion}
-                        >
+                        <Accordion onClick={handleAccordion}>
                             <Accordion.Item>
                                 <Accordion.Header>
                                     {formatMessage("result.description")}
@@ -140,7 +140,20 @@ const Resultat: NextPage = ({
                                 <Accordion.Content>
                                     <ul className=" space-y-4 list-disc">
                                         {result?.logs.map((text, index) => (
-                                            <li key={index}><div>{formatMessage(text.id,{...text.values,strong:(...chunks:any)=><strong>{chunks}</strong>})}</div></li>
+                                            <li key={index}>
+                                                <div>
+                                                    {formatMessage(text.id, {
+                                                        ...text.values,
+                                                        strong: (
+                                                            ...chunks: any
+                                                        ) => (
+                                                            <strong>
+                                                                {chunks}
+                                                            </strong>
+                                                        ),
+                                                    })}
+                                                </div>
+                                            </li>
                                         ))}
                                     </ul>
                                 </Accordion.Content>
@@ -150,9 +163,7 @@ const Resultat: NextPage = ({
                 )}
                 <div className="pt-4">
                     <Alert variant="info" size="small">
-                        <p>
-                            {formatMessage("result.disclamer")}
-                        </p>
+                        <p>{formatMessage("result.disclamer")}</p>
 
                         <Link
                             className="pt-4"

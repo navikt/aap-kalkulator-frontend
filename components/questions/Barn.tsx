@@ -7,7 +7,7 @@ import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import { logAmplitudeEvent } from "../../lib/utils/amplitude"
-import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl";
+import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
 
 interface BarnInterface extends HTMLFormElement {
     antallBarn: HTMLInputElement
@@ -19,7 +19,7 @@ const Barn = () => {
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState<string | undefined>(undefined)
     const { browserState } = useContext(BrowserState)
-    const { formatMessage } = useFeatureToggleIntl();
+    const { formatMessage } = useFeatureToggleIntl()
     const onRadioChange = (value: string) => {
         setState({
             ...state,
@@ -83,7 +83,7 @@ const Barn = () => {
             <Stepper />
             <BackLink target="/steg/2" />
             <QuestionHeader
-                image="/ikoner/teddy_circle.svg"
+                image="/aap/kalkulator/ikoner/teddy_circle.svg"
                 alt="teddybjørn ikon"
                 tittel={formatMessage("children.title")}
             />
@@ -92,8 +92,18 @@ const Barn = () => {
                     isError={radioError != undefined}
                     errorId="error1"
                     title={formatMessage("children.gotChildren.title")}
-                    readMoreTitle={formatMessage("children.gotChildren.readMoreTitle")}
-                    readMore={<div dangerouslySetInnerHTML={{__html:formatMessage("children.gotChildren.readMore")}}/>}
+                    readMoreTitle={formatMessage(
+                        "children.gotChildren.readMoreTitle"
+                    )}
+                    readMore={
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: formatMessage(
+                                    "children.gotChildren.readMore"
+                                ),
+                            }}
+                        />
+                    }
                     state={state.harBarn}
                     onChange={onRadioChange}
                 />

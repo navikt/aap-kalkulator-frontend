@@ -1,5 +1,5 @@
-import { ChangeEvent, useContext, useState} from "react"
-import {BrowserState, State} from "../../pages/_app"
+import { ChangeEvent, useContext, useState } from "react"
+import { BrowserState, State } from "../../pages/_app"
 
 import {
     BodyShort,
@@ -9,12 +9,12 @@ import {
     TextField,
     Link,
 } from "@navikt/ds-react"
-import {useRouter} from "next/router"
+import { useRouter } from "next/router"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
-import Radio from "../radio/Radio";
-import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl";
+import Radio from "../radio/Radio"
+import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
 
 interface Inntekt {
     inntekt1: string
@@ -24,10 +24,10 @@ interface Inntekt {
 
 const Inntekt = () => {
     const router = useRouter()
-    const { formatMessage } = useFeatureToggleIntl();
-    const {state, setState} = useContext(State)
+    const { formatMessage } = useFeatureToggleIntl()
+    const { state, setState } = useContext(State)
     const [error, setError] = useState<string[]>(["", "", ""])
-    const {browserState} = useContext(BrowserState)
+    const { browserState } = useContext(BrowserState)
     const [radioError, setRadioError] = useState<string>("")
     const [inntekt, setInntekt] = useState<Inntekt>({
         inntekt1:
@@ -77,7 +77,10 @@ const Inntekt = () => {
         if (state.harLoenn == undefined) {
             setRadioError(formatMessage("income.gotIncome.validation.required"))
         }
-        if ((errors.some((v) => v.length > 0) && state.harLoenn == true) || state.harLoenn == undefined  ) {
+        if (
+            (errors.some((v) => v.length > 0) && state.harLoenn == true) ||
+            state.harLoenn == undefined
+        ) {
             return
         }
 
@@ -102,11 +105,11 @@ const Inntekt = () => {
         state.sykmeldtAar - 3,
     ]
 
-    const idKorreksjon = (index:number) => {
-        return 3-index
+    const idKorreksjon = (index: number) => {
+        return 3 - index
     }
-    const indexKorreksjon = (index:number) => {
-        return 2-index
+    const indexKorreksjon = (index: number) => {
+        return 2 - index
     }
 
     const onRadioChange = (value: string) => {
@@ -129,31 +132,33 @@ const Inntekt = () => {
         setRadioError("")
     }
 
-    const readMoreText = <div>
-        <BodyShort spacing>
-            Vi bruker inntekten din til å regne ut hva du kan få
-            i arbeidsavklaringspenger.
-        </BodyShort>
-        <BodyShort>
-            Dette bestemmes av inntekten din de tre siste årene
-            eller minstesatsen (to ganger{" "}
-            <Link
-                href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden"
-                target="_blank"
-                rel="noreferrer"
-                as={"a"}
-            >
-                grunnbeløpet
-            </Link>
-            ).
-        </BodyShort>
-    </div>
+    const readMoreText = (
+        <div>
+            <BodyShort spacing>
+                Vi bruker inntekten din til å regne ut hva du kan få i
+                arbeidsavklaringspenger.
+            </BodyShort>
+            <BodyShort>
+                Dette bestemmes av inntekten din de tre siste årene eller
+                minstesatsen (to ganger{" "}
+                <Link
+                    href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden"
+                    target="_blank"
+                    rel="noreferrer"
+                    as={"a"}
+                >
+                    grunnbeløpet
+                </Link>
+                ).
+            </BodyShort>
+        </div>
+    )
     return (
         <>
             <Stepper />
             <BackLink target="/steg/1" />
             <QuestionHeader
-                image="/ikoner/wallet_circle.svg"
+                image="/aap/kalkulator/ikoner/wallet_circle.svg"
                 alt="lommebok ikon"
                 tittel={formatMessage("income.title")}
             />
@@ -161,10 +166,15 @@ const Inntekt = () => {
                 <Radio
                     isError={radioError != ""}
                     errorId="error1"
-                    title={formatMessage("income.gotIncome.title",{inntektsAar2:inntektsAar[2].toString(),inntektsAar0:inntektsAar[0].toString()})}
+                    title={formatMessage("income.gotIncome.title", {
+                        inntektsAar2: inntektsAar[2].toString(),
+                        inntektsAar0: inntektsAar[0].toString(),
+                    })}
                     state={state.harLoenn}
                     onChange={onRadioChange}
-                    readMoreTitle={formatMessage("income.gotIncome.readMoreTitle")}
+                    readMoreTitle={formatMessage(
+                        "income.gotIncome.readMoreTitle"
+                    )}
                     readMore={readMoreText}
                 />
                 {radioError != "" && (
@@ -175,11 +185,14 @@ const Inntekt = () => {
                     </ul>
                 )}
 
-                {state.harLoenn &&
-
+                {state.harLoenn && (
                     <>
-                        <Label className="text-xl" >{formatMessage("income.howMuch.title")}</Label>
-                        <BodyShort spacing>{formatMessage("income.howMuch.description")}</BodyShort>
+                        <Label className="text-xl">
+                            {formatMessage("income.howMuch.title")}
+                        </Label>
+                        <BodyShort spacing>
+                            {formatMessage("income.howMuch.description")}
+                        </BodyShort>
                         <div className="flex md:flex-row flex-col md:space-x-8 my-4">
                             {inntektsAar.reverse().map((aar, index) => (
                                 <div key={index} className="flex flex-col">
@@ -193,8 +206,13 @@ const Inntekt = () => {
                                         label={`Inntekt ${aar}`}
                                         size="medium"
                                         error={error[indexKorreksjon(index)]}
-                                        value={Object.values(inntekt)[indexKorreksjon(index)]}
-                                        onChange={onChange}/>
+                                        value={
+                                            Object.values(inntekt)[
+                                                indexKorreksjon(index)
+                                            ]
+                                        }
+                                        onChange={onChange}
+                                    />
 
                                     {error[2 - index] && (
                                         <ul
@@ -202,14 +220,16 @@ const Inntekt = () => {
                                             aria-live="assertive"
                                             className="list-disc ml-5 font-bold text-red-500"
                                         >
-                                            <li>{error[indexKorreksjon(index)]}</li>
+                                            <li>
+                                                {error[indexKorreksjon(index)]}
+                                            </li>
                                         </ul>
                                     )}
                                 </div>
                             ))}
                         </div>
                     </>
-                }
+                )}
 
                 <Button variant="primary">Gå videre</Button>
             </form>

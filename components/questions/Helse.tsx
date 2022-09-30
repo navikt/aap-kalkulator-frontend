@@ -12,8 +12,8 @@ import { useRouter } from "next/router"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
-import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl";
-import {logAmplitudeEvent} from "../../lib/utils/amplitude";
+import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
+import { logAmplitudeEvent } from "../../lib/utils/amplitude"
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -26,7 +26,7 @@ const Helse = () => {
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState("")
-    const { formatMessage } = useFeatureToggleIntl();
+    const { formatMessage } = useFeatureToggleIntl()
     const aapGrense = 10
 
     const onChange = (text: string) => {
@@ -57,9 +57,13 @@ const Helse = () => {
         const errors = isNaN(sykmeldtAar)
             ? formatMessage("helse.nedsattArbeidsevne.validation.required")
             : sykmeldtAar > detteAaret
-            ? formatMessage("helse.nedsattArbeidsevne.validation.max", {Aar: detteAaret.toString()})
+            ? formatMessage("helse.nedsattArbeidsevne.validation.max", {
+                  Aar: detteAaret.toString(),
+              })
             : sykmeldtAar < detteAaret - aapGrense
-            ? formatMessage("helse.nedsattArbeidsevne.validation.min", {Aar: aapGrense.toString()})
+            ? formatMessage("helse.nedsattArbeidsevne.validation.min", {
+                  Aar: aapGrense.toString(),
+              })
             : ""
 
         if (state.over25 == undefined) {
@@ -89,7 +93,7 @@ const Helse = () => {
             <Stepper />
             <BackLink target="/" />
             <QuestionHeader
-                image="/ikoner/helse_circle.svg"
+                image="/aap/kalkulator/ikoner/helse_circle.svg"
                 alt="helse ikon"
                 tittel={formatMessage("helse.title")}
             />
@@ -100,7 +104,9 @@ const Helse = () => {
                     </Label>
                     <ReadMore
                         size="small"
-                        header={`${formatMessage("helse.over25.readMoreTitle")}`}
+                        header={`${formatMessage(
+                            "helse.over25.readMoreTitle"
+                        )}`}
                     >
                         {" "}
                         {formatMessage("helse.over25.readMore")}
@@ -171,7 +177,9 @@ const Helse = () => {
                         )}
                     </div>
                 </div>
-                <Button variant="primary">{formatMessage("navigation.next")}</Button>
+                <Button variant="primary">
+                    {formatMessage("navigation.next")}
+                </Button>
             </form>
         </>
     )

@@ -7,7 +7,7 @@ import { useContext, useEffect } from "react"
 import { BrowserState, State } from "./_app"
 import { StateInterface } from "../components/state/State"
 import { logAmplitudeEvent } from "../lib/utils/amplitude"
-import { useFeatureToggleIntl } from "../hooks/useFeatureToggleIntl";
+import { useFeatureToggleIntl } from "../hooks/useFeatureToggleIntl"
 
 const Home: NextPage = () => {
     const router = useRouter()
@@ -16,7 +16,7 @@ const Home: NextPage = () => {
     useEffect(() => {
         setState({} as StateInterface)
     }, [])
-    const { formatMessage } = useFeatureToggleIntl();
+    const { formatMessage } = useFeatureToggleIntl()
     const handleStart = () => {
         logAmplitudeEvent("skjema startet", {
             skjemanavn: "aap-kalkulator",
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
                     </Alert>
                 )}
                 <Image
-                    src="/ikoner/calculator_circle.svg"
+                    src="/aap/kalkulator/ikoner/calculator_circle.svg"
                     height="120"
                     width="120"
                     alt="kalkulator ikon"
@@ -53,18 +53,10 @@ const Home: NextPage = () => {
             </div>
             <div className="flex flex-col items-center mt-4 gap-4">
                 <ul className="list-disc space-y-2 mb-8 pl-4 md:w-5/6">
-                    <li>
-                        {formatMessage("start.firstPoint" )}
-                    </li>
-                    <li>
-                        {formatMessage("start.secondPoint" )}
-                    </li>
-                    <li>
-                        {formatMessage("start.thirdPoint" )}
-                    </li>
-                    <li>
-                        {formatMessage("start.fourthPoint")}
-                    </li>
+                    <li>{formatMessage("start.firstPoint")}</li>
+                    <li>{formatMessage("start.secondPoint")}</li>
+                    <li>{formatMessage("start.thirdPoint")}</li>
+                    <li>{formatMessage("start.fourthPoint")}</li>
                 </ul>
 
                 <Button

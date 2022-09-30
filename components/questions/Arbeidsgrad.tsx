@@ -6,7 +6,7 @@ import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
-import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl";
+import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
 
 interface ArbeidsgradInterface extends HTMLFormElement {
     arbeidsgrad: HTMLInputElement
@@ -17,7 +17,7 @@ const Arbeidsgrad = () => {
     const { state, setState } = useContext(State)
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState<string>("")
-    const { formatMessage } = useFeatureToggleIntl();
+    const { formatMessage } = useFeatureToggleIntl()
     const { browserState } = useContext(BrowserState)
 
     const arbeidsuke = 37.5
@@ -90,7 +90,7 @@ const Arbeidsgrad = () => {
             <Stepper />
             <BackLink target="/steg/2" />
             <QuestionHeader
-                image="/ikoner/briefcase_circle.svg"
+                image="/aap/kalkulator/ikoner/briefcase_circle.svg"
                 alt="koffert ikon"
                 tittel={formatMessage("work.title")}
             />
@@ -153,7 +153,9 @@ const Arbeidsgrad = () => {
                         </div>
                     </div>
                 )}
-                <Button variant="primary">{formatMessage("navigation.next")}</Button>
+                <Button variant="primary">
+                    {formatMessage("navigation.next")}
+                </Button>
             </form>
         </>
     )
