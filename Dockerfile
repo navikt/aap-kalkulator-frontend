@@ -9,11 +9,11 @@ WORKDIR /app
 COPY --chown=nextjs:nodejs .env ./
 COPY --chown=nextjs:nodejs .next/standalone ./
 COPY --chown=nextjs:nodejs .next/static ./.next/static
-
+COPY --chown=nextjs:nodejs public ./
 USER nextjs
 
 EXPOSE 3000
 
-ENV PORT 3000
+ENV PORT 3000g
 
 CMD ["node", "server.js"]
