@@ -8,6 +8,23 @@ metadata:
 spec:
     port: 3000
     image: {{ image }}
+    liveness:
+        path: "/aap/kalkulator/api/internal/isAlive"
+        initialDelay: 20
+        timeout: 60
+    readiness:
+        path: "/aap/kalkulator/api/internal/isReady"
+        initialDelay: 20
+        timeout: 60
+    replicas:
+        min: 2
+        max: 2
+    resources:
+        requests:
+            cpu: 200m
+            memory: 256Mi
+        limits:
+            memory: 256Mi
     ingresses:
     {{#each ingresses as |url|}}
         - {{url}}
