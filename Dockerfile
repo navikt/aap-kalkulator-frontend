@@ -1,12 +1,19 @@
-FROM gcr.io/distroless/nodejs@sha256:6b2a243b543dbdb919977ceb43c7f7bf090ce66f02d1f12780fe52037f1bdc15
+FROM node:16-alpine
 
 ENV NODE_ENV production
 
-COPY /next.config.js ./
-COPY /.next ./.next
-COPY /public ./public
-COPY /node_modules ./node_modules
+RUN addgroup --system --gid 1069 nodejs
+RUN adduser --system --uid 1069 nextjs
 
-ENV PORT=3000
+WORKDIR /app
+COPY --chown=nextjs:nodejs .env ./
+COPY --chown=nextjs:nodejs .next/standalone ./
+COPY --chown=nextjs:nodejs .next/static ./.next/static
 
-CMD ["./node_modules/next/dist/bin/next", "start"]
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT 3000
+
+CMD ["node", "server.js"]

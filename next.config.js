@@ -9,6 +9,7 @@ const sentryWebpackPluginOptions = {
 const nextConfig = {
     basePath: "/aap/kalkulator",
     reactStrictMode: true,
+    output: "standalone",
     i18n: {
         locales: ["nb", "nn"],
         defaultLocale: "nb",
