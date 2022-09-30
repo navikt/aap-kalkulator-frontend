@@ -1,0 +1,6 @@
+ingresses: 
+- https://aap-kalkulator.dev.nav.no
+- https://aap-kalkulator.ekstern.dev.nav.no
+env: 
+- name: DEKORATOR_ENV
+  value: dev
