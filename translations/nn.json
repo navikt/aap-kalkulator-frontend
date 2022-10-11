@@ -1,5 +1,6 @@
 {
     "test": "Test",
+    "banner": "Beregn arbeidsavklaringspenger",
     "start": {
         "title": "Kor mykje kan du få?",
         "refreshed": "Du har oppdatert sida og har derfor blitt sendt til startsida.",

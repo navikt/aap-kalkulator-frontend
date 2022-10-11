@@ -1,5 +1,6 @@
 {
   "test": "Test",
+  "banner": "Estimate work assesment allowance",
   "start": {
     "title": "How much can you get?",
     "refreshed": "Refreshing the page caused you to be sent to the start page.",
