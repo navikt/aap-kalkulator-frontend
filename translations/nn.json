@@ -34,7 +34,7 @@
         "gotChildren": {
             "title": "Har du barn?",
             "readMoreTitle": "Kvifor spør vi om du har barn?",
-            "readMore": "<BodyShort>Viss du forsørgjer barn under 18 år, kan du få eit barnetillegg. <Link href=\"https://www.nav.no/aap#hvormye-forsorgerbarn\" target=\"_blank\" rel=\"noreferrer\" as={\"a\"}>Les meir om barnetillegg her.</Link></BodyShort>",
+            "readMore": "Viss du forsørgjer barn under 18 år, kan du få eit barnetillegg.",
             "validation": {
                 "required": "Vel enten ja eller nei for å gå vidare."
             }

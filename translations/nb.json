@@ -19,7 +19,7 @@
             }
         },
         "nedsattArbeidsevne": {
-            "title": "Når ble du så syk at du måtte jobbe mindre en 50%?",
+            "title": "Når ble du så syk at du måtte jobbe mindre enn 50%?",
             "readMoreTitle": "Hvorfor spør vi om når du ble syk?",
             "readMore": "Vi bruker året du fikk nedsatt arbeidsevne, til å justere for økning i grunnbeløpet.",
             "validation": {
@@ -34,7 +34,7 @@
         "gotChildren": {
             "title": "Har du barn?",
             "readMoreTitle": "Hvorfor spør vi om du har barn?",
-            "readMore": "<BodyShort>Hvis du forsørger barn under 18 år, kan du få et barnetillegg. <Link href=\"https://www.nav.no/aap#hvormye-forsorgerbarn\" target=\"_blank\" rel=\"noreferrer\" as={\"a\"}>Les mer om barnetillegg her.</Link></BodyShort>",
+            "readMore": "Hvis du forsørger barn under 18 år, kan du få et barnetillegg.",
             "validation": {
                 "required": "Velg enten ja eller nei for å gå videre."
             }

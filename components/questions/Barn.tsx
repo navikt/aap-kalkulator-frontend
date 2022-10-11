@@ -96,13 +96,19 @@ const Barn = () => {
                         "children.gotChildren.readMoreTitle"
                     )}
                     readMore={
-                        <div
-                            dangerouslySetInnerHTML={{
-                                __html: formatMessage(
-                                    "children.gotChildren.readMore"
-                                ),
-                            }}
-                        />
+                        <>
+                            <BodyShort>
+                                {formatMessage("children.gotChildren.readMore")}
+                                <Link
+                                    href="https://www.nav.no/aap#hvormye-forsorgerbarn"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    as={"a"}
+                                >
+                                    Les mer om barnetillegg her.
+                                </Link>
+                            </BodyShort>
+                        </>
                     }
                     state={state.harBarn}
                     onChange={onRadioChange}
