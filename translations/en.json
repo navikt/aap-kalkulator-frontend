@@ -1,6 +1,9 @@
 {
   "test": "Test",
-  "banner": "Estimate work assesment allowance",
+  "banner": {
+  "title": "calculate work assesment allowance",
+  "description": "CALCULATOR | Updated "
+},
   "start": {
     "title": "How much can you get?",
     "refreshed": "Refreshing the page caused you to be sent to the start page.",

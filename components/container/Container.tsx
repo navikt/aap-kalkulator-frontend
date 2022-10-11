@@ -5,10 +5,9 @@ import React from "react"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
 
 const Container = ({ children }: { children: ReactNode }) => {
-    const { formatMessage } = useFeatureToggleIntl()
     return (
         <div className="min-h-container bg-canvas-background">
-            <Banner title={formatMessage("banner")} />
+            <Banner title={"banner.title"} />
 
             <div role="main" className="md:w-3/5 lg:w-2/5 mx-auto pb-8">
                 <Breadcrumbs />

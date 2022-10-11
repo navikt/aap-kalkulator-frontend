@@ -1,6 +1,9 @@
 {
     "test": "Test",
-    "banner": "Beregn arbeidsavklaringspenger",
+    "banner": {
+    "title": "Beregn arbeidsavklaringspenger",
+    "description": "KALKULATOR | Oppdatert "
+    },
     "start": {
         "title": "Hvor mye kan du få?",
         "refreshed": "Du har oppdatert siden og har derfor blitt sendt til startsiden.",
