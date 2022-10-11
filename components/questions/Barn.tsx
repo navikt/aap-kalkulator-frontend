@@ -105,7 +105,9 @@ const Barn = () => {
                                     rel="noreferrer"
                                     as={"a"}
                                 >
-                                    Les mer om barnetillegg her.
+                                    {formatMessage(
+                                        "children.gotChildren.lesMer"
+                                    )}
                                 </Link>
                             </BodyShort>
                         </>
