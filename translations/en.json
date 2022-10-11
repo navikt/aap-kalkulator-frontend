@@ -1,0 +1,124 @@
+{
+  "test": "Test",
+  "start": {
+    "title": "How much can you get?",
+    "refreshed": "Refreshing the page caused you to be sent to the start page.",
+    "firstPoint": "The Calculator is ment as a tool to get an estimate of what you can recieve if you apply for work assessment allowance, and get the application approved",
+    "secondPoint": "This is not an application for work assessment allowance. It is always the application decision that applies. ",
+    "thirdPoint": "NAV does not store the information that you enter in the calculator.",
+    "fourthPoint": "The calculator does not apply reductions due to other benefits, or if you are working."
+  },
+  "helse": {
+    "title": "Health",
+    "over25": {
+      "title": "Are you 25 years or older?",
+      "readMoreTitle": "Why du we ask if you are 25 years or older?",
+      "readMore": "There are different rules that apply if you are over or under 25 years of age.",
+      "validation": {
+        "required": "Select either yes or no to continue."
+      }
+    },
+    "nedsattArbeidsevne": {
+      "title": "When did you become so sick that you had to work less than 50%?",
+      "readMoreTitle": "Why are we asking when you became sick?",
+      "readMore": "We use the year you became sick to adjust for changes in the national insurance basic amount(G).",
+      "validation": {
+        "required": "The year you became sick must be a number.",
+        "max": "The year you became sick must be {Aar} or earlier.",
+        "min": "The calculater is unable to provide an estimate if you became sick longer then {Aar} years ago."
+      }
+    }
+  },
+  "children": {
+    "title": "Children",
+    "gotChildren": {
+      "title": "Do you have children?",
+      "readMoreTitle": "Why are we asking if you have children?",
+      "readMore": "If you are providing for a child younger then 18 years old, you may recieve a child supplement.",
+      "lesMer": "Read more about child supplement here.",
+      "validation": {
+        "required": "Select either yes or no to continue."
+      }
+    },
+    "howMany": {
+      "title": "How many children do you provide for?",
+      "description": "Only enter children under 18 years of age.",
+      "unit": "children",
+      "validation": {
+        "required": "The amount of children must be a number."
+      }
+    }
+  },
+  "work": {
+    "title": "Work",
+    "gotWork": {
+      "title": "Are you currently employed?",
+      "readMoreTitle": "Why are we asking if you are currently employed?",
+      "readMore": "The amount you get paid out, is dependant on whether you are working. A normal working week is 37,5 hours. if you work or get paid for more then 22.5 hours per week, you are not elligable for work assessment allowance.",
+      "validation": {
+        "required": "Select either yes or no to continue."
+      }
+    },
+    "howManyHours": {
+      "title": "How many hours do you work per week?",
+      "description": "If it varies, enter the average.",
+      "trail": "hours per week.",
+      "validation": {
+        "required": "Working hours must be a number.",
+        "limits": "The amount of hours must be between 0 and 168."
+      }
+    }
+  },
+  "income": {
+    "title": "Income",
+    "gotIncome": {
+      "title": "Did you have an income from {inntektsAar2} to {inntektsAar0}?",
+      "readMoreTitle": "Why are we asking about income?",
+      "readMore1": "We use you income to determine what you can recieve in work assessment allowance.",
+      "readMore2": "<BodyShort>This is determined by your income the three previous years or the national insurance basic amount (Two times the<Link href=\"https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden\" target=\"_blank\" rel=\"noreferrer\" as={\"a\"}>national insurance basic amount</Link>).</BodyShort>",
+      "validation": {
+        "required": "Select either yes or no to continue."
+      }
+    },
+    "howMuch": {
+      "title": "How much did you earn?",
+      "description": "Enter your income before taxes.",
+      "validation": {
+        "required": "Income must be a number"
+      }
+    }
+  },
+  "result": {
+    "title": "You can recieve",
+    "description": "How are the calculations done?",
+    "disclamer": "Thes is a temporary estimate of what you can recieve in work assesment allowance before taxes. If you apply for work clearance allowance and get it approved you will be informed of the accurate amount. Note: It is always the application decision that is applicable. This calculator only provides an estimate."
+  },
+  "logic": {
+    "salery": {
+      "minsteGrunnlag": "Since your income is lower then the minimum payout of 2G (two times the national insurance basic amount), your calculation basis will be addjusted up to <strong>{res} kr</strong>. Your income is addjusted according to the change in the national insurance basic amount",
+      "maksGrunnlag": "Since your income is higher the the maximum payout of 6G (6 times the national insurance basic amount), your calculation basis will be addjusted <strong>{res} kr</strong>. Your income is addjusted according to the change in the national insurance basic amount.",
+      "gjennomsnittInntekt": "Your calculation bases is the average of you last three years of income: <strong>{res} kr</strong>. Your income is addjusted according to the change in the national insurance basic amount.",
+      "minsteGrunnlagUnder25": "Since your income is lower then the minimum payout for those under 25 years of age, your calculation basis will be addjusted up to <strong>{res} kr</strong>. Your income is addjusted according to the change in the national insurance basic amount.",
+      "lastYear": "Your calculation basis is based on you last year of income: <strong>{res} kr</strong>. Your income is addjusted according to the change in the national insurance basic amount.",
+      "reduction": "The work assesment allowance constitutes 66 % of you calculation basis, and as such becomes <strong>{res} kr</strong>."
+    },
+    "children": {
+      "possibleChildsupport": "For each child you can recieve {perChild} kr per year. Since you have {childAmount} children, you can recieve {totChild} kr in addition. Combined, this results in <strong>{res} kr</strong>.",
+      "maxChildren": "For each child you can recieve {perChild} kr per year. Work assesment allowance plus Child supplement can not be more then 90% of the calculation basis. Because of this, you can recieve {maksBarneTillegg} kr in child allowance. Combined, this results in <strong>{res} kr</strong>."
+    },
+    "work": {
+      "any": "If you work, the work assessment allowance can be reduced. This reduction happens when delivering your work registration card every 14. day",
+      "tooMuch": "Your are working more then a 60% position and can therefore not recive a work assesment allowance.",
+      "justEnough": "A work-week is 37.5 hours. since you work {hoursWorked} hours a week, which is {percentWorked} % of a normal working week, the work assesment allowance is reduced by {percentWorked2} %, from {oldRes} kr to <strong>{res} kr</strong>."
+    }
+  },
+  "options": {
+    "yes": "Yes",
+    "no": "No"
+  },
+  "navigation": {
+    "start": "Start",
+    "next": "Continue",
+    "back": "Go back"
+  }
+}

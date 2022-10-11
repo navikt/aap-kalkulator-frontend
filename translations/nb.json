@@ -112,6 +112,10 @@
             "justEnough": "En arbeidsuke er 37,5 timer. Siden du jobber {hoursWorked} timer i uka, som er {percentWorked} % av en vanlig arbeidsuke, blir arbeidsavklaringspengene redusert med {percentWorked2} %, fra {oldRes} kr til <strong>{res} kr</strong>."
         }
     },
+    "options": {
+        "yes": "Ja",
+        "no": "Nei"
+    },
     "navigation": {
         "start": "Start",
         "next": "Gå videre",

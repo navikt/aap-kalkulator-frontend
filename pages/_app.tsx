@@ -1,17 +1,15 @@
 import "@navikt/ds-css"
 import "../styles/globals.css"
 import type { AppProps } from "next/app"
-import { createContext, useEffect, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react"
 import Container from "../components/container/Container"
 import { StateInterface } from "../components/state/State"
 import { BrowserInterface } from "../components/state/BrowserInterface"
 import Head from "next/head"
 import { initAmplitude } from "../lib/utils/amplitude"
-import { IntlProvider } from "react-intl";
-import { flattenMessages, messages } from "../utils/message";
-import links from '../translations/links.json'
+import { IntlProvider } from "react-intl"
+import { messages } from "../utils/message"
 import { useRouter } from "next/router"
-import { Locale } from "@navikt/nav-dekoratoren-moduler"
 import { Dekorator } from "../components/dekorator/Dekorator"
 
 export const State = createContext({
@@ -39,12 +37,12 @@ export const initialState = {
 }
 
 const getLocaleOrFallback = (locale?: string) => {
-    if (locale && ["nb", "nn"].includes(locale)) {
-        return locale;
+    if (locale && ["nb", "nn", "en"].includes(locale)) {
+        return locale
     }
 
-    return 'nb';
-};
+    return "nb"
+}
 
 function MyApp({ Component, pageProps }: AppProps) {
     const [state, setState] = useState<StateInterface>(initialState)
@@ -62,17 +60,19 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         <IntlProvider locale={locale} messages={messages[locale]}>
             <Dekorator>
-            <BrowserState.Provider value={{ browserState, setBrowserState }}>
-                <State.Provider value={{ state, setState }}>
-                    <Head>
-                        <meta name="robots" content="noindex" />
-                        <title>AAP-kalkulator - www.nav.no</title>
-                    </Head>
-                    <Container>
-                        <Component {...pageProps} />
-                    </Container>
-                </State.Provider>
-            </BrowserState.Provider>
+                <BrowserState.Provider
+                    value={{ browserState, setBrowserState }}
+                >
+                    <State.Provider value={{ state, setState }}>
+                        <Head>
+                            <meta name="robots" content="noindex" />
+                            <title>AAP-kalkulator - www.nav.no</title>
+                        </Head>
+                        <Container>
+                            <Component {...pageProps} />
+                        </Container>
+                    </State.Provider>
+                </BrowserState.Provider>
             </Dekorator>
         </IntlProvider>
     )
