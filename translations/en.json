@@ -1,7 +1,7 @@
 {
     "test": "Test",
     "start": {
-        "title": "How much can you get?",
+        "title": "Be awere of this",
         "refreshed": "Refreshing the page caused you to be sent to the start page.",
         "firstPoint": "The Calculator is ment as a tool to get an estimate of what you can recieve if you apply for work assessment allowance, and get the application approved",
         "secondPoint": "This is not an application for work assessment allowance. It is always the application decision that applies. ",
@@ -19,7 +19,7 @@
             }
         },
         "nedsattArbeidsevne": {
-            "title": "When did you become so sick that you had to work less than 50%?",
+            "title": "What year did you become so sick that you had to work less than 50%?",
             "readMoreTitle": "Why are we asking when you became sick?",
             "readMore": "We use the year you became sick to adjust for changes in the national insurance basic amount(G).",
             "validation": {
@@ -89,25 +89,25 @@
         }
     },
     "result": {
-        "title": "You can recieve",
+        "title": "It looks like you can recieve",
         "description": "How are the calculations done?",
-        "disclamer": "Thes is a temporary estimate of what you can recieve in work assesment allowance before taxes. If you apply for work clearance allowance and get it approved you will be informed of the accurate amount. Note: It is always the application decision that is applicable. This calculator only provides an estimate."
+        "disclamer": "From the numbers submitted, we assume that you can get this sum in work assesment allowance before taxes. If you apply for work clearance allowance and get it approved you will be informed of the accurate amount. Note: It is always the application decision that is applicable. This calculator only provides an estimate."
     },
     "logic": {
         "salery": {
             "minsteGrunnlag": "Since your income is lower then the minimum payout of 2G (two times the national insurance basic amount), your calculation basis will be addjusted up to <strong>{res} kr</strong>. Your income is addjusted according to the change in the national insurance basic amount",
             "maksGrunnlag": "Since your income is higher the the maximum payout of 6G (6 times the national insurance basic amount), your calculation basis will be addjusted <strong>{res} kr</strong>. Your income is addjusted according to the change in the national insurance basic amount.",
-            "gjennomsnittInntekt": "Your calculation bases is the average of you last three years of income: <strong>{res} kr</strong>. Your income is addjusted according to the change in the national insurance basic amount.",
+            "gjennomsnittInntekt": "Your calculation bases is: <strong>{res} kr</strong>. This is the average of you last three years of income. Your income is addjusted according to the change in the national insurance basic amount.",
             "minsteGrunnlagUnder25": "Since your income is lower then the minimum payout for those under 25 years of age, your calculation basis will be addjusted up to <strong>{res} kr</strong>. Your income is addjusted according to the change in the national insurance basic amount.",
             "lastYear": "Your calculation basis is based on you last year of income: <strong>{res} kr</strong>. Your income is addjusted according to the change in the national insurance basic amount.",
             "reduction": "The work assesment allowance constitutes 66 % of you calculation basis, and as such becomes <strong>{res} kr</strong>."
         },
         "children": {
-            "possibleChildsupport": "For each child you can recieve {perChild} kr per year. Since you have {childAmount} children, you can recieve {totChild} kr in addition. Combined, this results in <strong>{res} kr</strong>.",
-            "maxChildren": "For each child you can recieve {perChild} kr per year. Work assesment allowance plus Child supplement can not be more then 90% of the calculation basis. Because of this, you can recieve {maksBarneTillegg} kr in child allowance. Combined, this results in <strong>{res} kr</strong>."
+            "possibleChildsupport": "For each child you can recieve {perChild} kr per year. Since you have {childAmount} children, you can recieve <strong>{totChild} kr</strong> in addition per year.",
+            "maxChildren": "For each child you can recieve {perChild} kr per year. Work assesment allowance plus Child supplement can not be more then 90% of the calculation basis. Because of this, you can recieve <strong>{maksBarneTillegg} kr</strong> in child allowance per year."
         },
         "total": {
-            "totalAmount": "Dette blir til sammen <strong>{res} kr</strong> i arbeidsavklaringspenger per år før skatt."
+            "totalAmount": "Combined, this results in <strong>{res} kr</strong> in work assesment allowance per year, before taxes."
         },
         "work": {
             "any": "If you work, the work assessment allowance can be reduced. This reduction happens when delivering your work registration card every 14. day",
