@@ -106,6 +106,9 @@
             "possibleChildsupport": "For kvart barn får du {perChild} kr per år. Sidan du har {childAmount} barn, kan du få {totChild} kr i tillegg. Dette blir til saman <strong>{res} kr</strong>.",
             "maxChildren": "For kvart barn kan du få {perChild} kr per år. Arbeidsavklaringspenger pluss barnetillegg kan ikkje vera meir enn 90 % av beregningsgrunnlaget. Derfor får du {maksBarneTillegg} kr i tillegg. Dette blir til saman <strong>{res} kr</strong>."
         },
+        "total": {
+            "totalAmount": "Dette blir til sammen <strong>{res} kr</strong> i arbeidsavklaringspenger per år før skatt."
+        },
         "work": {
             "any": "Hvis du jobber, kan dette redusere arbeidsavklaringspengene dine. Dette blir gjort ved innlevering av meldekort.",
             "tooMuch": "Arbeidsgraden din er høgare enn 60 % og du kan derfor ikkje få arbeidsavklaringspenger.",

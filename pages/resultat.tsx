@@ -119,17 +119,30 @@ const Resultat: NextPage = ({
                         <span className="text-4xl md:text-5xl  md:col-start-2 justify-self-end">
                             {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
                         </span>
-                        <Label>hver&nbsp;14.&nbsp;dag</Label>
-
+                        <Label>hver&nbsp;14.&nbsp;dag (før skatt)</Label>
                         <span className="text-2xl md:text-3xl md:col-start-2 justify-self-end">
                             {Math.ceil(
                                 result == null ? 0 : result.resultat
                             ).toLocaleString("nb-NO")}
                             &nbsp;kr
                         </span>
-                        <Label>i året</Label>
+                        <Label>i året (før skatt)</Label>
                     </div>
                 </div>
+                <div className="pt-4 w-full md:w-5/6">
+                    <Alert variant="info" size="small">
+                        <p>{formatMessage("result.disclamer")}</p>
+
+                        <Link
+                            className="pt-4"
+                            href="https://www.nav.no/aap"
+                            as={"a"}
+                        >
+                            Les mer om hva du kan få i AAP her.
+                        </Link>
+                    </Alert>
+                </div>
+
                 {result != null && (
                     <div className="py-4 md:w-5/6">
                         <Accordion onClick={handleAccordion}>
@@ -161,19 +174,6 @@ const Resultat: NextPage = ({
                         </Accordion>
                     </div>
                 )}
-                <div className="pt-4">
-                    <Alert variant="info" size="small">
-                        <p>{formatMessage("result.disclamer")}</p>
-
-                        <Link
-                            className="pt-4"
-                            href="https://www.nav.no/aap"
-                            as={"a"}
-                        >
-                            Les mer om hva du kan få i AAP her.
-                        </Link>
-                    </Alert>
-                </div>
             </div>
         </>
     )

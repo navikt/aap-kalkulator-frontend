@@ -106,6 +106,9 @@
             "possibleChildsupport": "For each child you can recieve {perChild} kr per year. Since you have {childAmount} children, you can recieve {totChild} kr in addition. Combined, this results in <strong>{res} kr</strong>.",
             "maxChildren": "For each child you can recieve {perChild} kr per year. Work assesment allowance plus Child supplement can not be more then 90% of the calculation basis. Because of this, you can recieve {maksBarneTillegg} kr in child allowance. Combined, this results in <strong>{res} kr</strong>."
         },
+        "total": {
+            "totalAmount": "Dette blir til sammen <strong>{res} kr</strong> i arbeidsavklaringspenger per år før skatt."
+        },
         "work": {
             "any": "If you work, the work assessment allowance can be reduced. This reduction happens when delivering your work registration card every 14. day",
             "tooMuch": "Your are working more then a 60% position and can therefore not recive a work assesment allowance.",
