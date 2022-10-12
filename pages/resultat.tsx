@@ -115,18 +115,22 @@ const Resultat: NextPage = ({
                     </Heading>
                 </div>
                 <div className="rounded-2xl bg-feedback-success-background p-6 w-full md:w-5/6">
-                    <div className="grid grid-cols-2 md:grid-cols-3 my-4 gap-4 justify-center items-baseline">
-                        <span className="text-4xl md:text-5xl  md:col-start-2 justify-self-end">
+                    <div className="grid grid-cols-2  my-4 gap-4 justify-baseline">
+                        <span className="text-3xl md:text-5xl justify-self-end">
                             {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
                         </span>
-                        <Label>hver&nbsp;14.&nbsp;dag (før skatt)</Label>
-                        <span className="text-2xl md:text-3xl md:col-start-2 justify-self-end">
+                        <Label className="pt-4 md:pt-5">
+                            hver&nbsp;14.&nbsp;dag (før skatt)
+                        </Label>
+                        <span className="text-2xl md:text-3xl  justify-self-end">
                             {Math.ceil(
                                 result == null ? 0 : result.resultat
                             ).toLocaleString("nb-NO")}
                             &nbsp;kr
                         </span>
-                        <Label>i året (før skatt)</Label>
+                        <Label className="pt-1 md:pt-2">
+                            i året (før skatt)
+                        </Label>
                     </div>
                 </div>
                 <div className="pt-4 w-full md:w-5/6">
