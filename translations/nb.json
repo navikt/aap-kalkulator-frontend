@@ -1,7 +1,7 @@
 {
     "test": "Test",
     "start": {
-        "title": "Hvor mye kan du få?",
+        "title": "Vær oppmerksom på dette",
         "refreshed": "Du har oppdatert siden og har derfor blitt sendt til startsiden.",
         "firstPoint": "Kalkulatoren er ment som et hjelpeverktøy for deg, du får et estimat av hva du kan få hvis du søker og får innvilget arbeidsavklaringspenger (AAP).",
         "secondPoint": "Dette er ikke en søknad om AAP. Det er alltid vedtaket du får som gjelder, denne kalkulatoren gir kun et estimat.",
@@ -19,7 +19,7 @@
             }
         },
         "nedsattArbeidsevne": {
-            "title": "Når ble du så syk at du måtte jobbe mindre enn 50%?",
+            "title": "Hvilket år ble du så syk at du måtte jobbe mindre enn 50%? (åååå)",
             "readMoreTitle": "Hvorfor spør vi om når du ble syk?",
             "readMore": "Vi bruker året du fikk nedsatt arbeidsevne, til å justere for økning i grunnbeløpet.",
             "validation": {
