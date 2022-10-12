@@ -23,9 +23,12 @@ const Banner = ({ updated }: { updated: string }) => {
                     {formatMessage("banner.title")}
                 </Heading>
             </div>
-            <BodyShort spacing>
-                {formatMessage("banner.description")} {updated}
-            </BodyShort>
+            <div className="flex flex-row space-x-2 pb-2">
+                <p className="text-sm">{formatMessage("banner.description")}</p>
+                <p className="text-gray-400 text-sm">
+                    {formatMessage("banner.updated")} {process.env.NOW}
+                </p>
+            </div>
         </header>
     )
 }
