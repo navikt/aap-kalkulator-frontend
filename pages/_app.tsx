@@ -37,7 +37,7 @@ export const initialState = {
 }
 
 const getLocaleOrFallback = (locale?: string) => {
-    if (locale && ["nb", "nn", "en"].includes(locale)) {
+    if (locale && ["nb", "nn"].includes(locale)) {
         return locale
     }
 
