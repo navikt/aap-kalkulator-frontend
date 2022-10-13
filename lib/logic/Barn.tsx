@@ -1,6 +1,9 @@
 import { Result } from "../../components/result/Result"
-import { toKr, YTELSESDAGER, ytelseTilGrunnlag } from "../utils/HjelpeFunksjoner"
-
+import {
+    toKr,
+    YTELSESDAGER,
+    ytelseTilGrunnlag,
+} from "../utils/HjelpeFunksjoner"
 
 const SATS_PER_BARN_PER_DAG: number = 27
 
@@ -26,13 +29,37 @@ export const leggTilBarnetillegg = (resultat: Result) => {
     switch (resultat.resultat) {
         case muligBarnetillegg: {
             resultat.logs.push(
-                {id:"logic.children.possibleChildsupport",values:{perChild:toKr(barnetillegg(1)),childAmount:(resultat.personInfo!!.antallBarn!!).toString(),totChild:toKr(faktiskBarnetillegg),res:toKr(resultat.resultat)}}
+                {
+                    id: "logic.children.possibleChildsupport",
+                    values: {
+                        perChild: toKr(barnetillegg(1)),
+                        childAmount:
+                            resultat.personInfo!!.antallBarn!!.toString(),
+                        totChild: toKr(faktiskBarnetillegg),
+                        res: toKr(resultat.resultat),
+                    },
+                },
+                {
+                    id: "logic.total.totalAmount",
+                    values: { res: toKr(resultat.resultat) },
+                }
             )
             break
         }
         default: {
             resultat.logs.push(
-                {id:"logic.children.maxChildren",values:{perChild:toKr(barnetillegg(1)), maksBarneTillegg:toKr(maksBarnetilleggUtenGrunnlag),res:toKr(resultat.resultat)}}
+                {
+                    id: "logic.children.maxChildren",
+                    values: {
+                        perChild: toKr(barnetillegg(1)),
+                        maksBarneTillegg: toKr(maksBarnetilleggUtenGrunnlag),
+                        res: toKr(resultat.resultat),
+                    },
+                },
+                {
+                    id: "logic.total.totalAmount",
+                    values: { res: toKr(resultat.resultat) },
+                }
             )
         }
     }

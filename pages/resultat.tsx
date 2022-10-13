@@ -142,7 +142,7 @@ const Resultat: NextPage = ({
                             href="https://www.nav.no/aap"
                             as={"a"}
                         >
-                            Les mer om hva du kan få i AAP her.
+                            Les mer om AAP her.
                         </Link>
                     </Alert>
                 </div>

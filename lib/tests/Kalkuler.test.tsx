@@ -84,7 +84,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(441449)
-        expect(resultat.logs.length).toBe(4)
+        expect(resultat.logs.length).toBe(3)
     })
     it("ytelse med grunnbeløp 2g, 7 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
@@ -186,7 +186,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(224813)
-        expect(resultat.logs.length).toBe(4)
+        expect(resultat.logs.length).toBe(3)
     })
     it("ytelse med grunnbeløp 6g, 24 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
@@ -221,7 +221,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(133772)
-        expect(resultat.logs.length).toBe(5)
+        expect(resultat.logs.length).toBe(4)
     })
     it("ytelse med grunnbeløp 2g, 15 barn og 50% arbeidsgrad", () => {
         const state: StateInterface = {
@@ -274,7 +274,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(353159)
-        expect(resultat.logs.length).toBe(5)
+        expect(resultat.logs.length).toBe(4)
     })
     it("ytelse med grunnbeløp 6g, 5 barn og 61% arbeidsgrad", () => {
         const state: StateInterface = {

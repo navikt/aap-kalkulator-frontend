@@ -139,17 +139,8 @@ const Inntekt = () => {
                 arbeidsavklaringspenger.
             </BodyShort>
             <BodyShort>
-                Dette bestemmes av inntekten din de tre siste årene eller
-                minstesatsen (to ganger{" "}
-                <Link
-                    href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden"
-                    target="_blank"
-                    rel="noreferrer"
-                    as={"a"}
-                >
-                    grunnbeløpet
-                </Link>
-                ).
+                Dette bestemmes av inntekten din siste året, de tre siste årene
+                eller minstesatsen.
             </BodyShort>
         </div>
     )
