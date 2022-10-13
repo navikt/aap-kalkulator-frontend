@@ -139,8 +139,8 @@ const Inntekt = () => {
                 arbeidsavklaringspenger.
             </BodyShort>
             <BodyShort>
-                Dette bestemmes av inntekten din siste året, de tre siste årene
-                eller minstesatsen.
+                Dette bestemmes av inntekten din det siste året, de tre siste årene
+                eller minstesatsen. Vi bruker det som gir høyest beregning.
             </BodyShort>
         </div>
     )
