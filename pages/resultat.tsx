@@ -150,7 +150,7 @@ const Resultat: NextPage = ({
                 {result != null && (
                     <div className="py-4 md:w-5/6">
                         <Accordion onClick={handleAccordion}>
-                            <Accordion.Item>
+                            <Accordion.Item defaultOpen={true}>
                                 <Accordion.Header>
                                     {formatMessage("result.description")}
                                 </Accordion.Header>
