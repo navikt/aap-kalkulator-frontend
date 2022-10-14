@@ -1,5 +1,6 @@
 {
     "test": "Test",
+    "header": "Finn ut omtrent hvor mye du kan få i AAP",
     "start": {
         "title": "Be awere of this",
         "refreshed": "Refreshing the page caused you to be sent to the start page.",
@@ -91,7 +92,10 @@
     "result": {
         "title": "It looks like you can recieve",
         "description": "How are the calculations done?",
-        "disclamer": "From the numbers submitted, we assume that you can get this sum in work assesment allowance before taxes. If you apply for work clearance allowance and get it approved you will be informed of the accurate amount. Note: It is always the application decision that is applicable. This calculator only provides an estimate."
+        "disclamer": "From the numbers submitted, we assume that you can get this sum in work assesment allowance before taxes. If you apply for work clearance allowance and get it approved you will be informed of the accurate amount. Note: It is always the application decision that is applicable. This calculator only provides an estimate.",
+        "link": "Read more about AAP here.",
+        "per14": "every 14th day (before taxes)",
+        "perAar": "per year (before taxes)"
     },
     "logic": {
         "salery": {

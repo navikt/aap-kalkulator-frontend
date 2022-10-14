@@ -120,7 +120,7 @@ const Resultat: NextPage = ({
                             {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
                         </span>
                         <Label className="pt-4 md:pt-5">
-                            hver&nbsp;14.&nbsp;dag (før skatt)
+                            {formatMessage("result.per14")}
                         </Label>
                         <span className="text-2xl md:text-3xl  justify-self-end">
                             {Math.ceil(
@@ -129,7 +129,7 @@ const Resultat: NextPage = ({
                             &nbsp;kr
                         </span>
                         <Label className="pt-1 md:pt-2">
-                            i året (før skatt)
+                            {formatMessage("result.perAar")}
                         </Label>
                     </div>
                 </div>
@@ -138,11 +138,12 @@ const Resultat: NextPage = ({
                         <p>{formatMessage("result.disclamer")}</p>
 
                         <Link
+                            target="_blank"
                             className="pt-4"
                             href="https://www.nav.no/aap"
                             as={"a"}
                         >
-                            Les mer om AAP her.
+                            {formatMessage("result.link")}
                         </Link>
                     </Alert>
                 </div>

@@ -126,8 +126,8 @@ const Helse = () => {
                                 : "nei"
                         }
                     >
-                        <Radio value="ja">Ja</Radio>
-                        <Radio value="nei">Nei</Radio>
+                        <Radio value="ja">{formatMessage("options.yes")}</Radio>
+                        <Radio value="nei">{formatMessage("options.no")}</Radio>
                     </RadioGroup>
                     {radioError && (
                         <ul

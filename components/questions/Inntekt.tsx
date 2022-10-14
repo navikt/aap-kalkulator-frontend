@@ -135,12 +135,10 @@ const Inntekt = () => {
     const readMoreText = (
         <div>
             <BodyShort spacing>
-                Vi bruker inntekten din til å regne ut hva du kan få i
-                arbeidsavklaringspenger.
+                {formatMessage("income.gotIncome.readMore1")}
             </BodyShort>
             <BodyShort>
-                Dette bestemmes av inntekten din det siste året, de tre siste årene
-                eller minstesatsen. Vi bruker det som gir høyest beregning.
+                {formatMessage("income.gotIncome.readMore2")}
             </BodyShort>
         </div>
     )
@@ -222,7 +220,7 @@ const Inntekt = () => {
                     </>
                 )}
 
-                <Button variant="primary">Gå videre</Button>
+                <Button variant="primary">{formatMessage("navigation.next")}</Button>
             </form>
         </>
     )
