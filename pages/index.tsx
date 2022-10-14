@@ -34,7 +34,7 @@ const Home: NextPage = () => {
                     </Alert>
                 )}
                 <Image
-                    src="/aap/kalkulator/ikoner/calculator_circle.svg"
+                    src="/aap/kalkulator/ikoner/magnifying_glass.svg"
                     height="120"
                     width="120"
                     alt="kalkulator ikon"

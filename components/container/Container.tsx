@@ -6,7 +6,7 @@ import React from "react"
 const Container = ({ children }: { children: ReactNode }) => {
     return (
         <div className="min-h-container bg-canvas-background">
-            <Banner title="Beregning av arbeidsavklaringspenger" />
+            <Banner title="Finn ut omtrent hvor mye du kan få i AAP" />
 
             <div role="main" className="md:w-3/5 lg:w-2/5 mx-auto pb-8">
                 <Breadcrumbs />
