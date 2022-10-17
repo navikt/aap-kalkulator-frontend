@@ -100,12 +100,13 @@
     },
     "logic": {
         "salery": {
-            "minsteGrunnlag": "Siden inntekten din er lavere enn minstebeløpet på 2G (2 ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli oppjustert til <strong>{res} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.",
+            "minsteGrunnlag": "Beregningsgrunnlaget er enten inntekten din siste året eller gjennomsnittet av pensjonsgivende inntekt de siste tre årene. Vi bruker det høyeste tallet av disse.",
             "maksGrunnlag": "Siden inntekten din er høyere enn maksbeløpet på 6G (6 ganger grunnbeløpet), vil beregningsgrunnlaget ditt bli nedjustert til <strong>{res} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.",
             "gjennomsnittInntekt": "Beregningsgrunnlaget ditt er: <strong>{res} kr</strong>. Dette er gjennomsnittet av de tre siste inntektsårene dine. Inntekten din er justert ut fra endring i grunnbeløpet.",
             "minsteGrunnlagUnder25": "Siden inntekten din er lavere enn grensen for minste utbetaling for de under 25 år blir beregningsgrunnlaget ditt oppjustert til <strong>{res} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.",
             "lastYear": "Beregningsgrunnlaget er basert på det siste inntektsåret ditt: <strong>{res} kr</strong>. Inntekten din er justert ut fra endring i grunnbeløpet.",
-            "reduction": "Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og blir derfor <strong>{res} kr</strong>."
+            "reduction": "Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget, og blir derfor <strong>{res} kr</strong>.",
+            "reductionMin": "Arbeidsavklaringspengene utgjør 66 % av beregningsgrunnlaget. For deg blir dette under minstesatsen for arbeidsavklaringspenger. Du blir derfor justert opp til minstesatsen for arbeidsavklaringspenger, som er <strong>{res} kr</strong>."
         },
         "children": {
             "possibleChildsupport": "For hvert barn får du {perChild} kr per år. Siden du har {childAmount} barn, kan du få <strong>{totChild} kr</strong> i tillegg per år.",

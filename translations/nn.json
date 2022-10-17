@@ -99,12 +99,14 @@
     },
     "logic": {
         "salery": {
-            "minsteGrunnlag": "Sidan inntekta di er lågare enn minstebeløpet på 2G (2 ganger grunnbeløpet), vil utrekningsgrunnlaget ditt bli oppjustert til <strong>{res} kr</strong>. Inntekta di er justert ut frå endring i grunnbeløpet.",
+            "minsteGrunnlag": "Utrekningsgrunnlaget er enten inntekta di siste året eller gjennomsnittet av pensjonsgjevande inntekt dei siste tre åra. Vi bruker det høgaste talet av desse.",
             "maksGrunnlag": "Sidan inntekta di er høgare enn maksbeløpet på 6G (6 ganger grunnbeløpet), vil utrekningsgrunnlaget ditt bli nedjustert til <strong>{res} kr</strong>. Inntekta di er justert ut frå endring i grunnbeløpet.",
             "gjennomsnittInntekt": "Utrekningsgrunnlaget ditt er: <strong>{res} kr</strong>. Dette er gjennomsnittet av dei tre siste inntektsåra dine. Inntekta di er justert ut frå endring i grunnbeløpet.",
             "minsteGrunnlagUnder25": "Sidan inntekta di er lavere enn grensen for minste utbetaling for dei under 25 år blir utrekningsgrunnlaget ditt oppjustert til <strong>{res} kr</strong>. Inntekta di er justert ut frå endring i grunnbeløpet.",
             "lastYear": "beregningsgrunnlaget er basert på det siste inntektsåret ditt: <strong>{res} kr</strong>. Inntekta di er justert ut frå endring i grunnbeløpet.",
-            "reduction": "Arbeidsavklaringspengene utgjer 66 % av utrekningsgrunnlaget, og blir derfor <strong>{res} kr</strong>."
+            "reduction": "Arbeidsavklaringspengene utgjer 66 % av utrekningsgrunnlaget, og blir derfor <strong>{res} kr</strong>.",
+            "reductionMin": "Arbeidsavklaringspengene utgjer 66 % av utrekningsgrunnlaget. For deg blir dette under minstesatsen for arbeidsavklaringspengar. Du blir derfor justert opp til minstesatsen for arbeidsavklaringspengar, som er <strong>{res} kr</strong>."
+
         },
         "children": {
             "possibleChildsupport": "For kvart barn får du {perChild} kr per år. Sidan du har {childAmount} barn, kan du få <strong>{totChild} kr</strong> i tillegg per år.",
