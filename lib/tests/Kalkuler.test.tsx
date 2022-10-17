@@ -107,7 +107,7 @@ describe("integrasjon", () => {
             values: { res: "337 809" },
         })
         expect(resultat.logs[1]).toEqual({
-            id: "logic.salery.reduction",
+            id: "logic.salery.reductionMin",
             values: { res: "222 954" },
         })
         expect(resultat.logs[2]).toEqual({
@@ -245,7 +245,7 @@ describe("integrasjon", () => {
             values: { res: "337 809" },
         })
         expect(resultat.logs[1]).toEqual({
-            id: "logic.salery.reduction",
+            id: "logic.salery.reductionMin",
             values: { res: "222 954" },
         })
         expect(resultat.logs[2]).toEqual({
