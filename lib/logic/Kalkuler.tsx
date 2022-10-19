@@ -4,6 +4,7 @@ import { Result } from "../../components/result/Result"
 import inntektsgrunnlag from "./Inntekt"
 import { leggTilBarnetillegg } from "./Barn"
 import { arbeidsgrad } from "./Arbeidsgrad"
+import { toKr } from "../utils/HjelpeFunksjoner"
 
 export const kalkuler = (
     state: StateInterface,

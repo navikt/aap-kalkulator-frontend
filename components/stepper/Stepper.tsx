@@ -4,6 +4,7 @@ import React, { useContext, useRef } from "react"
 import Divider from "../divider/Divider"
 import { useRouter } from "next/router"
 import { State } from "../../pages/_app"
+import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
 
 const Step = ({
     title,
@@ -88,7 +89,9 @@ const Step = ({
 
 const Stepper = () => {
     const stepperRef = useRef<HTMLElement>(null)
-    const steps = ["Helse", "Inntekt", "Barn", "Resultat"]
+    const { formatMessage } = useFeatureToggleIntl()
+    const steps = [formatMessage("helse.title"), formatMessage("income.title"),
+        formatMessage("children.title"), formatMessage("result.stepTitle")]
     return (
         <nav aria-label="Steg i skjema" ref={stepperRef}>
             <ul className="flex flex-row justify-center pb-4 items-center md:px-8 px-0">

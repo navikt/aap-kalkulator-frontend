@@ -61,7 +61,7 @@ describe("kalkulere inntektsgrunnlag", () => {
         expect(Math.round(resultat.resultat)).toBe(222954)
         expect(resultat.logs.length).toBe(2)
         expect(resultat.logs[0]).toEqual({id:"logic.salery.minsteGrunnlag",values:{res: "337 809",}})
-        expect(resultat.logs[1]).toEqual({id:"logic.salery.reduction",values:{res: "222 954",}})
+        expect(resultat.logs[1]).toEqual({id:"logic.salery.reductionMin",values:{res: "222 954",}})
     })
     it("inntektsgrunnlag med en mill i inntekt", () => {
         const enMill = 1_000_000.0
@@ -143,5 +143,19 @@ describe("kalkulere inntektsgrunnlag", () => {
         inntektsgrunnlag(g, historikk, resultat)
         expect(Math.round(resultat.resultat)).toBe(298896)
         expect(resultat.logs.length).toBe(2)
+    })
+    it("fra brukertest", () => {
+        const resultat = new Result({
+            ...initialState,
+            harLoenn: true,
+            inntekt1: 200000,
+            inntekt2: 200000,
+            inntekt3: 300000,
+            sykmeldtAar: 2021,
+            over25: true,
+        })
+        resultat.resultat = 0
+        inntektsgrunnlag(g, historikk, resultat)
+        expect(Math.round(resultat.resultat)).toBe(222954)
     })
 })

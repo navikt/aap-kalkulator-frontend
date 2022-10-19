@@ -115,25 +115,43 @@ const Resultat: NextPage = ({
                     </Heading>
                 </div>
                 <div className="rounded-2xl bg-feedback-success-background p-6 w-full md:w-5/6">
-                    <div className="grid grid-cols-2 md:grid-cols-3 my-4 gap-4 justify-center items-baseline">
-                        <span className="text-4xl md:text-5xl  md:col-start-2 justify-self-end">
+                    <div className="grid grid-cols-2  my-4 gap-4 justify-baseline">
+                        <span className="text-3xl md:text-5xl justify-self-end">
                             {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
                         </span>
-                        <Label>hver&nbsp;14.&nbsp;dag</Label>
-
-                        <span className="text-2xl md:text-3xl md:col-start-2 justify-self-end">
+                        <Label className="pt-4 md:pt-5">
+                            {formatMessage("result.per14")}
+                        </Label>
+                        <span className="text-2xl md:text-3xl  justify-self-end">
                             {Math.ceil(
                                 result == null ? 0 : result.resultat
                             ).toLocaleString("nb-NO")}
                             &nbsp;kr
                         </span>
-                        <Label>i året</Label>
+                        <Label className="pt-1 md:pt-2">
+                            {formatMessage("result.perAar")}
+                        </Label>
                     </div>
                 </div>
+                <div className="pt-4 w-full md:w-5/6">
+                    <Alert variant="info" size="small">
+                        <p>{formatMessage("result.disclamer")}</p>
+
+                        <Link
+                            target="_blank"
+                            className="pt-4"
+                            href="https://www.nav.no/aap"
+                            as={"a"}
+                        >
+                            {formatMessage("result.link")}
+                        </Link>
+                    </Alert>
+                </div>
+
                 {result != null && (
                     <div className="py-4 md:w-5/6">
                         <Accordion onClick={handleAccordion}>
-                            <Accordion.Item>
+                            <Accordion.Item defaultOpen={true}>
                                 <Accordion.Header>
                                     {formatMessage("result.description")}
                                 </Accordion.Header>
@@ -161,19 +179,6 @@ const Resultat: NextPage = ({
                         </Accordion>
                     </div>
                 )}
-                <div className="pt-4">
-                    <Alert variant="info" size="small">
-                        <p>{formatMessage("result.disclamer")}</p>
-
-                        <Link
-                            className="pt-4"
-                            href="https://www.nav.no/aap"
-                            as={"a"}
-                        >
-                            Les mer om hva du kan få i AAP her.
-                        </Link>
-                    </Alert>
-                </div>
             </div>
         </>
     )

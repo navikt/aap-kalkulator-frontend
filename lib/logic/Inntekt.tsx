@@ -125,10 +125,16 @@ const inntektsgrunnlag = (
     }
 
     const resultatEtterFradrag = prosentReduksjon(resultat.resultat)
-    resultat.logs.push(
-        {id:"logic.salery.reduction",values:{res:toKr(resultatEtterFradrag)}}
-    )
-
+    if(resultatEtterFradrag <= minsteGrunnlag){
+        console.log(minsteGrunnlag)
+        resultat.logs.push(
+            {id:"logic.salery.reductionMin",values:{res:toKr(resultatEtterFradrag)}}
+        )
+    } else{
+        resultat.logs.push(
+            {id:"logic.salery.reduction",values:{res:toKr(resultatEtterFradrag)}}
+        )
+    }
     resultat.resultat = resultatEtterFradrag
 }
 

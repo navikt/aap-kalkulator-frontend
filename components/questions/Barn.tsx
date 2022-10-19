@@ -66,14 +66,14 @@ const Barn = () => {
 
     const readmoreTekst = (
         <BodyShort>
-            Hvis du forsørger barn under 18 år, kan du få et barnetillegg.{" "}
+            {formatMessage("children.gotChildren.readMore")}
             <Link
                 href="https://www.nav.no/aap#hvormye-forsorgerbarn"
                 target="_blank"
                 rel="noreferrer"
                 as={"a"}
             >
-                Les mer om barnetillegg her.
+                {formatMessage("children.gotChildren.lesMer")}
             </Link>
         </BodyShort>
     )
@@ -170,7 +170,7 @@ const Barn = () => {
                     </div>
                 )}
 
-                <Button variant="primary">Gå videre</Button>
+                <Button variant="primary">{formatMessage("navigation.next")}</Button>
             </form>
         </>
     )
