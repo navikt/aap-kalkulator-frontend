@@ -9,34 +9,31 @@ env:
     APP: aap-kalkulator-frontend
     branchname: ${{ github.ref_name }}
     SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+    IMAGE_BASE: ghcr.io/${{ github.repository }}
 jobs:
     build-and-publish:
+        outputs:
+          image: ${{ steps.bygg.outputs.image }}
         name: Bygg og push Docker image
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
               uses: actions/checkout@v1
-            - name: Generer versjon og image navn
-              run: |
-                  TIME=$(TZ="Europe/Oslo" date +%Y.%m.%d-%H.%M)
-                  COMMIT=$(git rev-parse --short=8 HEAD)
-                  VERSION=$TIME-$COMMIT
-                  echo "IMAGE=ghcr.io/navikt/$APP:$VERSION" >> $GITHUB_ENV
-                  echo "VERSION=$VERSION" >> $GITHUB_ENV
-            - run: echo $VERSION > VERSION.txt
-            - name: Last opp VERSION til neste job
-              uses: actions/upload-artifact@v1
-              with:
-                  name: VERSION.txt
-                  path: VERSION.txt
             - name: Install npm dependencies
               run: npm ci
             - name: test application
               run: npm test
             - name: hent tidsstempel
               run: echo "NEXT_PUBLIC_LAST_UPDATED=$(date +%Y.%m.%d.%H%M%S)" > .env.local
+            - name: Setter tag-navn
+              run: echo "TAG=$(date +%Y.%m.%d.%H%M%S)-$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+            - name: Setter image-navn
+              run: echo "IMAGE=$(echo $IMAGE_BASE):$(echo $TAG)" >> $GITHUB_ENV
             - name: Build application
-              run: npm run build
+              id: bygg
+              run: | 
+                npm run build
+                echo "::set-output name=image::${{ env.IMAGE }}"
             - name: Docker login
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -46,42 +43,21 @@ jobs:
               run: |
                   docker build . -t ${IMAGE}
                   docker push ${IMAGE}
-                  
-    deploy-to-dev:
-        name: Deploy to dev
-        needs: [build-and-publish]
-        runs-on: ubuntu-latest
-        steps:
+        deploy:
+          strategy:
+            matrix:
+              cluster: [ dev-gcp, prod-gcp ]
+            environment: ${{matrix.cluster}}:aap
+            name: Deploy til ${{matrix.cluster}}
+            needs: build-and-publish
+          runs-on: ubuntu-latest
+          steps:
             - uses: actions/checkout@v1
-            - uses: actions/download-artifact@v1
-              with:
-                  name: VERSION.txt
-                  path: .
-            - run: echo "VERSION=`cat VERSION.txt`" >> $GITHUB_ENV
-            - run: echo "IMAGE=ghcr.io/navikt/$APP:$VERSION" >> $GITHUB_ENV
-            - name: Deploy to dev-gcp
-              uses: nais/deploy/actions/deploy@v1
+            - uses: nais/deploy/actions/deploy@v1
               env:
-                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-                  CLUSTER: dev-gcp
-                  RESOURCE: nais.yaml
-                  VARS: .nais/dev.yaml
-    deploy-to-prod:
-        name: Deploy to prod
-        needs: [build-and-publish]
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v1
-            - uses: actions/download-artifact@v1
-              with:
-                  name: VERSION.txt
-                  path: .
-            - run: echo "VERSION=`cat VERSION.txt`" >> $GITHUB_ENV
-            - run: echo "IMAGE=ghcr.io/navikt/$APP:$VERSION" >> $GITHUB_ENV
-            - name: Deploy to prod-gcp
-              uses: nais/deploy/actions/deploy@v1
-              env:
-                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-                  CLUSTER: prod-gcp
-                  RESOURCE: nais.yaml
-                  VARS: .nais/prod.yaml
+                APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+                RESOURCE: nais.yaml
+                CLUSTER: ${{matrix.cluster}}
+                VARS: .nais/${{matrix.cluster}}.yaml
+                IMAGE: ${{needs.bygg.outputs.image}}
+
