@@ -68,10 +68,10 @@ jobs:
           RESOURCE: nais.yaml
           CLUSTER: ${{matrix.cluster}}
           VARS: .nais/${{matrix.cluster}}.yaml
-          IMAGE: ${{needs.steps.bygg.outputs.img}} 
+          IMAGE: ${{needs.bygg.outputs.img}} 
         steps:
           - name: Get image
-            run: echo "The image is ${{ needs.steps.bygg.outputs.img }}"  
+            run: echo "The image is ${{ needs.bygg.outputs.img }}"  
           - uses: actions/checkout@v3
           - uses: nais/deploy/actions/deploy@master
            
