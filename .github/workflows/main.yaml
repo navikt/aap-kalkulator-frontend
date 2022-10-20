@@ -18,7 +18,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
-              uses: actions/checkout@v1
+              uses: actions/checkout@v3
             - name: Install npm dependencies
               run: npm ci
             - name: test application
@@ -58,7 +58,7 @@ jobs:
           VARS: .nais/${{matrix.cluster}}.yaml
           IMAGE: ${{needs.bygg.outputs.image}} 
         steps:
-          - uses: actions/checkout@v1
-          - uses: nais/deploy/actions/deploy@v1
+          - uses: actions/checkout@v3
+          - uses: nais/deploy/actions/deploy@master
            
 
