@@ -41,8 +41,8 @@ jobs:
                 echo "level=42" >> $GITHUB_OUTPUT
                 npm run build
                 
-            - name: Get level
-              run: echo "The level is ${{ steps.bygg.outputs.level }}"      
+            - name: Get image
+              run: echo "The image is ${{ env.IMAGE }}"      
                 
             - name: Docker login
               env:
