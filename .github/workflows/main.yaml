@@ -43,13 +43,13 @@ jobs:
               run: |
                   docker build . -t ${IMAGE}
                   docker push ${IMAGE}
-      deploy:
+    deploy:
         strategy:
           matrix:
             cluster: [ dev-gcp, prod-gcp ]
-          environment: ${{matrix.cluster}}:aap
-          name: Deploy til ${{matrix.cluster}}
-          needs: build-and-publish
+        environment: ${{matrix.cluster}}:aap
+        name: Deploy til ${{matrix.cluster}}
+        needs: build-and-publish
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v1
