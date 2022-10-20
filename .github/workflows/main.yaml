@@ -67,7 +67,7 @@ jobs:
           VARS: .nais/${{matrix.cluster}}.yaml
         steps:
           - name: Get image
-            run: echo "IMAGE=$(echo ${{needs.build-and-publish.outputs.img}})" >> $GITHUB_ENV
+            run: echo "IMAGE=$(echo ${{needs.build-and-publish.outputs.image}})" >> $GITHUB_ENV
           - uses: actions/checkout@v3
           - uses: nais/deploy/actions/deploy@master
            
