@@ -43,21 +43,21 @@ jobs:
               run: |
                   docker build . -t ${IMAGE}
                   docker push ${IMAGE}
-        deploy:
-          strategy:
-            matrix:
-              cluster: [ dev-gcp, prod-gcp ]
-            environment: ${{matrix.cluster}}:aap
-            name: Deploy til ${{matrix.cluster}}
-            needs: build-and-publish
-          runs-on: ubuntu-latest
-          steps:
-            - uses: actions/checkout@v1
-            - uses: nais/deploy/actions/deploy@v1
-              env:
-                APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-                RESOURCE: nais.yaml
-                CLUSTER: ${{matrix.cluster}}
-                VARS: .nais/${{matrix.cluster}}.yaml
-                IMAGE: ${{needs.bygg.outputs.image}}
+      deploy:
+        strategy:
+          matrix:
+            cluster: [ dev-gcp, prod-gcp ]
+          environment: ${{matrix.cluster}}:aap
+          name: Deploy til ${{matrix.cluster}}
+          needs: build-and-publish
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v1
+          - uses: nais/deploy/actions/deploy@v1
+            env:
+              APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+              RESOURCE: nais.yaml
+              CLUSTER: ${{matrix.cluster}}
+              VARS: .nais/${{matrix.cluster}}.yaml
+              IMAGE: ${{needs.bygg.outputs.image}}
 
