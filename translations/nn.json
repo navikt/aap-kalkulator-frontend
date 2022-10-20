@@ -1,6 +1,10 @@
 {
     "test": "Test",
-    "header": "Finn ut omtrent kor mykje du kan få i AAP",
+    "banner": {
+        "title": "Finn ut omtrent kor mykje du kan få i AAP",
+        "description": "KALKULATOR",
+        "updated": " | Oppdatert "
+    },
     "start": {
         "title": "Vær oppmerksam på dette",
         "refreshed": "Du har oppdatert sida og har derfor blitt sendt til startsida.",
