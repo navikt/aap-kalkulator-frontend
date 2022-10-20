@@ -14,7 +14,8 @@ jobs:
         name: Bygg og push Docker image
         runs-on: ubuntu-latest
         outputs:
-          image: ${{ steps.bygg.outputs.image }}
+          level: ${{ steps.bygg.outputs.level }}
+          img: ${{ steps.bygg.outputs.img }}
         steps:
             - name: Checkout code
               uses: actions/checkout@v3
@@ -37,7 +38,8 @@ jobs:
             - name: Build application
               id: bygg
               run: | 
-                echo "image=${{ env.IMAGE }}" >> $GITHUB_OUTPUT
+                echo "img=${{ env.IMAGE }}" >> $GITHUB_OUTPUT
+                echo "level=42" >> $GITHUB_OUTPUT
                 npm run build
                 
             - name: Docker login
@@ -65,7 +67,8 @@ jobs:
           RESOURCE: nais.yaml
           CLUSTER: ${{matrix.cluster}}
           VARS: .nais/${{matrix.cluster}}.yaml
-          IMAGE: ${{needs.bygg.outputs.image}} 
+          LEVEL: ${{needs.bygg.outputs.level}} 
+          IMAGE: ${{needs.bygg.outputs.img}} 
         steps:
           - uses: actions/checkout@v3
           - uses: nais/deploy/actions/deploy@master
