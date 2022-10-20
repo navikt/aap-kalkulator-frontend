@@ -7,7 +7,6 @@ on:
       - '**.md'
 env:
     APP: aap-kalkulator-frontend
-    branchname: ${{ github.ref_name }}
     SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
     IMAGE_BASE: ghcr.io/${{ github.repository }}
 jobs:
@@ -33,7 +32,7 @@ jobs:
               id: bygg
               run: | 
                 npm run build
-                echo "::set-output name=image::${{ env.IMAGE }}"
+                echo "::set-output name=image::${{ env.IMAGE }}"                    
             - name: Docker login
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
