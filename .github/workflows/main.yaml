@@ -34,11 +34,11 @@ jobs:
             - name: test application
               run: npm test
             - name: Generer env.local
-                env:
-                    LAST_UPDATED: ${{ date +%s000 }}
-                run: |
-                    touch .env.local
-                    echo LAST_UPDATED="$LAST_UPDATED" >> .env.local
+              env:
+                  LAST_UPDATED: ${{ date +%s000 }}
+              run: |
+                  touch .env.local
+                  echo LAST_UPDATED="$LAST_UPDATED" >> .env.local
             - name: Build application
               run: npm run build
             - name: Docker login
