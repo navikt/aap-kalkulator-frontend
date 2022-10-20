@@ -37,7 +37,7 @@ jobs:
             - name: Build application
               id: bygg
               run: | 
-                echo "{image}=${{ env.IMAGE }}" >> $GITHUB_OUTPUT
+                echo "image=${{ env.IMAGE }}" >> $GITHUB_OUTPUT
                 npm run build
                 
             - name: Docker login
