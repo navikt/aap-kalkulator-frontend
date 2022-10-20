@@ -16,8 +16,13 @@ jobs:
       output1: ${{ steps.step1.outputs.test }}
       output2: ${{ steps.step2.outputs.test }}
     steps:
+      - name: Setter tag-navn
+        run: echo "TAG=$(date +%Y.%m.%d.%H%M%S)-$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+              
+      - name: Setter image-navn
+        run: echo "IMAGE=$(echo $IMAGE_BASE):$(echo $TAG)" >> $GITHUB_ENV
       - id: step1
-        run: echo "test=hello" >> $GITHUB_OUTPUT
+        run: echo "test=${{ env.IMAGE }}" >> $GITHUB_OUTPUT
       - id: step2
         run: echo "test=world" >> $GITHUB_OUTPUT
   job2:
