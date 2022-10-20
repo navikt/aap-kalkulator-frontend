@@ -34,7 +34,7 @@ jobs:
             - name: test application
               run: npm test
             - name: hent tidsstempel
-            - run: echo "LAST_UPDATED=$(date +%Y.%m.%d.%H%M%S)" >> $GITHUB_ENV
+              run: echo "LAST_UPDATED=$(date +%Y.%m.%d.%H%M%S)" >> $GITHUB_ENV
             - name: Generer env.local
               run: |
                   touch .env.local
