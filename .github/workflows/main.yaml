@@ -69,7 +69,7 @@ jobs:
           RESOURCE: nais.yaml
           CLUSTER: ${{matrix.cluster}}
           VARS: .nais/${{matrix.cluster}}.yaml
-          LEVEL: ${{needs.bygg.outputs.level}} 
+          LEVEL: ${{build-and-publish.bygg.outputs.level}} 
           IMAGE: ${{needs.bygg.outputs.img}} 
         steps:
           - name: Get level
