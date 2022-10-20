@@ -69,11 +69,11 @@ jobs:
           RESOURCE: nais.yaml
           CLUSTER: ${{matrix.cluster}}
           VARS: .nais/${{matrix.cluster}}.yaml
-          LEVEL: ${{build-and-publish.bygg.outputs.level}} 
+          LEVEL: ${{needs.bygg.outputs.level}} 
           IMAGE: ${{needs.bygg.outputs.img}} 
         steps:
           - name: Get level
-            run: echo "The level is ${{ env.level }}"  
+            run: echo "The level is ${{ needs.bygg.outputs.level }}"  
           - uses: actions/checkout@v3
           - uses: nais/deploy/actions/deploy@master
            
