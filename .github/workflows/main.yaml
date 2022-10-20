@@ -41,7 +41,7 @@ jobs:
                 npm run build
                 
             - name: Get image
-              run: echo "The image is ${{ env.IMAGE }}"      
+              run: echo "The image is ${{ steps.bygg.outputs.img }}"      
                 
             - name: Docker login
               env:
