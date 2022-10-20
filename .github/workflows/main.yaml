@@ -14,7 +14,6 @@ jobs:
         name: Bygg og push Docker image
         runs-on: ubuntu-latest
         outputs:
-          level: ${{ steps.bygg.outputs.level }}
           img: ${{ steps.bygg.outputs.img }}
         steps:
             - name: Checkout code
@@ -41,6 +40,9 @@ jobs:
                 echo "img=${{ env.IMAGE }}" >> $GITHUB_OUTPUT
                 echo "level=42" >> $GITHUB_OUTPUT
                 npm run build
+                
+            - name: Get level
+              run: echo "The level is ${{ steps.bygg.outputs.level }}"      
                 
             - name: Docker login
               env:
@@ -70,6 +72,8 @@ jobs:
           LEVEL: ${{needs.bygg.outputs.level}} 
           IMAGE: ${{needs.bygg.outputs.img}} 
         steps:
+          - name: Get level
+            run: echo "The level is ${{ env.level }}"  
           - uses: actions/checkout@v3
           - uses: nais/deploy/actions/deploy@master
            
