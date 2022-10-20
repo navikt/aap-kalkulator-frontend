@@ -34,7 +34,7 @@ jobs:
             - name: test application
               run: npm test
             - name: hent tidsstempel
-              run: echo "LAST_UPDATED=$(date +%Y.%m.%d.%H%M%S)" > .env.local
+              run: echo "NEXT_PUBLIC_LAST_UPDATED=$(date +%Y.%m.%d.%H%M%S)" > .env.local
             - name: Build application
               run: npm run build
             - name: Docker login
