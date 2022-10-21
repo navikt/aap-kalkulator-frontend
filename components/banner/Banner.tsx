@@ -6,15 +6,16 @@ import Image from "next/image"
 const Banner = ({ updated }: { updated: string }) => {
     const { formatMessage } = useFeatureToggleIntl()
     return (
-        <header className="flex flex-col items-center justify-center h-16 md:h-24 bg-[#ffffff] border-b-[#0084aa] border-solid border-b-4 text-center ">
-            <div className="flex flex-row items-center justify-center h-full space-x-4">
-                <Image
-                    src="/aap/kalkulator/ikoner/kalkulator_square.svg"
-                    height="40"
-                    width="40"
-                    alt="calculator icon"
-                    className=" flex items-center"
-                />
+        <header className="flex flex-col items-center justify-center h-auto bg-[#ffffff] border-b-[#0084aa] border-solid border-b-4 text-center ">
+            <div className="flex flex-row items-center justify-center h-full space-x-4 mr-4">
+                <div className="flex items-center ml-4 invisible md:visible">
+                    <Image
+                        src="/aap/kalkulator/ikoner/kalkulator_square.svg"
+                        height="40"
+                        width="40"
+                        alt="calculator icon"
+                    />
+                </div>
                 <Heading
                     size="large"
                     level="1"
@@ -26,7 +27,8 @@ const Banner = ({ updated }: { updated: string }) => {
             <div className="flex flex-row space-x-2 pb-2">
                 <p className="text-sm">{formatMessage("banner.description")}</p>
                 <p className="text-gray-400 text-sm">
-                    {formatMessage("banner.updated")} {process.env.NEXT_PUBLIC_LAST_UPDATED}
+                    {formatMessage("banner.updated")}
+                    {process.env.NEXT_PUBLIC_LAST_UPDATED}
                 </p>
             </div>
         </header>
