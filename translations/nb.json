@@ -40,7 +40,7 @@
             "title": "Har du barn under 18 år?",
             "readMoreTitle": "Hvorfor spør vi om du har barn?",
             "readMore": "Hvis du forsørger barn under 18 år, kan du få et barnetillegg.",
-            "lesMer": "Les mer om barnetillegg her.",
+            "lesMer": "Les mer om barnetillegg her (åpnes i ny fane).",
             "validation": {
                 "required": "Velg enten ja eller nei for å gå videre."
             }
