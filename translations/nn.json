@@ -94,6 +94,7 @@
         }
     },
     "result": {
+        "stepTitle": "Resultat",
         "title": "Dette ser da ut som du kan få",
         "description": "Korleis er utrekninga gjort?",
         "disclamer": "Ut i fra tala du har oppgitt antar vi at du kan få denne summen i AAP før skatt. Viss du søker og får innvilga AAP, vil du få vita kva du faktisk får utbetalt. Merk: Det er alltid vedtaket du får som gjeld, denne kalkulatoren gir berre eit estimat.",
