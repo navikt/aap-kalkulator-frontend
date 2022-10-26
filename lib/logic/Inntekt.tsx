@@ -4,8 +4,9 @@ import {
     maksGrunnlagFraG,
     minsteGrunnlagFraG,
     minsteGrunnlagUnder25FraG,
-    prosentReduksjon, toKr
-} from "../utils/HjelpeFunksjoner";
+    prosentReduksjon,
+    toKr,
+} from "../utils/HjelpeFunksjoner"
 
 const forAar = (historikk: GrunnbeloepHistorikk[], inntektsAar: number) => {
     return Array.from(historikk).filter(
@@ -35,7 +36,7 @@ const inntektsjustering = (
     inntektsIndeks: number,
     resultat: Result
 ) => {
-    if(!resultat.personInfo!!.harLoenn) {
+    if (!resultat.personInfo!!.harLoenn) {
         resultat.personInfo!!.inntekt1 = 0
         resultat.personInfo!!.inntekt2 = 0
         resultat.personInfo!!.inntekt3 = 0
@@ -48,29 +49,57 @@ const inntektsjustering = (
     ].at(inntektsIndeks - 1)
     return juster(g, historikk, inntektsAar, inntekt!!)
 }
-const gjennomsnittEllerSisteInntekt = (gjennomsnittHoyest:boolean, gjennomsnitt:number, inntekt1:number) => {
+const gjennomsnittEllerSisteInntekt = (
+    gjennomsnittHoyest: boolean,
+    gjennomsnitt: number,
+    inntekt1: number
+) => {
     return gjennomsnittHoyest ? gjennomsnitt : inntekt1
 }
 
-const minGrunnlag = (res:number, minstegrunnlag:number) => {
+const minGrunnlag = (res: number, minstegrunnlag: number) => {
     return Math.max(res, minstegrunnlag)
 }
 
-const maxGrunnlag = (res:number, maksGrunnlag:number) =>{
+const maxGrunnlag = (res: number, maksGrunnlag: number) => {
     return Math.min(res, maksGrunnlag)
 }
 
-const overEllerUnder25 = (gjennomsnittHoyest:boolean, over25:boolean,gjennomsnittsInntekt:number, inntekt1:number, minsteGrunnlag:number) => {
+const overEllerUnder25 = (
+    gjennomsnittHoyest: boolean,
+    over25: boolean,
+    gjennomsnittsInntekt: number,
+    inntekt1: number,
+    minsteGrunnlag: number
+) => {
     return minGrunnlag(
-        gjennomsnittEllerSisteInntekt(gjennomsnittHoyest, gjennomsnittsInntekt, inntekt1),
+        gjennomsnittEllerSisteInntekt(
+            gjennomsnittHoyest,
+            gjennomsnittsInntekt,
+            inntekt1
+        ),
         minsteGrunnlag
     )
 }
 
-const beregningsgrunnlag = (gjennomsnittHoyest:boolean, over25:boolean,gjennomsnittsInntekt:number, inntekt1:number,minsteGrunnlag:number, minsteGrunnlagUnder25:number, maksGrunnlag:number)=> {
-    const minGrunnlag = over25? minsteGrunnlag : minsteGrunnlagUnder25
+const beregningsgrunnlag = (
+    gjennomsnittHoyest: boolean,
+    over25: boolean,
+    gjennomsnittsInntekt: number,
+    inntekt1: number,
+    minsteGrunnlag: number,
+    minsteGrunnlagUnder25: number,
+    maksGrunnlag: number
+) => {
+    const minGrunnlag = over25 ? minsteGrunnlag : minsteGrunnlagUnder25
     return maxGrunnlag(
-        overEllerUnder25(gjennomsnittHoyest, over25, gjennomsnittsInntekt, inntekt1, minGrunnlag),
+        overEllerUnder25(
+            gjennomsnittHoyest,
+            over25,
+            gjennomsnittsInntekt,
+            inntekt1,
+            minGrunnlag
+        ),
         maksGrunnlag
     )
 }
@@ -90,50 +119,64 @@ const inntektsgrunnlag = (
     const gjennomsnittHoyest =
         gjennomsnittsInntekt >= resultat.personInfo!!.inntekt1!!
 
-    resultat.resultat = beregningsgrunnlag(gjennomsnittHoyest, resultat.personInfo!!.over25!!, gjennomsnittsInntekt, inntekt1, minsteGrunnlag, minsteGrunnlagUnder25, maksGrunnlag)
+    resultat.resultat = beregningsgrunnlag(
+        gjennomsnittHoyest,
+        resultat.personInfo!!.over25!!,
+        gjennomsnittsInntekt,
+        inntekt1,
+        minsteGrunnlag,
+        minsteGrunnlagUnder25,
+        maksGrunnlag
+    )
 
     switch (resultat.resultat) {
         case minsteGrunnlag: {
-            resultat.logs.push(
-                {id:"logic.salery.minsteGrunnlag",values:{res:toKr(resultat.resultat)}}
-            )
+            resultat.logs.push({
+                id: "logic.salery.minsteGrunnlag",
+                values: { res: toKr(resultat.resultat) },
+            })
             break
         }
         case maksGrunnlag: {
-            resultat.logs.push(
-                {id:"logic.salery.maksGrunnlag",values:{res:toKr(resultat.resultat)}}
-            )
+            resultat.logs.push({
+                id: "logic.salery.maksGrunnlag",
+                values: { res: toKr(resultat.resultat) },
+            })
             break
         }
         case gjennomsnittsInntekt: {
-            resultat.logs.push(
-                {id:"logic.salery.gjennomsnittInntekt",values:{res:toKr(resultat.resultat)}}
-            )
+            resultat.logs.push({
+                id: "logic.salery.gjennomsnittInntekt",
+                values: { res: toKr(resultat.resultat) },
+            })
             break
         }
         case minsteGrunnlagUnder25: {
-            resultat.logs.push(
-                {id:"logic.salery.minsteGrunnlagUnder25",values:{res:toKr(resultat.resultat)}}
-            )
+            resultat.logs.push({
+                id: "logic.salery.minsteGrunnlagUnder25",
+                values: { res: toKr(resultat.resultat) },
+            })
             break
         }
         default: {
-            resultat.logs.push(
-                {id:"logic.salery.lastYear",values:{res:toKr(resultat.resultat)}}
-            )
+            resultat.logs.push({
+                id: "logic.salery.lastYear",
+                values: { res: toKr(resultat.resultat) },
+            })
         }
     }
 
     const resultatEtterFradrag = prosentReduksjon(resultat.resultat)
-    if(resultatEtterFradrag <= minsteGrunnlag){
-        console.log(minsteGrunnlag)
-        resultat.logs.push(
-            {id:"logic.salery.reductionMin",values:{res:toKr(resultatEtterFradrag)}}
-        )
-    } else{
-        resultat.logs.push(
-            {id:"logic.salery.reduction",values:{res:toKr(resultatEtterFradrag)}}
-        )
+    if (resultatEtterFradrag <= minsteGrunnlag) {
+        resultat.logs.push({
+            id: "logic.salery.reductionMin",
+            values: { res: toKr(resultatEtterFradrag) },
+        })
+    } else {
+        resultat.logs.push({
+            id: "logic.salery.reduction",
+            values: { res: toKr(resultatEtterFradrag) },
+        })
     }
     resultat.resultat = resultatEtterFradrag
 }

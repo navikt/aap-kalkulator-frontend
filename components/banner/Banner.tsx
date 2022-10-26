@@ -2,6 +2,14 @@ import { BodyShort, Heading } from "@navikt/ds-react"
 import React from "react"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
 import Image from "next/image"
+import { format, parse } from "date-fns"
+import { nb } from "date-fns/locale"
+
+const dato = parse(
+    process.env.NEXT_PUBLIC_LAST_UPDATED ?? "",
+    "dd-MM-yyyy",
+    new Date()
+)
 
 const Banner = ({ updated }: { updated: string }) => {
     const { formatMessage } = useFeatureToggleIntl()
@@ -28,7 +36,7 @@ const Banner = ({ updated }: { updated: string }) => {
                 <p className="text-sm">{formatMessage("banner.description")}</p>
                 <p className="text-gray-400 text-sm">
                     {formatMessage("banner.updated")}
-                    {process.env.NEXT_PUBLIC_LAST_UPDATED}
+                    {format(dato, "dd. MMMM yyyy", { locale: nb })}
                 </p>
             </div>
         </header>
