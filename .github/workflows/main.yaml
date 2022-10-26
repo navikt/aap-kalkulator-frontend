@@ -28,9 +28,6 @@ jobs:
               
             - name: hent tidsstempel
               run: echo "NEXT_PUBLIC_LAST_UPDATED=$(date +%m-%d-%Y)" > .env.local
-
-            - name: print tid
-              run: cat .env.local
               
             - name: Setter tag-navn
               run: echo "TAG=$(date +%m-%d-%Y)-$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV

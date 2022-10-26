@@ -7,7 +7,7 @@ import { nb } from "date-fns/locale"
 
 const dato = parse(
     process.env.NEXT_PUBLIC_LAST_UPDATED ?? "",
-    "dd-MM-yyyy",
+    "MM-dd-yyyy",
     new Date()
 )
 
