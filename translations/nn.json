@@ -8,10 +8,10 @@
     "start": {
         "title": "Vær oppmerksam på dette",
         "refreshed": "Du har oppdatert sida og har derfor blitt sendt til startsida.",
-        "firstPoint": "Kalkulatoren er meint som eit hjelpeverktøy for deg, du får eit anslag på kva du kan få hvis du søker og får innvilga arbeidsavklaringspenger (AAP).",
+        "firstPoint": "Kalkulatoren er meint som eit hjelpeverktøy for deg, du får eit anslag på kva du kan få dersom du søker og får innvilga arbeidsavklaringspengar (AAP).",
         "secondPoint": "Dette er ikkje ein søknad om AAP. Det er alltid vedtaket du får som gjeld, denne kalkulatoren gir berre eit estimat.",
         "thirdPoint": "NAV lagrar ikkje informasjonen du oppgir.",
-        "fourthPoint": "Kalkulatoren tar ikkje høgde for reduksjon av AAP hvis du mottar andre ytingar, jobber ved sida av AAP eller andre forhold."
+        "fourthPoint": "Kalkulatoren tek ikkje høgde for reduksjon av AAP dersom du mottar andre ytingar, jobbar ved sida av AAP eller andre forhold."
     },
     "helse": {
         "title": "Helse",
@@ -30,7 +30,7 @@
             "validation": {
                 "required": "Året du fikk nedsett arbeidsevne må vera eit tal.",
                 "max": "Året du fikk nedset arbeidsevne må vera {Aar} eller tidlegare.`",
-                "min": "Kalkulatoren kan ikkje berekna arbeidsavklaringspenger dersom du fekk nedsett arbeidsevne for meir enn {Aar} år siden."
+                "min": "Kalkulatoren kan ikkje berekna arbeidsavklaringspengar dersom du fekk nedsett arbeidsevne for meir enn {Aar} år siden."
             }
         }
     },
@@ -59,13 +59,13 @@
         "gotWork": {
             "title": "Er du i jobb no?",
             "readMoreTitle": "Kvifor spør vi om du har jobb?",
-            "readMore": "Kor mykje du får utbetalt, avheng av kor mykje du jobber. Ei arbeidsveke er 37,5 timer. Jobbar du meir enn 22,5 timar i veka, kan du ikkje få arbeidsavklaringspenger.",
+            "readMore": "Kor mykje du får utbetalt, avheng av kor mykje du jobbar. Ei arbeidsveke er 37,5 timer. Jobbar du meir enn 22,5 timar i veka, kan du ikkje få arbeidsavklaringspengar.",
             "validation": {
-                "required": "Vel enten ja eller nei for å gå videre."
+                "required": "Vel enten ja eller nei for å gå vidare."
             }
         },
         "howManyHours": {
-            "title": "Kor mange timar jobber du i veka?",
+            "title": "Kor mange timar jobbar du i veka?",
             "description": "Varierer det, kan du oppgje gjennomsnittet.",
             "trail": "timar per veke",
             "validation": {
@@ -77,12 +77,12 @@
     "income": {
         "title": "Inntekt",
         "gotIncome": {
-            "title": "Hadde du inntekt i åra fra {inntektsAar2} til {inntektsAar0}?",
+            "title": "Hadde du inntekt i åra frå {inntektsAar2} til {inntektsAar0}?",
             "readMoreTitle": "kvifor spør vi om inntekt?",
-            "readMore1": "Vi bruker inntekta di til å rekna ut kva du kan få i arbeidsavklaringspenger.",
-            "readMore2": "<BodyShort>Dette blir bestemt av inntekta di dei tre siste åra eller minstesatsen (to ganger <Link href=\"https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden\" target=\"_blank\" rel=\"noreferrer\" as={\"a\"}>grunnbeløpet</Link>).</BodyShort>",
+            "readMore1": "Vi bruker inntekta di til å rekna ut kva du kan få i arbeidsavklaringspengar.",
+            "readMore2": "Dette blir bestemt av inntekta di dei tre siste åra eller minstesatsen. Vi bruker det som gir høgast utrekning",
             "validation": {
-                "required": "Du må velja enten ja eller nei for å gå videre."
+                "required": "Du må velja enten ja eller nei for å gå vidare."
             }
         },
         "howMuch": {
@@ -97,7 +97,7 @@
         "stepTitle": "Resultat",
         "title": "Dette ser da ut som du kan få",
         "description": "Korleis er utrekninga gjort?",
-        "disclamer": "Ut i fra tala du har oppgitt antar vi at du kan få denne summen i AAP før skatt. Viss du søker og får innvilga AAP, vil du få vita kva du faktisk får utbetalt. Merk: Det er alltid vedtaket du får som gjeld, denne kalkulatoren gir berre eit estimat.",
+        "disclamer": "Ut i frå tala du har oppgitt antek vi at du kan få denne summen i AAP før skatt. Viss du søker og får innvilga AAP, vil du få vita kva du faktisk får utbetalt. Merk: Det er alltid vedtaket du får som gjeld, denne kalkulatoren gir berre eit estimat.",
         "link": "Les meir om AAP her.",
         "per14": "hver 14. dag (før skatt)",
         "perAar": "i året (før skatt)"
@@ -107,23 +107,22 @@
             "minsteGrunnlag": "Utrekningsgrunnlaget er enten inntekta di siste året eller gjennomsnittet av pensjonsgjevande inntekt dei siste tre åra. Vi bruker det høgaste talet av desse.",
             "maksGrunnlag": "Sidan inntekta di er høgare enn maksbeløpet på 6G (6 ganger grunnbeløpet), vil utrekningsgrunnlaget ditt bli nedjustert til <strong>{res} kr</strong>. Inntekta di er justert ut frå endring i grunnbeløpet.",
             "gjennomsnittInntekt": "Utrekningsgrunnlaget ditt er: <strong>{res} kr</strong>. Dette er gjennomsnittet av dei tre siste inntektsåra dine. Inntekta di er justert ut frå endring i grunnbeløpet.",
-            "minsteGrunnlagUnder25": "Sidan inntekta di er lavere enn grensen for minste utbetaling for dei under 25 år blir utrekningsgrunnlaget ditt oppjustert til <strong>{res} kr</strong>. Inntekta di er justert ut frå endring i grunnbeløpet.",
+            "minsteGrunnlagUnder25": "Sidan inntekta di er lågare enn grensen for minste utbetaling for dei under 25 år blir utrekningsgrunnlaget ditt oppjustert til <strong>{res} kr</strong>. Inntekta di er justert ut frå endring i grunnbeløpet.",
             "lastYear": "beregningsgrunnlaget er basert på det siste inntektsåret ditt: <strong>{res} kr</strong>. Inntekta di er justert ut frå endring i grunnbeløpet.",
             "reduction": "Arbeidsavklaringspengene utgjer 66 % av utrekningsgrunnlaget, og blir derfor <strong>{res} kr</strong>.",
             "reductionMin": "Arbeidsavklaringspengene utgjer 66 % av utrekningsgrunnlaget. For deg blir dette under minstesatsen for arbeidsavklaringspengar. Du blir derfor justert opp til minstesatsen for arbeidsavklaringspengar, som er <strong>{res} kr</strong>."
-
         },
         "children": {
             "possibleChildsupport": "For kvart barn får du {perChild} kr per år. Sidan du har {childAmount} barn, kan du få <strong>{totChild} kr</strong> i tillegg per år.",
-            "maxChildren": "For kvart barn kan du få {perChild} kr per år. Arbeidsavklaringspenger pluss barnetillegg kan ikkje vera meir enn 90 % av beregningsgrunnlaget. Derfor får du <strong>{maksBarneTillegg} kr</strong> i tillegg per år."
+            "maxChildren": "For kvart barn kan du få {perChild} kr per år. Arbeidsavklaringspengar pluss barnetillegg kan ikkje vera meir enn 90 % av beregningsgrunnlaget. Derfor får du <strong>{maksBarneTillegg} kr</strong> i tillegg per år."
         },
         "total": {
-            "totalAmount": "Dette blir til saman <strong>{res} kr</strong> i arbeidsavklaringspenger per år før skatt."
+            "totalAmount": "Dette blir til saman <strong>{res} kr</strong> i arbeidsavklaringspengar per år før skatt."
         },
         "work": {
-            "any": "Hvis du jobber, kan dette redusere arbeidsavklaringspengene dine. Dette blir gjort ved innlevering av meldekort.",
-            "tooMuch": "Arbeidsgraden din er høgare enn 60 % og du kan derfor ikkje få arbeidsavklaringspenger.",
-            "justEnough": "Ei arbeidsveke er 37,5 timer. Siden du jobber {hoursWorked} timer i uka, som er {percentWorked} % av en vanlig arbeidsveke, blir arbeidsavklaringspengene redusert med {percentWorked2} %, fra {oldRes} kr til <strong>{res} kr</strong>."
+            "any": "Dersom du jobbar, kan dette redusere arbeidsavklaringspengene dine. Dette blir gjort ved innlevering av meldekort.",
+            "tooMuch": "Arbeidsgraden din er høgare enn 60 % og du kan derfor ikkje få arbeidsavklaringspengar.",
+            "justEnough": "Ei arbeidsveke er 37,5 timer. Siden du jobbar {hoursWorked} timer i uka, som er {percentWorked} % av en vanlig arbeidsveke, blir arbeidsavklaringspengene redusert med {percentWorked2} %, frå {oldRes} kr til <strong>{res} kr</strong>."
         }
     },
     "options": {
@@ -132,7 +131,7 @@
     },
     "navigation": {
         "start": "Start",
-        "next": "Gå videre",
+        "next": "Gå vidare",
         "back": "Tilbake"
     }
 }
