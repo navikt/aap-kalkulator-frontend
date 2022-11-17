@@ -34,7 +34,7 @@ const Banner = ({ updated }: { updated: string }) => {
             </div>
             <div className="flex flex-row md:w-4/6 lg:w-2/5 mx-auto space-x-2 py-3 md:pl-24">
                 <p className="text-sm">{formatMessage("banner.description")}</p>
-                <p className="text-gray-400 text-sm">
+                <p className="text-gray-600 text-sm">
                     {formatMessage("banner.updated")}
                     {format(dato, "dd. MMMM yyyy", { locale: nb })}
                 </p>
