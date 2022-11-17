@@ -1,5 +1,6 @@
 # aap-kalkulator
-Vi ser i dag at det er mange henvendelser til NKS hvor brukerne lurer på hvor mye de kan få i AAP, og hvorfor de får akkurat denne summen. Denne kalkulatoren vil kunne gi en forhåndsberegning av AAP til brukere, med en enkel forklaring av hva som ligger til grunn for utregningen. Vi håper kalkulatoren kan redusere noen av henvendelsene til NKS. Vi legger vekt på at kalkulatoren kun er et hjelpeverktøy og ikke en nøyaktig utregning. Den vil ikke kreve innlogging. 
+
+Vi ser i dag at det er mange henvendelser til NKS hvor brukerne lurer på hvor mye de kan få i AAP, og hvorfor de får akkurat denne summen. Denne kalkulatoren vil kunne gi en forhåndsberegning av AAP til brukere, med en enkel forklaring av hva som ligger til grunn for utregningen. Vi håper kalkulatoren kan redusere noen av henvendelsene til NKS. Vi legger vekt på at kalkulatoren kun er et hjelpeverktøy og ikke en nøyaktig utregning. Den vil ikke kreve innlogging.
 
 Bruker starter på en startside hvor de blir informert om informasjonene nevt i avsnittet over. Etter et noe spørsmål er blitt besvart vil de bli presentert med resultat siden. Teksten er dynamisk og vil være forskjellig ut fra svarene avgitt. I eksempelet under har bruker oppgitt inntekt, antall barn og sykemeldingsår 2020.
 | År | Inntekt |
@@ -21,11 +22,19 @@ npm run dev
 # or
 yarn dev
 ```
+
+Lag en .env.local fil og legg inn
+
+```bash
+NEXT_PUBLIC_LAST_UPDATED=10-26-2022
+```
+
 Åpne [http://localhost:3000](http://localhost:3000) i nettleser for å gå gjennom kalkulatoren
 
 ---
 
 # Teknisk beskrivelse
+
 Kalkulatoren er strukturert rundt 5 sider.
 
 ```mermaid
@@ -42,6 +51,7 @@ flowchart LR
 --> [Resultat](https://github.com/navikt/aap-kalkulator-frontend/blob/main/pages/resultat.tsx)
 
 ## Logikk
+
 ```mermaid
 flowchart TD
     s[Innput data] <--> A
@@ -49,6 +59,7 @@ flowchart TD
     A -->|2| C[Barnetilegg]
     A -->|3| D[Arbeid]
 ```
+
 Kalkuler wrapper state (brukers input) i en type, som inneholder tekst log og resultat per år i kroner.
 wrappet state blir da sendt inn i 3 funksjoner som regner Beregningsgrunnlag, evt. Baretilegg og Reduksjon pga. arbeid
 
@@ -64,6 +75,7 @@ Beregningene er basert på [AAP beregningsregler](https://www.nav.no/aap#hvor-my
 Noen unntak er blitt gjort for å gjøre kalkulatoren lettere å bruke, som f.eks tar den ikke hensyn til andre ytelser som bruker får.
 
 ---
+
 # Henvendelser
 
 Spørsmål knyttet til koden eller prosjektet kan stilles som issues her på GitHub
@@ -71,4 +83,3 @@ Spørsmål knyttet til koden eller prosjektet kan stilles som issues her på Git
 ## For NAV-ansatte
 
 Interne henvendelser kan sendes via Slack i kanalen #po-aap-innbygger.
-
