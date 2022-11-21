@@ -14,16 +14,16 @@ const dato = parse(
 const Banner = ({ updated }: { updated: string }) => {
     const { formatMessage } = useFeatureToggleIntl()
     return (
-        <header className="flex flex-col h-auto bg-[#ffffff] border-b-[#0084aa] border-solid border-b-4 text-center ">
-            <div className="flex flex-row items-center justify-center h-full space-x-4 mr-4">
-                <div className="flex items-center ml-4 invisible md:visible">
-                    <Image
-                        src="/aap/kalkulator/ikoner/kalkulator_square.svg"
-                        height="40"
-                        width="40"
-                        alt="calculator icon"
-                    />
-                </div>
+        <header className="bg-[#ffffff] border-b-deepblue-400 border-b-4 text-center px-4 md:px-12 py-6">
+            <div className="max-w-[1128px] mx-auto flex gap-8">
+                <img
+                    className="hidden lg:block"
+                    src="/aap/kalkulator/ikoner/kalkulator_square.svg"
+                    height="80"
+                    width="80"
+                    alt=""
+                />
+            <div className="">
                 <Heading
                     size="large"
                     level="1"
@@ -31,13 +31,16 @@ const Banner = ({ updated }: { updated: string }) => {
                 >
                     {formatMessage("banner.title")}
                 </Heading>
-            </div>
-            <div className="flex flex-row md:w-4/6 lg:w-2/5 mx-auto space-x-2 py-3 md:pl-24">
+            <div className="flex gap-4 py-3 items-baseline">
                 <p className="text-sm">{formatMessage("banner.description")}</p>
+                <p aria-hidden="true" className="text-gray-600">|</p>
                 <p className="text-gray-600 text-sm">
                     {formatMessage("banner.updated")}
+                    {" "}
                     {format(dato, "dd. MMMM yyyy", { locale: nb })}
                 </p>
+            </div>
+            </div>
             </div>
         </header>
     )
