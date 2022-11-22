@@ -137,9 +137,7 @@ const Inntekt = () => {
             <BodyShort spacing>
                 {formatMessage("income.gotIncome.readMore1")}
             </BodyShort>
-            <BodyShort>
-                {formatMessage("income.gotIncome.readMore2")}
-            </BodyShort>
+            <BodyShort>{formatMessage("income.gotIncome.readMore2")}</BodyShort>
         </div>
     )
     return (
@@ -148,7 +146,7 @@ const Inntekt = () => {
             <BackLink target="/steg/1" />
             <QuestionHeader
                 image="/aap/kalkulator/ikoner/wallet_circle.svg"
-                alt="lommebok ikon"
+                alt=""
                 tittel={formatMessage("income.title")}
             />
             <form onSubmit={handleSubmit}>
@@ -220,7 +218,9 @@ const Inntekt = () => {
                     </>
                 )}
 
-                <Button variant="primary">{formatMessage("navigation.next")}</Button>
+                <Button variant="primary">
+                    {formatMessage("navigation.next")}
+                </Button>
             </form>
         </>
     )

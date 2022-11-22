@@ -14,13 +14,13 @@ const QuestionHeader = ({
     return (
         <>
             <div aria-hidden="true" className="flex flex-col pt-4 mb-4">
-                <Image
+                <img
                     src={image}
                     height="100"
                     width="100"
                     alt={alt}
-                    className=" flex items-center"
-                ></Image>
+                    className=" flex items-center mx-auto"
+                />
             </div>
             <Heading size="large" level="2" spacing>
                 {tittel}

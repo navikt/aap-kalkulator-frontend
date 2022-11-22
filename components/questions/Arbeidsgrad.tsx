@@ -91,7 +91,7 @@ const Arbeidsgrad = () => {
             <BackLink target="/steg/2" />
             <QuestionHeader
                 image="/aap/kalkulator/ikoner/briefcase_circle.svg"
-                alt="koffert ikon"
+                alt=""
                 tittel={formatMessage("work.title")}
             />
             <form onSubmit={handleSubmit}>

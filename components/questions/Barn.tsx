@@ -84,7 +84,7 @@ const Barn = () => {
             <BackLink target="/steg/2" />
             <QuestionHeader
                 image="/aap/kalkulator/ikoner/teddy_circle.svg"
-                alt="teddybjørn ikon"
+                alt=""
                 tittel={formatMessage("children.title")}
             />
             <form onSubmit={handleSubmit}>
@@ -170,7 +170,9 @@ const Barn = () => {
                     </div>
                 )}
 
-                <Button variant="primary">{formatMessage("navigation.next")}</Button>
+                <Button variant="primary">
+                    {formatMessage("navigation.next")}
+                </Button>
             </form>
         </>
     )

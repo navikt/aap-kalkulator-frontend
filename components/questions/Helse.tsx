@@ -94,7 +94,7 @@ const Helse = () => {
             <BackLink target="/" />
             <QuestionHeader
                 image="/aap/kalkulator/ikoner/helse_circle.svg"
-                alt="helse ikon"
+                alt=""
                 tittel={formatMessage("helse.title")}
             />
             <form onSubmit={handleSubmit}>

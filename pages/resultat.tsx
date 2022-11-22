@@ -96,13 +96,13 @@ const Resultat: NextPage = ({
             <BackLink target="/steg/1" tekst="Endre svar" />
             <div className="flex flex-col items-center">
                 <div className="flex flex-col pt-4 mb-4" aria-hidden="true">
-                    <Image
+                    <img
                         src="/aap/kalkulator/ikoner/money_circle.svg"
                         height="100"
                         width="100"
-                        alt="penger ikon"
+                        alt=""
                         className={" flex items-center"}
-                    ></Image>
+                    />
                 </div>
                 <div className="place-items-start md:w-5/6">
                     <Heading
