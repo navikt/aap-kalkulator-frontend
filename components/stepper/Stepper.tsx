@@ -61,7 +61,6 @@ const Step = ({
     if (!isCompleted) {
         return (
             <div
-                aria-label={title}
                 aria-current={isCurrentPage}
                 className={`${stepStyling}`}
             >
