@@ -114,7 +114,7 @@ const Resultat: NextPage = ({
                         {formatMessage("result.title")}
                     </Heading>
                 </div>
-                <div className="rounded-2xl bg-feedback-success-background p-6 w-full md:w-5/6">
+                <div className="rounded-2xl bg-surface-success-subtle p-6 w-full md:w-5/6">
                     <div className="grid grid-cols-2  my-4 gap-4 justify-baseline">
                         <span className="text-3xl md:text-5xl justify-self-end">
                             {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr

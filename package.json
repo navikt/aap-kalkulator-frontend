@@ -10,10 +10,10 @@
         "test": "jest"
     },
     "dependencies": {
-        "@navikt/ds-css": "^0.18.24",
-        "@navikt/ds-icons": "^0.8.18",
-        "@navikt/ds-react": "^0.19.18",
-        "@navikt/ds-tailwind": "^0.2.8",
+        "@navikt/ds-css": "^2.0.5",
+        "@navikt/ds-icons": "^2.0.5",
+        "@navikt/ds-react": "^2.0.5",
+        "@navikt/ds-tailwind": "^2.0.5",
         "@navikt/nav-dekoratoren-moduler": "^1.6.9",
         "@sentry/nextjs": "^7.11.1",
         "@typescript-eslint/eslint-plugin": "^5.36.1",
