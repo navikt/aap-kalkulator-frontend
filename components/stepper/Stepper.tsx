@@ -40,14 +40,17 @@ const Step = ({
                 aria-hidden="true"
                 className={`text-feedback-success-icon bg-feedback-success-background ${circleStyling}`}
             >
-                <Success className="w-8 h-8" />
+                <Success title="success" className="w-8 h-8" />
             </div>
         ) : isCurrentPage ? (
             <div
                 aria-hidden="true"
                 className={`bg-feedback-info-background border-feedback-info-border border-2 ${circleStyling}`}
             >
-                <Edit className="w-4 h-4 text-feedback-info-icon" />
+                <Edit
+                    title="edit"
+                    className="w-4 h-4 text-feedback-info-icon"
+                />
             </div>
         ) : (
             <div
@@ -60,10 +63,7 @@ const Step = ({
 
     if (!isCompleted) {
         return (
-            <div
-                aria-current={isCurrentPage}
-                className={`${stepStyling}`}
-            >
+            <div aria-current={isCurrentPage} className={`${stepStyling}`}>
                 {circle}
                 <BodyShort aria-hidden="true" as="span" size="small">
                     {title}
@@ -89,8 +89,12 @@ const Step = ({
 const Stepper = () => {
     const stepperRef = useRef<HTMLElement>(null)
     const { formatMessage } = useFeatureToggleIntl()
-    const steps = [formatMessage("helse.title"), formatMessage("income.title"),
-        formatMessage("children.title"), formatMessage("result.stepTitle")]
+    const steps = [
+        formatMessage("helse.title"),
+        formatMessage("income.title"),
+        formatMessage("children.title"),
+        formatMessage("result.stepTitle"),
+    ]
     return (
         <nav aria-label="Steg i skjema" ref={stepperRef}>
             <ul className="flex flex-row justify-center pb-4 items-center md:px-8 px-0">
