@@ -11,6 +11,7 @@ import { IntlProvider } from "react-intl"
 import { messages } from "../utils/message"
 import { useRouter } from "next/router"
 import { Dekorator } from "../components/dekorator/Dekorator"
+import { Locale } from "@navikt/nav-dekoratoren-moduler"
 
 export const State = createContext({
     state: {} as StateInterface,
@@ -58,7 +59,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     }, [])
 
     return (
-        <IntlProvider locale={locale} messages={messages[locale]}>
+        <IntlProvider locale={locale} messages={messages[locale as Locale]}>
             <Dekorator>
                 <BrowserState.Provider
                     value={{ browserState, setBrowserState }}
