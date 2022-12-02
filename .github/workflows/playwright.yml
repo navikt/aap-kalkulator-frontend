@@ -15,7 +15,11 @@ jobs:
         node-version: 16
     - name: Install dependencies
       run: npm ci
-    - name: Install Playwright Browsers
+    - name: hent tidsstempel
+      run: echo "NEXT_PUBLIC_LAST_UPDATED=$(date +%m-%d-%Y)" > .env.local
+    - name: Setter tag-navn
+      run: echo "TAG=$(date +%m-%d-%Y)-$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB
+    - name: Install Playwright Browse
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
