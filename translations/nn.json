@@ -29,7 +29,7 @@
             "readMore": "Vi bruker året du fikk nedsett arbeidsevne, til å justere for aukning i grunnbeløpet.",
             "validation": {
                 "required": "Året du fikk nedsett arbeidsevne må vera eit tal.",
-                "max": "Året du fikk nedset arbeidsevne må vera {Aar} eller tidlegare.`",
+                "max": "Året du fikk nedset arbeidsevne må vera {Aar} eller tidlegare.",
                 "min": "Kalkulatoren kan ikkje berekna arbeidsavklaringspengar dersom du fekk nedsett arbeidsevne for meir enn {Aar} år siden."
             }
         }

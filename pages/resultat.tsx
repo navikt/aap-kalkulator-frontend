@@ -94,17 +94,19 @@ const Resultat: NextPage = ({
     return (
         <>
             <BackLink target="/steg/1" tekst="Endre svar" />
-            <div className="flex flex-col items-center">
-                <div className="flex flex-col pt-4 mb-4" aria-hidden="true">
+            <div className="grid gap-8">
+                <div
+                    className="flex flex-col items-center pt-4 mb-4"
+                    aria-hidden="true"
+                >
                     <img
                         src="/aap/kalkulator/ikoner/money_circle.svg"
                         height="100"
                         width="100"
                         alt=""
-                        className={" flex items-center"}
                     />
                 </div>
-                <div className="place-items-start md:w-5/6">
+                <div className="text-center">
                     <Heading
                         level="2"
                         size="large"
@@ -114,69 +116,61 @@ const Resultat: NextPage = ({
                         {formatMessage("result.title")}
                     </Heading>
                 </div>
-                <div className="rounded-2xl bg-feedback-success-background p-6 w-full md:w-5/6">
-                    <div className="grid grid-cols-2  my-4 gap-4 justify-baseline">
-                        <span className="text-3xl md:text-5xl justify-self-end">
-                            {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
-                        </span>
-                        <Label className="pt-4 md:pt-5">
-                            {formatMessage("result.per14")}
-                        </Label>
-                        <span className="text-2xl md:text-3xl  justify-self-end">
-                            {Math.ceil(
-                                result == null ? 0 : result.resultat
-                            ).toLocaleString("nb-NO")}
-                            &nbsp;kr
-                        </span>
-                        <Label className="pt-1 md:pt-2">
-                            {formatMessage("result.perAar")}
-                        </Label>
+                <div className="grid gap-4 md:w-5/6 mx-auto">
+                    <div className="rounded-2xl bg-feedback-success-background p-6">
+                        <div className="grid grid-cols-2  my-4 gap-4 items-baseline">
+                            <span className="text-3xl md:text-5xl justify-self-end">
+                                {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
+                            </span>
+                            <Label className="pt-4 md:pt-5">
+                                {formatMessage("result.per14")}
+                            </Label>
+                            <span className="text-2xl md:text-3xl  justify-self-end">
+                                {Math.ceil(
+                                    result == null ? 0 : result.resultat
+                                ).toLocaleString("nb-NO")}
+                                &nbsp;kr
+                            </span>
+                            <Label className="pt-1 md:pt-2">
+                                {formatMessage("result.perAar")}
+                            </Label>
+                        </div>
+                    </div>
+                    <div className="pt-4">
+                        <Alert variant="info" size="small">
+                            <p>{formatMessage("result.disclamer")}</p>
+
+                            <Link
+                                target="_blank"
+                                className="pt-4"
+                                href="https://www.nav.no/aap"
+                                as={"a"}
+                            >
+                                {formatMessage("result.link")}
+                            </Link>
+                        </Alert>
                     </div>
                 </div>
-                <div className="pt-4 w-full md:w-5/6">
-                    <Alert variant="info" size="small">
-                        <p>{formatMessage("result.disclamer")}</p>
-
-                        <Link
-                            target="_blank"
-                            className="pt-4"
-                            href="https://www.nav.no/aap"
-                            as={"a"}
-                        >
-                            {formatMessage("result.link")}
-                        </Link>
-                    </Alert>
-                </div>
-
                 {result != null && (
                     <div className="py-4 md:w-5/6">
-                        <Accordion onClick={handleAccordion}>
-                            <Accordion.Item defaultOpen={true}>
-                                <Accordion.Header>
-                                    {formatMessage("result.description")}
-                                </Accordion.Header>
-                                <Accordion.Content>
-                                    <ul className=" space-y-4 list-disc">
-                                        {result?.logs.map((text, index) => (
-                                            <li key={index}>
-                                                <div>
-                                                    {formatMessage(text.id, {
-                                                        ...text.values,
-                                                        strong: (
-                                                            ...chunks: any
-                                                        ) => (
-                                                            <strong>
-                                                                {chunks}
-                                                            </strong>
-                                                        ),
-                                                    })}
-                                                </div>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </Accordion.Content>
-                            </Accordion.Item>
-                        </Accordion>
+                        <Heading size="medium" level="2" spacing>
+                            {formatMessage("result.description")}
+                        </Heading>
+
+                        <ul className=" space-y-4 list-disc">
+                            {result?.logs.map((text, index) => (
+                                <li key={index}>
+                                    <div>
+                                        {formatMessage(text.id, {
+                                            ...text.values,
+                                            strong: (...chunks: any) => (
+                                                <strong>{chunks}</strong>
+                                            ),
+                                        })}
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 )}
             </div>
