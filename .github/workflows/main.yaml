@@ -14,6 +14,10 @@ jobs:
   build:
         name: Bygg og publiser Docker image
         runs-on: ubuntu-latest
+        permissions:
+          contents: 'read'
+          id-token: 'write'
+          packages: 'write'
         outputs:
           image: ${{ steps.bygg.outputs.image }}
         steps:
@@ -45,6 +49,13 @@ jobs:
               run: | 
                 echo "image=${{ env.IMAGE }}" >> $GITHUB_OUTPUT
                 npm run build
+
+            - name: upload to CDN
+              uses: navikt/frontend/actions/cdn-upload/v1@main
+              with:
+                cdn-team-name: aap
+                source: ./.next/static
+                destination: '/app-kalkulator-frontend/_next'
                     
             - name: Docker login
               run:  echo ${GITHUB_TOKEN} | docker login ghcr.io --username ${GITHUB_REPOSITORY} --password-stdin
