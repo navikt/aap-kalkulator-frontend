@@ -149,7 +149,10 @@ const Inntekt = () => {
                 alt=""
                 tittel={formatMessage("income.title")}
             />
-            <form onSubmit={handleSubmit}>
+            <form
+                onSubmit={handleSubmit}
+                className="grid gap-8 justify-items-start"
+            >
                 <Radio
                     isError={radioError != ""}
                     errorId="error1"
@@ -173,14 +176,14 @@ const Inntekt = () => {
                 )}
 
                 {state.harLoenn && (
-                    <>
+                    <div>
                         <Label className="text-xl">
                             {formatMessage("income.howMuch.title")}
                         </Label>
                         <BodyShort spacing>
                             {formatMessage("income.howMuch.description")}
                         </BodyShort>
-                        <div className="flex md:flex-row flex-col md:space-x-8 my-4">
+                        <div className="flex md:flex-row flex-col my-4 gap-4">
                             {inntektsAar.reverse().map((aar, index) => (
                                 <div key={index} className="flex flex-col">
                                     <TextField
@@ -215,7 +218,7 @@ const Inntekt = () => {
                                 </div>
                             ))}
                         </div>
-                    </>
+                    </div>
                 )}
 
                 <Button variant="primary">

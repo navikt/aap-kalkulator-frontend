@@ -12,7 +12,7 @@ const BackLink = ({ target, tekst }: { target: string; tekst?: string }) => {
     return (
         <Link as={"a"} href="#" className="mt-4 " onClick={onClick}>
             {" "}
-            <Back title="arrow-left"/> {tekst ? tekst : "Tilbake"}
+            <Back aria-hidden /> {tekst ? tekst : "Tilbake"}
         </Link>
     )
 }
