@@ -63,15 +63,15 @@ jobs:
         with:
           node-version: "16"
           registry-url: "https://npm.pkg.github.com"
-          cache: "yarn"
+          cache: "npm"
       - name: Install dependencies
-        run: yarn install
+        run: npm install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: yarn playwright test
+        run: npx playwright test
       - uses: actions/upload-artifact@v3
         if: always()
         with:
