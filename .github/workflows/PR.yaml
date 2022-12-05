@@ -1,0 +1,27 @@
+name: Push
+on:
+  pull_request:
+    branches:
+      - "main"
+    paths-ignore:
+      - '**.md'
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  APP: aap-kalkulator-frontend
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  IMAGE_BASE: ghcr.io/${{ github.repository }}
+jobs:
+  build-and-publish:
+    name: Bygg og publiser Docker image
+    runs-on: ubuntu-latest
+    outputs:
+      image: ${{ steps.bygg.outputs.image }}
+    steps:
+      - name: Sjekk ut
+        uses: actions/checkout@v3
+
+      - name: Install npm avhengigheter
+        run: npm ci
+
+      - name: test application
+        run: npm test

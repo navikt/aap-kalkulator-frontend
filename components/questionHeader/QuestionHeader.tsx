@@ -13,13 +13,16 @@ const QuestionHeader = ({
 }) => {
     return (
         <>
-            <div aria-hidden="true" className="flex flex-col pt-4 mb-4">
+            <div
+                aria-hidden="true"
+                className="flex flex-col items-center pt-4 mb-4"
+            >
                 <img
                     src={image}
                     height="100"
                     width="100"
                     alt={alt}
-                    className=" flex items-center mx-auto"
+                    className="block"
                 />
             </div>
             <Heading size="large" level="2" spacing>
