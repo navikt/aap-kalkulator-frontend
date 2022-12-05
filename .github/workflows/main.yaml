@@ -55,7 +55,7 @@ jobs:
               with:
                 cdn-team-name: aap
                 source: ./.next/static
-                destination: '/app-kalkulator-frontend/_next'
+                destination: '/aap-kalkulator-frontend/_next'
                     
             - name: Docker login
               run:  echo ${GITHUB_TOKEN} | docker login ghcr.io --username ${GITHUB_REPOSITORY} --password-stdin
