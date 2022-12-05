@@ -37,9 +37,9 @@ const Home: NextPage = () => {
                     src="/aap/kalkulator/ikoner/magnifying_glass.svg"
                     height="120"
                     width="120"
-                    alt="kalkulator ikon"
+                    alt=""
                     className="flex items-center pb-4"
-                    aria-hidden="true"
+                    aria-hidden
                 ></Image>
                 <Heading
                     level="2"

@@ -104,6 +104,7 @@ const Resultat: NextPage = ({
                         height="100"
                         width="100"
                         alt=""
+                        aria-hidden
                     />
                 </div>
                 <div className="text-center">
