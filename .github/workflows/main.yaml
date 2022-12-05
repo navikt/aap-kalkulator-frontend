@@ -84,7 +84,7 @@ jobs:
           matrix:
             cluster: [ dev-gcp, prod-gcp ]
         name: Deploy til ${{matrix.cluster}}
-        needs: build
+        needs: functionalTests
         runs-on: ubuntu-latest
         env:
           PRINT_PAYLOAD: true
