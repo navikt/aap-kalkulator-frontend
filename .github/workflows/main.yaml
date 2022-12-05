@@ -92,7 +92,7 @@ jobs:
           RESOURCE: nais.yaml
           CLUSTER: ${{matrix.cluster}}
           VARS: .nais/${{matrix.cluster}}.yaml
-          IMAGE: ${{needs.build-and-publish.outputs.image}}
+          IMAGE: ${{needs.build.outputs.image}}
         steps:
           - uses: actions/checkout@v3
           - uses: nais/deploy/actions/deploy@master
