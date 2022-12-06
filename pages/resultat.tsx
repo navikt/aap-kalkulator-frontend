@@ -3,7 +3,7 @@
 import { useContext, useEffect, useState } from "react"
 import { State } from "./_app"
 import { NextPage } from "next"
-import { Accordion, Alert, Heading, Label, Link } from "@navikt/ds-react"
+import { Accordion, Alert, BodyShort, Heading, Label, Link } from "@navikt/ds-react";
 import Image from "next/image"
 import { Result, ResultInterface } from "../components/result/Result"
 import BackLink from "../components/backlink/BackLink"
@@ -112,7 +112,6 @@ const Resultat: NextPage = ({
                         level="2"
                         size="large"
                         spacing
-                        aria-label="Hvor mye kan jeg få?"
                     >
                         {formatMessage("result.title")}
                     </Heading>
@@ -138,9 +137,10 @@ const Resultat: NextPage = ({
                         </div>
                     </div>
                     <div className="pt-4">
-                        <Alert variant="info" size="small">
-                            <p>{formatMessage("result.disclamer")}</p>
-
+                        <Alert variant="info">
+                            <BodyShort spacing>
+                                {formatMessage("result.disclamer")}
+                            </BodyShort>
                             <Link
                                 target="_blank"
                                 className="pt-4"
