@@ -2,7 +2,7 @@ import { Button } from "@navikt/ds-react";
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl";
 
 interface Props {
-    handleSubmit: (event:React.FormEvent)=>void;
+    handleSubmit: (event:React.FormEvent<any>)=>void;
     children: React.ReactNode;
 }
 export const FormWrapper = ({handleSubmit,children}:Props) => {

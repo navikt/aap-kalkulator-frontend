@@ -6,7 +6,7 @@ import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
-import { logAmplitudeEvent } from "../../lib/utils/amplitude"
+import { FormWrapper } from "../formWrapper/FormWrapper"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
 
 interface BarnInterface extends HTMLFormElement {
@@ -38,7 +38,7 @@ const Barn = () => {
             antallBarn: isNaN(parsed) ? undefined : parsed,
         })
     }
-    const handleSubmit = async (event: React.FormEvent<BarnInterface>) => {
+    const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
 
         if (state.harBarn == undefined) {
@@ -87,7 +87,7 @@ const Barn = () => {
                 alt=""
                 tittel={formatMessage("children.title")}
             />
-            <form onSubmit={handleSubmit}>
+            <FormWrapper handleSubmit={handleSubmit}>
                 <Radio
                     isError={radioError != undefined}
                     errorId="error1"
@@ -170,10 +170,7 @@ const Barn = () => {
                     </div>
                 )}
 
-                <Button variant="primary">
-                    {formatMessage("navigation.next")}
-                </Button>
-            </form>
+            </FormWrapper>
         </>
     )
 }
