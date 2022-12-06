@@ -2,7 +2,6 @@ import { useRouter } from "next/router"
 import { useContext, useEffect } from "react"
 import Inntekt from "../../components/questions/Inntekt"
 import Barn from "../../components/questions/Barn"
-import Arbeidsgrad from "../../components/questions/Arbeidsgrad"
 import Helse from "../../components/questions/Helse"
 import { State } from "../_app"
 
