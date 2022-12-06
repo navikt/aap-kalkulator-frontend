@@ -43,6 +43,7 @@ const Step = ({
                 className={`bg-feedback-info-background border-feedback-info-border border-2 ${circleStyling}`}
             >
                 <Edit
+                    aria-hidden
                     title="edit"
                     className="w-4 h-4 text-feedback-info-icon"
                 />
