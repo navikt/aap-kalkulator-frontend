@@ -14,11 +14,20 @@ jobs:
   build:
         name: Bygg og publiser Docker image
         runs-on: ubuntu-latest
+        permissions:
+          contents: 'read'
+          id-token: 'write'
+          packages: 'write'
         outputs:
           image: ${{ steps.bygg.outputs.image }}
         steps:
             - name: Sjekk ut 
               uses: actions/checkout@v3
+
+            - uses: actions/setup-node@v3
+              with:
+                node-version: "16"
+                cache: "npm"
               
             - name: Install npm avhengigheter
               run: npm ci
@@ -40,6 +49,13 @@ jobs:
               run: | 
                 echo "image=${{ env.IMAGE }}" >> $GITHUB_OUTPUT
                 npm run build
+
+            - name: upload to CDN
+              uses: navikt/frontend/actions/cdn-upload/v1@main
+              with:
+                cdn-team-name: aap
+                source: ./.next/static
+                destination: '/aap-kalkulator-frontend/_next'
                     
             - name: Docker login
               run:  echo ${GITHUB_TOKEN} | docker login ghcr.io --username ${GITHUB_REPOSITORY} --password-stdin
@@ -63,15 +79,15 @@ jobs:
         with:
           node-version: "16"
           registry-url: "https://npm.pkg.github.com"
-          cache: "yarn"
+          cache: "npm"
       - name: Install dependencies
-        run: yarn install
+        run: npm install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: yarn playwright test
+        run: npx playwright test
       - uses: actions/upload-artifact@v3
         if: always()
         with:
@@ -84,7 +100,7 @@ jobs:
           matrix:
             cluster: [ dev-gcp, prod-gcp ]
         name: Deploy til ${{matrix.cluster}}
-        needs: build
+        needs: [functionalTests, build]
         runs-on: ubuntu-latest
         env:
           PRINT_PAYLOAD: true
@@ -92,7 +108,7 @@ jobs:
           RESOURCE: nais.yaml
           CLUSTER: ${{matrix.cluster}}
           VARS: .nais/${{matrix.cluster}}.yaml
-          IMAGE: ${{needs.build-and-publish.outputs.image}}
+          IMAGE: ${{needs.build.outputs.image}}
         steps:
           - uses: actions/checkout@v3
           - uses: nais/deploy/actions/deploy@master

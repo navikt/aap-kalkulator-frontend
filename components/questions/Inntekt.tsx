@@ -15,6 +15,7 @@ import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import Radio from "../radio/Radio"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
+import { FormWrapper } from "../formWrapper/FormWrapper";
 
 interface Inntekt {
     inntekt1: string
@@ -149,10 +150,7 @@ const Inntekt = () => {
                 alt=""
                 tittel={formatMessage("income.title")}
             />
-            <form
-                onSubmit={handleSubmit}
-                className="grid gap-8 justify-items-start"
-            >
+            <FormWrapper handleSubmit={handleSubmit}>
                 <Radio
                     isError={radioError != ""}
                     errorId="error1"
@@ -221,10 +219,8 @@ const Inntekt = () => {
                     </div>
                 )}
 
-                <Button variant="primary">
-                    {formatMessage("navigation.next")}
-                </Button>
-            </form>
+
+            </FormWrapper>
         </>
     )
 }

@@ -18,6 +18,7 @@ const QuestionHeader = ({
                 className="flex flex-col items-center pt-4 mb-4"
             >
                 <img
+                    aria-hidden
                     src={image}
                     height="100"
                     width="100"

@@ -13,7 +13,7 @@ import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
-import { logAmplitudeEvent } from "../../lib/utils/amplitude"
+import { FormWrapper } from "../formWrapper/FormWrapper";
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -97,7 +97,7 @@ const Helse = () => {
                 alt=""
                 tittel={formatMessage("helse.title")}
             />
-            <form onSubmit={handleSubmit}>
+            <FormWrapper handleSubmit={handleSubmit}>
                 <div className="mb-4">
                     <Label as={"label"} id="l1" className="text-xl">
                         {formatMessage("helse.over25.title")}
@@ -177,10 +177,8 @@ const Helse = () => {
                         )}
                     </div>
                 </div>
-                <Button variant="primary">
-                    {formatMessage("navigation.next")}
-                </Button>
-            </form>
+
+            </FormWrapper>
         </>
     )
 }
