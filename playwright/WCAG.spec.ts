@@ -2,7 +2,7 @@ import { test, expect, Page } from '@playwright/test';
 
 import AxeBuilder from '@axe-core/playwright';
 const wcagTags = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
-const checkWcag = async (page: Page) => new AxeBuilder({ page }).withTags(wcagTags).analyze()
+const checkWcag = async (page: Page) => new AxeBuilder({ page }).include("#__next").withTags(wcagTags).analyze()
 test('Gå igjennom kalkulatoren og sjekk WCAG', async ({ page }) => {
 
     await page.goto('http://localhost:3000/aap/kalkulator');
