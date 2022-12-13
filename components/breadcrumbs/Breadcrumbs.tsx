@@ -47,7 +47,7 @@ const Breadcrumbs = () => {
                 </li>
                 <Crumb
                     path="https://aap-kalkulator-frontend.dev.nav.no"
-                    title={formatMessage("banner.description")}
+                    title={formatMessage("banner.title")}
                     isClickable={false}
                 />
             </ul>
