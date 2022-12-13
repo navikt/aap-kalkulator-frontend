@@ -1,6 +1,7 @@
 import { BodyShort } from "@navikt/ds-react"
 import { useRef } from "react"
 import { Next } from "@navikt/ds-icons"
+import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl";
 
 interface CrumbInterface {
     path: string
@@ -31,13 +32,14 @@ const Crumb = ({ path, title, isClickable }: CrumbInterface) => {
 
 const Breadcrumbs = () => {
     const breadcrumbRef = useRef<HTMLElement>(null)
+    const { formatMessage } = useFeatureToggleIntl()
 
     return (
         <nav ref={breadcrumbRef} aria-label="Du er her: ">
             <ul className="flex flex-row gap-1 my-4 items-center ml-2">
                 <Crumb
                     path="https://www.nav.no/aap"
-                    title="Arbeidsavklaringspenger"
+                    title={formatMessage("location")}
                     isClickable={true}
                 />
                 <li>
@@ -45,7 +47,7 @@ const Breadcrumbs = () => {
                 </li>
                 <Crumb
                     path="https://aap-kalkulator-frontend.dev.nav.no"
-                    title="Hvor mye kan du få?"
+                    title={formatMessage("banner.description")}
                     isClickable={false}
                 />
             </ul>

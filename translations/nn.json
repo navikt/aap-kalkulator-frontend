@@ -1,5 +1,6 @@
 {
     "test": "Test",
+    "location": "arbeidsavklaringspengar",
     "banner": {
         "title": "Finn ut omtrent kor mykje du kan få i AAP",
         "description": "KALKULATOR",
@@ -25,7 +26,7 @@
         },
         "nedsattArbeidsevne": {
             "title": "Kva år fikk du først nedsett arbeidsevne med minst 50%? (åååå)",
-            "readMoreTitle": "kvifor spør vi om når du fikk nedsett arbeidsevne?",
+            "readMoreTitle": "Kvifor spør vi om når du fikk nedsett arbeidsevne?",
             "readMore": "Vi bruker året du fikk nedsett arbeidsevne, til å justere for aukning i grunnbeløpet.",
             "validation": {
                 "required": "Året du fikk nedsett arbeidsevne må vera eit tal.",
@@ -78,7 +79,7 @@
         "title": "Inntekt",
         "gotIncome": {
             "title": "Hadde du inntekt i åra frå {inntektsAar2} til {inntektsAar0}?",
-            "readMoreTitle": "kvifor spør vi om inntekt?",
+            "readMoreTitle": "Kvifor spør vi om inntekt?",
             "readMore1": "Vi bruker inntekta di til å rekna ut kva du kan få i arbeidsavklaringspengar.",
             "readMore2": "Dette blir bestemt av inntekta di dei tre siste åra eller minstesatsen. Vi bruker det som gir høgast utrekning",
             "validation": {
