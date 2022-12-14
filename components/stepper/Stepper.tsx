@@ -1,5 +1,6 @@
 import { Edit, Notes, NotesFilled, Success } from "@navikt/ds-icons"
 import { BodyShort, Link } from "@navikt/ds-react"
+import NextLink from "next/link"
 import React, { useContext, useRef } from "react"
 import Divider from "../divider/Divider"
 import { useRouter } from "next/router"
@@ -21,18 +22,12 @@ const Step = ({
     const current_step = parseInt(path[path.length - 1])
     const isCurrentPage = stepNumber === current_step
     const circleStyling =
-        "flex rounded-full w-8 h-8 md:w-8 md:h-8  items-center justify-center mb-2"
+        "flex rounded-full w-8 h-8 items-center justify-center mb-2"
     const stepStyling = `flex flex-col items-center justify-center row-span-2 w-20 ${
         isLast && "col-span-2"
     } gap-0`
 
     const isCompleted = current_step > stepNumber
-
-    const onClick = async (url: string, e: React.MouseEvent) => {
-        e.preventDefault()
-
-        await router.push(url)
-    }
 
     const circle =
         isCompleted && !isCurrentPage ? (
@@ -40,14 +35,14 @@ const Step = ({
                 aria-hidden="true"
                 className={`text-icon-success bg-surface-success-subtle ${circleStyling}`}
             >
-                <Success className="w-8 h-8" />
+                <Success title="success" className="w-8 h-8" />
             </div>
         ) : isCurrentPage ? (
             <div
                 aria-hidden="true"
                 className={`bg-surface-info-subtle border-border-info border-2 ${circleStyling}`}
             >
-                <Edit className="w-4 h-4 text-icon-info" />
+                <Edit className="w-4 h-4 text-info-icon" />
             </div>
         ) : (
             <div
@@ -60,11 +55,7 @@ const Step = ({
 
     if (!isCompleted) {
         return (
-            <div
-                aria-label={title}
-                aria-current={isCurrentPage}
-                className={`${stepStyling}`}
-            >
+            <div aria-current={isCurrentPage} className={`${stepStyling}`}>
                 {circle}
                 <BodyShort aria-hidden="true" as="span" size="small">
                     {title}
@@ -74,16 +65,14 @@ const Step = ({
     }
 
     return (
-        <Link
-            href="#"
-            onClick={(e) => onClick(`/steg/${stepNumber}`, e)}
-            className={`${stepStyling}`}
-        >
-            {circle}
-            <BodyShort as="span" size="small">
-                {title}
-            </BodyShort>
-        </Link>
+        <NextLink passHref href={`/steg/${stepNumber}`}>
+            <Link className={`${stepStyling}`}>
+                {circle}
+                <BodyShort as="span" size="small">
+                    {title}
+                </BodyShort>
+            </Link>
+        </NextLink>
     )
 }
 

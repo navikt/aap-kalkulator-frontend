@@ -15,6 +15,7 @@ import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import Radio from "../radio/Radio"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
+import { FormWrapper } from "../formWrapper/FormWrapper";
 
 interface Inntekt {
     inntekt1: string
@@ -149,7 +150,7 @@ const Inntekt = () => {
                 alt=""
                 tittel={formatMessage("income.title")}
             />
-            <form onSubmit={handleSubmit}>
+            <FormWrapper handleSubmit={handleSubmit}>
                 <Radio
                     isError={radioError != ""}
                     errorId="error1"
@@ -173,14 +174,14 @@ const Inntekt = () => {
                 )}
 
                 {state.harLoenn && (
-                    <>
+                    <div>
                         <Label className="text-xl">
                             {formatMessage("income.howMuch.title")}
                         </Label>
                         <BodyShort spacing>
                             {formatMessage("income.howMuch.description")}
                         </BodyShort>
-                        <div className="flex md:flex-row flex-col md:space-x-8 my-4">
+                        <div className="flex md:flex-row flex-col my-4 gap-4">
                             {inntektsAar.reverse().map((aar, index) => (
                                 <div key={index} className="flex flex-col">
                                     <TextField
@@ -215,13 +216,11 @@ const Inntekt = () => {
                                 </div>
                             ))}
                         </div>
-                    </>
+                    </div>
                 )}
 
-                <Button variant="primary">
-                    {formatMessage("navigation.next")}
-                </Button>
-            </form>
+
+            </FormWrapper>
         </>
     )
 }

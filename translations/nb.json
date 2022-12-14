@@ -1,9 +1,10 @@
 {
     "test": "Test",
+    "location": "arbeidsavklaringspenger",
     "banner": {
-    "title": "Finn ut omtrent hvor mye du kan få i AAP",
-    "description": "KALKULATOR",
-    "updated": "Oppdatert"
+        "title": "Finn ut omtrent hvor mye du kan få i AAP",
+        "description": "KALKULATOR",
+        "updated": "Oppdatert"
     },
     "start": {
         "title": "Vær oppmerksom på dette",
@@ -29,7 +30,7 @@
             "readMore": "Vi bruker året du fikk nedsatt arbeidsevne, til å justere for økning i grunnbeløpet.",
             "validation": {
                 "required": "Året du fikk nedsatt arbeidsevne må være et tall.",
-                "max": "Året du fikk nedsatt arbeidsevne må være {Aar} eller tidligere.`",
+                "max": "Året du fikk nedsatt arbeidsevne må være {Aar} eller tidligere.",
                 "min": "Kalkulatoren kan ikke beregne arbeidsavklaringspenger dersom du fikk nedsatt arbeidsevne for mer enn {Aar} år siden."
             }
         }

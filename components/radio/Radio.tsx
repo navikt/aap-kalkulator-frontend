@@ -27,29 +27,15 @@ const Radio = ({
     return (
         <RadioGroup
             aria-errormessage={errorId}
-            className="grow"
+            className=""
             legend={<Label className="text-xl">{title}</Label>}
             description={readMore !== undefined && description}
             onChange={onChange}
             value={state == undefined ? "" : state ? "Ja" : "Nei"}
             error={isError && <div className="hidden"></div>}
         >
-            <div className="flex flex-row gap-4 mb-4 mt-4">
-                <DSRadio
-                    className={`${radioStyle} ${state && selectedStyle}`}
-                    value="Ja"
-                >
-                    {formatMessage("options.yes")}
-                </DSRadio>
-                <DSRadio
-                    className={`${radioStyle} ${
-                        state != undefined && !state && selectedStyle
-                    }`}
-                    value="Nei"
-                >
-                    {formatMessage("options.no")}
-                </DSRadio>
-            </div>
+            <DSRadio value="Ja">{formatMessage("options.yes")}</DSRadio>
+            <DSRadio value="Nei">{formatMessage("options.no")}</DSRadio>
         </RadioGroup>
     )
 }
