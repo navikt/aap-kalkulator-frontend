@@ -22,6 +22,9 @@ jobs:
 
       - name: Install npm avhengigheter
         run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
 
       - name: test application
         run: npm test
+        
