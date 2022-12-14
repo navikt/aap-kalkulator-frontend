@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { State } from "../../pages/_app"
 import {
+    BodyShort,
     Button,
     Label,
     RadioGroup,
@@ -13,7 +14,7 @@ import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
-import { FormWrapper } from "../formWrapper/FormWrapper";
+import { FormWrapper } from "../formWrapper/FormWrapper"
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -88,8 +89,6 @@ const Helse = () => {
         setRadioError("")
     }
 
-
-
     return (
         <>
             <Stepper />
@@ -100,27 +99,27 @@ const Helse = () => {
                 tittel={formatMessage("helse.title")}
             />
             <FormWrapper handleSubmit={handleSubmit}>
-                    <Radio
-                        isError={radioError != ""}
-                        errorId="error1"
-                        title={formatMessage("helse.over25.title")}
-                        aria-errormessage="e1"
-                        state={state.over25}
-                        onChange={(val: any) => handleChange(val)}
-                        readMoreTitle={formatMessage(
-                            "income.gotIncome.readMoreTitle"
-                        )}
-                        readMore={formatMessage("helse.over25.readMore")}
-                    />
-                    {radioError && (
-                        <ul
-                            id="e1"
-                            aria-live="assertive"
-                            className="list-disc ml-5 font-bold text-red-500"
-                        >
-                            <li>{radioError}</li>
-                        </ul>
+                <Radio
+                    isError={radioError != ""}
+                    errorId="error1"
+                    title={formatMessage("helse.over25.title")}
+                    aria-errormessage="e1"
+                    state={state.over25}
+                    onChange={(val: any) => handleChange(val)}
+                    readMoreTitle={formatMessage(
+                        "income.gotIncome.readMoreTitle"
                     )}
+                    readMore={formatMessage("helse.over25.readMore")}
+                />
+                {radioError && (
+                    <ul
+                        id="e1"
+                        aria-live="assertive"
+                        className="list-disc ml-5 font-bold text-red-500"
+                    >
+                        <li>{radioError}</li>
+                    </ul>
+                )}
                 <div className="mb-4">
                     <Label as="label" id="l2" className="text-xl">
                         {formatMessage("helse.nedsattArbeidsevne.title")}
@@ -159,7 +158,6 @@ const Helse = () => {
                         )}
                     </div>
                 </div>
-
             </FormWrapper>
         </>
     )

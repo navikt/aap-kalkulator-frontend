@@ -3,7 +3,14 @@
 import { useContext, useEffect, useState } from "react"
 import { State } from "./_app"
 import { NextPage } from "next"
-import { Accordion, Alert, BodyShort, Heading, Label, Link } from "@navikt/ds-react";
+import {
+    Accordion,
+    Alert,
+    BodyShort,
+    Heading,
+    Label,
+    Link,
+} from "@navikt/ds-react"
 import Image from "next/image"
 import { Result, ResultInterface } from "../components/result/Result"
 import BackLink from "../components/backlink/BackLink"
@@ -108,11 +115,7 @@ const Resultat: NextPage = ({
                     />
                 </div>
                 <div className="text-center">
-                    <Heading
-                        level="2"
-                        size="large"
-                        spacing
-                    >
+                    <Heading level="2" size="large" spacing>
                         {formatMessage("result.title")}
                     </Heading>
                 </div>
@@ -138,17 +141,20 @@ const Resultat: NextPage = ({
                     </div>
                     <div className="pt-4">
                         <Alert variant="info">
-                            <BodyShort spacing>
-                                {formatMessage("result.disclamer")}
-                            </BodyShort>
-                            <Link
-                                target="_blank"
-                                className="pt-4"
-                                href="https://www.nav.no/aap"
-                                as={"a"}
-                            >
-                                {formatMessage("result.link")}
-                            </Link>
+                            <div>
+                                <BodyShort spacing>
+                                    {formatMessage("result.disclamer")}
+                                </BodyShort>
+                                <Link
+                                    target="_blank"
+                                    className="pt-4"
+                                    href="https://www.nav.no/aap"
+                                    as="a"
+                                    color="link-color-text"
+                                >
+                                    {formatMessage("result.link")}
+                                </Link>
+                            </div>
                         </Alert>
                     </div>
                 </div>
