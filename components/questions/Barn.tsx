@@ -20,6 +20,7 @@ const Barn = () => {
     const [radioError, setRadioError] = useState<string | undefined>(undefined)
     const { browserState } = useContext(BrowserState)
     const { formatMessage } = useFeatureToggleIntl()
+    const [ antallBarn, setAntallBarn ] = useState(state.antallBarn!=undefined && !isNaN(state.antallBarn)?state.antallBarn.toString():"")
     const onRadioChange = (value: string) => {
         setState({
             ...state,
@@ -30,13 +31,16 @@ const Barn = () => {
     }
 
     const onChange = (text: string) => {
-        const parsed = parseInt(text)
-        setError("")
+        setAntallBarn(text)
+        if (text.match(/^([0-9]+)/) != null) {
+            const parsed = parseInt(text)
+            setError("")
 
-        setState({
-            ...state,
-            antallBarn: isNaN(parsed) ? undefined : parsed,
-        })
+            setState({
+                ...state,
+                antallBarn: isNaN(parsed) ? undefined : parsed,
+            })
+        }
     }
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
@@ -49,7 +53,8 @@ const Barn = () => {
         if (
             (state.antallBarn === undefined && state.harBarn) ||
             (state.antallBarn !== undefined &&
-                (isNaN(state.antallBarn) || state.antallBarn < 0))
+                (isNaN(state.antallBarn) || state.antallBarn < 0)) ||
+            (antallBarn.match(/^([0-9]+)$/) == null && state.harBarn)
         ) {
             setError("Antall barn må være et tall.")
             return
@@ -142,9 +147,7 @@ const Barn = () => {
                                     label=""
                                     size="medium"
                                     value={
-                                        state.antallBarn == undefined
-                                            ? ""
-                                            : state.antallBarn.toString()
+                                        antallBarn
                                     }
                                     onChange={(event) =>
                                         onChange(event.target.value)

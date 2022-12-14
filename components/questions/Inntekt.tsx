@@ -3,11 +3,8 @@ import { BrowserState, State } from "../../pages/_app"
 
 import {
     BodyShort,
-    Button,
     Label,
-    ReadMore,
     TextField,
-    Link,
 } from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Stepper from "../stepper/Stepper"
@@ -46,19 +43,26 @@ const Inntekt = () => {
     })
 
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const tekst = event.target.value.replace(/[\.,\s]/g, "")
-        const verdi = parseFloat(tekst)
-        const index =
-            parseInt(event.target.name[event.target.name.length - 1]) - 1
-        let newErrors = error
-        newErrors[index] = ""
-        setError(newErrors)
         setInntekt({
             ...inntekt,
-            [event.target.name]: !isNaN(verdi)
-                ? verdi.toLocaleString("nb-NO")
-                : "",
+            [event.target.name]: event.target.value,
         })
+        if (event.target.value.match(/^([0-9\s]+)([,.][0-9]*)?$/g)!=null)
+        {
+            const tekst = event.target.value.replace(/[\.,\s]/g, "")
+            const verdi = parseFloat(tekst)
+            const index =
+                parseInt(event.target.name[event.target.name.length - 1]) - 1
+            let newErrors = error
+            newErrors[index] = ""
+            setError(newErrors)
+            setInntekt({
+                ...inntekt,
+                [event.target.name]: !isNaN(verdi)
+                    ? verdi.toLocaleString("nb-NO")
+                    : event.target.value,
+            })
+        }
     }
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
@@ -91,6 +95,7 @@ const Inntekt = () => {
             inntekt2,
             inntekt3,
         })
+
         await router.push("/steg/3")
     }
 
