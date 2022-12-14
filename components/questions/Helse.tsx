@@ -3,11 +3,11 @@ import { State } from "../../pages/_app"
 import {
     Button,
     Label,
-    Radio,
     RadioGroup,
     ReadMore,
     TextField,
 } from "@navikt/ds-react"
+import Radio from "../radio/Radio"
 import { useRouter } from "next/router"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
@@ -84,9 +84,11 @@ const Helse = () => {
     }
 
     const handleChange = (val: string) => {
-        setState({ ...state, over25: val == "ja" })
+        setState({ ...state, over25: val == "Ja" })
         setRadioError("")
     }
+
+
 
     return (
         <>
@@ -98,37 +100,18 @@ const Helse = () => {
                 tittel={formatMessage("helse.title")}
             />
             <FormWrapper handleSubmit={handleSubmit}>
-                <div className="mb-4">
-                    <Label as={"label"} id="l1" className="text-xl">
-                        {formatMessage("helse.over25.title")}
-                    </Label>
-                    <ReadMore
-                        size="small"
-                        header={`${formatMessage(
-                            "helse.over25.readMoreTitle"
-                        )}`}
-                    >
-                        {" "}
-                        {formatMessage("helse.over25.readMore")}
-                    </ReadMore>
-                    <RadioGroup
+                    <Radio
+                        isError={radioError != ""}
+                        errorId="error1"
+                        title={formatMessage("helse.over25.title")}
                         aria-errormessage="e1"
-                        error={radioError && <div className="hidden"></div>}
-                        aria-labelledby="l1"
-                        legend=""
-                        size="medium"
+                        state={state.over25}
                         onChange={(val: any) => handleChange(val)}
-                        value={
-                            state.over25 === undefined
-                                ? ""
-                                : state.over25
-                                ? "ja"
-                                : "nei"
-                        }
-                    >
-                        <Radio value="ja">{formatMessage("options.yes")}</Radio>
-                        <Radio value="nei">{formatMessage("options.no")}</Radio>
-                    </RadioGroup>
+                        readMoreTitle={formatMessage(
+                            "income.gotIncome.readMoreTitle"
+                        )}
+                        readMore={formatMessage("helse.over25.readMore")}
+                    />
                     {radioError && (
                         <ul
                             id="e1"
@@ -138,7 +121,6 @@ const Helse = () => {
                             <li>{radioError}</li>
                         </ul>
                     )}
-                </div>
                 <div className="mb-4">
                     <Label as="label" id="l2" className="text-xl">
                         {formatMessage("helse.nedsattArbeidsevne.title")}
