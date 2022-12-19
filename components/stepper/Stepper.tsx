@@ -19,7 +19,7 @@ const Step = ({
     const { state } = useContext(State)
     const router = useRouter()
     const path = router.asPath.split("/")
-    const current_step = parseInt(path[path.length - 1])
+    const current_step = path[path.length - 1]=="resultat"? 4 : parseInt(path[path.length - 1])
     const isCurrentPage = stepNumber === current_step
     const circleStyling =
         "flex rounded-full w-8 h-8 items-center justify-center mb-2"

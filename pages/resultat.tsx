@@ -20,6 +20,7 @@ import { kalkuler } from "../lib/logic/Kalkuler"
 import { grunnbeloep, GrunnbeloepHistorikk } from "../lib/utils/types"
 import { useFeatureToggleIntl } from "../hooks/useFeatureToggleIntl"
 import { useIntl } from "react-intl"
+import Stepper from "../components/stepper/Stepper";
 
 export const getStaticProps = async () => {
     const res = await fetch("https://g.nav.no/api/v1/grunnbeloep")
@@ -100,6 +101,7 @@ const Resultat: NextPage = ({
     const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
     return (
         <>
+            <Stepper />
             <BackLink target="/steg/1" tekst="Endre svar" />
             <div className="grid gap-8">
                 <div
