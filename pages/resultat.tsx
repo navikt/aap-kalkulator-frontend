@@ -116,20 +116,22 @@ const Resultat: NextPage = ({
                         aria-hidden
                     />
                 </div>
-                <div className="text-center">
+                <div className="text-left">
                     <Heading level="2" size="large" spacing>
                         {formatMessage("result.title")}
                     </Heading>
                 </div>
-                <div className="grid gap-4 md:w-5/6 mx-auto">
-                    <div className="rounded-2xl bg-feedback-success-background p-6">
-                        <div className="grid grid-cols-2  my-4 gap-4 items-baseline">
+                <div className="grid gap-4">
+                    <div className="rounded-2xl p-6 grid grid-cols-2 my-4 gap-4 items-baseline">
+                        <div className="bg-feedback-success-background">
                             <span className="text-3xl md:text-5xl justify-self-end">
                                 {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
                             </span>
                             <Label className="pt-4 md:pt-5">
                                 {formatMessage("result.per14")}
                             </Label>
+                        </div>
+                        <div className="bg-feedback-success-background">
                             <span className="text-2xl md:text-3xl  justify-self-end">
                                 {Math.ceil(
                                     result == null ? 0 : result.resultat
@@ -141,27 +143,30 @@ const Resultat: NextPage = ({
                             </Label>
                         </div>
                     </div>
-                    <div className="pt-4">
+                    <div className="pt-4 space-y-4">
+                        <BodyShort>
+                            {formatMessage("result.preDisclaimer")}
+                        </BodyShort>
                         <Alert variant="info">
                             <div>
                                 <BodyShort spacing>
                                     {formatMessage("result.disclamer")}
                                 </BodyShort>
-                                <Link
-                                    target="_blank"
-                                    className="pt-4"
-                                    href="https://www.nav.no/aap"
-                                    as="a"
-                                    color="link-color-text"
-                                >
-                                    {formatMessage("result.link")}
-                                </Link>
                             </div>
                         </Alert>
+                        <Link
+                            target="_blank"
+                            className="pt-4"
+                            href="https://www.nav.no/aap"
+                            as="a"
+                            color="link-color-text"
+                        >
+                            {formatMessage("result.link")}
+                        </Link>
                     </div>
                 </div>
                 {result != null && (
-                    <div className="py-4 md:w-5/6">
+                    <div className="py-4 ">
                         <Heading size="medium" level="2" spacing>
                             {formatMessage("result.description")}
                         </Heading>
