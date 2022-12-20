@@ -116,35 +116,35 @@ const Resultat: NextPage = ({
                         aria-hidden
                     />
                 </div>
-                <div className="text-left">
-                    <Heading level="2" size="large" spacing>
+                <div className="text-left -mb-5">
+                    <Heading level="2" size="large">
                         {formatMessage("result.title")}
                     </Heading>
                 </div>
                 <div className="grid gap-4">
-                    <div className="rounded-2xl p-6 grid grid-cols-2 my-4 gap-4 items-baseline">
-                        <div className="bg-feedback-success-background">
-                            <span className="text-3xl md:text-5xl justify-self-end">
+                    <div className="grid grid-cols-2 my-4 gap-4 justify-self-start">
+                        <div className="bg-green-100 p-4 rounded p-7">
+                            <span className="text-3xl md:text-3xl text-green-900">
                                 {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
                             </span>
-                            <Label className="pt-4 md:pt-5">
+                            <Label className="text-green-800">
                                 {formatMessage("result.per14")}
                             </Label>
                         </div>
-                        <div className="bg-feedback-success-background">
-                            <span className="text-2xl md:text-3xl  justify-self-end">
+                        <div className="bg-green-100 p-4 rounded p-7">
+                            <span className="text-3xl md:text-3xl text-green-900">
                                 {Math.ceil(
                                     result == null ? 0 : result.resultat
                                 ).toLocaleString("nb-NO")}
                                 &nbsp;kr
                             </span>
-                            <Label className="pt-1 md:pt-2">
+                            <Label className="text-green-800">
                                 {formatMessage("result.perAar")}
                             </Label>
                         </div>
                     </div>
-                    <div className="pt-4 space-y-4">
-                        <BodyShort>
+                    <div className="space-y-7">
+                        <BodyShort >
                             {formatMessage("result.preDisclaimer")}
                         </BodyShort>
                         <Alert variant="info">
@@ -156,7 +156,6 @@ const Resultat: NextPage = ({
                         </Alert>
                         <Link
                             target="_blank"
-                            className="pt-4"
                             href="https://www.nav.no/aap"
                             as="a"
                             color="link-color-text"
@@ -166,7 +165,7 @@ const Resultat: NextPage = ({
                     </div>
                 </div>
                 {result != null && (
-                    <div className="py-4 ">
+                    <div>
                         <Heading size="medium" level="2" spacing>
                             {formatMessage("result.description")}
                         </Heading>
