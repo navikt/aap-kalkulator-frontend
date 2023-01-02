@@ -29,7 +29,7 @@
             "readMoreTitle": "Kvifor spør vi om når du fikk nedsett arbeidsevne?",
             "readMore": "Vi bruker året du fikk nedsett arbeidsevne, til å justere for aukning i grunnbeløpet.",
             "validation": {
-                "required": "Året du fikk nedsett arbeidsevne må vera eit tal.",
+                "required": "Du må fylla ut årstal. Fyll inn slik: åååå.",
                 "max": "Året du fikk nedset arbeidsevne må vera {Aar} eller tidlegare.",
                 "min": "Kalkulatoren kan ikkje berekna arbeidsavklaringspengar dersom du fekk nedsett arbeidsevne for meir enn {Aar} år siden."
             }
@@ -98,7 +98,8 @@
         "stepTitle": "Resultat",
         "title": "Dette ser da ut som du kan få",
         "description": "Korleis er utrekninga gjort?",
-        "disclamer": "Ut i frå tala du har oppgitt antek vi at du kan få denne summen i AAP før skatt. Viss du søker og får innvilga AAP, vil du få vita kva du faktisk får utbetalt. Merk: Det er alltid vedtaket du får som gjeld, denne kalkulatoren gir berre eit estimat.",
+        "preDisclaimer": "Ut i frå tala du har oppgitt antek vi at du kan få denne summen i AAP før skatt. Viss du søker og får innvilga AAP, vil du få vita kva du faktisk får utbetalt.",
+        "disclamer": "Det er alltid vedtaket du får som gjeld, denne kalkulatoren gir berre eit estimat.",
         "link": "Les meir om AAP her.",
         "per14": "hver 14. dag (før skatt)",
         "perAar": "i året (før skatt)"

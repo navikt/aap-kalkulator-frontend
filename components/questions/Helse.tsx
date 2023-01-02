@@ -1,10 +1,7 @@
 import { useContext, useState } from "react"
 import { State } from "../../pages/_app"
 import {
-    Button,
     Label,
-    RadioGroup,
-    ReadMore,
     TextField,
 } from "@navikt/ds-react"
 import Radio from "../radio/Radio"
@@ -13,7 +10,7 @@ import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
-import { FormWrapper } from "../formWrapper/FormWrapper";
+import { FormWrapper } from "../formWrapper/FormWrapper"
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -28,16 +25,20 @@ const Helse = () => {
     const [radioError, setRadioError] = useState("")
     const { formatMessage } = useFeatureToggleIntl()
     const aapGrense = 10
+    let [aar, setAar] = useState(state.sykmeldtAar != undefined && !isNaN(state.sykmeldtAar)? state.sykmeldtAar.toString():"")
 
     const onChange = (text: string) => {
-        const parsed = parseInt(text)
-        setState({
-            ...state,
-            // @ts-ignore
-            sykmeldtAar: isNaN(parsed) ? undefined : parsed,
-        })
-        if (!erFeil(parsed) && error != "") {
-            setError("")
+        setAar(text)
+        if (aar.match(/^[0-9]{4}$/)) {
+            const parsed = parseInt(aar)
+            setState({
+                ...state,
+                // @ts-ignore
+                sykmeldtAar: isNaN(parsed) ? undefined : parsed,
+            })
+            if (!erFeil(parsed) && error != "") {
+                setError("")
+            }
         }
     }
     const erFeil = (sykmeldtAar: number) => {
@@ -54,7 +55,7 @@ const Helse = () => {
         const detteAaret = new Date().getFullYear()
         const sykmeldtAar = parseInt(event.currentTarget.sykmelding.value)
 
-        const errors = isNaN(sykmeldtAar)
+        const errors = isNaN(sykmeldtAar) || aar.match(/^([0-9]+)$/)==null
             ? formatMessage("helse.nedsattArbeidsevne.validation.required")
             : sykmeldtAar > detteAaret
             ? formatMessage("helse.nedsattArbeidsevne.validation.max", {
@@ -72,7 +73,7 @@ const Helse = () => {
 
         setError(errors)
 
-        if (erFeil(sykmeldtAar) || state.over25 == undefined) {
+        if (erFeil(sykmeldtAar) || state.over25 == undefined || aar.match(/^([0-9]+)$/)==null) {
             return
         }
 
@@ -80,6 +81,7 @@ const Helse = () => {
             ...state,
             sykmeldtAar,
         })
+
         await router.push("/steg/2")
     }
 
@@ -87,8 +89,6 @@ const Helse = () => {
         setState({ ...state, over25: val == "Ja" })
         setRadioError("")
     }
-
-
 
     return (
         <>
@@ -100,27 +100,27 @@ const Helse = () => {
                 tittel={formatMessage("helse.title")}
             />
             <FormWrapper handleSubmit={handleSubmit}>
-                    <Radio
-                        isError={radioError != ""}
-                        errorId="error1"
-                        title={formatMessage("helse.over25.title")}
-                        aria-errormessage="e1"
-                        state={state.over25}
-                        onChange={(val: any) => handleChange(val)}
-                        readMoreTitle={formatMessage(
-                            "income.gotIncome.readMoreTitle"
-                        )}
-                        readMore={formatMessage("helse.over25.readMore")}
-                    />
-                    {radioError && (
-                        <ul
-                            id="e1"
-                            aria-live="assertive"
-                            className="list-disc ml-5 font-bold text-red-500"
-                        >
-                            <li>{radioError}</li>
-                        </ul>
+                <Radio
+                    isError={radioError != ""}
+                    errorId="error1"
+                    title={formatMessage("helse.over25.title")}
+                    aria-errormessage="e1"
+                    state={state.over25}
+                    onChange={(val: any) => handleChange(val)}
+                    readMoreTitle={formatMessage(
+                        "income.gotIncome.readMoreTitle"
                     )}
+                    readMore={formatMessage("helse.over25.readMore")}
+                />
+                {radioError && (
+                    <ul
+                        id="e1"
+                        aria-live="assertive"
+                        className="list-disc ml-5 font-bold text-red-500"
+                    >
+                        <li>{radioError}</li>
+                    </ul>
+                )}
                 <div className="mb-4">
                     <Label as="label" id="l2" className="text-xl">
                         {formatMessage("helse.nedsattArbeidsevne.title")}
@@ -141,9 +141,7 @@ const Helse = () => {
                             id="sykmelding"
                             className="md:w-1/5 mb-2 w-1/4"
                             value={
-                                state.sykmeldtAar == undefined
-                                    ? ""
-                                    : state.sykmeldtAar.toString()
+                                aar
                             }
                             onChange={(event) => onChange(event.target.value)}
                             error={error && <div className="hidden"></div>}
@@ -159,7 +157,6 @@ const Helse = () => {
                         )}
                     </div>
                 </div>
-
             </FormWrapper>
         </>
     )

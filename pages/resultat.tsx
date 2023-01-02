@@ -3,7 +3,14 @@
 import { useContext, useEffect, useState } from "react"
 import { State } from "./_app"
 import { NextPage } from "next"
-import { Accordion, Alert, BodyShort, Heading, Label, Link } from "@navikt/ds-react";
+import {
+    Accordion,
+    Alert,
+    BodyShort,
+    Heading,
+    Label,
+    Link,
+} from "@navikt/ds-react"
 import Image from "next/image"
 import { Result, ResultInterface } from "../components/result/Result"
 import BackLink from "../components/backlink/BackLink"
@@ -13,6 +20,7 @@ import { kalkuler } from "../lib/logic/Kalkuler"
 import { grunnbeloep, GrunnbeloepHistorikk } from "../lib/utils/types"
 import { useFeatureToggleIntl } from "../hooks/useFeatureToggleIntl"
 import { useIntl } from "react-intl"
+import Stepper from "../components/stepper/Stepper";
 
 export const getStaticProps = async () => {
     const res = await fetch("https://g.nav.no/api/v1/grunnbeloep")
@@ -93,6 +101,7 @@ const Resultat: NextPage = ({
     const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
     return (
         <>
+            <Stepper />
             <BackLink target="/steg/1" tekst="Endre svar" />
             <div className="grid gap-8">
                 <div
@@ -107,53 +116,56 @@ const Resultat: NextPage = ({
                         aria-hidden
                     />
                 </div>
-                <div className="text-center">
-                    <Heading
-                        level="2"
-                        size="large"
-                        spacing
-                    >
+                <div className="text-left -mb-5">
+                    <Heading level="2" size="large">
                         {formatMessage("result.title")}
                     </Heading>
                 </div>
-                <div className="grid gap-4 md:w-5/6 mx-auto">
-                <div className="rounded-2xl bg-surface-success-subtle p-6">
-                    <div className="grid grid-cols-2  my-4 gap-4 items-baseline">
-                        <span className="text-3xl md:text-5xl justify-self-end">
-                            {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
-                        </span>
-                        <Label className="pt-4 md:pt-5">
-                            {formatMessage("result.per14")}
-                        </Label>
-                        <span className="text-2xl md:text-3xl  justify-self-end">
-                            {Math.ceil(
-                                result == null ? 0 : result.resultat
-                            ).toLocaleString("nb-NO")}
-                            &nbsp;kr
-                        </span>
-                        <Label className="pt-1 md:pt-2">
-                            {formatMessage("result.perAar")}
-                        </Label>
+                <div className="grid gap-4">
+                    <div className="grid grid-cols-2 my-4 gap-4 justify-self-start">
+                        <div className="bg-green-100 p-4 rounded p-7">
+                            <span className="text-3xl md:text-3xl text-green-900">
+                                {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
+                            </span>
+                            <Label className="text-green-800">
+                                {formatMessage("result.per14")}
+                            </Label>
+                        </div>
+                        <div className="bg-green-100 p-4 rounded p-7">
+                            <span className="text-3xl md:text-3xl text-green-900">
+                                {Math.ceil(
+                                    result == null ? 0 : result.resultat
+                                ).toLocaleString("nb-NO")}
+                                &nbsp;kr
+                            </span>
+                            <Label className="text-green-800">
+                                {formatMessage("result.perAar")}
+                            </Label>
                         </div>
                     </div>
-                    <div className="pt-4">
+                    <div className="space-y-7">
+                        <BodyShort >
+                            {formatMessage("result.preDisclaimer")}
+                        </BodyShort>
                         <Alert variant="info">
-                            <BodyShort spacing>
-                                {formatMessage("result.disclamer")}
-                            </BodyShort>
-                            <Link
-                                target="_blank"
-                                className="pt-4"
-                                href="https://www.nav.no/aap"
-                                as={"a"}
-                            >
-                                {formatMessage("result.link")}
-                            </Link>
+                            <div>
+                                <BodyShort spacing>
+                                    {formatMessage("result.disclamer")}
+                                </BodyShort>
+                            </div>
                         </Alert>
+                        <Link
+                            target="_blank"
+                            href="https://www.nav.no/aap"
+                            as="a"
+                            color="link-color-text"
+                        >
+                            {formatMessage("result.link")}
+                        </Link>
                     </div>
                 </div>
                 {result != null && (
-                    <div className="py-4 md:w-5/6">
+                    <div>
                         <Heading size="medium" level="2" spacing>
                             {formatMessage("result.description")}
                         </Heading>
