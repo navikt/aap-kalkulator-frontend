@@ -181,7 +181,7 @@ describe("integrasjon", () => {
             antallBarn: 0,
             harBarn: true,
             harArbeid: false,
-            sykmeldtAar: aar - 1,
+            sykmeldtAar: 2021,
             over25: true,
         }
         const resultat = kalkuler(state, g, historikk)
@@ -321,7 +321,7 @@ describe("integrasjon", () => {
             antallBarn: 0,
             harBarn: false,
             harArbeid: false,
-            sykmeldtAar: aar,
+            sykmeldtAar: 2022,
             over25: true,
         }
         const resultat = kalkuler(state, g, historikk)
@@ -337,7 +337,7 @@ describe("integrasjon", () => {
             antallBarn: 0,
             harBarn: false,
             harArbeid: false,
-            sykmeldtAar: aar,
+            sykmeldtAar: 2022,
             over25: true,
         }
         const resultat = kalkuler(state, g, historikk)

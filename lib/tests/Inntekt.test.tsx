@@ -87,7 +87,7 @@ describe("kalkulere inntektsgrunnlag", () => {
             inntekt1: 350000,
             inntekt2: 450000,
             inntekt3: 550000,
-            sykmeldtAar: aar,
+            sykmeldtAar: 2022,
             over25: true,
         })
         resultat.resultat = 0
@@ -103,7 +103,7 @@ describe("kalkulere inntektsgrunnlag", () => {
             inntekt1: 600000,
             inntekt2: 100000,
             inntekt3: 200000,
-            sykmeldtAar: aar,
+            sykmeldtAar: 2022,
             over25: true,
         })
         resultat.resultat = 0
