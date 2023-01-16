@@ -35,7 +35,7 @@ const Step = ({
                 aria-hidden="true"
                 className={`text-icon.success bg-surface-success-subtle ${circleStyling}`}
             >
-                <Success title="success" className="w-8 h-8" onResize={undefined} onResizeCapture={undefined} />
+                <Success title="success" className="w-8 h-8" />
             </div>
         ) : isCurrentPage ? (
             <div
@@ -46,8 +46,6 @@ const Step = ({
                     aria-hidden
                     title="edit"
                     className="w-4 h-4 text-info-icon"
-                    onResize={undefined}
-                    onResizeCapture={undefined}
                 />
             </div>
         ) : (

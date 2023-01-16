@@ -10,7 +10,7 @@ const BackLink = ({ target, tekst }: { target: string; tekst?: string }) => {
         <NextLink passHref href={target}>
             <Link className="mt-4 ">
             {" "}
-            <Back aria-hidden onResize={undefined} onResizeCapture={undefined} /> {tekst ? tekst : "Tilbake"}
+            <Back aria-hidden /> {tekst ? tekst : "Tilbake"}
             </Link>
         </NextLink>
     )
