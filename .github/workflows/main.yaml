@@ -21,16 +21,15 @@ jobs:
         outputs:
           image: ${{ steps.bygg.outputs.image }}
         steps:
-            - name: Sjekk ut 
-              uses: actions/checkout@v3
-
-            - uses: actions/setup-node@v3
+            - uses: "actions/checkout@v2"
+            - uses: "actions/setup-node@v2"
               with:
                 node-version: "16"
-                cache: "npm"
-              
-            - name: Install npm avhengigheter
-              run: npm ci
+                registry-url: "https://npm.pkg.github.com"
+            - name: "install dependencies"
+              run: "npm ci"
+              env:
+                NODE_AUTH_TOKEN: "${{ secrets.READER_TOKEN }}"
               
             - name: test application
               run: npm test
