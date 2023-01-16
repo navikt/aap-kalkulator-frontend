@@ -43,7 +43,7 @@ const Breadcrumbs = () => {
                     isClickable={true}
                 />
                 <li>
-                    <Next aria-hidden="true" />
+                    <Next aria-hidden="true" onResize={undefined} onResizeCapture={undefined} />
                 </li>
                 <Crumb
                     path="https://aap-kalkulator-frontend.dev.nav.no"
