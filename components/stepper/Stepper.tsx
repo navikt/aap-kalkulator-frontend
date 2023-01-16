@@ -33,25 +33,27 @@ const Step = ({
         isCompleted && !isCurrentPage ? (
             <div
                 aria-hidden="true"
-                className={`text-feedback-success-icon bg-feedback-success-background ${circleStyling}`}
+                className={`text-icon.success bg-surface-success-subtle ${circleStyling}`}
             >
-                <Success title="success" className="w-8 h-8" />
+                <Success title="success" className="w-8 h-8" onResize={undefined} onResizeCapture={undefined} />
             </div>
         ) : isCurrentPage ? (
             <div
                 aria-hidden="true"
-                className={`bg-feedback-info-background border-feedback-info-border border-2 ${circleStyling}`}
+                className={`bg-surface-info-subtle border-border-info border-2 ${circleStyling}`}
             >
                 <Edit
                     aria-hidden
                     title="edit"
-                    className="w-4 h-4 text-feedback-info-icon"
+                    className="w-4 h-4 text-info-icon"
+                    onResize={undefined}
+                    onResizeCapture={undefined}
                 />
             </div>
         ) : (
             <div
                 aria-hidden="true"
-                className={`border-2 border-border text-text-muted ${circleStyling}`}
+                className={`border-2 border-border-strong text-text-subtle ${circleStyling}`}
             >
                 {stepNumber}
             </div>
