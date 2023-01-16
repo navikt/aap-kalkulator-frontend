@@ -20,6 +20,12 @@ jobs:
       - name: Sjekk ut
         uses: actions/checkout@v3
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          registry-url: "https://npm.pkg.github.com"
+          cache: "npm"
+
       - name: Install npm avhengigheter
         run: npm ci
 
