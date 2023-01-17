@@ -6,7 +6,6 @@ import Container from "../components/container/Container"
 import { StateInterface } from "../components/state/State"
 import { BrowserInterface } from "../components/state/BrowserInterface"
 import Head from "next/head"
-import { initAmplitude } from "../lib/utils/amplitude"
 import { IntlProvider } from "react-intl"
 import { messages } from "../utils/message"
 import { useRouter } from "next/router"
@@ -53,10 +52,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     const [browserState, setBrowserState] = useState<BrowserInterface>({
         redirect: false,
     })
-
-    useEffect(() => {
-        initAmplitude()
-    }, [])
 
     return (
         <IntlProvider locale={locale} messages={messages[locale as Locale]}>
