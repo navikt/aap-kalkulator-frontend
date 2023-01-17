@@ -1,18 +1,7 @@
 import amplitude from "amplitude-js"
+import { logAmplitudeEvent as dekoratorenLogEvent } from '@navikt/nav-dekoratoren-moduler';
 
 const isBrowser = () => typeof window !== "undefined"
-
-export const initAmplitude = () => {
-    if (isBrowser()) {
-        amplitude.getInstance().init("default", "", {
-            apiEndpoint: "amplitude.nav.no/collect-auto",
-            saveEvents: false,
-            includeUtm: true,
-            includeReferrer: true,
-            platform: window.location.toString(),
-        })
-    }
-}
 
 export function logAmplitudeEvent(
     eventName: string,
