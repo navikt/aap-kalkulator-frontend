@@ -108,7 +108,7 @@ const Helse = () => {
                     state={state.over25}
                     onChange={(val: any) => handleChange(val)}
                     readMoreTitle={formatMessage(
-                        "income.gotIncome.readMoreTitle"
+                        "helse.over25.readMoreTitle"
                     )}
                     readMore={formatMessage("helse.over25.readMore")}
                 />
