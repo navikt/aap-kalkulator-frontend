@@ -128,6 +128,7 @@ const Resultat: NextPage = ({
                                 {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
                             </span>
                             <Label className="text-green-800">
+                                {" "}
                                 {formatMessage("result.per14")}
                             </Label>
                         </div>
@@ -138,6 +139,7 @@ const Resultat: NextPage = ({
                                 ).toLocaleString("nb-NO")}
                                 &nbsp;kr
                             </span>
+                            {" "}
                             <Label className="text-green-800">
                                 {formatMessage("result.perAar")}
                             </Label>
@@ -149,7 +151,7 @@ const Resultat: NextPage = ({
                         </BodyShort>
                         <Alert variant="info">
                             <div>
-                                <BodyShort spacing>
+                                <BodyShort>
                                     {formatMessage("result.disclamer")}
                                 </BodyShort>
                             </div>
