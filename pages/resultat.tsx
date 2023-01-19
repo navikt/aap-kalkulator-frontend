@@ -129,7 +129,9 @@ const Resultat: NextPage = ({
                             </span>
                             <Label className="text-green-800">
                                 {" "}
-                                {formatMessage("result.per14")}
+                                {formatMessage("result.per14", {
+                                    wbr: () => <>&nbsp;</>,
+                                })}
                             </Label>
                         </div>
                         <div className="bg-green-100 p-4 rounded p-7">

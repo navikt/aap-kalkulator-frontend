@@ -101,7 +101,7 @@
         "preDisclaimer": "Utfra tallene du har oppgitt, antar vi at du kan få denne summen i AAP før skatt. Hvis du søker og får innvilget AAP, vil du få vite hva du faktisk får.",
         "disclamer": "Det er alltid vedtaket du får som gjelder. Denne kalkulatoren gir kun et estimat.",
         "link": "Les mer om AAP her",
-        "per14": "hver 14. dag (før skatt)",
+        "per14": "hver 14.<wbr></wbr>dag (før skatt)",
         "perAar": "i året (før skatt)"
     },
     "logic": {
