@@ -57,7 +57,7 @@ flowchart TD
     s[Innput data] <--> A
     A[Kalkuler] -->|1| B[Beregnings Grunnlag]
     A -->|2| C[Barnetilegg]
-    A -->|3| D[Arbeid]
+    A -.->|3 Avviklet| D[Arbeid]
 ```
 
 Kalkuler wrapper state (brukers input) i en type, som inneholder tekst log og resultat per år i kroner.
@@ -67,7 +67,7 @@ wrappet state blir da sendt inn i 3 funksjoner som regner Beregningsgrunnlag, ev
 
 # Teknisk beskrivelse, inkl. ROS:
 
-Kalkulatoren er tested for WCAG 2.0 A og AA. Dette ble testet med en rekke verktøy, blant annet [W3C Validator](https://validator.w3.org/) og [Lighthouse](https://developers.google.com/web/tools/lighthouse).
+Kalkulatoren er tested for WCAG 2.0 A og AA. Dette ble testet med en rekke verktøy, blant annet [W3C Validator](https://validator.w3.org/), [Playwright](https://playwright.dev/docs/accessibility-testing) og [Lighthouse](https://developers.google.com/web/tools/lighthouse).
 
 Risiko- og Sikkerhetsanalyse kan du finne [her](https://apps.powerapps.com/play/e/default-62366534-1ec3-4962-8869-9b5535279d0b/a/f8517640-ea01-46e2-9c09-be6b05013566?ID=1134) (Krever Tilgang til TryggNok)
 
