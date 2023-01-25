@@ -10,7 +10,6 @@ const Container = ({ children }: { children: ReactNode }) => {
     return (
         <div className="min-h-container bg-bg-subtle">
             <Banner />
-            <WarningBanner text={"Kalkulatoren er oppdatert i henhold til endring av barnetilegg til 35kr som inntreffer fra 1.Februar 2022."} />
             <div className="px-4 md:px-12">
                 <main className="max-w-[900px] mx-auto pb-8">
                 <div className="max-w-[600px]">
