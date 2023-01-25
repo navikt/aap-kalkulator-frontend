@@ -11,7 +11,7 @@ const dato = parse(
     new Date()
 )
 
-const Banner = ({ updated }: { updated: string }) => {
+const Banner = () => {
     const { formatMessage } = useFeatureToggleIntl()
     return (
         <header className="bg-[#ffffff] border-b-deepblue-400 border-b-4 text-center px-4 md:px-12 py-6">
