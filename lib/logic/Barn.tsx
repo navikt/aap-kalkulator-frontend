@@ -5,7 +5,7 @@ import {
     ytelseTilGrunnlag,
 } from "../utils/HjelpeFunksjoner"
 
-const SATS_PER_BARN_PER_DAG: number = 27
+const SATS_PER_BARN_PER_DAG: number = 35
 
 export const barnetillegg = (antallBarn: number) =>
     antallBarn * SATS_PER_BARN_PER_DAG * YTELSESDAGER
