@@ -100,7 +100,7 @@ describe("integrasjon", () => {
             over25: true,
         }
         const resultat = kalkuler(state, g, historikk)
-        expect(resultat.resultat).toBe(272094)
+        expect(resultat.resultat).toBe(286654)
         expect(resultat.logs.length).toBe(5)
         expect(resultat.logs[0]).toEqual({
             id: "logic.salery.minsteGrunnlag",
@@ -114,9 +114,9 @@ describe("integrasjon", () => {
             id: "logic.children.possibleChildsupport",
             values: {
                 childAmount: "7",
-                perChild: "7 020",
-                res: "272 094",
-                totChild: "49 140",
+                perChild: "9 100",
+                res: "286 654",
+                totChild: "63 700",
             },
         })
     })
@@ -134,7 +134,7 @@ describe("integrasjon", () => {
             over25: true,
         }
         const resultat = kalkuler(state, g, historikk)
-        expect(resultat.resultat).toBe(279114)
+        expect(resultat.resultat).toBe(295_754)
         expect(resultat.logs.length).toBe(5)
     })
     it("ytelse med grunnbeløp 6g, 22 barn og 0 arbeidsgrad", () => {
@@ -151,7 +151,7 @@ describe("integrasjon", () => {
             over25: true,
         }
         const resultat = kalkuler(state, g, historikk)
-        expect(resultat.resultat).toBe(595889)
+        expect(resultat.resultat).toBe(601_976)
         expect(resultat.logs.length).toBe(5)
     })
     it("ytelse med grunnbeløp 6g, 23 barn og 0 arbeidsgrad", () => {
@@ -252,7 +252,7 @@ describe("integrasjon", () => {
             id: "logic.children.maxChildren",
             values: {
                 maksBarneTillegg: "81 075",
-                perChild: "7 020",
+                perChild: "9 100",
                 res: "304 028",
             },
         })
@@ -309,7 +309,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         //expect(resultat.resultat).toBe(455520)
-        expect(resultat.resultat).toBe(455489)
+        expect(resultat.resultat).toBe(459_649)
     })
     it("400k avg, 2 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
