@@ -5,7 +5,7 @@ const WarningBanner = (text:{text:string}) => {
     return (
         <div className="px-4 md:px-12">
                 <div className="max-w-[900px] mx-auto">
-                    <div className="pt-3 max-w-[600px] px-6 md:px-10">
+                    <div className="pt-3 max-w-[600px]">
                         <Alert variant="info">
                             {text.text}
                         </Alert>
