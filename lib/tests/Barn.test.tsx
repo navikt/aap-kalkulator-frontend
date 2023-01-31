@@ -23,11 +23,11 @@ describe("Barnetilegg", () => {
     })
     it("med 1 barn", () => {
         const barn = barnetillegg(1)
-        expect(barn).toBe(7020)
+        expect(barn).toBe(9100)
     })
     it("med mangen barn", () => {
         const barn = barnetillegg(8)
-        expect(barn).toBe(56160)
+        expect(barn).toBe(72800)
     })
 })
 
@@ -51,8 +51,8 @@ describe("Barnetillegg med wrapped funksjon", () => {
         })
         barn.resultat = 100_000
         leggTilBarnetillegg(barn)
-        expect(barn.resultat).toBe(107_020)
-        expect(barn.logs[0]).toEqual({id:"logic.children.possibleChildsupport", values:{childAmount: "1", perChild: "7 020", res:"107 020",totChild:"7 020"}})
+        expect(barn.resultat).toBe(109_100)
+        expect(barn.logs[0]).toEqual({id:"logic.children.possibleChildsupport", values:{childAmount: "1", perChild: "9 100", res:"109 100",totChild:"9 100"}})
     })
     it("Med maks barn", () => {
         const barn = new Result({
@@ -64,6 +64,6 @@ describe("Barnetillegg med wrapped funksjon", () => {
         barn.resultat = 222954.0 * (2.0 / 3.0)
         leggTilBarnetillegg(barn)
         expect(Math.ceil(barn.resultat)).toBe(202_686)
-        expect(barn.logs[0]).toEqual({id:"logic.children.maxChildren", values:{maksBarneTillegg:"54 050", perChild:"7 020", res:"202 685"}})
+        expect(barn.logs[0]).toEqual({id:"logic.children.maxChildren", values:{maksBarneTillegg:"54 050", perChild:"9 100", res:"202 685"}})
     })
 })
