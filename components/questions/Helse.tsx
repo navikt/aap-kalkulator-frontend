@@ -21,7 +21,7 @@ const Helse = () => {
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState("")
     const { formatMessage } = useFeatureToggleIntl()
-    const aapGrense = 10
+    const aapGrense = 11
     let [aar, setAar] = useState(
         state.sykmeldtAar != undefined && !isNaN(state.sykmeldtAar)
             ? state.sykmeldtAar.toString()
@@ -44,12 +44,6 @@ const Helse = () => {
     }
     const erFeil = (sykmeldtAar: number) => {
         const detteAaret = new Date().getFullYear()
-        console.log(
-            "erFeil",
-            isNaN(sykmeldtAar) ||
-                sykmeldtAar > detteAaret ||
-                sykmeldtAar < detteAaret - aapGrense
-        )
         return (
             isNaN(sykmeldtAar) ||
             sykmeldtAar > detteAaret ||
@@ -85,7 +79,6 @@ const Helse = () => {
             state.over25 == undefined ||
             aar.match(/^([0-9]+)$/) == null
         ) {
-            console.log("failed here")
             return
         }
 
