@@ -55,7 +55,7 @@ const Helse = () => {
         event.preventDefault()
         const detteAaret = new Date().getFullYear()
         const sykmeldtAar = parseInt(event.currentTarget.sykmelding.value)
-        console.log("sykmeldtAar", sykmeldtAar)
+
         const errors = isNaN(sykmeldtAar)
             ? formatMessage("helse.nedsattArbeidsevne.validation.required")
             : sykmeldtAar > detteAaret
