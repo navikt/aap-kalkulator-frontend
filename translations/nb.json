@@ -25,7 +25,7 @@
             }
         },
         "nedsattArbeidsevne": {
-            "title": "Hvilket år ble du så syk at du måtte jobbe mindre enn 50%? (åååå)",
+            "title": "Hvilket år ble du så syk at du måtte jobbe mindre enn 50%?",
             "readMoreTitle": "Hvorfor spør vi om når du ble syk?",
             "readMore": "Vi bruker året du fikk nedsatt arbeidsevne, til å justere for økning i grunnbeløpet.",
             "validation": {

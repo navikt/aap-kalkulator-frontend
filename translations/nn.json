@@ -25,7 +25,7 @@
             }
         },
         "nedsattArbeidsevne": {
-            "title": "Kva år fikk du først nedsett arbeidsevne med minst 50%? (åååå)",
+            "title": "Kva år fikk du først nedsett arbeidsevne med minst 50%?",
             "readMoreTitle": "Kvifor spør vi om når du fikk nedsett arbeidsevne?",
             "readMore": "Vi bruker året du fikk nedsett arbeidsevne, til å justere for aukning i grunnbeløpet.",
             "validation": {

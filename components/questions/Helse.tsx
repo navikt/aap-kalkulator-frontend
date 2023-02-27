@@ -1,9 +1,6 @@
 import { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import {
-    Label,
-    TextField,
-} from "@navikt/ds-react"
+import { Label, Select, TextField } from "@navikt/ds-react"
 import Radio from "../radio/Radio"
 import { useRouter } from "next/router"
 import Stepper from "../stepper/Stepper"
@@ -24,8 +21,12 @@ const Helse = () => {
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState("")
     const { formatMessage } = useFeatureToggleIntl()
-    const aapGrense = 10
-    let [aar, setAar] = useState(state.sykmeldtAar != undefined && !isNaN(state.sykmeldtAar)? state.sykmeldtAar.toString():"")
+    const aapGrense = 11
+    let [aar, setAar] = useState(
+        state.sykmeldtAar != undefined && !isNaN(state.sykmeldtAar)
+            ? state.sykmeldtAar.toString()
+            : "2023"
+    )
 
     const onChange = (text: string) => {
         setAar(text)
@@ -55,7 +56,7 @@ const Helse = () => {
         const detteAaret = new Date().getFullYear()
         const sykmeldtAar = parseInt(event.currentTarget.sykmelding.value)
 
-        const errors = isNaN(sykmeldtAar) || aar.match(/^([0-9]+)$/)==null
+        const errors = isNaN(sykmeldtAar)
             ? formatMessage("helse.nedsattArbeidsevne.validation.required")
             : sykmeldtAar > detteAaret
             ? formatMessage("helse.nedsattArbeidsevne.validation.max", {
@@ -73,7 +74,11 @@ const Helse = () => {
 
         setError(errors)
 
-        if (erFeil(sykmeldtAar) || state.over25 == undefined || aar.match(/^([0-9]+)$/)==null) {
+        if (
+            erFeil(sykmeldtAar) ||
+            state.over25 == undefined ||
+            aar.match(/^([0-9]+)$/) == null
+        ) {
             return
         }
 
@@ -107,9 +112,7 @@ const Helse = () => {
                     aria-errormessage="e1"
                     state={state.over25}
                     onChange={(val: any) => handleChange(val)}
-                    readMoreTitle={formatMessage(
-                        "helse.over25.readMoreTitle"
-                    )}
+                    readMoreTitle={formatMessage("helse.over25.readMoreTitle")}
                     readMore={formatMessage("helse.over25.readMore")}
                 />
                 {radioError && (
@@ -132,20 +135,24 @@ const Helse = () => {
                         {formatMessage("helse.nedsattArbeidsevne.readMore")}
                     </ReadMore>*/}
                     <div className="flex flex-col my-2">
-                        <TextField
-                            aria-errormessage="e2"
-                            aria-labelledby="l2"
-                            inputMode="numeric"
-                            size="medium"
+                        <Select
                             label=""
                             id="sykmelding"
                             className="md:w-1/5 mb-2 w-1/4"
-                            value={
-                                aar
-                            }
                             onChange={(event) => onChange(event.target.value)}
-                            error={error && <div className="hidden"></div>}
-                        />
+                            aria-labelledby="l2"
+                            aria-errormessage="e2"
+                            defaultValue={aar}
+                        >
+                            {Array.from(Array(aapGrense).keys()).map((i) => {
+                                const year = new Date().getFullYear() - i
+                                return (
+                                    <option key={year} value={year}>
+                                        {year}
+                                    </option>
+                                )
+                            })}
+                        </Select>
                         {error && (
                             <ul
                                 id="e2"
