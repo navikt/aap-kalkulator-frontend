@@ -21,7 +21,11 @@ const Helse = () => {
     const [error, setError] = useState("")
     const [radioError, setRadioError] = useState("")
     const { formatMessage } = useFeatureToggleIntl()
+<<<<<<< HEAD
     const aapGrense = 11
+=======
+    const aapGrense = 10
+>>>>>>> 6fe7dff (:children_crossing: byttet textboks for innskriving av år til selector)
     let [aar, setAar] = useState(
         state.sykmeldtAar != undefined && !isNaN(state.sykmeldtAar)
             ? state.sykmeldtAar.toString()
@@ -44,6 +48,12 @@ const Helse = () => {
     }
     const erFeil = (sykmeldtAar: number) => {
         const detteAaret = new Date().getFullYear()
+        console.log(
+            "erFeil",
+            isNaN(sykmeldtAar) ||
+                sykmeldtAar > detteAaret ||
+                sykmeldtAar < detteAaret - aapGrense
+        )
         return (
             isNaN(sykmeldtAar) ||
             sykmeldtAar > detteAaret ||
