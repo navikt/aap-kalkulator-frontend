@@ -179,7 +179,7 @@ const Inntekt = () => {
             <FormWrapper handleSubmit={handleSubmit}>
                 <div>
                     <Label id="q1" className="text-xl">
-                        Hvor mye jobber to nå?
+                        Hvor mye jobber du nå?
                     </Label>
                     <BodyShort id="d1" spacing>
                         Vi regner at en arbeidsuke er 37.5 timer, som tilsvarer
