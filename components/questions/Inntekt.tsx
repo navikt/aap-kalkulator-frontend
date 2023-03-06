@@ -1,18 +1,14 @@
 import { ChangeEvent, useContext, useState } from "react"
 import { BrowserState, State } from "../../pages/_app"
 
-import {
-    BodyShort,
-    Label,
-    TextField,
-} from "@navikt/ds-react"
+import { Alert, BodyShort, Label, Textarea, TextField } from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import Radio from "../radio/Radio"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
-import { FormWrapper } from "../formWrapper/FormWrapper";
+import { FormWrapper } from "../formWrapper/FormWrapper"
 
 interface Inntekt {
     inntekt1: string
@@ -25,6 +21,7 @@ const Inntekt = () => {
     const { formatMessage } = useFeatureToggleIntl()
     const { state, setState } = useContext(State)
     const [error, setError] = useState<string[]>(["", "", ""])
+    const [arbeidsTimerError, setArbeidsTimerError] = useState("")
     const { browserState } = useContext(BrowserState)
     const [radioError, setRadioError] = useState<string>("")
     const [inntekt, setInntekt] = useState<Inntekt>({
@@ -42,13 +39,28 @@ const Inntekt = () => {
                 : "",
     })
 
+    const onArbeidChange = (text: string) => {
+        const parsed = parseFloat(text.replace(",", "."))
+        setState({
+            ...state,
+            arbeidstimer: text,
+        })
+        if (!isNaN(parsed) || text == "") {
+            setArbeidsTimerError("")
+        }
+        if (text.match(/^([0-9]+)([,.][0-9]*)?$/g) == null) {
+            setArbeidsTimerError(
+                "Du må skrive et tall. Tallet kan inneholde desimaler."
+            )
+        }
+    }
+
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         setInntekt({
             ...inntekt,
             [event.target.name]: event.target.value,
         })
-        if (event.target.value.match(/^([0-9\s]+)([,.][0-9]*)?$/g)!=null)
-        {
+        if (event.target.value.match(/^([0-9\s]+)([,.][0-9]*)?$/g) != null) {
             const tekst = event.target.value.replace(/[\.,\s]/g, "")
             const verdi = parseFloat(tekst)
             const index =
@@ -65,32 +77,41 @@ const Inntekt = () => {
         }
     }
     const handleSubmit = async (event: React.FormEvent) => {
+        let arbeidsgrad = 0
+        let arbeidsTimer = 0
         event.preventDefault()
+
+        arbeidsTimer =
+            state.arbeidstimer == undefined
+                ? NaN
+                : parseFloat(state.arbeidstimer.replace(",", "."))
+        arbeidsgrad = (arbeidsTimer / 37.5) * 100
 
         const errorMessage = "Fyll inn inntekt."
         const inntekt1 = parseFloat(inntekt.inntekt1.replace(/\s/g, ""))
         const inntekt2 = parseFloat(inntekt.inntekt2.replace(/\s/g, ""))
-        const inntekt3 = parseFloat(inntekt.inntekt3.replace(/\s/g, ""))
 
+        const inntekt3 = parseFloat(inntekt.inntekt3.replace(/\s/g, ""))
         const errors = [
             !isNaN(inntekt1) ? "" : errorMessage,
             !isNaN(inntekt2) ? "" : errorMessage,
             !isNaN(inntekt3) ? "" : errorMessage,
         ]
-
         setError(errors)
         if (state.harLoenn == undefined) {
             setRadioError(formatMessage("income.gotIncome.validation.required"))
         }
         if (
             (errors.some((v) => v.length > 0) && state.harLoenn == true) ||
-            state.harLoenn == undefined
+            state.harLoenn == undefined ||
+            arbeidsTimerError.length > 0
         ) {
             return
         }
 
         setState({
             ...state,
+            arbeidsgrad,
             inntekt1,
             inntekt2,
             inntekt3,
@@ -156,6 +177,49 @@ const Inntekt = () => {
                 tittel={formatMessage("income.title")}
             />
             <FormWrapper handleSubmit={handleSubmit}>
+                <div>
+                    <Label id="q1" className="text-xl">
+                        Hvor mye jobber to nå?
+                    </Label>
+                    <BodyShort id="d1" spacing>
+                        Vi regner at en arbeidsuke er 37.5 timer, som tilsvarer
+                        100%.
+                    </BodyShort>
+                    <div className="flex flex-row items-center gap-2">
+                        <TextField
+                            className="w-1/6"
+                            label=""
+                            aria-labelledby="q1"
+                            aria-describedby="d1"
+                            inputMode="numeric"
+                            error={arbeidsTimerError}
+                            value={state?.arbeidstimer}
+                            onChange={(event) =>
+                                onArbeidChange(event.target.value)
+                            }
+                        ></TextField>
+                        <BodyShort>Timer</BodyShort>
+                    </div>
+                    {arbeidsTimerError != "" && (
+                        <ul
+                            id="error1"
+                            aria-live="assertive"
+                            className="list-disc"
+                        >
+                            <li className="ml-5 font-bold text-red-500 mb-4">
+                                {arbeidsTimerError}
+                            </li>
+                        </ul>
+                    )}
+                    {(state?.arbeidstimer ?? 0) > 22.5 && (
+                        <Alert className="mt-4" variant={"warning"}>
+                            Hvor mye du får utbetalt, avhenger av hvor mye du
+                            jobber. En arbeidsuke er 37,5 timer. Jobber du mer
+                            enn 22,5 timer i uka (60%), kan du ikke få
+                            arbeidsavklaringspenger.
+                        </Alert>
+                    )}
+                </div>
                 <Radio
                     isError={radioError != ""}
                     errorId="error1"
@@ -223,8 +287,6 @@ const Inntekt = () => {
                         </div>
                     </div>
                 )}
-
-
             </FormWrapper>
         </>
     )

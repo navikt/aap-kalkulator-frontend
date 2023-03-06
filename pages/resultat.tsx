@@ -1,17 +1,9 @@
 // noinspection JSNonASCIINames
 
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useMemo, useState } from "react"
 import { State } from "./_app"
 import { NextPage } from "next"
-import {
-    Accordion,
-    Alert,
-    BodyShort,
-    Heading,
-    Label,
-    Link,
-} from "@navikt/ds-react"
-import Image from "next/image"
+import { Alert, BodyShort, Heading, Label, Link } from "@navikt/ds-react"
 import { Result, ResultInterface } from "../components/result/Result"
 import BackLink from "../components/backlink/BackLink"
 import { useRouter } from "next/router"
@@ -19,8 +11,7 @@ import { logAmplitudeEvent } from "../lib/utils/amplitude"
 import { kalkuler } from "../lib/logic/Kalkuler"
 import { grunnbeloep, GrunnbeloepHistorikk } from "../lib/utils/types"
 import { useFeatureToggleIntl } from "../hooks/useFeatureToggleIntl"
-import { useIntl } from "react-intl"
-import Stepper from "../components/stepper/Stepper";
+import Stepper from "../components/stepper/Stepper"
 
 export const getStaticProps = async () => {
     const res = await fetch("https://g.nav.no/api/v1/grunnbeloep")
@@ -98,7 +89,12 @@ const Resultat: NextPage = ({
         })
     }
 
-    const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
+    const resultat = useMemo(() => {
+        if (result == null) return 0
+        return result?.resultat
+    }, [result])
+
+    const dagsats = Math.ceil(result == null ? 0 : resultat / 260)
     return (
         <>
             <Stepper />
@@ -137,18 +133,17 @@ const Resultat: NextPage = ({
                         <div className="bg-green-100 p-4 rounded p-7">
                             <span className="text-3xl md:text-3xl text-green-900">
                                 {Math.ceil(
-                                    result == null ? 0 : result.resultat
+                                    result == null ? 0 : resultat
                                 ).toLocaleString("nb-NO")}
                                 &nbsp;kr
-                            </span>
-                            {" "}
+                            </span>{" "}
                             <Label className="text-green-800">
                                 {formatMessage("result.perAar")}
                             </Label>
                         </div>
                     </div>
                     <div className="space-y-7">
-                        <BodyShort >
+                        <BodyShort>
                             {formatMessage("result.preDisclaimer")}
                         </BodyShort>
                         <Alert variant="info">
