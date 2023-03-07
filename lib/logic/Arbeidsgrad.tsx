@@ -1,7 +1,7 @@
 import { Result } from "../../components/result/Result"
 import { toKr } from "../utils/HjelpeFunksjoner"
-const ARBEIDSGRENSE = 60.0
-
+const ARBEIDSGRENSEMEDAAP = 60.0
+const ARBEIDSGRENSEUTENAAP = 50.0
 const invertedPercent = (percent: number) => {
     return (100 - percent) / 100
 }
@@ -9,7 +9,10 @@ const invertedPercent = (percent: number) => {
 export const arbeidsgrad = (resultat: Result) => {
     /*resultat.logs.push({ id: "logic.work.any" })*/
     const gammeltResultat = resultat.resultat
-    if (resultat.personInfo!!.arbeidsgrad == 0.0) {
+    if (
+        resultat.personInfo!!.arbeidsgrad == 0.0 ||
+        !resultat.personInfo!!.harArbeid
+    ) {
         return
     }
 
@@ -17,12 +20,17 @@ export const arbeidsgrad = (resultat: Result) => {
         throw new Error("Arbeidsgrad kan ikke være mindre enn 0")
     }
 
-    if (resultat.personInfo!!.arbeidsgrad!! > ARBEIDSGRENSE) {
+    if (
+        (resultat.personInfo!!.arbeidsgrad!! > ARBEIDSGRENSEUTENAAP &&
+            !resultat.personInfo!!.harAAP) ||
+        resultat.personInfo!!.arbeidsgrad!! > ARBEIDSGRENSEMEDAAP
+    ) {
         resultat.resultat = 0.0
         resultat.logs = []
         resultat.logs.push({ id: "logic.work.tooMuch", values: {} })
         return
     }
+
     console.log("resultat:", resultat)
 
     resultat.resultat *= invertedPercent(resultat.personInfo!!.arbeidsgrad!!)

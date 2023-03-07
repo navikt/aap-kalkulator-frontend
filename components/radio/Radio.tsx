@@ -16,13 +16,12 @@ const Radio = ({
     readMore?: string | React.ReactElement
     state?: boolean
     onChange: (newState: string) => void
-    errorId: string
+    errorId?: string
     isError: boolean
 }) => {
     const { formatMessage } = useFeatureToggleIntl()
     const radioStyle = "flex-grow border-[1px] px-2 rounded-md hover:shadow"
-    const selectedStyle =
-        "bg-surface-action-subtle-hover border-surface-action"
+    const selectedStyle = "bg-surface-action-subtle-hover border-surface-action"
     const description = <ReadMore header={readMoreTitle}>{readMore}</ReadMore>
 
     return (

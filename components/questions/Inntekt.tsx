@@ -21,7 +21,6 @@ const Inntekt = () => {
     const { formatMessage } = useFeatureToggleIntl()
     const { state, setState } = useContext(State)
     const [error, setError] = useState<string[]>(["", "", ""])
-    const [arbeidsTimerError, setArbeidsTimerError] = useState("")
     const { browserState } = useContext(BrowserState)
     const [radioError, setRadioError] = useState<string>("")
     const [inntekt, setInntekt] = useState<Inntekt>({
@@ -38,22 +37,6 @@ const Inntekt = () => {
                 ? state.inntekt3.toLocaleString("nb-NO")
                 : "",
     })
-
-    const onArbeidChange = (text: string) => {
-        const parsed = parseFloat(text.replace(",", "."))
-        setState({
-            ...state,
-            arbeidstimer: text,
-        })
-        if (!isNaN(parsed) || text == "") {
-            setArbeidsTimerError("")
-        }
-        if (text.match(/^([0-9]+)([,.][0-9]*)?$/g) == null) {
-            setArbeidsTimerError(
-                "Du må skrive et tall. Tallet kan inneholde desimaler."
-            )
-        }
-    }
 
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         setInntekt({
@@ -77,15 +60,7 @@ const Inntekt = () => {
         }
     }
     const handleSubmit = async (event: React.FormEvent) => {
-        let arbeidsgrad = 0
-        let arbeidsTimer = 0
         event.preventDefault()
-
-        arbeidsTimer =
-            state.arbeidstimer == undefined
-                ? NaN
-                : parseFloat(state.arbeidstimer.replace(",", "."))
-        arbeidsgrad = (arbeidsTimer / 37.5) * 100
 
         const errorMessage = "Fyll inn inntekt."
         const inntekt1 = parseFloat(inntekt.inntekt1.replace(/\s/g, ""))
@@ -103,15 +78,13 @@ const Inntekt = () => {
         }
         if (
             (errors.some((v) => v.length > 0) && state.harLoenn == true) ||
-            state.harLoenn == undefined ||
-            arbeidsTimerError.length > 0
+            state.harLoenn == undefined
         ) {
             return
         }
 
         setState({
             ...state,
-            arbeidsgrad,
             inntekt1,
             inntekt2,
             inntekt3,
@@ -177,49 +150,6 @@ const Inntekt = () => {
                 tittel={formatMessage("income.title")}
             />
             <FormWrapper handleSubmit={handleSubmit}>
-                <div>
-                    <Label id="q1" className="text-xl">
-                        Hvor mye jobber du nå?
-                    </Label>
-                    <BodyShort id="d1" spacing>
-                        Vi regner at en arbeidsuke er 37.5 timer, som tilsvarer
-                        100%.
-                    </BodyShort>
-                    <div className="flex flex-row items-center gap-2">
-                        <TextField
-                            className="w-1/6"
-                            label=""
-                            aria-labelledby="q1"
-                            aria-describedby="d1"
-                            inputMode="numeric"
-                            error={arbeidsTimerError}
-                            value={state?.arbeidstimer}
-                            onChange={(event) =>
-                                onArbeidChange(event.target.value)
-                            }
-                        ></TextField>
-                        <BodyShort>Timer</BodyShort>
-                    </div>
-                    {arbeidsTimerError != "" && (
-                        <ul
-                            id="error1"
-                            aria-live="assertive"
-                            className="list-disc"
-                        >
-                            <li className="ml-5 font-bold text-red-500 mb-4">
-                                {arbeidsTimerError}
-                            </li>
-                        </ul>
-                    )}
-                    {(state?.arbeidstimer ?? 0) > 22.5 && (
-                        <Alert className="mt-4" variant={"warning"}>
-                            Hvor mye du får utbetalt, avhenger av hvor mye du
-                            jobber. En arbeidsuke er 37,5 timer. Jobber du mer
-                            enn 22,5 timer i uka (60%), kan du ikke få
-                            arbeidsavklaringspenger.
-                        </Alert>
-                    )}
-                </div>
                 <Radio
                     isError={radioError != ""}
                     errorId="error1"

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import { useContext, useState } from "react"
 import { BrowserState, State } from "../../pages/_app"
-import { BodyShort, Button, Label, Link, TextField } from "@navikt/ds-react"
+import { BodyShort, Label, Link, TextField } from "@navikt/ds-react"
 import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
@@ -20,7 +20,11 @@ const Barn = () => {
     const [radioError, setRadioError] = useState<string | undefined>(undefined)
     const { browserState } = useContext(BrowserState)
     const { formatMessage } = useFeatureToggleIntl()
-    const [ antallBarn, setAntallBarn ] = useState(state.antallBarn!=undefined && !isNaN(state.antallBarn)?state.antallBarn.toString():"")
+    const [antallBarn, setAntallBarn] = useState(
+        state.antallBarn != undefined && !isNaN(state.antallBarn)
+            ? state.antallBarn.toString()
+            : ""
+    )
     const onRadioChange = (value: string) => {
         setState({
             ...state,
@@ -62,8 +66,9 @@ const Barn = () => {
 
         await router.push("/resultat")
     }
-
+    console.log(state)
     if (state.sykmeldtAar === undefined) {
+        console.log(state)
         browserState.redirect = true
         router.push("/")
         return <></>
@@ -146,9 +151,7 @@ const Barn = () => {
                                     id="antallBarn"
                                     label=""
                                     size="medium"
-                                    value={
-                                        antallBarn
-                                    }
+                                    value={antallBarn}
                                     onChange={(event) =>
                                         onChange(event.target.value)
                                     }
@@ -172,7 +175,6 @@ const Barn = () => {
                         </div>
                     </div>
                 )}
-
             </FormWrapper>
         </>
     )

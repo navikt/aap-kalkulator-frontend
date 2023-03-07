@@ -34,6 +34,7 @@ export const initialState = {
     harBarn: undefined,
     over25: undefined,
     harLoenn: undefined,
+    harAAP: undefined,
 }
 
 const getLocaleOrFallback = (locale?: string) => {
