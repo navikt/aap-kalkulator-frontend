@@ -66,9 +66,7 @@ const Barn = () => {
 
         await router.push("/resultat")
     }
-    console.log(state)
     if (state.sykmeldtAar === undefined) {
-        console.log(state)
         browserState.redirect = true
         router.push("/")
         return <></>

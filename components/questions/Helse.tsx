@@ -44,12 +44,6 @@ const Helse = () => {
     }
     const erFeil = (sykmeldtAar: number) => {
         const detteAaret = new Date().getFullYear()
-        console.log(
-            "erFeil",
-            isNaN(sykmeldtAar) ||
-                sykmeldtAar > detteAaret ||
-                sykmeldtAar < detteAaret - aapGrense
-        )
         return (
             isNaN(sykmeldtAar) ||
             sykmeldtAar > detteAaret ||

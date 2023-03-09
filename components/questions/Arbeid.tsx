@@ -71,7 +71,6 @@ const Arbeid = () => {
             ...state,
             arbeidsgrad,
         })
-        console.log(state)
         await router.push("/steg/4")
     }
 
