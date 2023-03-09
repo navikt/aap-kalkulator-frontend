@@ -1,4 +1,4 @@
-import { arbeidsgrad } from "../logic/Arbeidsgrad";
+import { arbeidsgrad } from "../logic/Arbeidsgrad"
 import { Result } from "../../components/result/Result"
 import { toKr } from "../utils/HjelpeFunksjoner"
 
@@ -14,6 +14,7 @@ const initialState = {
     arbeidstimer: undefined,
     harBarn: undefined,
     over25: undefined,
+    harAAP: undefined,
 }
 
 describe("arbeidsgrad", () => {
@@ -27,8 +28,17 @@ describe("arbeidsgrad", () => {
         resultat.resultat = 100_000
         arbeidsgrad(resultat)
         expect(resultat.resultat).toBe(60_000)
-        expect(resultat.logs.length).toBe(2)
-        expect(resultat.logs[1]).toEqual({id:"logic.work.justEnough", values:{hoursWorked:"15", oldRes:"100 000",percentWorked:"40",percentWorked2:"40",res:"60 000"}})
+        expect(resultat.logs.length).toBe(1)
+        expect(resultat.logs[0]).toEqual({
+            id: "logic.work.justEnough",
+            values: {
+                hoursWorked: "15",
+                oldRes: "100 000",
+                percentWorked: "40",
+                percentWorked2: "40",
+                res: "60 000",
+            },
+        })
     })
     it("arbeidsgrad 70% med 100000 i grunnlag", () => {
         const resultat = new Result({
@@ -44,8 +54,7 @@ describe("arbeidsgrad", () => {
         expect(resultat.logs[0]).toEqual({
             id: "logic.work.tooMuch",
             values: {},
-        }
-    )
+        })
     })
     test("arbeidsgrad er -10%", () => {
         const resultat = new Result({

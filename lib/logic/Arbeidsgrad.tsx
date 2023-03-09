@@ -31,8 +31,6 @@ export const arbeidsgrad = (resultat: Result) => {
         return
     }
 
-    console.log("resultat:", resultat)
-
     resultat.resultat *= invertedPercent(resultat.personInfo!!.arbeidsgrad!!)
     resultat.logs.push({
         id: "logic.work.justEnough",
