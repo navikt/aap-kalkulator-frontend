@@ -103,7 +103,7 @@ const Arbeid = () => {
             <Stepper />
             <BackLink target="/steg/2" />
             <QuestionHeader
-                image="/aap/kalkulator/ikoner/wallet_circle.svg"
+                image="/aap/kalkulator/ikoner/money_circle.svg"
                 alt=""
                 tittel={"Arbeid"}
             />
@@ -156,7 +156,7 @@ const Arbeid = () => {
                 {state.harArbeid && (
                     <div className="mb-4">
                         <Label as={"label"} id="l1" className="text-xl">
-                            Hvor mangen timer jobber du per uke?
+                            Hvor mange timer jobber du per uke?
                         </Label>
                         <BodyShort id="d1">
                             Hvor mye du får utbetalt, avhenger av hvor mye du
