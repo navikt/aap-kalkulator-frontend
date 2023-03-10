@@ -1,4 +1,4 @@
-import style from "./circle.module.css"
+import style from "./Circle.module.css"
 
 export const Circle = ({ children }: { children: React.ReactNode }) => {
     return (
