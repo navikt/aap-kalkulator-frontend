@@ -8,6 +8,7 @@ import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import { FormWrapper } from "../formWrapper/FormWrapper"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
+import { TeddyIcon } from "../icons/TeddyIcon"
 
 interface BarnInterface extends HTMLFormElement {
     antallBarn: HTMLInputElement
@@ -89,10 +90,9 @@ const Barn = () => {
     return (
         <>
             <Stepper />
-            <BackLink target="/steg/2" />
+            <BackLink target="/steg/3" />
             <QuestionHeader
-                image="/aap/kalkulator/ikoner/teddy_circle.svg"
-                alt=""
+                image={<TeddyIcon />}
                 tittel={formatMessage("children.title")}
             />
             <FormWrapper handleSubmit={handleSubmit}>

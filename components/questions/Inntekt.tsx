@@ -9,6 +9,7 @@ import QuestionHeader from "../questionHeader/QuestionHeader"
 import Radio from "../radio/Radio"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
 import { FormWrapper } from "../formWrapper/FormWrapper"
+import { CoinIcon } from "../icons/CoinIcon"
 
 interface Inntekt {
     inntekt1: string
@@ -145,8 +146,7 @@ const Inntekt = () => {
             <Stepper />
             <BackLink target="/steg/1" />
             <QuestionHeader
-                image="/aap/kalkulator/ikoner/wallet_circle.svg"
-                alt=""
+                image={<CoinIcon />}
                 tittel={formatMessage("income.title")}
             />
             <FormWrapper handleSubmit={handleSubmit}>

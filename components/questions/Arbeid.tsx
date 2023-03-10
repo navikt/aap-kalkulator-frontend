@@ -8,14 +8,14 @@ import QuestionHeader from "../questionHeader/QuestionHeader"
 import { FormWrapper } from "../formWrapper/FormWrapper"
 import Radio from "../radio/Radio"
 import { Alert, BodyShort, Label, TextField } from "@navikt/ds-react"
+import { WalletIcon } from "../icons/WalletIcon"
 
 const Arbeid = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
     const [arbeidsTimerError, setArbeidsTimerError] = useState("")
-    const [radioErrorArbeid, setRadioErrorArbeid] = useState<
-        Array<string | undefined>
-    >(["", ""])
+    const [radioErrorArbeid, setRadioErrorArbeid] = useState("")
+    const [radioErrorAAP, setRadioErrorAAP] = useState("")
     const [arbeidsTimer, setArbeidsTimer] = useState(
         state.arbeidstimer != undefined && !isNaN(state.arbeidstimer)
             ? state.arbeidstimer.toString()
@@ -27,10 +27,12 @@ const Arbeid = () => {
     const onArbeidChange = (text: string) => {
         const parsed = parseFloat(text.replace(",", "."))
         setArbeidsTimer(text)
-        setState({
-            ...state,
-            arbeidstimer: text,
-        })
+        if (!isNaN(parsed)) {
+            setState({
+                ...state,
+                arbeidstimer: parsed,
+            })
+        }
         if (!isNaN(parsed) || text == "") {
             setArbeidsTimerError("")
         }
@@ -44,19 +46,44 @@ const Arbeid = () => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
 
+        const errors = []
+
         let arbeidsgrad = 0
         let arbeidsT = 0
 
         arbeidsT =
             state.arbeidstimer == undefined
-                ? NaN
+                ? undefined
                 : parseFloat(arbeidsTimer.replace(",", "."))
         arbeidsgrad = (arbeidsT / 37.5) * 100
 
-        if (state.harArbeid == undefined) {
+        if (!state.harArbeid) {
+            errors.push("Errors Arbeid")
+            setRadioErrorArbeid("Error Arbeid")
+        }
+
+        if (state.harArbeid === true && state.harAAP === undefined) {
+            errors.push("Errors Arbeid")
+            setRadioErrorAAP("Error AAP")
+        }
+
+        if (state.arbeidstimer === undefined && state.harArbeid) {
+            errors.push("Errors Arbeid")
+            setArbeidsTimerError(
+                "Du må skrive et tall. Tallet kan inneholde desimaler."
+            )
+        }
+
+        if (errors.length > 0) {
+            return
+        }
+
+        /*if (state.harArbeid == undefined) {
             setRadioErrorArbeid([
                 "Du må svare på om du er i arbeid nå",
-                state.harAAP == undefined ? "Du må svare på om du har AAP" : "",
+                state.harAAP == undefined
+                    ? formatMessage("work.gotAAP.required")
+                    : "",
             ])
             return
         }
@@ -65,7 +92,7 @@ const Arbeid = () => {
                 "Du må skrive et tall. Tallet kan inneholde desimaler."
             )
             return
-        }
+        }*/
 
         setState({
             ...state,
@@ -79,7 +106,7 @@ const Arbeid = () => {
             ...state,
             harAAP: value == "Ja",
         })
-        setRadioErrorArbeid(["", ""])
+        setRadioErrorAAP("")
     }
 
     const onRadioArbeidChange = (value: string) => {
@@ -89,7 +116,7 @@ const Arbeid = () => {
             harAAP: value == "Nei" ? undefined : state.harAAP,
             arbeidstimer: value == "Nei" ? undefined : state.arbeidstimer,
         })
-        setRadioErrorArbeid(["", ""])
+        setRadioErrorArbeid("")
     }
 
     if (state.sykmeldtAar === undefined) {
@@ -102,65 +129,66 @@ const Arbeid = () => {
         <>
             <Stepper />
             <BackLink target="/steg/2" />
-            <QuestionHeader
-                image="/aap/kalkulator/ikoner/money_circle.svg"
-                alt=""
-                tittel={"Arbeid"}
-            />
+            <QuestionHeader image={<WalletIcon />} tittel={"Arbeid"} />
             <FormWrapper handleSubmit={handleSubmit}>
-                <Radio
-                    isError={radioErrorArbeid[1] != ""}
-                    errorId="error1"
-                    title={"Er du i arbeid nå?"}
-                    state={state.harArbeid}
-                    onChange={onRadioArbeidChange}
-                    readMoreTitle={"Hvorfor spør vi om du er i arbeid nå?"}
-                    readMore={
-                        "Hvor mye du får i AAP, avhenger av hvor mye du jobber."
-                    }
-                />
-                {radioErrorArbeid[0] != "" && (
-                    <ul id="error1" aria-live="assertive" className="list-disc">
-                        <li className="ml-5 font-bold text-red-500 mb-4">
-                            {radioErrorArbeid[0]}
-                        </li>
-                    </ul>
-                )}
+                <div className="flex flex-col">
+                    <Radio
+                        isError={radioErrorArbeid != ""}
+                        errorId="error1"
+                        title={formatMessage("work.gotWork.title")}
+                        state={state.harArbeid}
+                        onChange={onRadioArbeidChange}
+                        readMoreTitle={formatMessage(
+                            "work.gotWork.readMoreTitle"
+                        )}
+                        readMore={formatMessage("work.gotWork.readMore")}
+                    />
+                    {radioErrorArbeid != "" && (
+                        <ul
+                            id="error1"
+                            aria-live="assertive"
+                            className="list-disc"
+                        >
+                            <li className="ml-5 font-bold text-red-500 mb-4">
+                                {radioErrorArbeid}
+                            </li>
+                        </ul>
+                    )}
+                </div>
                 {state.harArbeid && (
-                    <>
+                    <div className="flex flex-col">
                         <Radio
-                            isError={radioErrorArbeid[0] != ""}
+                            isError={radioErrorAAP != ""}
                             errorId="error2"
-                            title={"Får du AAP nå?"}
+                            title={formatMessage("work.gotAAP.title")}
                             state={state.harAAP}
                             onChange={onRadioAAPChange}
-                            readMoreTitle={"Hvorfor spør vi om du får AAP nå?"}
-                            readMore={
-                                "Det er ulike regler for hvor mye du kan jobbe etter at du har fått AAP og når du først søker om AAP."
-                            }
+                            readMoreTitle={formatMessage(
+                                "work.gotAAP.readMoreTitle"
+                            )}
+                            readMore={formatMessage("work.gotAAP.readMore")}
                         />
-                        {radioErrorArbeid[1] != "" && (
+                        {radioErrorAAP != "" && (
                             <ul
                                 id="error2"
                                 aria-live="assertive"
                                 className="list-disc"
                             >
                                 <li className="ml-5 font-bold text-red-500 mb-4">
-                                    {radioErrorArbeid}
+                                    {radioErrorAAP}
                                 </li>
                             </ul>
                         )}
-                    </>
+                    </div>
                 )}
 
                 {state.harArbeid && (
                     <div className="mb-4">
                         <Label as={"label"} id="l1" className="text-xl">
-                            Hvor mange timer jobber du per uke?
+                            {formatMessage("work.howManyHours.title")}
                         </Label>
                         <BodyShort id="d1">
-                            Hvor mye du får utbetalt, avhenger av hvor mye du
-                            jobber.
+                            {formatMessage("work.howManyHours.description")}
                         </BodyShort>
                         <div className="flex flex-row items-center gap-2">
                             <TextField
@@ -190,18 +218,16 @@ const Arbeid = () => {
                         )}
                         {(state?.arbeidstimer ?? 0) > 18.75 && !state?.harAAP && (
                             <Alert className="mt-4" variant={"warning"}>
-                                En arbeidsuke er 37,5 timer. Hvis du kan jobbe
-                                mer en 18.75 timer i uka (50%), har du vanligvis
-                                ikke rett til å få AAP.
+                                {formatMessage(
+                                    "work.howManyHours.warning.withoutAAP"
+                                )}
                             </Alert>
                         )}
                         {(state?.arbeidstimer ?? 0) > 22.5 && state?.harAAP && (
                             <Alert className="mt-4" variant={"warning"}>
-                                En arbeidsuke er 37,5 timer. Jobber du mer enn
-                                22.5 timer i uka (60%), får du vanligvis ikke
-                                utbetalt AAP. Det er likevel mulig å jobbe opp
-                                til 80% i en periode. Dette må avtales med
-                                veileder.
+                                {formatMessage(
+                                    "work.howManyHours.warning.withAAP"
+                                )}
                             </Alert>
                         )}
                     </div>

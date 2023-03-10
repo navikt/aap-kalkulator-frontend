@@ -3,7 +3,7 @@ import Banner from "../banner/Banner"
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs"
 import React from "react"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
-import WarningBanner from "../warningBanner/WarningBanner";
+import WarningBanner from "../warningBanner/WarningBanner"
 
 const Container = ({ children }: { children: ReactNode }) => {
     const { formatMessage } = useFeatureToggleIntl()
@@ -12,17 +12,17 @@ const Container = ({ children }: { children: ReactNode }) => {
             <Banner />
             <div className="px-4 md:px-12">
                 <main className="max-w-[900px] mx-auto pb-8">
-                <div className="max-w-[600px]">
-                <Breadcrumbs />
-                <div
-                    className="bg-surface-default p-6 md:p-10"
-                    id="maincontent"
-                    tabIndex={-1}
-                >
-                    {children}
-                </div>
-                </div>
-            </main>
+                    <div className="max-w-[600px]">
+                        <Breadcrumbs />
+                        <div
+                            className="bg-surface-default p-6 md:p-10 "
+                            id="maincontent"
+                            tabIndex={-1}
+                        >
+                            <div className="md:w-5/6 mx-auto">{children}</div>
+                        </div>
+                    </div>
+                </main>
             </div>
         </div>
     )

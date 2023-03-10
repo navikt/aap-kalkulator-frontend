@@ -3,7 +3,14 @@
 import { useContext, useEffect, useMemo, useState } from "react"
 import { State } from "./_app"
 import { NextPage } from "next"
-import { Alert, BodyShort, Heading, Label, Link } from "@navikt/ds-react"
+import {
+    Alert,
+    BodyShort,
+    Button,
+    Heading,
+    Label,
+    Link,
+} from "@navikt/ds-react"
 import { Result, ResultInterface } from "../components/result/Result"
 import BackLink from "../components/backlink/BackLink"
 import { useRouter } from "next/router"
@@ -12,6 +19,9 @@ import { kalkuler } from "../lib/logic/Kalkuler"
 import { grunnbeloep, GrunnbeloepHistorikk } from "../lib/utils/types"
 import { useFeatureToggleIntl } from "../hooks/useFeatureToggleIntl"
 import Stepper from "../components/stepper/Stepper"
+import NextLink from "next/link"
+import { CoinIcon } from "../components/icons/CoinIcon"
+import { Circle } from "../components/circle/Circle"
 
 export const getStaticProps = async () => {
     const res = await fetch("https://g.nav.no/api/v1/grunnbeloep")
@@ -98,19 +108,15 @@ const Resultat: NextPage = ({
     return (
         <>
             <Stepper />
-            <BackLink target="/steg/1" tekst="Endre svar" />
+            <BackLink target="/steg/4" tekst="Endre svar" />
             <div className="grid gap-8">
                 <div
                     className="flex flex-col items-center pt-4 mb-4"
                     aria-hidden="true"
                 >
-                    <img
-                        src="/aap/kalkulator/ikoner/money_circle.svg"
-                        height="100"
-                        width="100"
-                        alt=""
-                        aria-hidden
-                    />
+                    <Circle>
+                        <CoinIcon />
+                    </Circle>
                 </div>
                 <div className="text-left -mb-5">
                     <Heading level="2" size="large">
@@ -185,6 +191,20 @@ const Resultat: NextPage = ({
                         </ul>
                     </div>
                 )}
+                <NextLink passHref href={"https://www.nav.no/aap"}>
+                    <Link className="mt-4 ">
+                        {formatMessage("result.link2")}
+                    </Link>
+                </NextLink>
+                <BodyShort>{formatMessage("result.preDisclaimer2")}</BodyShort>
+                <Button
+                    variant={"secondary"}
+                    onClick={() => {
+                        router.push("https://www.nav.no/aap/soknad")
+                    }}
+                >
+                    {formatMessage("result.button")}
+                </Button>
             </div>
         </>
     )

@@ -60,18 +60,28 @@
         "gotWork": {
             "title": "Er du i jobb nå?",
             "readMoreTitle": "Hvorfor spør vi om du har jobb?",
-            "readMore": "Hvor mye du får utbetalt, avhenger av hvor mye du jobber. En arbeidsuke er 37,5 timer. Jobber du eller får du lønn for mer enn 22,5 timer i uka, kan du ikke få arbeidsavklaringspenger.",
+            "readMore": "Hvor mye du får i AAP, avhenger av hvor mye du jobber.",
             "validation": {
                 "required": "Velg enten ja eller nei for å gå videre."
             }
         },
+        "gotAAP": {
+            "title": "Får du AAP nå?",
+            "readMoreTitle": "Hvorfor spør vi om du får AAP nå?",
+            "readMore": "Det er ulike regler for hvor mye du kan jobbe etter at du har fått AAP og når du først søker om AAP.",
+            "required": "Du må svare på om du har AAP"
+        },
         "howManyHours": {
-            "title": "Hvor mange timer i uka jobber du?",
+            "title": "Hvor mange timer jobber du per uke?",
             "description": "Varierer det, kan du oppgi gjennomsnittet.",
             "trail": "timer per uke",
             "validation": {
                 "required": "Antall timer må være et tall.",
                 "limits": "antall timer må være et tall mellom 0 og 168."
+            },
+            "warning": {
+                "withAAP": "En arbeidsuke er 37,5 timer. Jobber du mer enn 22.5 timer i uka (60%), får du vanligvis ikke utbetalt AAP. Det er likevel mulig å jobbe opp til 80% i en periode. Dette må avtales med veileder.",
+                "withoutAAP": "En arbeidsuke er 37,5 timer. Hvis du kan jobbe mer en 18.75 timer i uka (50%), har du vanligvis ikke rett til å få AAP."
             }
         }
     },
@@ -102,7 +112,10 @@
         "disclamer": "Det er alltid vedtaket du får som gjelder. Denne kalkulatoren gir kun et estimat.",
         "link": "Les mer om AAP her",
         "per14": "hver 14.<wbr></wbr>dag (før skatt)",
-        "perAar": "i året (før skatt)"
+        "perAar": "i året (før skatt)",
+        "link2": "Tilbake til informasjonssiden om AAP",
+        "preDisclaimer2": "For at vi skal vurdere om du har rett til AAP, må du søke om det. Du kan tidligst få AAP fra den dagen du søker",
+        "button": "Gå til søknad om arbeidsavklaringspenger"
     },
     "logic": {
         "salery": {
