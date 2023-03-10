@@ -53,7 +53,7 @@ const Arbeid = () => {
 
         arbeidsT =
             state.arbeidstimer == undefined
-                ? undefined
+                ? NaN
                 : parseFloat(arbeidsTimer.replace(",", "."))
         arbeidsgrad = (arbeidsT / 37.5) * 100
 
@@ -77,22 +77,6 @@ const Arbeid = () => {
         if (errors.length > 0) {
             return
         }
-
-        /*if (state.harArbeid == undefined) {
-            setRadioErrorArbeid([
-                "Du må svare på om du er i arbeid nå",
-                state.harAAP == undefined
-                    ? formatMessage("work.gotAAP.required")
-                    : "",
-            ])
-            return
-        }
-        if (state.harArbeid && isNaN(arbeidsT)) {
-            setArbeidsTimerError(
-                "Du må skrive et tall. Tallet kan inneholde desimaler."
-            )
-            return
-        }*/
 
         setState({
             ...state,
