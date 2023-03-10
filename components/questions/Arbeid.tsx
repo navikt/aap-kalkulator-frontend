@@ -57,18 +57,18 @@ const Arbeid = () => {
                 : parseFloat(arbeidsTimer.replace(",", "."))
         arbeidsgrad = (arbeidsT / 37.5) * 100
 
-        if (!state.harArbeid) {
-            errors.push("Errors Arbeid")
+        if (state.harArbeid === undefined) {
+            errors.push("Errors harArbeid")
             setRadioErrorArbeid("Error Arbeid")
         }
 
         if (state.harArbeid === true && state.harAAP === undefined) {
-            errors.push("Errors Arbeid")
+            errors.push("Errors harAAP")
             setRadioErrorAAP("Error AAP")
         }
 
         if (state.arbeidstimer === undefined && state.harArbeid) {
-            errors.push("Errors Arbeid")
+            errors.push("Errors Arbeid timer")
             setArbeidsTimerError(
                 "Du må skrive et tall. Tallet kan inneholde desimaler."
             )
