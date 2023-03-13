@@ -65,6 +65,12 @@
                 "required": "Vel enten ja eller nei for å gå vidare."
             }
         },
+        "gotAAP": {
+            "title": "Får du AAP no?",
+            "readMoreTitle": "Kvifor spør vi om du får AAP no?",
+            "readMore": "Det er ulike reglar for kor mykje du kan jobba etter at du har fått AAP og når du først søkjer om AAP.",
+            "required": "Du må svare på om du har AAP"
+        },
         "howManyHours": {
             "title": "Kor mange timar jobbar du i veka?",
             "description": "Varierer det, kan du oppgje gjennomsnittet.",
@@ -72,6 +78,10 @@
             "validation": {
                 "required": "Antall timer må vera eit tal.",
                 "limits": "Antall timer må vera eit tal mellom 0 og 168."
+            },
+            "warning": {
+                "withAAP": "Ei arbeidsveke er 37,5 timar. Jobbar du meir enn 22.5 timar i veka (60%), får du vanlegvis ikkje utbetalt AAP. Det er likevel mogleg å jobba opp til 80% i ein periode. Dette må avtalast med veiledar.",
+                "withoutAAP": "Ei arbeidsveke er 37,5 timar. Viss du kan jobba meir ein 18.75 timar i veka (50%), har du vanlegvis ikkje rett til å få AAP."
             }
         }
     },
@@ -102,7 +112,10 @@
         "disclamer": "Det er alltid vedtaket du får som gjeld, denne kalkulatoren gir berre eit estimat.",
         "link": "Les meir om AAP her",
         "per14": "hver 14.<wbr></wbr>dag (før skatt)",
-        "perAar": "i året (før skatt)"
+        "perAar": "i året (før skatt)",
+        "link2": "Tilbake til informasjonssida om AAP",
+        "preDisclaimer2": "For at vi skal vurdra om du har rett til AAP, må du søka om det. Du kan tidligst få AAP fra den dagen du søkar",
+        "button": "Gå til søknad om arbeidsavklaringspengar"
     },
     "logic": {
         "salery": {
