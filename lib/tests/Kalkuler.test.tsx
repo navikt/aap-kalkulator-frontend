@@ -306,6 +306,25 @@ describe("integrasjon", () => {
         expect(resultat.resultat).toBe(0)
         expect(resultat.logs.length).toBe(1)
     })
+    it("ytelse med grunnbeløp 6g, 5 barn og 51% arbeidsgrad, uten AAP", () => {
+        const state: StateInterface = {
+            ...initialState,
+            harAAP: false,
+            inntekt1: 0,
+            inntekt2: 0,
+            inntekt3: 0,
+            antallBarn: 5,
+            harBarn: true,
+            harArbeid: true,
+            arbeidsgrad: 51,
+            harLoenn: false,
+            sykmeldtAar: aar,
+            over25: true,
+        }
+        const resultat = kalkuler(state, g, historikk)
+        expect(resultat.resultat).toBe(0)
+        expect(resultat.logs.length).toBe(1)
+    })
     it("over 6g siste år, 2 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
             ...initialState,
