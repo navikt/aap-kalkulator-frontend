@@ -59,12 +59,16 @@ const Arbeid = () => {
 
         if (state.harArbeid === undefined) {
             errors.push("Errors harArbeid")
-            setRadioErrorArbeid("Error Arbeid")
+            setRadioErrorArbeid(
+                formatMessage("income.gotIncome.validation.required")
+            )
         }
 
         if (state.harArbeid === true && state.harAAP === undefined) {
             errors.push("Errors harAAP")
-            setRadioErrorAAP("Error AAP")
+            setRadioErrorAAP(
+                formatMessage("income.gotIncome.validation.required")
+            )
         }
 
         if (state.arbeidstimer === undefined && state.harArbeid) {
