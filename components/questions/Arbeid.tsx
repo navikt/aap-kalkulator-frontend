@@ -183,7 +183,7 @@ const Arbeid = () => {
                             <TextField
                                 className="w-1/6"
                                 label=""
-                                aria-labelledby="q1"
+                                aria-labelledby="l1"
                                 aria-describedby="d1"
                                 inputMode="numeric"
                                 error={arbeidsTimerError}
