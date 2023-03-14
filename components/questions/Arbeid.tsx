@@ -69,10 +69,13 @@ const Arbeid = () => {
             setRadioErrorAAP(formatMessage("work.gotAAP.required"))
         }
 
-        if (state.arbeidstimer === undefined && state.harArbeid) {
+        if (
+            (state.arbeidstimer === undefined || state.arbeidstimer < 0) &&
+            state.harArbeid
+        ) {
             errors.push("Errors Arbeid timer")
             setArbeidsTimerError(
-                "Du må skrive et tall. Tallet kan inneholde desimaler."
+                "Du må skrive et postitivt tall. Tallet kan inneholde desimaler."
             )
         }
 
