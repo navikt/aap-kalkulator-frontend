@@ -10,10 +10,6 @@ import { FormWrapper } from "../formWrapper/FormWrapper"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
 import { TeddyIcon } from "../icons/TeddyIcon"
 
-interface BarnInterface extends HTMLFormElement {
-    antallBarn: HTMLInputElement
-}
-
 const Barn = () => {
     const router = useRouter()
     const { state, setState } = useContext(State)
