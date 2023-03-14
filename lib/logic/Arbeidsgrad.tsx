@@ -7,7 +7,6 @@ const invertedPercent = (percent: number) => {
 }
 
 export const arbeidsgrad = (resultat: Result) => {
-    /*resultat.logs.push({ id: "logic.work.any" })*/
     const gammeltResultat = resultat.resultat
     if (
         resultat.personInfo!!.arbeidsgrad == 0.0 ||

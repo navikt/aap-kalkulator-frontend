@@ -6,7 +6,6 @@ import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
 import WarningBanner from "../warningBanner/WarningBanner"
 
 const Container = ({ children }: { children: ReactNode }) => {
-    const { formatMessage } = useFeatureToggleIntl()
     return (
         <div className="min-h-container bg-bg-subtle">
             <Banner />

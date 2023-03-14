@@ -61,7 +61,6 @@ const Resultat: NextPage = ({
 }) => {
     const { formatMessage } = useFeatureToggleIntl()
     const [result, setResult] = useState<ResultInterface | null>(null)
-    const [open, setOpen] = useState(false)
     const { state } = useContext(State)
     const router = useRouter()
 
@@ -83,21 +82,6 @@ const Resultat: NextPage = ({
             logs: res.logs,
         })
     }, [])
-
-    const handleAccordion = () => {
-        setOpen((current) => {
-            if (!current) {
-                logAmplitudeEvent("accordion åpnet", {
-                    tekst: "Hvorfor får jeg denne summen?",
-                })
-            } else {
-                logAmplitudeEvent("accordion lukket", {
-                    tekst: "Hvorfor får jeg denne summen?",
-                })
-            }
-            return !current
-        })
-    }
 
     const resultat = useMemo(() => {
         if (result == null) return 0

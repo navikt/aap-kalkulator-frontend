@@ -4,6 +4,7 @@ import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
 import Image from "next/image"
 import { format, parse } from "date-fns"
 import { nb } from "date-fns/locale"
+import { CalculatorSquareIcon } from "../icons/CalculatorSquareIcon"
 
 const dato = parse(
     process.env.NEXT_PUBLIC_LAST_UPDATED ?? "",
@@ -16,13 +17,7 @@ const Banner = () => {
     return (
         <header className="bg-[#ffffff] border-b-deepblue-400 border-b-4 text-center px-4 md:px-12 py-6">
             <div className="max-w-[1128px] mx-auto flex gap-8">
-                <img
-                    className="hidden lg:block"
-                    src="/aap/kalkulator/ikoner/kalkulator_square.svg"
-                    height="80"
-                    width="80"
-                    alt=""
-                />
+                <CalculatorSquareIcon />
                 <div>
                     <Heading
                         size="large"

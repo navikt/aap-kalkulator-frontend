@@ -8,6 +8,7 @@ import { BrowserState, State } from "./_app"
 import { StateInterface } from "../components/state/State"
 import { logAmplitudeEvent } from "../lib/utils/amplitude"
 import { useFeatureToggleIntl } from "../hooks/useFeatureToggleIntl"
+import { MagnifyingGlassIcon } from "../components/icons/MagnifyingGlassIcon"
 
 const Home: NextPage = () => {
     const router = useRouter()
@@ -33,14 +34,7 @@ const Home: NextPage = () => {
                         {formatMessage("start.refreshed")}
                     </Alert>
                 )}
-                <Image
-                    src="/aap/kalkulator/ikoner/magnifying_glass.svg"
-                    height="120"
-                    width="120"
-                    alt=""
-                    className="flex items-center pb-4"
-                    aria-hidden
-                ></Image>
+                <MagnifyingGlassIcon />
                 <Heading level="2" size="large" spacing>
                     {formatMessage("start.title")}
                 </Heading>

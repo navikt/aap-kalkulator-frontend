@@ -16,7 +16,6 @@ const Step = ({
     stepNumber: number
     isLast: boolean
 }) => {
-    const { state } = useContext(State)
     const router = useRouter()
     const path = router.asPath.split("/")
     const current_step =
