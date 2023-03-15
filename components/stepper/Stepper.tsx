@@ -20,7 +20,7 @@ const Step = ({
     const path = router.asPath.split("/")
     const current_step =
         path[path.length - 1] == "resultat"
-            ? 4
+            ? 5
             : parseInt(path[path.length - 1])
     const isCurrentPage = stepNumber === current_step
     const circleStyling =
