@@ -136,45 +136,47 @@ const Resultat: NextPage = ({
                         <BodyShort>
                             {formatMessage("result.preDisclaimer")}
                         </BodyShort>
+                        {result != null && (
+                            <div>
+                                <Heading size="medium" level="2" spacing>
+                                    {formatMessage("result.description")}
+                                </Heading>
+
+                                <ul className=" space-y-4 list-disc">
+                                    {result?.logs.map((text, index) => (
+                                        <li key={index}>
+                                            <div>
+                                                {formatMessage(text.id, {
+                                                    ...text.values,
+                                                    strong: (
+                                                        ...chunks: any
+                                                    ) => (
+                                                        <strong>
+                                                            {chunks}
+                                                        </strong>
+                                                    ),
+                                                })}
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
                         <Alert variant="info">
                             <div>
                                 <BodyShort>
-                                    {formatMessage("result.disclamer")}
+                                    {state.harAAP ??
+                                        formatMessage("result.disclamerMedAAP")}
+                                    {!state.harAAP ??
+                                        formatMessage(
+                                            "result.disclamerUtenAAP"
+                                        )}
                                 </BodyShort>
                             </div>
                         </Alert>
-                        <Link
-                            target="_blank"
-                            href="https://www.nav.no/aap"
-                            as="a"
-                            color="link-color-text"
-                        >
-                            {formatMessage("result.link")}
-                        </Link>
                     </div>
                 </div>
-                {result != null && (
-                    <div>
-                        <Heading size="medium" level="2" spacing>
-                            {formatMessage("result.description")}
-                        </Heading>
 
-                        <ul className=" space-y-4 list-disc">
-                            {result?.logs.map((text, index) => (
-                                <li key={index}>
-                                    <div>
-                                        {formatMessage(text.id, {
-                                            ...text.values,
-                                            strong: (...chunks: any) => (
-                                                <strong>{chunks}</strong>
-                                            ),
-                                        })}
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
                 <NextLink passHref href={"https://www.nav.no/aap"}>
                     <Link className="mt-4 ">
                         {formatMessage("result.link2")}
@@ -184,10 +186,16 @@ const Resultat: NextPage = ({
                 <Button
                     variant={"secondary"}
                     onClick={() => {
-                        router.push("https://www.nav.no/aap/soknad")
+                        state.harAAP
+                            ? router.push("https://www.nav.no/aap/mine-aap")
+                            : router.push("https://www.nav.no/aap/soknad")
                     }}
                 >
-                    {formatMessage("result.button")}
+                    {formatMessage(
+                        state.harAAP
+                            ? "result.buttonMenAAP"
+                            : "result.buttonUtenAAP"
+                    )}
                 </Button>
             </div>
         </>

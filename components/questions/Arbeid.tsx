@@ -64,7 +64,7 @@ const Arbeid = () => {
             )
         }
 
-        if (state.harArbeid === true && state.harAAP === undefined) {
+        if (state.harAAP === undefined) {
             errors.push("Errors harAAP")
             setRadioErrorAAP(formatMessage("work.gotAAP.required"))
         }
@@ -122,6 +122,30 @@ const Arbeid = () => {
             <FormWrapper handleSubmit={handleSubmit}>
                 <div className="flex flex-col">
                     <Radio
+                        isError={radioErrorAAP != ""}
+                        errorId="error2"
+                        title={formatMessage("work.gotAAP.title")}
+                        state={state.harAAP}
+                        onChange={onRadioAAPChange}
+                        readMoreTitle={formatMessage(
+                            "work.gotAAP.readMoreTitle"
+                        )}
+                        readMore={formatMessage("work.gotAAP.readMore")}
+                    />
+                    {radioErrorAAP != "" && (
+                        <ul
+                            id="error2"
+                            aria-live="assertive"
+                            className="list-disc"
+                        >
+                            <li className="ml-5 font-bold text-red-500 mb-4">
+                                {radioErrorAAP}
+                            </li>
+                        </ul>
+                    )}
+                </div>
+                <div className="flex flex-col">
+                    <Radio
                         isError={radioErrorArbeid != ""}
                         errorId="error1"
                         title={formatMessage("work.gotWork.title")}
@@ -144,32 +168,6 @@ const Arbeid = () => {
                         </ul>
                     )}
                 </div>
-                {state.harArbeid && (
-                    <div className="flex flex-col">
-                        <Radio
-                            isError={radioErrorAAP != ""}
-                            errorId="error2"
-                            title={formatMessage("work.gotAAP.title")}
-                            state={state.harAAP}
-                            onChange={onRadioAAPChange}
-                            readMoreTitle={formatMessage(
-                                "work.gotAAP.readMoreTitle"
-                            )}
-                            readMore={formatMessage("work.gotAAP.readMore")}
-                        />
-                        {radioErrorAAP != "" && (
-                            <ul
-                                id="error2"
-                                aria-live="assertive"
-                                className="list-disc"
-                            >
-                                <li className="ml-5 font-bold text-red-500 mb-4">
-                                    {radioErrorAAP}
-                                </li>
-                            </ul>
-                        )}
-                    </div>
-                )}
 
                 {state.harArbeid && (
                     <div className="mb-4">
@@ -192,7 +190,7 @@ const Arbeid = () => {
                                     onArbeidChange(event.target.value)
                                 }
                             ></TextField>
-                            <BodyShort>Timer</BodyShort>
+                            <BodyShort>timer</BodyShort>
                         </div>
                         {arbeidsTimerError != "" && (
                             <ul

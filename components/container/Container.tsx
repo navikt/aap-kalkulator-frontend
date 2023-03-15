@@ -18,7 +18,10 @@ const Container = ({ children }: { children: ReactNode }) => {
                             id="maincontent"
                             tabIndex={-1}
                         >
-                            <div className="md:w-5/6 mx-auto">{children}</div>
+                            <div className="md:w-5/6 mx-auto">
+                                {/* TODO: Dobbelsjekk bredden på kalkulator text o.l */}
+                                {children}
+                            </div>
                         </div>
                     </div>
                 </main>

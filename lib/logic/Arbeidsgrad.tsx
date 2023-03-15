@@ -26,7 +26,15 @@ export const arbeidsgrad = (resultat: Result) => {
     ) {
         resultat.resultat = 0.0
         resultat.logs = []
-        resultat.logs.push({ id: "logic.work.tooMuch", values: {} })
+        resultat.logs.push({
+            id: resultat.personInfo?.harAAP
+                ? "logic.work.tooMuchWithAAP"
+                : "logic.work.tooMuchWithoutAAP",
+            values: {
+                timer: resultat.personInfo!!.arbeidstimer!!.toString(),
+                prosent: resultat.personInfo!!.arbeidsgrad!!.toString(),
+            },
+        })
         return
     }
 

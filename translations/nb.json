@@ -9,10 +9,10 @@
     "start": {
         "title": "Vær oppmerksom på dette",
         "refreshed": "Du har oppdatert siden og har derfor blitt sendt til startsiden.",
-        "firstPoint": "Kalkulatoren er ment som et hjelpeverktøy for deg. Du får et estimat av hva du kan få hvis du søker og får innvilget arbeidsavklaringspenger (AAP).",
-        "secondPoint": "Dette er ikke en søknad om AAP. Det er alltid vedtaket du får som gjelder, denne kalkulatoren gir kun et estimat.",
+        "firstPoint": "Dette er ikke en søknad om AAP.",
+        "secondPoint": "Dette er ikke en søknad om AAP. Kalkulatoren er ment som et hjelpeverktøy for deg. Den gir kun et estimat av hva du kan få i arbeidsavklaringspenger (AAP). Det er alltid vedtaket du får som gjelder. NAV lagrer ikke informasjonen du oppgir.",
         "thirdPoint": "NAV lagrer ikke informasjonen du oppgir.",
-        "fourthPoint": "Hvis du mottar andre ytelser kan AAP reduseres. Kalkulatoren tar ikke høyde for dette."
+        "fourthPoint": "Det er mange grunner til at du kan får utbetalt mindre en det kalkulatoren viser, for eksempel hvis du mottar andre ytelser ved siden av AAP, kan du få mindre utbetalt. Kalkulatoren tar ikke høyde for dette."
     },
     "helse": {
         "title": "Helse",
@@ -58,7 +58,7 @@
     "work": {
         "title": "Arbeid",
         "gotWork": {
-            "title": "Er du i jobb nå?",
+            "title": "Jobber du nå?",
             "readMoreTitle": "Hvorfor spør vi om du har jobb?",
             "readMore": "Hvor mye du får i AAP, avhenger av hvor mye du jobber.",
             "validation": {
@@ -68,7 +68,7 @@
         "gotAAP": {
             "title": "Får du AAP nå?",
             "readMoreTitle": "Hvorfor spør vi om du får AAP nå?",
-            "readMore": "Det er ulike regler for hvor mye du kan jobbe etter at du har fått AAP og når du først søker om AAP.",
+            "readMore": "Det er ulike regler for hvor mye du kan jobbe når du søker AAP og etter at du mottar AAP.",
             "required": "Du må svare på om du har AAP"
         },
         "howManyHours": {
@@ -108,14 +108,15 @@
         "stepTitle": "Resultat",
         "title": "Det ser ut som du kan få",
         "description": "Hvordan er beregningen gjort?",
-        "preDisclaimer": "Utfra tallene du har oppgitt, antar vi at du kan få denne summen i AAP før skatt. Hvis du søker og får innvilget AAP, vil du få vite hva du faktisk får.",
-        "disclamer": "Det er alltid vedtaket du får som gjelder. Denne kalkulatoren gir kun et estimat.",
-        "link": "Les mer om AAP her",
+        "preDisclaimer": "Utfra tallene du har oppgitt, antar vi at du kan få denne summen i AAP før skatt.",
+        "disclamerMedAAP": "Det er alltid vedtaket du får som gjelder. Denne kalkulatoren gir kun et estimat.",
+        "disclamerUtenAAP": "Denne kalkulatoren gir kun et estimat. Hvis du søker og får innvilget AAP, vil du få vite hva du faktisk får.",
         "per14": "hver 14.<wbr></wbr>dag (før skatt)",
         "perAar": "i året (før skatt)",
         "link2": "Tilbake til informasjonssiden om AAP",
-        "preDisclaimer2": "For at vi skal vurdere om du har rett til AAP, må du søke om det. Du kan tidligst få AAP fra den dagen du søker",
-        "button": "Gå til søknad om arbeidsavklaringspenger"
+        "preDisclaimer2": "For at vi skal vurdere om du har rett til AAP, må du søke om det. Du kan tidligst få AAP fra den dagen du søker. ",
+        "buttonUtenAAP": "Gå til søknad om arbeidsavklaringspenger",
+        "buttonMedAAP": "Gå til mine aap"
     },
     "logic": {
         "salery": {
@@ -136,7 +137,8 @@
         },
         "work": {
             "any": "Hvis du jobber, kan dette redusere arbeidsavklaringspengene dine. Denne reduksjonen blir gjort ved innlevering av meldekort hver 14. dag.",
-            "tooMuch": "Arbeidsgraden din er høyere enn 60 % og du kan derfor ikke få arbeidsavklaringspenger.",
+            "tooMuchWithAAP": "Siden du jobber {timer} timer i uken, som tilsvarer {prosent}, vil du ikke få npe utbetalt i AAP. Du kan i perioder jobbe 80% etter avtale med veileder.",
+            "tooMuchWithoutAAP": "Siden du jobber {timer} timer i uken, som tilsvarer {prosent}, vil du vanligvis ikke få invilget AAP.",
             "justEnough": "En arbeidsuke er 37,5 timer. Siden du jobber {hoursWorked} timer i uka, som er {percentWorked} % av en vanlig arbeidsuke, blir arbeidsavklaringspengene redusert med {percentWorked2} %, fra {oldRes} kr til <strong>{res} kr</strong>."
         }
     },
