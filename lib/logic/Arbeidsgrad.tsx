@@ -12,6 +12,7 @@ export const arbeidsgrad = (resultat: Result) => {
         resultat.personInfo!!.arbeidsgrad == 0.0 ||
         !resultat.personInfo!!.harArbeid
     ) {
+        resultat.logs.push({ id: "logic.work.noWork" })
         return
     }
 

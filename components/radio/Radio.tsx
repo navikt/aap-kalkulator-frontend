@@ -10,6 +10,7 @@ const Radio = ({
     onChange,
     errorId,
     isError,
+    testId,
 }: {
     title: string
     readMoreTitle?: string
@@ -18,6 +19,7 @@ const Radio = ({
     onChange: (newState: string) => void
     errorId?: string
     isError: boolean
+    testId?: string
 }) => {
     const { formatMessage } = useFeatureToggleIntl()
     const radioStyle = "flex-grow border-[1px] px-2 rounded-md hover:shadow"
@@ -35,7 +37,9 @@ const Radio = ({
             error={isError && <div className="hidden"></div>}
         >
             <DSRadio value="Ja">{formatMessage("options.yes")}</DSRadio>
-            <DSRadio value="Nei">{formatMessage("options.no")}</DSRadio>
+            <DSRadio value="Nei" id={`${testId}+Nei`}>
+                {formatMessage("options.no")}
+            </DSRadio>
         </RadioGroup>
     )
 }

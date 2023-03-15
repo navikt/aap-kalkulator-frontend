@@ -102,7 +102,6 @@ const Arbeid = () => {
         setState({
             ...state,
             harArbeid: value == "Ja",
-            harAAP: value == "Nei" ? undefined : state.harAAP,
             arbeidstimer: value == "Nei" ? undefined : state.arbeidstimer,
         })
         setRadioErrorArbeid("")
@@ -122,6 +121,7 @@ const Arbeid = () => {
             <FormWrapper handleSubmit={handleSubmit}>
                 <div className="flex flex-col">
                     <Radio
+                        testId={"AAP"}
                         isError={radioErrorAAP != ""}
                         errorId="error2"
                         title={formatMessage("work.gotAAP.title")}
@@ -146,6 +146,7 @@ const Arbeid = () => {
                 </div>
                 <div className="flex flex-col">
                     <Radio
+                        testId={"work"}
                         isError={radioErrorArbeid != ""}
                         errorId="error1"
                         title={formatMessage("work.gotWork.title")}
