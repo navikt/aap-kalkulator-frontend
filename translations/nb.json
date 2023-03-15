@@ -60,7 +60,11 @@
         "gotWork": {
             "title": "Jobber du nå?",
             "readMoreTitle": "Hvorfor spør vi om du har jobb?",
-            "readMore": "Hvor mye du får i AAP, avhenger av hvor mye du jobber.",
+            "readMore":{
+                "start":  "Det er ulike regler for hvor mye du kan jobbe når:",
+                "pointOne": "du søker AAP",
+                "pointTwo": "etter du har fått innvilget AAP"
+            },
             "validation": {
                 "required": "Velg enten ja eller nei for å gå videre."
             }

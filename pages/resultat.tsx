@@ -165,9 +165,9 @@ const Resultat: NextPage = ({
                         <Alert variant="info">
                             <div>
                                 <BodyShort>
-                                    {state.harAAP ??
+                                    {state.harAAP &&
                                         formatMessage("result.disclamerMedAAP")}
-                                    {!state.harAAP ??
+                                    {!state.harAAP &&
                                         formatMessage(
                                             "result.disclamerUtenAAP"
                                         )}
@@ -191,11 +191,9 @@ const Resultat: NextPage = ({
                             : router.push("https://www.nav.no/aap/soknad")
                     }}
                 >
-                    {formatMessage(
-                        state.harAAP
-                            ? "result.buttonMenAAP"
-                            : "result.buttonUtenAAP"
-                    )}
+                    {state.harAAP
+                        ? formatMessage("result.buttonMedAAP")
+                        : formatMessage("result.buttonUtenAAP")}
                 </Button>
             </div>
         </>

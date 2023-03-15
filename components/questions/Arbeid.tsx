@@ -155,7 +155,25 @@ const Arbeid = () => {
                         readMoreTitle={formatMessage(
                             "work.gotWork.readMoreTitle"
                         )}
-                        readMore={formatMessage("work.gotWork.readMore")}
+                        readMore={
+                            <div>
+                                {formatMessage("work.gotWork.readMore.start")}
+                                <div>
+                                    <ul className="list-disc ml-5">
+                                        <li>
+                                            {formatMessage(
+                                                "work.gotWork.readMore.pointOne"
+                                            )}
+                                        </li>
+                                        <li>
+                                            {formatMessage(
+                                                "work.gotWork.readMore.pointTwo"
+                                            )}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        }
                     />
                     {radioErrorArbeid != "" && (
                         <ul
