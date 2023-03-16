@@ -24,6 +24,7 @@ describe("arbeidsgrad", () => {
             harLoenn: false,
             harArbeid: true,
             arbeidsgrad: 40,
+            arbeidstimer: 15,
         })
         resultat.resultat = 100_000
         arbeidsgrad(resultat)
@@ -45,15 +46,19 @@ describe("arbeidsgrad", () => {
             ...initialState,
             harLoenn: false,
             harArbeid: true,
-            arbeidsgrad: 70,
+            arbeidsgrad: 80,
+            arbeidstimer: 30,
         })
         resultat.resultat = 100_000
         arbeidsgrad(resultat)
         expect(resultat.resultat).toBe(0)
         expect(resultat.logs.length).toBe(1)
         expect(resultat.logs[0]).toEqual({
-            id: "logic.work.tooMuch",
-            values: {},
+            id: "logic.work.tooMuchWithAAP",
+            values: {
+                prosent: "80",
+                timer: "30",
+            },
         })
     })
     it("arbeidsgrad 49% med 100000 i grunnlag, uten AAP", () => {
@@ -62,6 +67,7 @@ describe("arbeidsgrad", () => {
             harLoenn: false,
             harArbeid: true,
             arbeidsgrad: 49,
+            arbeidstimer: 18.375,
         })
         resultat.resultat = 100_000
         arbeidsgrad(resultat)
@@ -85,14 +91,18 @@ describe("arbeidsgrad", () => {
             harLoenn: false,
             harArbeid: true,
             arbeidsgrad: 51,
+            arbeidstimer: 19.125,
         })
         resultat.resultat = 100_000
         arbeidsgrad(resultat)
         expect(resultat.resultat).toBe(0)
         expect(resultat.logs.length).toBe(1)
         expect(resultat.logs[0]).toEqual({
-            id: "logic.work.tooMuch",
-            values: {},
+            id: "logic.work.tooMuchWithoutAAP",
+            values: {
+                prosent: "51",
+                timer: "19.125",
+            },
         })
     })
     test("arbeidsgrad er -10%", () => {
