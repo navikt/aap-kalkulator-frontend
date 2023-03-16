@@ -77,7 +77,7 @@
         },
         "howManyHours": {
             "title": "Hvor mange timer jobber du per uke?",
-            "description": "Varierer det, kan du oppgi gjennomsnittet.",
+            "description": "Varierer det hvor mye du jobber, kan du oppgi gjennomsnittet.",
             "trail": "timer per uke",
             "validation": {
                 "required": "Antall timer må være et tall.",
@@ -120,7 +120,7 @@
         "link2": "Tilbake til informasjonssiden om AAP",
         "preDisclaimer2": "For at vi skal vurdere om du har rett til AAP, må du søke om det. Du kan tidligst få AAP fra den dagen du søker. ",
         "buttonUtenAAP": "Gå til søknad om arbeidsavklaringspenger",
-        "buttonMedAAP": "Gå til mine aap"
+        "buttonMedAAP": "Gå til Mine Arbeidsavklaringspenger"
     },
     "logic": {
         "salery": {
@@ -140,7 +140,7 @@
             "totalAmount": "Dette blir til sammen <strong>{res} kr</strong> i arbeidsavklaringspenger per år før skatt."
         },
         "work": {
-            "noWork": "Hvis du jobber, kan dette redusere arbeidsavklaringspengene dine. Denne reduksjonen blir gjort ved innlevering av meldekort hver 14. dag.",
+            "noWork": "Hvis du jobber ved siden av AAP, kan dette redusere hva du får utbetalt. Du fører opp hvor mye du jobber hver 14. dag på meldekortet.",
             "tooMuchWithAAP": "Siden du jobber {timer} timer i uken, som tilsvarer {prosent}, vil du ikke få npe utbetalt i AAP. Du kan i perioder jobbe 80% etter avtale med veileder.",
             "tooMuchWithoutAAP": "Siden du jobber {timer} timer i uken, som tilsvarer {prosent}, vil du vanligvis ikke få invilget AAP.",
             "justEnough": "En arbeidsuke er 37,5 timer. Siden du jobber {hoursWorked} timer i uka, som er {percentWorked} % av en vanlig arbeidsuke, blir arbeidsavklaringspengene redusert med {percentWorked2} %, fra {oldRes} kr til <strong>{res} kr</strong>."

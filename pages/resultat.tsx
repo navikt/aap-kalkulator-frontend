@@ -184,7 +184,8 @@ const Resultat: NextPage = ({
                 </NextLink>
                 <BodyShort>{formatMessage("result.preDisclaimer2")}</BodyShort>
                 <Button
-                    variant={"secondary"}
+                    className={"w-fit"}
+                    variant={"primary"}
                     onClick={() => {
                         state.harAAP
                             ? router.push("https://www.nav.no/aap/mine-aap")

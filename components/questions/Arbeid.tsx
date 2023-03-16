@@ -130,7 +130,25 @@ const Arbeid = () => {
                         readMoreTitle={formatMessage(
                             "work.gotAAP.readMoreTitle"
                         )}
-                        readMore={formatMessage("work.gotAAP.readMore")}
+                        readMore={
+                            <div>
+                                {formatMessage("work.gotWork.readMore.start")}
+                                <div>
+                                    <ul className="list-disc ml-5">
+                                        <li>
+                                            {formatMessage(
+                                                "work.gotWork.readMore.pointOne"
+                                            )}
+                                        </li>
+                                        <li>
+                                            {formatMessage(
+                                                "work.gotWork.readMore.pointTwo"
+                                            )}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        }
                     />
                     {radioErrorAAP != "" && (
                         <ul
@@ -155,25 +173,7 @@ const Arbeid = () => {
                         readMoreTitle={formatMessage(
                             "work.gotWork.readMoreTitle"
                         )}
-                        readMore={
-                            <div>
-                                {formatMessage("work.gotWork.readMore.start")}
-                                <div>
-                                    <ul className="list-disc ml-5">
-                                        <li>
-                                            {formatMessage(
-                                                "work.gotWork.readMore.pointOne"
-                                            )}
-                                        </li>
-                                        <li>
-                                            {formatMessage(
-                                                "work.gotWork.readMore.pointTwo"
-                                            )}
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        }
+                        readMore={formatMessage("work.gotAAP.readMore")}
                     />
                     {radioErrorArbeid != "" && (
                         <ul
