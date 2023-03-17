@@ -33,7 +33,7 @@ export const arbeidsgrad = (resultat: Result) => {
                 ? "logic.work.tooMuchWithAAP"
                 : "logic.work.tooMuchWithoutAAP",
             values: {
-                timer: resultat.personInfo!!.arbeidstimer!!,
+                timer: resultat.personInfo!!.arbeidstimer!!.toString(),
                 prosent: resultat.personInfo!!.arbeidsgrad!!.toFixed(0),
             },
         })
