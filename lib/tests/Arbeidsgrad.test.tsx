@@ -57,7 +57,7 @@ describe("arbeidsgrad", () => {
             id: "logic.work.tooMuchWithAAP",
             values: {
                 prosent: "80",
-                timer: 30,
+                timer: "30",
             },
         })
     })
@@ -101,7 +101,7 @@ describe("arbeidsgrad", () => {
             id: "logic.work.tooMuchWithoutAAP",
             values: {
                 prosent: "51",
-                timer: 19.125,
+                timer: "19.125",
             },
         })
     })
