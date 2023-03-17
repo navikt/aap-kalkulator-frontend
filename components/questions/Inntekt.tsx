@@ -138,7 +138,6 @@ const Inntekt = () => {
             <BodyShort spacing>
                 {formatMessage("income.gotIncome.readMore1")}
             </BodyShort>
-            <BodyShort>{formatMessage("income.gotIncome.readMore2")}</BodyShort>
         </div>
     )
     return (

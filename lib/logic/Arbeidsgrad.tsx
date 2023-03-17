@@ -13,6 +13,7 @@ export const arbeidsgrad = (resultat: Result) => {
         !resultat.personInfo!!.harArbeid
     ) {
         resultat.logs.push({ id: "logic.work.noWork" })
+        resultat.logs.push({ id: "logic.any.onAll" })
         return
     }
 
@@ -32,8 +33,8 @@ export const arbeidsgrad = (resultat: Result) => {
                 ? "logic.work.tooMuchWithAAP"
                 : "logic.work.tooMuchWithoutAAP",
             values: {
-                timer: resultat.personInfo!!.arbeidstimer!!.toString(),
-                prosent: resultat.personInfo!!.arbeidsgrad!!.toString(),
+                timer: resultat.personInfo!!.arbeidstimer!!.toFixed(0),
+                prosent: resultat.personInfo!!.arbeidsgrad!!.toFixed(0),
             },
         })
         return
@@ -53,4 +54,6 @@ export const arbeidsgrad = (resultat: Result) => {
             res: toKr(resultat.resultat),
         },
     })
+    resultat.logs.push({ id: "logic.work.other" })
+    resultat.logs.push({ id: "logic.any.onAll" })
 }

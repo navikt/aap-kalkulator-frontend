@@ -108,7 +108,7 @@ const Resultat: NextPage = ({
                     </Heading>
                 </div>
                 <div className="grid gap-4">
-                    <div className="grid sm:grid-rows-2 md:grid-rows-1 md:grid-cols-2 my-4 gap-4 justify-self-center">
+                    <div className="grid sm:grid-rows-2 sm:w-[100%] md:grid-rows-1 md:grid-cols-2 my-4 gap-4 justify-self-center">
                         <div className="bg-green-100 p-4 rounded flex-col flex">
                             <span className="text-3xl md:text-3xl text-green-900">
                                 {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
@@ -178,9 +178,6 @@ const Resultat: NextPage = ({
                                 </BodyShort>
                             </div>
                         </Alert>
-                        <BodyShort>
-                            {formatMessage("result.preDisclaimer2")}
-                        </BodyShort>
                         <Button
                             className={"w-fit"}
                             variant={"primary"}
@@ -201,9 +198,6 @@ const Resultat: NextPage = ({
                                 </BodyShort>
                             </div>
                         </Alert>
-                        <BodyShort>
-                            {formatMessage("result.preDisclaimer2")}
-                        </BodyShort>
                         <Button
                             className={"w-fit"}
                             variant={"primary"}
