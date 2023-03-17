@@ -108,8 +108,8 @@ const Resultat: NextPage = ({
                     </Heading>
                 </div>
                 <div className="grid gap-4">
-                    <div className="grid grid-cols-2 my-4 gap-4 justify-self-start">
-                        <div className="bg-green-100 p-4 rounded p-7">
+                    <div className="grid sm:grid-rows-2 md:grid-rows-1 md:grid-cols-2 my-4 gap-4 justify-self-center">
+                        <div className="bg-green-100 p-4 rounded flex-col flex">
                             <span className="text-3xl md:text-3xl text-green-900">
                                 {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
                             </span>
@@ -117,10 +117,11 @@ const Resultat: NextPage = ({
                                 {" "}
                                 {formatMessage("result.per14", {
                                     wbr: () => <>&nbsp;</>,
+                                    shy: () => <>&shy;</>,
                                 })}
                             </Label>
                         </div>
-                        <div className="bg-green-100 p-4 rounded p-7">
+                        <div className="bg-green-100 p-4 rounded flex-col flex">
                             <span className="text-3xl md:text-3xl text-green-900">
                                 {Math.ceil(
                                     result == null ? 0 : resultat
@@ -128,7 +129,9 @@ const Resultat: NextPage = ({
                                 &nbsp;kr
                             </span>{" "}
                             <Label className="text-green-800">
-                                {formatMessage("result.perAar")}
+                                {formatMessage("result.perAar", {
+                                    shy: () => <>&shy;</>,
+                                })}
                             </Label>
                         </div>
                     </div>
@@ -142,7 +145,7 @@ const Resultat: NextPage = ({
                                     {formatMessage("result.description")}
                                 </Heading>
 
-                                <ul className=" space-y-4 list-disc">
+                                <ul className=" space-y-4 px-5 list-disc">
                                     {result?.logs.map((text, index) => (
                                         <li key={index}>
                                             <div>
@@ -162,40 +165,59 @@ const Resultat: NextPage = ({
                                 </ul>
                             </div>
                         )}
+                    </div>
+                </div>
+
+                {state.harAAP && (
+                    <>
                         <Alert variant="info">
                             <div>
                                 <BodyShort>
                                     {state.harAAP &&
                                         formatMessage("result.disclamerMedAAP")}
-                                    {!state.harAAP &&
-                                        formatMessage(
-                                            "result.disclamerUtenAAP"
-                                        )}
                                 </BodyShort>
                             </div>
                         </Alert>
-                    </div>
-                </div>
-
+                        <BodyShort>
+                            {formatMessage("result.preDisclaimer2")}
+                        </BodyShort>
+                        <Button
+                            className={"w-fit"}
+                            variant={"primary"}
+                            onClick={() => {
+                                router.push("https://www.nav.no/aap/mine-aap")
+                            }}
+                        >
+                            {formatMessage("result.buttonMedAAP")}
+                        </Button>
+                    </>
+                )}
+                {!state.harAAP && (
+                    <>
+                        <Alert variant="info">
+                            <div>
+                                <BodyShort>
+                                    {formatMessage("result.disclamerUtenAAP")}
+                                </BodyShort>
+                            </div>
+                        </Alert>
+                        <BodyShort>
+                            {formatMessage("result.preDisclaimer2")}
+                        </BodyShort>
+                        <Button
+                            className={"w-fit"}
+                            variant={"primary"}
+                            onClick={() => {
+                                router.push("https://www.nav.no/aap/soknad")
+                            }}
+                        >
+                            {formatMessage("result.buttonUtenAAP")}
+                        </Button>
+                    </>
+                )}
                 <NextLink passHref href={"https://www.nav.no/aap"}>
-                    <Link className="mt-4 ">
-                        {formatMessage("result.link2")}
-                    </Link>
+                    <Link className="">{formatMessage("result.link2")}</Link>
                 </NextLink>
-                <BodyShort>{formatMessage("result.preDisclaimer2")}</BodyShort>
-                <Button
-                    className={"w-fit"}
-                    variant={"primary"}
-                    onClick={() => {
-                        state.harAAP
-                            ? router.push("https://www.nav.no/aap/mine-aap")
-                            : router.push("https://www.nav.no/aap/soknad")
-                    }}
-                >
-                    {state.harAAP
-                        ? formatMessage("result.buttonMedAAP")
-                        : formatMessage("result.buttonUtenAAP")}
-                </Button>
             </div>
         </>
     )
