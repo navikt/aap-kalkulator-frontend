@@ -1,18 +1,14 @@
 import { ChangeEvent, useContext, useState } from "react"
 import { BrowserState, State } from "../../pages/_app"
 
-import {
-    BodyShort,
-    Label,
-    TextField,
-} from "@navikt/ds-react"
+import { BodyShort, Label, TextField } from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import Radio from "../radio/Radio"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
-import { FormWrapper } from "../formWrapper/FormWrapper";
+import { FormWrapper } from "../formWrapper/FormWrapper"
 
 interface Inntekt {
     inntekt1: string
@@ -47,8 +43,7 @@ const Inntekt = () => {
             ...inntekt,
             [event.target.name]: event.target.value,
         })
-        if (event.target.value.match(/^([0-9\s]+)([,.][0-9]*)?$/g)!=null)
-        {
+        if (event.target.value.match(/^([0-9\s]+)([,.][0-9]*)?$/g) != null) {
             const tekst = event.target.value.replace(/[\.,\s]/g, "")
             const verdi = parseFloat(tekst)
             const index =
@@ -157,8 +152,7 @@ const Inntekt = () => {
             />
             <FormWrapper handleSubmit={handleSubmit}>
                 <Radio
-                    isError={radioError != ""}
-                    errorId="error1"
+                    error={radioError}
                     title={formatMessage("income.gotIncome.title", {
                         inntektsAar2: inntektsAar[2].toString(),
                         inntektsAar0: inntektsAar[0].toString(),
@@ -170,29 +164,19 @@ const Inntekt = () => {
                     )}
                     readMore={readMoreText}
                 />
-                {radioError != "" && (
-                    <ul id="error1" aria-live="assertive" className="list-disc">
-                        <li className="ml-5 font-bold text-red-500 mb-4">
-                            {radioError}
-                        </li>
-                    </ul>
-                )}
 
                 {state.harLoenn && (
-                    <div>
-                        <Label className="text-xl">
-                            {formatMessage("income.howMuch.title")}
-                        </Label>
+                    <fieldset>
+                        <Label>{formatMessage("income.howMuch.title")}</Label>
                         <BodyShort spacing>
                             {formatMessage("income.howMuch.description")}
                         </BodyShort>
-                        <div className="flex md:flex-row flex-col my-4 gap-4">
+                        <div className="flex md:flex-row flex-col gap-4">
                             {inntektsAar.reverse().map((aar, index) => (
                                 <div key={index} className="flex flex-col">
                                     <TextField
-                                        aria-errormessage={`e${index}`}
                                         inputMode="numeric"
-                                        className={`shrink md:mb-2 max-w-[160px] h-20`}
+                                        className={`max-w-[160px]`}
                                         key={index}
                                         id={`inntekt${idKorreksjon(index)}`}
                                         name={`inntekt${idKorreksjon(index)}`}
@@ -206,25 +190,11 @@ const Inntekt = () => {
                                         }
                                         onChange={onChange}
                                     />
-
-                                    {error[2 - index] && (
-                                        <ul
-                                            id={`e${index}`}
-                                            aria-live="assertive"
-                                            className="list-disc ml-5 font-bold text-red-500"
-                                        >
-                                            <li>
-                                                {error[indexKorreksjon(index)]}
-                                            </li>
-                                        </ul>
-                                    )}
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    </fieldset>
                 )}
-
-
             </FormWrapper>
         </>
     )

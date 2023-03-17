@@ -8,6 +8,7 @@ import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
 import { FormWrapper } from "../formWrapper/FormWrapper"
+import styles from "./Helse.module.css"
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -112,42 +113,21 @@ const Helse = () => {
             />
             <FormWrapper handleSubmit={handleSubmit}>
                 <Radio
-                    isError={radioError != ""}
-                    errorId="error1"
+                    error={radioError}
                     title={formatMessage("helse.over25.title")}
-                    aria-errormessage="e1"
                     state={state.over25}
                     onChange={(val: any) => handleChange(val)}
                     readMoreTitle={formatMessage("helse.over25.readMoreTitle")}
                     readMore={formatMessage("helse.over25.readMore")}
                 />
-                {radioError && (
-                    <ul
-                        id="e1"
-                        aria-live="assertive"
-                        className="list-disc ml-5 font-bold text-red-500"
-                    >
-                        <li>{radioError}</li>
-                    </ul>
-                )}
                 <div className="mb-4">
-                    <Label as="label" id="l2" className="text-xl">
-                        {formatMessage("helse.nedsattArbeidsevne.title")}
-                    </Label>
-                    {/*<ReadMore
-                        size="small"
-                        header={`${formatMessage("helse.nedsattArbeidsevne.readMoreTitle")}`}
-                    >
-                        {formatMessage("helse.nedsattArbeidsevne.readMore")}
-                    </ReadMore>*/}
-                    <div className="flex flex-col my-2">
+                    <div className={styles.select}>
                         <Select
-                            label=""
                             id="sykmelding"
-                            className="md:w-1/5 mb-2 w-1/4"
+                            label={formatMessage(
+                                "helse.nedsattArbeidsevne.title"
+                            )}
                             onChange={(event) => onChange(event.target.value)}
-                            aria-labelledby="l2"
-                            aria-errormessage="e2"
                             defaultValue={aar}
                         >
                             {Array.from(Array(aapGrense).keys()).map((i) => {
@@ -159,15 +139,6 @@ const Helse = () => {
                                 )
                             })}
                         </Select>
-                        {error && (
-                            <ul
-                                id="e2"
-                                aria-live="assertive"
-                                className="list-disc ml-5 font-bold text-red-500"
-                            >
-                                <li>{error}</li>
-                            </ul>
-                        )}
                     </div>
                 </div>
             </FormWrapper>

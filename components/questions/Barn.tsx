@@ -8,7 +8,7 @@ import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import { FormWrapper } from "../formWrapper/FormWrapper"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
-
+import styles from "./Barn.module.css"
 interface BarnInterface extends HTMLFormElement {
     antallBarn: HTMLInputElement
 }
@@ -20,7 +20,11 @@ const Barn = () => {
     const [radioError, setRadioError] = useState<string | undefined>(undefined)
     const { browserState } = useContext(BrowserState)
     const { formatMessage } = useFeatureToggleIntl()
-    const [ antallBarn, setAntallBarn ] = useState(state.antallBarn!=undefined && !isNaN(state.antallBarn)?state.antallBarn.toString():"")
+    const [antallBarn, setAntallBarn] = useState(
+        state.antallBarn != undefined && !isNaN(state.antallBarn)
+            ? state.antallBarn.toString()
+            : ""
+    )
     const onRadioChange = (value: string) => {
         setState({
             ...state,
@@ -94,8 +98,7 @@ const Barn = () => {
             />
             <FormWrapper handleSubmit={handleSubmit}>
                 <Radio
-                    isError={radioError != undefined}
-                    errorId="error1"
+                    error={radioError}
                     title={formatMessage("children.gotChildren.title")}
                     readMoreTitle={formatMessage(
                         "children.gotChildren.readMoreTitle"
@@ -120,59 +123,30 @@ const Barn = () => {
                     state={state.harBarn}
                     onChange={onRadioChange}
                 />
-                {radioError != undefined && (
-                    <ul id="error1" aria-live="assertive" className="list-disc">
-                        <li className="ml-5 font-bold text-red-500 mb-4">
-                            {radioError}
-                        </li>
-                    </ul>
-                )}
                 {state.harBarn && (
                     <div className="mb-4">
-                        <Label as={"label"} id="l1" className="text-xl">
-                            {formatMessage("children.howMany.title")}
-                        </Label>
-                        <BodyShort as={"p"} id="bs1">
-                            {formatMessage("children.howMany.description")}
-                        </BodyShort>
-                        <div className="flex flex-col my-2">
+                        <div className="flex flex-col">
                             <div className="flex flex-row items-center gap-2">
                                 <TextField
-                                    aria-errormessage="e2"
-                                    aria-labelledby="l1"
-                                    aria-describedby="bs1"
                                     inputMode="numeric"
-                                    className="mb-2 md:w-1/5 w-1/4"
+                                    className={styles.textfield}
                                     id="antallBarn"
-                                    label=""
-                                    size="medium"
-                                    value={
-                                        antallBarn
-                                    }
+                                    label={formatMessage(
+                                        "children.howMany.title"
+                                    )}
+                                    description={formatMessage(
+                                        "children.howMany.description"
+                                    )}
+                                    value={antallBarn}
                                     onChange={(event) =>
                                         onChange(event.target.value)
                                     }
-                                    error={
-                                        error && <div className="hidden"></div>
-                                    }
+                                    error={error}
                                 />
-                                <BodyShort as={"p"} id="d1">
-                                    {formatMessage("children.howMany.unit")}
-                                </BodyShort>
                             </div>
-                            {error && (
-                                <ul
-                                    id="e2"
-                                    aria-live="assertive"
-                                    className="list-disc ml-5 font-bold text-red-500"
-                                >
-                                    <li>{error}</li>
-                                </ul>
-                            )}
                         </div>
                     </div>
                 )}
-
             </FormWrapper>
         </>
     )

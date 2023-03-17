@@ -16,10 +16,3 @@ a {
 * {
     box-sizing: border-box;
 }
-.navds-form-field__error {
-    @apply hidden;
-}
-
-.navds-fieldset__error {
-    @apply hidden;
-}
