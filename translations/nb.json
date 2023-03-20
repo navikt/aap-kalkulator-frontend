@@ -140,14 +140,11 @@
             "totalAmount": "Dette blir til sammen <strong>{res} kr</strong> i arbeidsavklaringspenger per år før skatt."
         },
         "work": {
-            "noWork": "Hvis du jobber eller får andre ytelser ved siden av AAP, kan dette redusere hva du får utbetalt. Du fører opp hvor mye du jobber hver 14. dag på meldekortet.",
+            "noWork": "Hvis du jobber ved siden av AAP, kan dette redusere hva du får utbetalt. Du fører opp hvor mye du jobber hver 14. dag på meldekortet.",
             "tooMuchWithAAP": "Siden du jobber {timer} timer i uken, som tilsvarer {prosent}, vil du ikke få noe utbetalt i AAP. Du kan i perioder jobbe 80% etter avtale med veileder.",
             "tooMuchWithoutAAP": "Siden du jobber {timer} timer i uken, som tilsvarer {prosent}, vil du vanligvis ikke få invilget AAP.",
             "justEnough": "En arbeidsuke er 37,5 timer. Siden du jobber {hoursWorked} timer i uka, som er {percentWorked} % av en vanlig arbeidsuke, blir utbetalingen redusert med {percentWorked2} %, fra {oldRes} kr til <strong>{res} kr</strong>. Du fører inn hvor mye du jobber hver 14. dag på meldekortet.",
-            "other": "Hvis du får andre ytelser ved siden av AAP, kan dette redusere hvor mye du får utbetalt. Kalkulatoren tar ikke hensyn til dette."
-        },
-        "any": {
-            "onAll": "Dersom du mottar andre ytelser, kan dette redusere hvor mye du får utbetalt. Kalkulatoren tar ikke hensyn til dette."
+            "onAll": "Hvis du får andre ytelser ved siden av AAP, kan dette redusere hvor mye du får utbetalt. Kalkulatoren tar ikke hensyn til dette."
         }
     },
     "options": {

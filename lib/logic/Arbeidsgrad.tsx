@@ -13,7 +13,7 @@ export const arbeidsgrad = (resultat: Result) => {
         !resultat.personInfo!!.harArbeid
     ) {
         resultat.logs.push({ id: "logic.work.noWork" })
-        resultat.logs.push({ id: "logic.any.onAll" })
+        resultat.logs.push({ id: "logic.work.onAll" })
         return
     }
 
@@ -54,6 +54,5 @@ export const arbeidsgrad = (resultat: Result) => {
             res: toKr(resultat.resultat),
         },
     })
-    resultat.logs.push({ id: "logic.work.other" })
-    resultat.logs.push({ id: "logic.any.onAll" })
+    resultat.logs.push({ id: "logic.work.onAll" })
 }
