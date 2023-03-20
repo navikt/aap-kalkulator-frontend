@@ -29,7 +29,7 @@ describe("arbeidsgrad", () => {
         resultat.resultat = 100_000
         arbeidsgrad(resultat)
         expect(resultat.resultat).toBe(60_000)
-        expect(resultat.logs.length).toBe(3)
+        expect(resultat.logs.length).toBe(2)
         expect(resultat.logs[0]).toEqual({
             id: "logic.work.justEnough",
             values: {
@@ -72,7 +72,7 @@ describe("arbeidsgrad", () => {
         resultat.resultat = 100_000
         arbeidsgrad(resultat)
         expect(resultat.resultat).toBe(51_000)
-        expect(resultat.logs.length).toBe(3)
+        expect(resultat.logs.length).toBe(2)
         expect(resultat.logs[0]).toEqual({
             id: "logic.work.justEnough",
             values: {
