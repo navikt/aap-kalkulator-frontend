@@ -1,0 +1,14 @@
+.circle{
+    width: 87px;
+    height: 87px;
+    border-radius: 50%;
+    background-color: var(--a-green-100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex{
+    height: fit-content;
+    width: fit-content;
+}

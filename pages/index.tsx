@@ -8,6 +8,7 @@ import { BrowserState, State } from "./_app"
 import { StateInterface } from "../components/state/State"
 import { logAmplitudeEvent } from "../lib/utils/amplitude"
 import { useFeatureToggleIntl } from "../hooks/useFeatureToggleIntl"
+import { MagnifyingGlassIcon } from "../components/icons/MagnifyingGlassIcon"
 
 const Home: NextPage = () => {
     const router = useRouter()
@@ -33,41 +34,27 @@ const Home: NextPage = () => {
                         {formatMessage("start.refreshed")}
                     </Alert>
                 )}
-                <Image
-                    src="/aap/kalkulator/ikoner/magnifying_glass.svg"
-                    height="120"
-                    width="120"
-                    alt=""
-                    className="flex items-center pb-4"
-                    aria-hidden
-                ></Image>
-                <Heading
-                    level="2"
-                    size="large"
-                    spacing
-                    aria-label="Hvor mye kan du få?"
-                >
+                <MagnifyingGlassIcon />
+                <Heading level="2" size="large" spacing>
                     {formatMessage("start.title")}
                 </Heading>
                 <Divider isTitle={true} />
             </div>
-            <div className="flex flex-col items-center mt-4 gap-4">
-                <ul className="list-disc space-y-2 mb-8 pl-4 md:w-5/6">
+            <div className="flex flex-col items-center mt-4 gap-4 pl-4">
+                <ul className="list-disc space-y-2 mb-8 md:w-5/6">
                     <li>{formatMessage("start.firstPoint")}</li>
                     <li>{formatMessage("start.secondPoint")}</li>
                     <li>{formatMessage("start.thirdPoint")}</li>
-                    <li>{formatMessage("start.fourthPoint")}</li>
                 </ul>
-
-                <Button
-                    onClick={handleStart}
-                    className="w-20"
-                    variant="primary"
-                    as={"button"}
-                >
-                    {formatMessage("navigation.start")}
-                </Button>
             </div>
+            <Button
+                onClick={handleStart}
+                className="w-20 ml-4"
+                variant="primary"
+                as={"button"}
+            >
+                {formatMessage("navigation.start")}
+            </Button>
         </>
     )
 }

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import { useContext, useState } from "react"
 import { BrowserState, State } from "../../pages/_app"
-import { BodyShort, Button, Label, Link, TextField } from "@navikt/ds-react"
+import { BodyShort, Label, Link, TextField } from "@navikt/ds-react"
 import Radio from "../radio/Radio"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
@@ -9,9 +9,7 @@ import QuestionHeader from "../questionHeader/QuestionHeader"
 import { FormWrapper } from "../formWrapper/FormWrapper"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
 import styles from "./Barn.module.css"
-interface BarnInterface extends HTMLFormElement {
-    antallBarn: HTMLInputElement
-}
+import { TeddyIcon } from "../icons/TeddyIcon"
 
 const Barn = () => {
     const router = useRouter()
@@ -66,7 +64,6 @@ const Barn = () => {
 
         await router.push("/resultat")
     }
-
     if (state.sykmeldtAar === undefined) {
         browserState.redirect = true
         router.push("/")
@@ -90,10 +87,9 @@ const Barn = () => {
     return (
         <>
             <Stepper />
-            <BackLink target="/steg/2" />
+            <BackLink target="/steg/3" />
             <QuestionHeader
-                image="/aap/kalkulator/ikoner/teddy_circle.svg"
-                alt=""
+                image={<TeddyIcon />}
                 tittel={formatMessage("children.title")}
             />
             <FormWrapper handleSubmit={handleSubmit}>

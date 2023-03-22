@@ -4,11 +4,12 @@ export interface StateInterface {
     inntekt3: number | undefined
     antallBarn: number | undefined
     arbeidsgrad: number | undefined
-    arbeidstimer: string | undefined
+    arbeidstimer: number | undefined
     sykmeldtAar: number | undefined
     lengsteSteg: number
     harArbeid: boolean | undefined
     harBarn: boolean | undefined
     over25: boolean | undefined
     harLoenn: boolean | undefined
+    harAAP: boolean | undefined
 }

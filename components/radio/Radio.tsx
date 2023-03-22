@@ -33,7 +33,9 @@ const Radio = ({
             error={error}
         >
             <DSRadio value="Ja">{formatMessage("options.yes")}</DSRadio>
-            <DSRadio value="Nei">{formatMessage("options.no")}</DSRadio>
+            <DSRadio value="Nei">
+                {formatMessage("options.no")}
+            </DSRadio>
         </RadioGroup>
     )
 }

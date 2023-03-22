@@ -1,17 +1,16 @@
 // noinspection JSNonASCIINames
 
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useMemo, useState } from "react"
 import { State } from "./_app"
 import { NextPage } from "next"
 import {
-    Accordion,
     Alert,
     BodyShort,
+    Button,
     Heading,
     Label,
     Link,
 } from "@navikt/ds-react"
-import Image from "next/image"
 import { Result, ResultInterface } from "../components/result/Result"
 import BackLink from "../components/backlink/BackLink"
 import { useRouter } from "next/router"
@@ -19,8 +18,10 @@ import { logAmplitudeEvent } from "../lib/utils/amplitude"
 import { kalkuler } from "../lib/logic/Kalkuler"
 import { grunnbeloep, GrunnbeloepHistorikk } from "../lib/utils/types"
 import { useFeatureToggleIntl } from "../hooks/useFeatureToggleIntl"
-import { useIntl } from "react-intl"
-import Stepper from "../components/stepper/Stepper";
+import Stepper from "../components/stepper/Stepper"
+import NextLink from "next/link"
+import { CoinIcon } from "../components/icons/CoinIcon"
+import { Circle } from "../components/circle/Circle"
 
 export const getStaticProps = async () => {
     const res = await fetch("https://g.nav.no/api/v1/grunnbeloep")
@@ -60,7 +61,6 @@ const Resultat: NextPage = ({
 }) => {
     const { formatMessage } = useFeatureToggleIntl()
     const [result, setResult] = useState<ResultInterface | null>(null)
-    const [open, setOpen] = useState(false)
     const { state } = useContext(State)
     const router = useRouter()
 
@@ -83,38 +83,24 @@ const Resultat: NextPage = ({
         })
     }, [])
 
-    const handleAccordion = () => {
-        setOpen((current) => {
-            if (!current) {
-                logAmplitudeEvent("accordion åpnet", {
-                    tekst: "Hvorfor får jeg denne summen?",
-                })
-            } else {
-                logAmplitudeEvent("accordion lukket", {
-                    tekst: "Hvorfor får jeg denne summen?",
-                })
-            }
-            return !current
-        })
-    }
+    const resultat = useMemo(() => {
+        if (result == null) return 0
+        return result?.resultat
+    }, [result])
 
-    const dagsats = Math.ceil(result == null ? 0 : result.resultat / 260)
+    const dagsats = Math.ceil(result == null ? 0 : resultat / 260)
     return (
         <>
             <Stepper />
-            <BackLink target="/steg/1" tekst="Endre svar" />
+            <BackLink target="/steg/4" tekst="Endre svar" />
             <div className="grid gap-8">
                 <div
                     className="flex flex-col items-center pt-4 mb-4"
                     aria-hidden="true"
                 >
-                    <img
-                        src="/aap/kalkulator/ikoner/money_circle.svg"
-                        height="100"
-                        width="100"
-                        alt=""
-                        aria-hidden
-                    />
+                    <Circle>
+                        <CoinIcon />
+                    </Circle>
                 </div>
                 <div className="text-left -mb-5">
                     <Heading level="2" size="large">
@@ -122,8 +108,8 @@ const Resultat: NextPage = ({
                     </Heading>
                 </div>
                 <div className="grid gap-4">
-                    <div className="grid grid-cols-2 my-4 gap-4 justify-self-start">
-                        <div className="bg-green-100 p-4 rounded p-7">
+                    <div className="grid sm:grid-rows-2 sm:w-[100%] md:grid-rows-1 md:grid-cols-2 my-4 gap-4 justify-self-center">
+                        <div className="bg-green-100 p-4 rounded flex-col flex">
                             <span className="text-3xl md:text-3xl text-green-900">
                                 {(dagsats * 10).toLocaleString("nb-NO")}&nbsp;kr
                             </span>
@@ -131,65 +117,101 @@ const Resultat: NextPage = ({
                                 {" "}
                                 {formatMessage("result.per14", {
                                     wbr: () => <>&nbsp;</>,
+                                    shy: () => <>&shy;</>,
                                 })}
                             </Label>
                         </div>
-                        <div className="bg-green-100 p-4 rounded p-7">
+                        <div className="bg-green-100 p-4 rounded flex-col flex">
                             <span className="text-3xl md:text-3xl text-green-900">
                                 {Math.ceil(
-                                    result == null ? 0 : result.resultat
+                                    result == null ? 0 : resultat
                                 ).toLocaleString("nb-NO")}
                                 &nbsp;kr
-                            </span>
-                            {" "}
+                            </span>{" "}
                             <Label className="text-green-800">
-                                {formatMessage("result.perAar")}
+                                {formatMessage("result.perAar", {
+                                    shy: () => <>&shy;</>,
+                                })}
                             </Label>
                         </div>
                     </div>
                     <div className="space-y-7">
-                        <BodyShort >
+                        <BodyShort>
                             {formatMessage("result.preDisclaimer")}
                         </BodyShort>
+                        {result != null && (
+                            <div>
+                                <Heading size="medium" level="2" spacing>
+                                    {formatMessage("result.description")}
+                                </Heading>
+
+                                <ul className=" space-y-4 px-5 list-disc">
+                                    {result?.logs.map((text, index) => (
+                                        <li key={index}>
+                                            <div>
+                                                {formatMessage(text.id, {
+                                                    ...text.values,
+                                                    strong: (
+                                                        ...chunks: any
+                                                    ) => (
+                                                        <strong>
+                                                            {chunks}
+                                                        </strong>
+                                                    ),
+                                                })}
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                    </div>
+                </div>
+
+                {state.harAAP && (
+                    <>
                         <Alert variant="info">
                             <div>
                                 <BodyShort>
-                                    {formatMessage("result.disclamer")}
+                                    {state.harAAP &&
+                                        formatMessage("result.disclamerMedAAP")}
                                 </BodyShort>
                             </div>
                         </Alert>
-                        <Link
-                            target="_blank"
-                            href="https://www.nav.no/aap"
-                            as="a"
-                            color="link-color-text"
+                        <Button
+                            className={"w-fit"}
+                            variant={"primary"}
+                            onClick={() => {
+                                router.push("https://www.nav.no/aap/mine-aap")
+                            }}
                         >
-                            {formatMessage("result.link")}
-                        </Link>
-                    </div>
-                </div>
-                {result != null && (
-                    <div>
-                        <Heading size="medium" level="2" spacing>
-                            {formatMessage("result.description")}
-                        </Heading>
-
-                        <ul className=" space-y-4 list-disc">
-                            {result?.logs.map((text, index) => (
-                                <li key={index}>
-                                    <div>
-                                        {formatMessage(text.id, {
-                                            ...text.values,
-                                            strong: (...chunks: any) => (
-                                                <strong>{chunks}</strong>
-                                            ),
-                                        })}
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                            {formatMessage("result.buttonMedAAP")}
+                        </Button>
+                    </>
                 )}
+                {!state.harAAP && (
+                    <>
+                        <Alert variant="info">
+                            <div>
+                                <BodyShort>
+                                    {formatMessage("result.disclamerUtenAAP")}
+                                </BodyShort>
+                            </div>
+                        </Alert>
+                        <Button
+                            className={"w-fit"}
+                            variant={"primary"}
+                            onClick={() => {
+                                router.push("https://www.nav.no/aap/soknad")
+                            }}
+                        >
+                            {formatMessage("result.buttonUtenAAP")}
+                        </Button>
+                    </>
+                )}
+                <NextLink passHref href={"https://www.nav.no/aap"}>
+                    <Link className="">{formatMessage("result.link2")}</Link>
+                </NextLink>
             </div>
         </>
     )
