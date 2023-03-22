@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { State } from "../../pages/_app"
-import { Label, Select, TextField } from "@navikt/ds-react"
+import { Select } from "@navikt/ds-react"
 import Radio from "../radio/Radio"
 import { useRouter } from "next/router"
 import Stepper from "../stepper/Stepper"
