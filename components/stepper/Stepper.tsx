@@ -88,7 +88,7 @@ const Stepper = () => {
     const steps = [
         formatMessage("helse.title"),
         formatMessage("income.title"),
-        "Arbeid",
+        formatMessage("work.title"),
         formatMessage("children.title"),
         formatMessage("result.stepTitle"),
     ]

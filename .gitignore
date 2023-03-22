@@ -8,6 +8,7 @@ screenshots
 
 # testing
 /coverage
+.eslintcache
 
 # next.js
 /.next/

@@ -147,7 +147,7 @@ const Resultat: NextPage = ({
 
                                 <ul className=" space-y-4 px-5 list-disc">
                                     {result?.logs.map((text, index) => (
-                                        <li key={index}>
+                                        <li key={text.id}>
                                             <div>
                                                 {formatMessage(text.id, {
                                                     ...text.values,
@@ -178,15 +178,16 @@ const Resultat: NextPage = ({
                                 </BodyShort>
                             </div>
                         </Alert>
-                        <a href="https://www.nav.no/aap/mine-aap">
-                            <Button
-                                className={"w-fit"}
-                                variant={"primary"}
-                                onClick={() => {}}
-                            >
-                                {formatMessage("result.buttonMedAAP")}
-                            </Button>
-                        </a>
+                        <Button
+                            className={"w-fit"}
+                            variant={"primary"}
+                            onClick={() => {
+                                window.location.href =
+                                    "https://www.nav.no/aap/mine-aap"
+                            }}
+                        >
+                            {formatMessage("result.buttonMedAAP")}
+                        </Button>
                     </>
                 )}
                 {!state.harAAP && (
@@ -198,16 +199,21 @@ const Resultat: NextPage = ({
                                 </BodyShort>
                             </div>
                         </Alert>
-                        <a href="https://www.nav.no/aap/soknad">
-                            <Button className={"w-fit"} variant={"primary"}>
-                                {formatMessage("result.buttonUtenAAP")}
-                            </Button>
-                        </a>
+                        <Button
+                            className={"w-fit"}
+                            variant={"primary"}
+                            onClick={() => {
+                                window.location.href =
+                                    "https://www.nav.no/aap/soknad"
+                            }}
+                        >
+                            {formatMessage("result.buttonUtenAAP")}
+                        </Button>
                     </>
                 )}
-                <NextLink passHref href={"https://www.nav.no/aap"}>
-                    <Link className="">{formatMessage("result.link2")}</Link>
-                </NextLink>
+                <Link href={"https://www.nav.no/aap"}>
+                    {formatMessage("result.link2")}
+                </Link>
             </div>
         </>
     )
