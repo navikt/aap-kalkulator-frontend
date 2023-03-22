@@ -178,15 +178,16 @@ const Resultat: NextPage = ({
                                 </BodyShort>
                             </div>
                         </Alert>
-                        <a href="https://www.nav.no/aap/mine-aap">
-                            <Button
-                                className={"w-fit"}
-                                variant={"primary"}
-                                onClick={() => {}}
-                            >
-                                {formatMessage("result.buttonMedAAP")}
-                            </Button>
-                        </a>
+                        <Button
+                            className={"w-fit"}
+                            variant={"primary"}
+                            onClick={() => {
+                                window.location.href =
+                                    "https://www.nav.no/aap/mine-aap"
+                            }}
+                        >
+                            {formatMessage("result.buttonMedAAP")}
+                        </Button>
                     </>
                 )}
                 {!state.harAAP && (
@@ -198,11 +199,16 @@ const Resultat: NextPage = ({
                                 </BodyShort>
                             </div>
                         </Alert>
-                        <a href="https://www.nav.no/aap/soknad">
-                            <Button className={"w-fit"} variant={"primary"}>
-                                {formatMessage("result.buttonUtenAAP")}
-                            </Button>
-                        </a>
+                        <Button
+                            className={"w-fit"}
+                            variant={"primary"}
+                            onClick={() => {
+                                window.location.href =
+                                    "https://www.nav.no/aap/soknad"
+                            }}
+                        >
+                            {formatMessage("result.buttonUtenAAP")}
+                        </Button>
                     </>
                 )}
                 <Link href={"https://www.nav.no/aap"}>
