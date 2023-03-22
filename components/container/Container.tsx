@@ -18,7 +18,6 @@ const Container = ({ children }: { children: ReactNode }) => {
                             id="maincontent"
                             tabIndex={-1}
                         >
-                            {/* TODO: Dobbelsjekk bredden på kalkulator text o.l */}
                             {children}
                         </div>
                     </div>
