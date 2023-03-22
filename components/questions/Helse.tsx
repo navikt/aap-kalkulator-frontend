@@ -115,8 +115,9 @@ const Helse = () => {
                     readMore={formatMessage("helse.over25.readMore")}
                 />
                 <div className="mb-4">
-                    <div className={styles.select}>
+                    <div>
                         <Select
+                            className={styles.select}
                             id="sykmelding"
                             label={formatMessage(
                                 "helse.nedsattArbeidsevne.title"
