@@ -10,19 +10,20 @@ const Radio = ({
     onChange,
     errorId,
     isError,
+    testId,
 }: {
     title: string
     readMoreTitle?: string
     readMore?: string | React.ReactElement
     state?: boolean
     onChange: (newState: string) => void
-    errorId: string
+    errorId?: string
     isError: boolean
+    testId?: string
 }) => {
     const { formatMessage } = useFeatureToggleIntl()
     const radioStyle = "flex-grow border-[1px] px-2 rounded-md hover:shadow"
-    const selectedStyle =
-        "bg-surface-action-subtle-hover border-surface-action"
+    const selectedStyle = "bg-surface-action-subtle-hover border-surface-action"
     const description = <ReadMore header={readMoreTitle}>{readMore}</ReadMore>
 
     return (
@@ -36,7 +37,9 @@ const Radio = ({
             error={isError && <div className="hidden"></div>}
         >
             <DSRadio value="Ja">{formatMessage("options.yes")}</DSRadio>
-            <DSRadio value="Nei">{formatMessage("options.no")}</DSRadio>
+            <DSRadio value="Nei" id={`${testId}+Nei`}>
+                {formatMessage("options.no")}
+            </DSRadio>
         </RadioGroup>
     )
 }

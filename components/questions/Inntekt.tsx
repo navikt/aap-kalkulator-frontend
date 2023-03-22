@@ -1,18 +1,15 @@
 import { ChangeEvent, useContext, useState } from "react"
 import { BrowserState, State } from "../../pages/_app"
 
-import {
-    BodyShort,
-    Label,
-    TextField,
-} from "@navikt/ds-react"
+import { Alert, BodyShort, Label, Textarea, TextField } from "@navikt/ds-react"
 import { useRouter } from "next/router"
 import Stepper from "../stepper/Stepper"
 import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import Radio from "../radio/Radio"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
-import { FormWrapper } from "../formWrapper/FormWrapper";
+import { FormWrapper } from "../formWrapper/FormWrapper"
+import { CoinIcon } from "../icons/CoinIcon"
 
 interface Inntekt {
     inntekt1: string
@@ -47,8 +44,7 @@ const Inntekt = () => {
             ...inntekt,
             [event.target.name]: event.target.value,
         })
-        if (event.target.value.match(/^([0-9\s]+)([,.][0-9]*)?$/g)!=null)
-        {
+        if (event.target.value.match(/^([0-9\s]+)([,.][0-9]*)?$/g) != null) {
             const tekst = event.target.value.replace(/[\.,\s]/g, "")
             const verdi = parseFloat(tekst)
             const index =
@@ -70,14 +66,13 @@ const Inntekt = () => {
         const errorMessage = "Fyll inn inntekt."
         const inntekt1 = parseFloat(inntekt.inntekt1.replace(/\s/g, ""))
         const inntekt2 = parseFloat(inntekt.inntekt2.replace(/\s/g, ""))
-        const inntekt3 = parseFloat(inntekt.inntekt3.replace(/\s/g, ""))
 
+        const inntekt3 = parseFloat(inntekt.inntekt3.replace(/\s/g, ""))
         const errors = [
             !isNaN(inntekt1) ? "" : errorMessage,
             !isNaN(inntekt2) ? "" : errorMessage,
             !isNaN(inntekt3) ? "" : errorMessage,
         ]
-
         setError(errors)
         if (state.harLoenn == undefined) {
             setRadioError(formatMessage("income.gotIncome.validation.required"))
@@ -143,7 +138,6 @@ const Inntekt = () => {
             <BodyShort spacing>
                 {formatMessage("income.gotIncome.readMore1")}
             </BodyShort>
-            <BodyShort>{formatMessage("income.gotIncome.readMore2")}</BodyShort>
         </div>
     )
     return (
@@ -151,8 +145,7 @@ const Inntekt = () => {
             <Stepper />
             <BackLink target="/steg/1" />
             <QuestionHeader
-                image="/aap/kalkulator/ikoner/wallet_circle.svg"
-                alt=""
+                image={<CoinIcon />}
                 tittel={formatMessage("income.title")}
             />
             <FormWrapper handleSubmit={handleSubmit}>
@@ -223,8 +216,6 @@ const Inntekt = () => {
                         </div>
                     </div>
                 )}
-
-
             </FormWrapper>
         </>
     )

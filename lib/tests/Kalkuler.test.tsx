@@ -63,6 +63,7 @@ const initialState = {
     arbeidstimer: undefined,
     harBarn: undefined,
     over25: undefined,
+    harAAP: undefined,
 }
 
 describe("integrasjon", () => {
@@ -84,7 +85,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(441449)
-        expect(resultat.logs.length).toBe(3)
+        expect(resultat.logs.length).toBe(4)
     })
     it("ytelse med grunnbeløp 2g, 7 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
@@ -101,7 +102,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(286654)
-        expect(resultat.logs.length).toBe(5)
+        expect(resultat.logs.length).toBe(6)
         expect(resultat.logs[0]).toEqual({
             id: "logic.salery.minsteGrunnlag",
             values: { res: "337 809" },
@@ -135,7 +136,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(295_754)
-        expect(resultat.logs.length).toBe(5)
+        expect(resultat.logs.length).toBe(6)
     })
     it("ytelse med grunnbeløp 6g, 22 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
@@ -152,7 +153,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(601_976)
-        expect(resultat.logs.length).toBe(5)
+        expect(resultat.logs.length).toBe(6)
     })
     it("ytelse med grunnbeløp 6g, 23 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
@@ -169,7 +170,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(601976)
-        expect(resultat.logs.length).toBe(5)
+        expect(resultat.logs.length).toBe(6)
     })
     it("ytelse med grunnbeløp 6g, sykemeldt 2021", () => {
         const state: StateInterface = {
@@ -186,7 +187,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(224813)
-        expect(resultat.logs.length).toBe(3)
+        expect(resultat.logs.length).toBe(4)
     })
     it("ytelse med grunnbeløp 6g, 24 barn og 0 arbeidsgrad", () => {
         const state: StateInterface = {
@@ -203,7 +204,7 @@ describe("integrasjon", () => {
         }
         const resultat = kalkuler(state, g, historikk)
         expect(resultat.resultat).toBe(601976)
-        expect(resultat.logs.length).toBe(5)
+        expect(resultat.logs.length).toBe(6)
     })
     it("ytelse med grunnbeløp 2g, 0 barn og 40% arbeidsgrad", () => {
         const state: StateInterface = {
@@ -256,11 +257,21 @@ describe("integrasjon", () => {
                 res: "304 028",
             },
         })
-        expect(resultat.logs[4]).toEqual({ id: "logic.work.any" })
+        expect(resultat.logs[4]).toEqual({
+            id: "logic.work.justEnough",
+            values: {
+                hoursWorked: "18.75",
+                oldRes: "304 028",
+                percentWorked: "50",
+                percentWorked2: "50",
+                res: "152 014",
+            },
+        })
     })
     it("ytelse med grunnbeløp 6g, 0 barn og 20% arbeidsgrad", () => {
         const state: StateInterface = {
             ...initialState,
+            harAAP: false,
             harLoenn: true,
             inntekt1: enMill,
             inntekt2: enMill,
@@ -279,6 +290,7 @@ describe("integrasjon", () => {
     it("ytelse med grunnbeløp 6g, 5 barn og 61% arbeidsgrad", () => {
         const state: StateInterface = {
             ...initialState,
+            harAAP: true,
             inntekt1: 0,
             inntekt2: 0,
             inntekt3: 0,
@@ -286,6 +298,27 @@ describe("integrasjon", () => {
             harBarn: true,
             harArbeid: true,
             arbeidsgrad: 61,
+            harLoenn: false,
+            sykmeldtAar: aar,
+            arbeidstimer: 22.875,
+            over25: true,
+        }
+        const resultat = kalkuler(state, g, historikk)
+        expect(resultat.resultat).toBe(0)
+        expect(resultat.logs.length).toBe(1)
+    })
+    it("ytelse med grunnbeløp 6g, 5 barn og 51% arbeidsgrad, uten AAP", () => {
+        const state: StateInterface = {
+            ...initialState,
+            harAAP: false,
+            inntekt1: 0,
+            inntekt2: 0,
+            inntekt3: 0,
+            antallBarn: 5,
+            harBarn: true,
+            harArbeid: true,
+            arbeidsgrad: 51,
+            arbeidstimer: 19.125,
             harLoenn: false,
             sykmeldtAar: aar,
             over25: true,

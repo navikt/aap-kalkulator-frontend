@@ -24,6 +24,19 @@ test("Gå igjennom kalkulatoren og sjekk WCAG", async ({ page }) => {
     await page.getByLabel("Nei").click()
     await page.getByRole("button", { name: "Gå videre" }).click()
 
+    await expect(page.getByRole("heading", { name: "Arbeid" })).toBeVisible()
+    wcagRes = await checkWcag(page)
+    await expect(wcagRes.violations).toEqual([])
+    await page
+        .getByRole("group", { name: "Får du AAP nå?" })
+        .getByLabel("Nei")
+        .check()
+    await page
+        .getByRole("group", { name: "Jobber du nå?" })
+        .getByLabel("Nei")
+        .check()
+    await page.getByRole("button", { name: "Gå videre" }).click()
+
     await expect(page.getByRole("heading", { name: "Barn" })).toBeVisible()
     wcagRes = await checkWcag(page)
     await expect(wcagRes.violations).toEqual([])

@@ -8,6 +8,7 @@ import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
 import { FormWrapper } from "../formWrapper/FormWrapper"
+import { HeartIcon } from "../icons/HeartIcon"
 
 interface InntektsForm extends HTMLFormElement {
     readonly inntekt1: HTMLInputElement
@@ -44,12 +45,6 @@ const Helse = () => {
     }
     const erFeil = (sykmeldtAar: number) => {
         const detteAaret = new Date().getFullYear()
-        console.log(
-            "erFeil",
-            isNaN(sykmeldtAar) ||
-                sykmeldtAar > detteAaret ||
-                sykmeldtAar < detteAaret - aapGrense
-        )
         return (
             isNaN(sykmeldtAar) ||
             sykmeldtAar > detteAaret ||
@@ -106,8 +101,7 @@ const Helse = () => {
             <Stepper />
             <BackLink target="/" />
             <QuestionHeader
-                image="/aap/kalkulator/ikoner/helse_circle.svg"
-                alt=""
+                image={<HeartIcon />}
                 tittel={formatMessage("helse.title")}
             />
             <FormWrapper handleSubmit={handleSubmit}>

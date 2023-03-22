@@ -4,6 +4,7 @@ import Inntekt from "../../components/questions/Inntekt"
 import Barn from "../../components/questions/Barn"
 import Helse from "../../components/questions/Helse"
 import { State } from "../_app"
+import Arbeid from "../../components/questions/Arbeid"
 
 const Steg = () => {
     const { state, setState } = useContext(State)
@@ -23,6 +24,7 @@ const Steg = () => {
     const questions = [
         <Helse key={2} />,
         <Inntekt key={0} />,
+        <Arbeid key={3} />,
         <Barn key={1} />,
     ]
 

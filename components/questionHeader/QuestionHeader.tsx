@@ -1,14 +1,12 @@
-import Image from "next/image"
 import { Heading } from "@navikt/ds-react"
 import React from "react"
+import { Circle } from "../circle/Circle"
 
 const QuestionHeader = ({
     image,
-    alt,
     tittel,
 }: {
-    image: string
-    alt: string
+    image: React.ReactElement
     tittel: string
 }) => {
     return (
@@ -17,14 +15,7 @@ const QuestionHeader = ({
                 aria-hidden="true"
                 className="flex flex-col items-center pt-4 mb-4"
             >
-                <img
-                    aria-hidden
-                    src={image}
-                    height="100"
-                    width="100"
-                    alt={alt}
-                    className="block"
-                />
+                <Circle>{image}</Circle>
             </div>
             <Heading size="large" level="2" spacing>
                 {tittel}

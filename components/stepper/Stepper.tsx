@@ -16,10 +16,12 @@ const Step = ({
     stepNumber: number
     isLast: boolean
 }) => {
-    const { state } = useContext(State)
     const router = useRouter()
     const path = router.asPath.split("/")
-    const current_step = path[path.length - 1]=="resultat"? 4 : parseInt(path[path.length - 1])
+    const current_step =
+        path[path.length - 1] == "resultat"
+            ? 5
+            : parseInt(path[path.length - 1])
     const isCurrentPage = stepNumber === current_step
     const circleStyling =
         "flex rounded-full w-8 h-8 items-center justify-center mb-2"
@@ -86,6 +88,7 @@ const Stepper = () => {
     const steps = [
         formatMessage("helse.title"),
         formatMessage("income.title"),
+        "Arbeid",
         formatMessage("children.title"),
         formatMessage("result.stepTitle"),
     ]
