@@ -182,7 +182,7 @@ const Resultat: NextPage = ({
                             className={"w-fit"}
                             variant={"primary"}
                             onClick={() => {
-                                router.push("https://www.nav.no/aap/mine-aap")
+                                router.push("/aap/mine-aap")
                             }}
                         >
                             {formatMessage("result.buttonMedAAP")}
@@ -202,7 +202,7 @@ const Resultat: NextPage = ({
                             className={"w-fit"}
                             variant={"primary"}
                             onClick={() => {
-                                router.push("https://www.nav.no/aap/soknad")
+                                router.push("/aap/soknad")
                             }}
                         >
                             {formatMessage("result.buttonUtenAAP")}
