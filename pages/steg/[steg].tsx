@@ -22,10 +22,10 @@ const Steg = () => {
     }, [step])
 
     const questions = [
-        <Helse key={2} />,
-        <Inntekt key={0} />,
-        <Arbeid key={3} />,
-        <Barn key={1} />,
+        <Helse key={0} />,
+        <Inntekt key={1} />,
+        <Arbeid key={2} />,
+        <Barn key={3} />,
     ]
 
     return questions[step - 1]
