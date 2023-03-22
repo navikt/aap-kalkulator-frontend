@@ -1,4 +1,4 @@
-import { Label, Radio as DSRadio, RadioGroup, ReadMore } from "@navikt/ds-react"
+import { Radio as DSRadio, RadioGroup, ReadMore } from "@navikt/ds-react"
 import React, { ReactNode } from "react"
 import { useFeatureToggleIntl } from "../../hooks/useFeatureToggleIntl"
 
@@ -33,9 +33,7 @@ const Radio = ({
             error={error}
         >
             <DSRadio value="Ja">{formatMessage("options.yes")}</DSRadio>
-            <DSRadio value="Nei">
-                {formatMessage("options.no")}
-            </DSRadio>
+            <DSRadio value="Nei">{formatMessage("options.no")}</DSRadio>
         </RadioGroup>
     )
 }
