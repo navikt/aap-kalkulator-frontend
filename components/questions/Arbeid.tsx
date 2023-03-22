@@ -7,8 +7,9 @@ import BackLink from "../backlink/BackLink"
 import QuestionHeader from "../questionHeader/QuestionHeader"
 import { FormWrapper } from "../formWrapper/FormWrapper"
 import Radio from "../radio/Radio"
-import { Alert, BodyShort, Label, TextField } from "@navikt/ds-react"
+import { Alert, TextField } from "@navikt/ds-react"
 import { WalletIcon } from "../icons/WalletIcon"
+import styles from "./Arbeid.module.css"
 
 const Arbeid = () => {
     const router = useRouter()
@@ -121,9 +122,7 @@ const Arbeid = () => {
             <FormWrapper handleSubmit={handleSubmit}>
                 <div className="flex flex-col">
                     <Radio
-                        testId={"AAP"}
-                        isError={radioErrorAAP != ""}
-                        errorId="error2"
+                        error={radioErrorAAP}
                         title={formatMessage("work.gotAAP.title")}
                         state={state.harAAP}
                         onChange={onRadioAAPChange}
@@ -150,23 +149,10 @@ const Arbeid = () => {
                             </div>
                         }
                     />
-                    {radioErrorAAP != "" && (
-                        <ul
-                            id="error2"
-                            aria-live="assertive"
-                            className="list-disc"
-                        >
-                            <li className="ml-5 font-bold text-red-500 mb-4">
-                                {radioErrorAAP}
-                            </li>
-                        </ul>
-                    )}
                 </div>
                 <div className="flex flex-col">
                     <Radio
-                        testId={"work"}
-                        isError={radioErrorArbeid != ""}
-                        errorId="error1"
+                        error={radioErrorArbeid}
                         title={formatMessage("work.gotWork.title")}
                         state={state.harArbeid}
                         onChange={onRadioArbeidChange}
@@ -175,33 +161,17 @@ const Arbeid = () => {
                         )}
                         readMore={formatMessage("work.gotAAP.readMore")}
                     />
-                    {radioErrorArbeid != "" && (
-                        <ul
-                            id="error1"
-                            aria-live="assertive"
-                            className="list-disc"
-                        >
-                            <li className="ml-5 font-bold text-red-500 mb-4">
-                                {radioErrorArbeid}
-                            </li>
-                        </ul>
-                    )}
                 </div>
 
                 {state.harArbeid && (
                     <div className="mb-4">
-                        <Label as={"label"} id="l1" className="text-xl">
-                            {formatMessage("work.howManyHours.title")}
-                        </Label>
-                        <BodyShort id="d1">
-                            {formatMessage("work.howManyHours.description")}
-                        </BodyShort>
                         <div className="flex flex-row items-center gap-2">
                             <TextField
-                                className="w-1/6"
-                                label=""
-                                aria-labelledby="l1"
-                                aria-describedby="d1"
+                                label={formatMessage("work.howManyHours.title")}
+                                description={formatMessage(
+                                    "work.howManyHours.description"
+                                )}
+                                className={styles.timer}
                                 inputMode="numeric"
                                 error={arbeidsTimerError}
                                 value={arbeidsTimer}
@@ -209,26 +179,15 @@ const Arbeid = () => {
                                     onArbeidChange(event.target.value)
                                 }
                             ></TextField>
-                            <BodyShort>timer</BodyShort>
                         </div>
-                        {arbeidsTimerError != "" && (
-                            <ul
-                                id="error1"
-                                aria-live="assertive"
-                                className="list-disc"
-                            >
-                                <li className="ml-5 font-bold text-red-500 mb-4">
-                                    {arbeidsTimerError}
-                                </li>
-                            </ul>
-                        )}
-                        {(state?.arbeidstimer ?? 0) > 18.75 && !state?.harAAP && (
-                            <Alert className="mt-4" variant={"warning"}>
-                                {formatMessage(
-                                    "work.howManyHours.warning.withoutAAP"
-                                )}
-                            </Alert>
-                        )}
+                        {(state?.arbeidstimer ?? 0) > 18.75 &&
+                            !state?.harAAP && (
+                                <Alert className="mt-4" variant={"warning"}>
+                                    {formatMessage(
+                                        "work.howManyHours.warning.withoutAAP"
+                                    )}
+                                </Alert>
+                            )}
                         {(state?.arbeidstimer ?? 0) > 22.5 && state?.harAAP && (
                             <Alert className="mt-4" variant={"warning"}>
                                 {formatMessage(
