@@ -205,7 +205,7 @@ const Resultat: NextPage = ({
                         </a>
                     </>
                 )}
-                <Link href={"https://www.nav.no/aap"} className="">
+                <Link href={"https://www.nav.no/aap"}>
                     {formatMessage("result.link2")}
                 </Link>
             </div>
