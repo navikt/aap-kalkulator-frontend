@@ -178,15 +178,15 @@ const Resultat: NextPage = ({
                                 </BodyShort>
                             </div>
                         </Alert>
-                        <Button
-                            className={"w-fit"}
-                            variant={"primary"}
-                            onClick={() => {
-                                router.push("https://www.nav.no/aap/mine-aap")
-                            }}
-                        >
-                            {formatMessage("result.buttonMedAAP")}
-                        </Button>
+                        <a href="https://www.nav.no/aap/mine-aap">
+                            <Button
+                                className={"w-fit"}
+                                variant={"primary"}
+                                onClick={() => {}}
+                            >
+                                {formatMessage("result.buttonMedAAP")}
+                            </Button>
+                        </a>
                     </>
                 )}
                 {!state.harAAP && (
@@ -198,15 +198,11 @@ const Resultat: NextPage = ({
                                 </BodyShort>
                             </div>
                         </Alert>
-                        <Button
-                            className={"w-fit"}
-                            variant={"primary"}
-                            onClick={() => {
-                                router.push("https://www.nav.no/aap/soknad")
-                            }}
-                        >
-                            {formatMessage("result.buttonUtenAAP")}
-                        </Button>
+                        <a href="https://www.nav.no/aap/soknad">
+                            <Button className={"w-fit"} variant={"primary"}>
+                                {formatMessage("result.buttonUtenAAP")}
+                            </Button>
+                        </a>
                     </>
                 )}
                 <NextLink passHref href={"https://www.nav.no/aap"}>
