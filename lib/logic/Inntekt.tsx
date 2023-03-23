@@ -103,6 +103,15 @@ const beregningsgrunnlag = (
         maksGrunnlag
     )
 }
+
+const gjeldendeMinsteGrunnlag = (
+    over25: boolean,
+    minsteGrunnlag: number,
+    minsteGrunnlagUnder25: number
+) => {
+    return over25 ? minsteGrunnlag : minsteGrunnlagUnder25
+}
+
 const inntektsgrunnlag = (
     g: number,
     historikk: GrunnbeloepHistorikk[],
@@ -167,7 +176,14 @@ const inntektsgrunnlag = (
     }
 
     const resultatEtterFradrag = prosentReduksjon(resultat.resultat)
-    if (resultatEtterFradrag <= minsteGrunnlag * 0.66) {
+    if (
+        resultat.resultat <=
+        gjeldendeMinsteGrunnlag(
+            resultat.personInfo!!.over25!,
+            minsteGrunnlag,
+            minsteGrunnlagUnder25
+        )
+    ) {
         resultat.logs.push({
             id: "logic.salery.reductionMin",
             values: { res: toKr(resultatEtterFradrag) },
