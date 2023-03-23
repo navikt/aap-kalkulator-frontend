@@ -1,6 +1,10 @@
-import { arbeidsgrad } from "../logic/Arbeidsgrad"
+import {
+    arbeidsgrad,
+    invertedPercent,
+    jobberIkke,
+    overArbeidsGrense,
+} from "../logic/Arbeidsgrad"
 import { Result } from "../../components/result/Result"
-import { toKr } from "../utils/HjelpeFunksjoner"
 
 const initialState = {
     antallBarn: undefined,
@@ -116,5 +120,37 @@ describe("arbeidsgrad", () => {
         expect(() => {
             arbeidsgrad(resultat)
         }).toThrow(new Error("Arbeidsgrad kan ikke være mindre enn 0"))
+    })
+
+    //Hjelpe funksjoner
+    test("jobber 0 timer", () => {
+        expect(jobberIkke(0, true)).toBe(true)
+    })
+    test("jobber ikke", () => {
+        expect(jobberIkke(0, false)).toBe(true)
+    })
+    test("jobber 1 time", () => {
+        expect(jobberIkke(1, true)).toBe(false)
+    })
+    test("jobber mer en 50% uten AAP", () => {
+        expect(overArbeidsGrense(51, false)).toBe(true)
+    })
+    test("jobber mer en 60% med AAP", () => {
+        expect(overArbeidsGrense(61, true)).toBe(true)
+    })
+    test("jobber mindre en 50% uten AAP", () => {
+        expect(overArbeidsGrense(49, false)).toBe(false)
+    })
+    test("jobber mindre en 60% med AAP", () => {
+        expect(overArbeidsGrense(59, true)).toBe(false)
+    })
+    test("invertedProsent 23%", () => {
+        expect(invertedPercent(23)).toBe(0.77)
+    })
+    test("invertedProsent 0%", () => {
+        expect(invertedPercent(0)).toBe(1)
+    })
+    test("invertedProsent 100%", () => {
+        expect(invertedPercent(100)).toBe(0)
     })
 })
