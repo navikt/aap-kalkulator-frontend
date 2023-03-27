@@ -71,7 +71,7 @@ const Step = ({
     }
 
     return (
-        <NextLink passHref href={`/steg/${stepNumber}`}>
+        <NextLink passHref href={`/steg/${stepNumber}`} legacyBehavior>
             <Link className={`${stepStyling}`}>
                 {circle}
                 <BodyShort as="span" size="small">
