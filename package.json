@@ -17,7 +17,6 @@
     "@navikt/ds-react": "^2.0.14",
     "@navikt/ds-tailwind": "^2.0.14",
     "@navikt/nav-dekoratoren-moduler": "^1.9.0",
-    "@sentry/nextjs": "^7.11.1",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "date-fns": "^2.29.3",

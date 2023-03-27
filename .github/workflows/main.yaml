@@ -8,7 +8,6 @@ on:
 env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     APP: aap-kalkulator-frontend
-    SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
     IMAGE_BASE: ghcr.io/${{ github.repository }}
 jobs:        
   build:
