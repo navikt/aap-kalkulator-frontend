@@ -36,8 +36,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# Sentry
-.sentryclirc
 /test-results/
 /playwright-report/
 /playwright/.cache/
