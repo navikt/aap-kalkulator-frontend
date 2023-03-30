@@ -1,31 +1,32 @@
-import messagesNb from "../translations/nb.json"
-import messagesNn from "../translations/nn.json"
-import messagesEn from "../translations/en.json"
-import { Locale } from "@navikt/nav-dekoratoren-moduler"
+import { Locale } from '@navikt/nav-dekoratoren-moduler';
+
+import messagesEn from '../translations/en.json';
+import messagesNb from '../translations/nb.json';
+import messagesNn from '../translations/nn.json';
 
 export type Messages = {
-    [K in Locale]?: { [name: string]: string }
-}
+  [K in Locale]?: { [name: string]: string };
+};
 
-export function flattenMessages(nestedMessages: object, prefix = "") {
-    return Object.keys(nestedMessages).reduce((messages, key) => {
-        // @ts-ignore
-        let value = nestedMessages[key]
-        let prefixedKey = prefix ? `${prefix}.${key}` : key
+export function flattenMessages(nestedMessages: object, prefix = '') {
+  return Object.keys(nestedMessages).reduce((messages, key) => {
+    // @ts-ignore
+    let value = nestedMessages[key];
+    let prefixedKey = prefix ? `${prefix}.${key}` : key;
 
-        if (typeof value === "string") {
-            // @ts-ignore
-            messages[prefixedKey] = value
-        } else {
-            Object.assign(messages, flattenMessages(value, prefixedKey))
-        }
+    if (typeof value === 'string') {
+      // @ts-ignore
+      messages[prefixedKey] = value;
+    } else {
+      Object.assign(messages, flattenMessages(value, prefixedKey));
+    }
 
-        return messages
-    }, {})
+    return messages;
+  }, {});
 }
 
 export const messages: Messages = {
-    nb: flattenMessages(messagesNb),
-    nn: flattenMessages(messagesNn),
-    en: flattenMessages(messagesEn),
-}
+  nb: flattenMessages(messagesNb),
+  nn: flattenMessages(messagesNn),
+  en: flattenMessages(messagesEn),
+};

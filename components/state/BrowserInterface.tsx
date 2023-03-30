@@ -1,3 +1,3 @@
 export interface BrowserInterface {
-    redirect: boolean
+  redirect: boolean;
 }

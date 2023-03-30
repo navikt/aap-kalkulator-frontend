@@ -1,13 +1,12 @@
-import { render, screen } from "@testing-library/react"
-import React from "react"
-import QuestionHeader from "./QuestionHeader"
-import { TeddyIcon } from "../icons/TeddyIcon"
+import { render, screen } from '@testing-library/react';
+import React from 'react';
 
-describe("QuestionHeader component", () => {
-    it("should render", () => {
-        render(
-            <QuestionHeader image={<TeddyIcon />} tittel={"QuestionHeader"} />
-        )
-        expect(screen.getByText("QuestionHeader")).toBeDefined()
-    })
-})
+import { TeddyIcon } from '../icons/TeddyIcon';
+import QuestionHeader from './QuestionHeader';
+
+describe('QuestionHeader component', () => {
+  it('should render', () => {
+    render(<QuestionHeader image={<TeddyIcon />} tittel={'QuestionHeader'} />);
+    expect(screen.getByText('QuestionHeader')).toBeDefined();
+  });
+});

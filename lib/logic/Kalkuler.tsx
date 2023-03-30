@@ -1,25 +1,21 @@
-import { grunnbeloep, GrunnbeloepHistorikk } from "../utils/types"
-import { StateInterface } from "../../components/state/State"
-import { Result } from "../../components/result/Result"
-import inntektsgrunnlag from "./Inntekt"
-import { leggTilBarnetillegg } from "./Barn"
-import { arbeidsgrad } from "./Arbeidsgrad"
-import { toKr } from "../utils/HjelpeFunksjoner"
+import { Result } from '../../components/result/Result';
+import { StateInterface } from '../../components/state/State';
+import { toKr } from '../utils/HjelpeFunksjoner';
+import { GrunnbeloepHistorikk, grunnbeloep } from '../utils/types';
+import { arbeidsgrad } from './Arbeidsgrad';
+import { leggTilBarnetillegg } from './Barn';
+import inntektsgrunnlag from './Inntekt';
 
-export const kalkuler = (
-    state: StateInterface,
-    grunnbeloep: grunnbeloep,
-    historikk: GrunnbeloepHistorikk[]
-) => {
-    const g = grunnbeloep.grunnbeloep
-    let resultat = wrapWithRespons(state)
-    inntektsgrunnlag(g, historikk, resultat)
-    leggTilBarnetillegg(resultat)
-    arbeidsgrad(resultat)
-    resultat.resultat = Math.round(resultat.resultat)
-    return resultat
-}
+export const kalkuler = (state: StateInterface, grunnbeloep: grunnbeloep, historikk: GrunnbeloepHistorikk[]) => {
+  const g = grunnbeloep.grunnbeloep;
+  let resultat = wrapWithRespons(state);
+  inntektsgrunnlag(g, historikk, resultat);
+  leggTilBarnetillegg(resultat);
+  arbeidsgrad(resultat);
+  resultat.resultat = Math.round(resultat.resultat);
+  return resultat;
+};
 
 const wrapWithRespons = (person: StateInterface) => {
-    return new Result(person)
-}
+  return new Result(person);
+};

@@ -1,78 +1,77 @@
-import "@navikt/ds-css"
-import "../styles/globals.css"
-import type { AppProps } from "next/app"
-import { createContext, useEffect, useMemo, useState } from "react"
-import Container from "../components/container/Container"
-import { StateInterface } from "../components/state/State"
-import { BrowserInterface } from "../components/state/BrowserInterface"
-import Head from "next/head"
-import { IntlProvider } from "react-intl"
-import { messages } from "../utils/message"
-import { useRouter } from "next/router"
-import { Dekorator } from "../components/dekorator/Dekorator"
-import { Locale } from "@navikt/nav-dekoratoren-moduler"
+import '@navikt/ds-css';
+import { Locale } from '@navikt/nav-dekoratoren-moduler';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { createContext, useEffect, useMemo, useState } from 'react';
+import { IntlProvider } from 'react-intl';
+
+import Container from '../components/container/Container';
+import { Dekorator } from '../components/dekorator/Dekorator';
+import { BrowserInterface } from '../components/state/BrowserInterface';
+import { StateInterface } from '../components/state/State';
+import '../styles/globals.css';
+import { messages } from '../utils/message';
 
 export const State = createContext({
-    state: {} as StateInterface,
-    setState: (value: any) => {},
-})
+  state: {} as StateInterface,
+  setState: (value: any) => {},
+});
 
 export const BrowserState = createContext({
-    browserState: {} as BrowserInterface,
-    setBrowserState: (value: any) => {},
-})
+  browserState: {} as BrowserInterface,
+  setBrowserState: (value: any) => {},
+});
 export const initialState = {
-    antallBarn: undefined,
-    arbeidsgrad: undefined,
-    inntekt1: undefined,
-    inntekt2: undefined,
-    inntekt3: undefined,
-    sykmeldtAar: undefined,
-    lengsteSteg: 1,
-    harArbeid: undefined,
-    arbeidstimer: undefined,
-    harBarn: undefined,
-    over25: undefined,
-    harLoenn: undefined,
-    harAAP: undefined,
-}
+  antallBarn: undefined,
+  arbeidsgrad: undefined,
+  inntekt1: undefined,
+  inntekt2: undefined,
+  inntekt3: undefined,
+  sykmeldtAar: undefined,
+  lengsteSteg: 1,
+  harArbeid: undefined,
+  arbeidstimer: undefined,
+  harBarn: undefined,
+  over25: undefined,
+  harLoenn: undefined,
+  harAAP: undefined,
+};
 
 const getLocaleOrFallback = (locale?: string) => {
-    if (locale && ["nb", "nn"].includes(locale)) {
-        return locale
-    }
+  if (locale && ['nb', 'nn'].includes(locale)) {
+    return locale;
+  }
 
-    return "nb"
-}
+  return 'nb';
+};
 
 function MyApp({ Component, pageProps }: AppProps) {
-    const [state, setState] = useState<StateInterface>(initialState)
-    const router = useRouter()
-    const locale = getLocaleOrFallback(router.locale)
+  const [state, setState] = useState<StateInterface>(initialState);
+  const router = useRouter();
+  const locale = getLocaleOrFallback(router.locale);
 
-    const [browserState, setBrowserState] = useState<BrowserInterface>({
-        redirect: false,
-    })
+  const [browserState, setBrowserState] = useState<BrowserInterface>({
+    redirect: false,
+  });
 
-    return (
-        <IntlProvider locale={locale} messages={messages[locale as Locale]}>
-            <Dekorator>
-                <BrowserState.Provider
-                    value={{ browserState, setBrowserState }}
-                >
-                    <State.Provider value={{ state, setState }}>
-                        <Head>
-                            <meta name="robots" content="noindex" />
-                            <title>AAP-kalkulator - www.nav.no</title>
-                        </Head>
-                        <Container>
-                            <Component {...pageProps} />
-                        </Container>
-                    </State.Provider>
-                </BrowserState.Provider>
-            </Dekorator>
-        </IntlProvider>
-    )
+  return (
+    <IntlProvider locale={locale} messages={messages[locale as Locale]}>
+      <Dekorator>
+        <BrowserState.Provider value={{ browserState, setBrowserState }}>
+          <State.Provider value={{ state, setState }}>
+            <Head>
+              <meta name="robots" content="noindex" />
+              <title>AAP-kalkulator - www.nav.no</title>
+            </Head>
+            <Container>
+              <Component {...pageProps} />
+            </Container>
+          </State.Provider>
+        </BrowserState.Provider>
+      </Dekorator>
+    </IntlProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

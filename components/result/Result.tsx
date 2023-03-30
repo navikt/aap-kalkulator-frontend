@@ -1,18 +1,18 @@
-import { StateInterface } from "../state/State"
-import React, { ReactElement } from "react"
+import React, { ReactElement } from 'react';
+
+import { StateInterface } from '../state/State';
 
 export interface ResultInterface {
-    resultat: number
-    personInfo: StateInterface
-    logs: Array<{ id:string, values?: Record<string, string | undefined> | undefined
-    }>
+  resultat: number;
+  personInfo: StateInterface;
+  logs: Array<{ id: string; values?: Record<string, string | undefined> | undefined }>;
 }
 
 export class Result {
-    resultat: number = 0
-    personInfo: StateInterface | undefined
-    logs: Array<{ id:string, values?: Record<string, string | undefined> | undefined }> = []
-    constructor(personInfo: StateInterface) {
-        this.personInfo = personInfo
-    }
+  resultat: number = 0;
+  personInfo: StateInterface | undefined;
+  logs: Array<{ id: string; values?: Record<string, string | undefined> | undefined }> = [];
+  constructor(personInfo: StateInterface) {
+    this.personInfo = personInfo;
+  }
 }
