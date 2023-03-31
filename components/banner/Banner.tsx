@@ -1,7 +1,6 @@
-import { BodyShort, Heading } from '@navikt/ds-react';
+import { Heading } from '@navikt/ds-react';
 import { format, parse } from 'date-fns';
 import { nb } from 'date-fns/locale';
-import Image from 'next/image';
 import React from 'react';
 
 import { useFeatureToggleIntl } from '../../hooks/useFeatureToggleIntl';

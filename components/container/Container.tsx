@@ -1,10 +1,8 @@
 import { ReactNode } from 'react';
 import React from 'react';
 
-import { useFeatureToggleIntl } from '../../hooks/useFeatureToggleIntl';
 import Banner from '../banner/Banner';
 import Breadcrumbs from '../breadcrumbs/Breadcrumbs';
-import WarningBanner from '../warningBanner/WarningBanner';
 
 const Container = ({ children }: { children: ReactNode }) => {
   return (

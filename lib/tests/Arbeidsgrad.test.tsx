@@ -28,7 +28,7 @@ describe('arbeidsgrad', () => {
     resultat.resultat = 100_000;
     arbeidsgrad(resultat);
     expect(resultat.resultat).toBe(60_000);
-    expect(resultat.logs.length).toBe(2);
+    expect(resultat.logs).toHaveLength(2);
     expect(resultat.logs[0]).toEqual({
       id: 'logic.work.justEnough',
       values: {
@@ -51,7 +51,7 @@ describe('arbeidsgrad', () => {
     resultat.resultat = 100_000;
     arbeidsgrad(resultat);
     expect(resultat.resultat).toBe(0);
-    expect(resultat.logs.length).toBe(1);
+    expect(resultat.logs).toHaveLength(1);
     expect(resultat.logs[0]).toEqual({
       id: 'logic.work.tooMuchWithAAP',
       values: {
@@ -71,7 +71,7 @@ describe('arbeidsgrad', () => {
     resultat.resultat = 100_000;
     arbeidsgrad(resultat);
     expect(resultat.resultat).toBe(51_000);
-    expect(resultat.logs.length).toBe(2);
+    expect(resultat.logs).toHaveLength(2);
     expect(resultat.logs[0]).toEqual({
       id: 'logic.work.justEnough',
       values: {
@@ -95,7 +95,7 @@ describe('arbeidsgrad', () => {
     resultat.resultat = 100_000;
     arbeidsgrad(resultat);
     expect(resultat.resultat).toBe(0);
-    expect(resultat.logs.length).toBe(1);
+    expect(resultat.logs).toHaveLength(1);
     expect(resultat.logs[0]).toEqual({
       id: 'logic.work.tooMuchWithoutAAP',
       values: {

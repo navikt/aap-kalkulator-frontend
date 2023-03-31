@@ -3,7 +3,7 @@ import { Locale } from '@navikt/nav-dekoratoren-moduler';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { createContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 
 import Container from '../components/container/Container';
@@ -15,11 +15,14 @@ import { messages } from '../utils/message';
 
 export const State = createContext({
   state: {} as StateInterface,
-  setState: (value: any) => {},
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  setState: (value?: any) => {},
 });
 
 export const BrowserState = createContext({
   browserState: {} as BrowserInterface,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   setBrowserState: (value: any) => {},
 });
 export const initialState = {

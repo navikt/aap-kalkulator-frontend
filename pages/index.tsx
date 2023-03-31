@@ -1,6 +1,5 @@
 import { Alert, Button, Heading } from '@navikt/ds-react';
 import type { NextPage } from 'next';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
 
@@ -15,9 +14,11 @@ const Home: NextPage = () => {
   const router = useRouter();
   const { setState } = useContext(State);
   const { browserState } = useContext(BrowserState);
+
   useEffect(() => {
     setState({} as StateInterface);
   }, []);
+
   const { formatMessage } = useFeatureToggleIntl();
   const handleStart = () => {
     logAmplitudeEvent('skjema startet', {
