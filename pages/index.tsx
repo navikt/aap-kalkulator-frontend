@@ -15,10 +15,10 @@ const Home: NextPage = () => {
   const { setState } = useContext(State);
   const { browserState } = useContext(BrowserState);
 
-  // esling-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     setState({} as StateInterface);
   }, []);
+
   const { formatMessage } = useFeatureToggleIntl();
   const handleStart = () => {
     logAmplitudeEvent('skjema startet', {

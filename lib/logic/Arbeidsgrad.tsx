@@ -45,7 +45,7 @@ export const arbeidsgrad = (resultat: Result) => {
   resultat.logs.push({
     id: 'logic.work.justEnough',
     values: {
-      hoursWorked: ((resultat.personInfo?.arbeidsgrad! / 100) * 37.5).toString(),
+      hoursWorked: resultat.personInfo?.arbeidstimer?.toString(),
       percentWorked: resultat.personInfo?.arbeidsgrad?.toFixed(0),
       percentWorked2: resultat.personInfo?.arbeidsgrad?.toFixed(0),
       oldRes: toKr(gammeltResultat),

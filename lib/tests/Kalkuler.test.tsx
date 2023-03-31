@@ -228,6 +228,7 @@ describe('integrasjon', () => {
       inntekt2: 0,
       inntekt3: 0,
       antallBarn: 15,
+      arbeidstimer: 18.75,
       harBarn: true,
       harArbeid: true,
       arbeidsgrad: 50,
