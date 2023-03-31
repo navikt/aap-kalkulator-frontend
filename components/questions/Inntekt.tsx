@@ -102,6 +102,7 @@ const Inntekt = () => {
       inntekt2: state.inntekt2 !== undefined && !isNaN(state.inntekt2) ? state.inntekt2.toLocaleString('nb-NO') : '',
       inntekt3: state.inntekt3 !== undefined && !isNaN(state.inntekt3) ? state.inntekt3.toLocaleString('nb-NO') : '',
     });
+    setError(['', '', '']);
     setRadioError('');
   };
 
