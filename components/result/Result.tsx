@@ -1,5 +1,3 @@
-import React, { ReactElement } from 'react';
-
 import { StateInterface } from '../state/State';
 
 export interface ResultInterface {

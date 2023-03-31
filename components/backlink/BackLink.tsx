@@ -1,7 +1,6 @@
 import { Back } from '@navikt/ds-icons';
 import { Link } from '@navikt/ds-react';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
 
 const BackLink = ({ target, tekst }: { target: string; tekst?: string }) => {
   return (

@@ -1,7 +1,6 @@
 // noinspection JSNonASCIINames
 import { Result } from '../../components/result/Result';
 import inntektsgrunnlag from '../logic/Inntekt';
-import { toKr, ytelseTilGrunnlag } from '../utils/HjelpeFunksjoner';
 import { GrunnbeloepHistorikk, grunnbeloep } from '../utils/types';
 
 export const getG = () => {
@@ -37,6 +36,7 @@ const initialState = {
   arbeidstimer: undefined,
   harBarn: undefined,
   over25: undefined,
+  harAAP: true,
 };
 
 describe('kalkulere inntektsgrunnlag', () => {
@@ -56,7 +56,7 @@ describe('kalkulere inntektsgrunnlag', () => {
     resultat.resultat = 0;
     inntektsgrunnlag(g, historikk, resultat);
     expect(Math.round(resultat.resultat)).toBe(222954);
-    expect(resultat.logs.length).toBe(2);
+    expect(resultat.logs).toHaveLength(2);
     expect(resultat.logs[0]).toEqual({ id: 'logic.salery.minsteGrunnlag', values: { res: '337 809' } });
     expect(resultat.logs[1]).toEqual({ id: 'logic.salery.reductionMin', values: { res: '222 954' } });
   });
@@ -74,7 +74,7 @@ describe('kalkulere inntektsgrunnlag', () => {
     resultat.resultat = 0;
     inntektsgrunnlag(g, historikk, resultat);
     expect(Math.round(resultat.resultat)).toBe(441449);
-    expect(resultat.logs.length).toBe(2);
+    expect(resultat.logs).toHaveLength(2);
     expect(resultat.logs[0]).toEqual({ id: 'logic.salery.maksGrunnlag', values: { res: '668 862' } });
   });
   it('inntektsgrunnlag med variert inntekt', () => {
@@ -90,7 +90,7 @@ describe('kalkulere inntektsgrunnlag', () => {
     resultat.resultat = 0;
     inntektsgrunnlag(g, historikk, resultat);
     expect(Math.round(resultat.resultat)).toBe(327835);
-    expect(resultat.logs.length).toBe(2);
+    expect(resultat.logs).toHaveLength(2);
     expect(resultat.logs[0]).toEqual({ id: 'logic.salery.gjennomsnittInntekt', values: { res: '496 719' } });
   });
   it('inntektsgrunnlag med mest lønn siste år', () => {
@@ -106,7 +106,7 @@ describe('kalkulere inntektsgrunnlag', () => {
     resultat.resultat = 0;
     inntektsgrunnlag(g, historikk, resultat);
     expect(Math.round(resultat.resultat)).toBe(421568);
-    expect(resultat.logs.length).toBe(2);
+    expect(resultat.logs).toHaveLength(2);
     expect(resultat.logs[0]).toEqual({ id: 'logic.salery.lastYear', values: { res: '638 739' } });
     expect(resultat.logs[1]).toEqual({ id: 'logic.salery.reduction', values: { res: '421 568' } });
   });
@@ -123,7 +123,7 @@ describe('kalkulere inntektsgrunnlag', () => {
     resultat.resultat = 0;
     inntektsgrunnlag(g, historikk, resultat);
     expect(Math.round(resultat.resultat)).toBe(148636);
-    expect(resultat.logs.length).toBe(2);
+    expect(resultat.logs).toHaveLength(2);
     expect(resultat.logs[0]).toEqual({ id: 'logic.salery.minsteGrunnlagUnder25', values: { res: '225 206' } });
   });
   it('Inntektsgrunnlag med oppjustering fra 2018', () => {
@@ -139,7 +139,7 @@ describe('kalkulere inntektsgrunnlag', () => {
     resultat.resultat = 0;
     inntektsgrunnlag(g, historikk, resultat);
     expect(Math.round(resultat.resultat)).toBe(298896);
-    expect(resultat.logs.length).toBe(2);
+    expect(resultat.logs).toHaveLength(2);
   });
   it('fra brukertest', () => {
     const resultat = new Result({

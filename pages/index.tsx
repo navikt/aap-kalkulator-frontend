@@ -1,6 +1,5 @@
 import { Alert, Button, Heading } from '@navikt/ds-react';
 import type { NextPage } from 'next';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
 
@@ -15,6 +14,8 @@ const Home: NextPage = () => {
   const router = useRouter();
   const { setState } = useContext(State);
   const { browserState } = useContext(BrowserState);
+
+  // esling-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     setState({} as StateInterface);
   }, []);

@@ -1,11 +1,10 @@
-import { Edit, Notes, NotesFilled, Success } from '@navikt/ds-icons';
+import { Edit, Success } from '@navikt/ds-icons';
 import { BodyShort, Link } from '@navikt/ds-react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
 
 import { useFeatureToggleIntl } from '../../hooks/useFeatureToggleIntl';
-import { State } from '../../pages/_app';
 import Divider from '../divider/Divider';
 
 const Step = ({ title, stepNumber, isLast }: { title: string; stepNumber: number; isLast: boolean }) => {

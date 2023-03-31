@@ -1,6 +1,5 @@
 import { Result } from '../../components/result/Result';
 import { StateInterface } from '../../components/state/State';
-import { toKr } from '../utils/HjelpeFunksjoner';
 import { GrunnbeloepHistorikk, grunnbeloep } from '../utils/types';
 import { arbeidsgrad } from './Arbeidsgrad';
 import { leggTilBarnetillegg } from './Barn';

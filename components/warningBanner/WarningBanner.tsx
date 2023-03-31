@@ -1,4 +1,4 @@
-import { Alert, BodyShort } from '@navikt/ds-react';
+import { Alert } from '@navikt/ds-react';
 import React from 'react';
 
 const WarningBanner = (text: { text: string }) => {

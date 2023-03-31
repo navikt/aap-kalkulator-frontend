@@ -1,4 +1,4 @@
-import { BodyShort, Label, Link, TextField } from '@navikt/ds-react';
+import { BodyShort, Link, TextField } from '@navikt/ds-react';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 
@@ -67,15 +67,6 @@ const Barn = () => {
     router.push('/');
     return <></>;
   }
-
-  const readmoreTekst = (
-    <BodyShort>
-      {formatMessage('children.gotChildren.readMore')}
-      <Link href="https://www.nav.no/aap#hvormye-forsorgerbarn" target="_blank" rel="noreferrer" as={'a'}>
-        {formatMessage('children.gotChildren.lesMer')}
-      </Link>
-    </BodyShort>
-  );
 
   return (
     <>

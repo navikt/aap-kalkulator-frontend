@@ -1,4 +1,4 @@
-import { Alert, BodyShort, Label, TextField } from '@navikt/ds-react';
+import { BodyShort, Label, TextField } from '@navikt/ds-react';
 import { useRouter } from 'next/router';
 import { ChangeEvent, useContext, useState } from 'react';
 
@@ -11,7 +11,7 @@ import QuestionHeader from '../questionHeader/QuestionHeader';
 import Radio from '../radio/Radio';
 import Stepper from '../stepper/Stepper';
 
-interface Inntekt {
+interface InntektInterface {
   inntekt1: string;
   inntekt2: string;
   inntekt3: string;
@@ -24,7 +24,7 @@ const Inntekt = () => {
   const [error, setError] = useState<string[]>(['', '', '']);
   const { browserState } = useContext(BrowserState);
   const [radioError, setRadioError] = useState<string>('');
-  const [inntekt, setInntekt] = useState<Inntekt>({
+  const [inntekt, setInntekt] = useState<InntektInterface>({
     inntekt1: state.inntekt1 != undefined && !isNaN(state.inntekt1) ? state.inntekt1.toLocaleString('nb-NO') : '',
     inntekt2: state.inntekt2 != undefined && !isNaN(state.inntekt2) ? state.inntekt2.toLocaleString('nb-NO') : '',
     inntekt3: state.inntekt3 != undefined && !isNaN(state.inntekt3) ? state.inntekt3.toLocaleString('nb-NO') : '',
@@ -36,7 +36,7 @@ const Inntekt = () => {
       [event.target.name]: event.target.value,
     });
     if (event.target.value.match(/^([0-9\s]+)([,.][0-9]*)?$/g) != null) {
-      const tekst = event.target.value.replace(/[\.,\s]/g, '');
+      const tekst = event.target.value.replace(/[.,\s]/g, '');
       const verdi = parseFloat(tekst);
       const index = parseInt(event.target.name[event.target.name.length - 1]) - 1;
       let newErrors = error;

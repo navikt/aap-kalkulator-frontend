@@ -1,7 +1,6 @@
 // noinspection JSNonASCIINames
 import { Alert, BodyShort, Button, Heading, Label, Link } from '@navikt/ds-react';
 import { NextPage } from 'next';
-import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useMemo, useState } from 'react';
 
@@ -58,7 +57,7 @@ const Resultat: NextPage = ({ G, Historikk }: { G: grunnbeloep; Historikk: Grunn
       personInfo: res.personInfo!!,
       logs: res.logs,
     });
-  }, []);
+  }, [state, G, Historikk, router]);
 
   const resultat = useMemo(() => {
     if (result == null) return 0;
@@ -116,7 +115,7 @@ const Resultat: NextPage = ({ G, Historikk }: { G: grunnbeloep; Historikk: Grunn
                 </Heading>
 
                 <ul className=" space-y-4 px-5 list-disc">
-                  {result?.logs.map((text, index) => (
+                  {result?.logs.map((text) => (
                     <li key={text.id}>
                       <div>
                         {formatMessage(text.id, {
