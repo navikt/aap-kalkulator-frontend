@@ -1,6 +1,5 @@
 import { Locale } from '@navikt/nav-dekoratoren-moduler';
 
-import messagesEn from '../translations/en.json';
 import messagesNb from '../translations/nb.json';
 import messagesNn from '../translations/nn.json';
 
@@ -28,5 +27,4 @@ export function flattenMessages(nestedMessages: object, prefix = '') {
 export const messages: Messages = {
   nb: flattenMessages(messagesNb),
   nn: flattenMessages(messagesNn),
-  en: flattenMessages(messagesEn),
 };
