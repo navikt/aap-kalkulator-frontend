@@ -21,6 +21,7 @@ jobs:
         with:
           node-version: "18"
           registry-url: "https://npm.pkg.github.com"
+          cache: yarn
       - name: install dependencies Yarn
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile

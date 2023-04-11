@@ -1,5 +1,6 @@
 name: "Build and deploy aap-kalkulator to prod"
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -17,19 +18,24 @@ jobs:
           contents: write
           id-token: write
           packages: write
+        outputs:
+          image: ${{ steps.image.outputs.image }}
         steps:
             - uses: actions/checkout@v3
+
             - uses: actions/setup-node@v3
               with:
                 node-version: 18
                 registry-url: https://npm.pkg.github.com
                 cache: yarn
+
             - name: Cache node_modules
               id: cache-node-modules
               uses: actions/cache@v3
               with:
                 path: node_modules
                 key: ${{ runner.os }}-modules-${{ hashFiles('yarn.lock') }}
+
             - name: install dependencies Yarn
               if: steps.cache-node-modules.outputs.cache-hit != 'true'
               run: yarn install --frozen-lockfile
@@ -45,17 +51,8 @@ jobs:
             - name: hent tidsstempel
               run: echo "NEXT_PUBLIC_LAST_UPDATED=$(date +%m-%d-%Y)" > .env.local
 
-            - name: Setter tag-navn
-              run: echo "TAG=$(date +%m-%d-%Y)-$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
-
-            - name: Setter image-navn
-              run: echo "IMAGE=$(echo $IMAGE_BASE):$(echo $TAG)" >> $GITHUB_ENV
-
-            - name: Bygg applikasjon
-              id: bygg
-              run: | 
-                echo "image=${{ env.IMAGE }}" >> $GITHUB_OUTPUT
-                yarn run build
+            - name: Bygg klient(yarn run build)
+              run: yarn run build
 
             - name: upload to CDN
               uses: navikt/frontend/actions/cdn-upload/v1@main
@@ -67,6 +64,9 @@ jobs:
             - name: Set up Docker Buildx
               id: buildx
               uses: docker/setup-buildx-action@v2
+
+            - name: Setter tag-navn
+              run: echo "TAG=$(date +%m-%d-%Y)-$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
 
             - name: Setter image-navn
               id: image
@@ -95,6 +95,11 @@ jobs:
         strategy:
           matrix:
             cluster: [ dev-gcp, prod-gcp ]
+            isMain:
+              - ${{ github.ref == 'refs/heads/main' }}
+            exclude:
+              - isMain: false
+                cluster: prod-gcp
         name: Deploy til ${{matrix.cluster}}
         needs: build
         runs-on: ubuntu-latest
