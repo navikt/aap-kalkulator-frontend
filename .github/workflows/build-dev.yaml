@@ -36,15 +36,15 @@ jobs:
       - name: Setter tag-navn
         run: echo "TAG=$(date +%m-%d-%Y)-$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
 
-      - name: Setter image-navn
-        run: echo "IMAGE=$(echo $IMAGE_BASE):$(echo $TAG)" >> $GITHUB_ENV
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2
 
-      - name: Bygg applikasjon
-        id: bygg
+      - name: Setter image-navn
+        id: image
         run: |
           echo "IMAGE=$(echo $IMAGE_BASE)-$(echo $TAG)" >> $GITHUB_ENV
-          echo "image=${{ env.IMAGE }}" >> $GITHUB_OUTPUT
-          npm run build
+          echo "image=$(echo $IMAGE_BASE)-$(echo $TAG)" >> $GITHUB_OUTPUT
 
       - name: upload to CDN
         uses: navikt/frontend/actions/cdn-upload/v1@main
