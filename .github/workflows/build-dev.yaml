@@ -4,13 +4,13 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   APP: aap-kalkulator-frontend
-  IMAGE_BASE: ghcr.io/${{ github.repository }}
+  IMAGE_BASE: europe-north1-docker.pkg.dev/${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}/aap/${{ github.event.repository.name }}
 jobs:
   build:
     name: Bygg og publiser Docker image
     runs-on: ubuntu-latest
     permissions:
-      contents: 'read'
+      contents: 'write'
       id-token: 'write'
       packages: 'write'
     outputs:
@@ -21,13 +21,14 @@ jobs:
         with:
           node-version: "18"
           registry-url: "https://npm.pkg.github.com"
-      - name: "install dependencies"
-        run: "npm ci"
+      - name: install dependencies Yarn
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile
         env:
-          NODE_AUTH_TOKEN: "${{ secrets.READER_TOKEN }}"
+          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
 
       - name: test application
-        run: npm test
+        run: yarn test
 
       - name: hent tidsstempel
         run: echo "NEXT_PUBLIC_LAST_UPDATED=$(date +%m-%d-%Y)" > .env.local
@@ -41,6 +42,7 @@ jobs:
       - name: Bygg applikasjon
         id: bygg
         run: |
+          echo "IMAGE=$(echo $IMAGE_BASE)-$(echo $TAG)" >> $GITHUB_ENV
           echo "image=${{ env.IMAGE }}" >> $GITHUB_OUTPUT
           npm run build
 
@@ -51,14 +53,22 @@ jobs:
           source: ./.next/static
           destination: '/aap-kalkulator-frontend/_next'
 
-      - name: Docker login
-        run:  echo ${GITHUB_TOKEN} | docker login ghcr.io --username ${GITHUB_REPOSITORY} --password-stdin
+      - name: Login GAR
+        uses: nais/login@v0
+        with:
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          team: aap
 
-      - name: Bygg og publiser docker image
-        run: |
-          docker build . -t ${IMAGE}
-          docker push ${IMAGE}
-
+      - name: Build and push Docker
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: Dockerfile
+          tags: ${{ env.IMAGE }}:latest
+          push: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
   deploy:
     strategy:
