@@ -113,12 +113,12 @@
         "title": "Dette ser da ut som du kan få",
         "description": "Korleis er utrekninga gjort?",
         "preDisclaimer": "Ut i frå tala du har oppgitt antek vi at du kan få denne summen i AAP før skatt.",
-        "disclamer": "Det er alltid vedtaket du får som gjeld, denne kalkulatoren gir berre eit estimat.",
+        "disclamerMedAAP": "Det er alltid vedtaket du får som gjelder. Denne kalkulatoren gir kun et estimat.",
+        "disclamerUtenAAP": "Denne kalkulatoren gir kun et estimat. Hvis du søker og får innvilget AAP, vil du få vite hva du faktisk får.",
         "per14": "hver 14.<wbr></wbr>dag (før skatt)",
         "perAar": "i året (før skatt)",
         "link2": "Tilbake til informasjonssida om AAP",
         "preDisclaimer2": "For at vi skal vurdra om du har rett til AAP, må du søka om det. Du kan tidligst få AAP fra den dagen du søkar",
-        "button": "Gå til søknad om arbeidsavklaringspengar",
         "buttonUtenAAP": "Gå til søknad om AAP",
         "buttonMedAAP": "Gå til Mine Arbeidsavklaringspenger"
     },
@@ -140,7 +140,7 @@
             "totalAmount": "Dette blir til saman <strong>{res} kr</strong> i arbeidsavklaringspengar per år før skatt."
         },
         "work": {
-            "any": "Viss du jobbar ved sida av AAP, kan dette redusere arbeidsavklaringspengene dine. Dette blir gjort ved innlevering av meldekort.",
+            "noWork": "Hvis du jobber ved siden av AAP, kan dette redusere hva du får utbetalt. Du fører opp hvor mye du jobber hver 14. dag på meldekortet.",
             "tooMuchWithAAP": "Sidan du jobbar {timer} timar i veka, som svarer til {prosent}, vil du ikkje få noko utbetalt i AAP. Du kan i periodar jobba 80% etter avtale med rettleiar.",
             "tooMuchWithoutAAP": "Sidan du jobbar {timer} timar i veka, som svarer til {prosent}, vil du vanlegvis ikkje få innvilga AAP.",
             "justEnough": "Ei arbeidsveke er 37,5 timer. Siden du jobbar {hoursWorked} timer i uka, som er {percentWorked} % av en vanlig arbeidsveke, blir arbeidsavklaringspengene redusert med {percentWorked2} %, frå {oldRes} kr til <strong>{res} kr</strong>.",
