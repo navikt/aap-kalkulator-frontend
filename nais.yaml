@@ -29,6 +29,10 @@ spec:
     {{#each ingresses as |url|}}
         - {{url}}
     {{/each}}
+    accessPolicy:
+        outbound:
+            external:
+                - host: "www.nav.no"
     env: 
     {{#each env}}
         - name: {{this.name}}
