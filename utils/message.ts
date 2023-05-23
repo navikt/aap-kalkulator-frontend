@@ -1,10 +1,10 @@
-import { Locale } from '@navikt/nav-dekoratoren-moduler';
+import { DecoratorLocale } from '@navikt/nav-dekoratoren-moduler';
 
 import messagesNb from '../translations/nb.json';
 import messagesNn from '../translations/nn.json';
 
 export type Messages = {
-  [K in Locale]?: { [name: string]: string };
+  [K in DecoratorLocale]?: { [name: string]: string };
 };
 
 export function flattenMessages(nestedMessages: object, prefix = '') {

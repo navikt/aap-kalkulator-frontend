@@ -1,5 +1,5 @@
 import '@navikt/ds-css';
-import { Locale } from '@navikt/nav-dekoratoren-moduler';
+import { DecoratorLocale } from '@navikt/nav-dekoratoren-moduler';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -59,7 +59,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   });
 
   return (
-    <IntlProvider locale={locale} messages={messages[locale as Locale]}>
+    <IntlProvider locale={locale} messages={messages[locale as DecoratorLocale]}>
       <Dekorator>
         <BrowserState.Provider value={{ browserState, setBrowserState }}>
           <State.Provider value={{ state, setState }}>

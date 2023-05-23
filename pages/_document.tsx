@@ -1,8 +1,8 @@
-import { Components, Env, fetchDecoratorReact } from '@navikt/nav-dekoratoren-moduler/ssr';
+import { DecoratorComponents, DecoratorEnvProps, fetchDecoratorReact } from '@navikt/nav-dekoratoren-moduler/ssr';
 import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document';
 import 'node-fetch';
 
-const decoratorEnv = process.env.DEKORATOR_ENV as Exclude<Env, 'localhost'>;
+const decoratorEnv = (process.env.DEKORATOR_ENV ?? 'prod') as Exclude<DecoratorEnvProps['env'], 'localhost'>;
 
 // The 'head'-field of the document initialProps contains data from <head> (meta-tags etc)
 const getDocumentParameter = (initialProps: DocumentInitialProps, name: string) => {
@@ -10,7 +10,7 @@ const getDocumentParameter = (initialProps: DocumentInitialProps, name: string) 
 };
 
 interface Props {
-  Decorator: Components;
+  Decorator: DecoratorComponents;
   language: string;
 }
 
@@ -19,11 +19,13 @@ class MyDocument extends Document<Props> {
     const initialProps = await Document.getInitialProps(ctx);
 
     const Decorator = await fetchDecoratorReact({
-      env: decoratorEnv ?? 'prod',
-      simple: false,
-      chatbot: false,
-      feedback: false,
-      urlLookupTable: false,
+      env: decoratorEnv,
+      params: {
+        simple: false,
+        chatbot: false,
+        feedback: false,
+        urlLookupTable: false,
+      },
     });
 
     const language = getDocumentParameter(initialProps, 'lang');
