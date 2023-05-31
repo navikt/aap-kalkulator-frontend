@@ -9,7 +9,7 @@ Bruker starter på en startside hvor de blir informert om informasjonene nevt i 
 | **2018** | 300 000 |
 | **2019** | 500 000 |
 
-<img width="490" alt="Screenshot 2022-09-20 at 12 21 22" src="https://user-images.githubusercontent.com/4377955/191233614-1ce4335f-ea3d-4686-8e2e-b2b1ddebf121.png">
+<img width="444" alt="Screenshot 2023-05-31 at 09 04 12" src="https://github.com/navikt/aap-kalkulator-frontend/assets/4377955/0f11a273-2cdd-4c5d-ab81-acf978f74a17">
 
 ---
 
