@@ -51,7 +51,7 @@ jobs:
               run: yarn intl:diff
 
             - name: hent tidsstempel
-              run: echo "\nNEXT_PUBLIC_LAST_UPDATED=$(date +%m-%d-%Y)" >> .env.local
+              run: echo -e "\nNEXT_PUBLIC_LAST_UPDATED=$(date +%m-%d-%Y)" >> .env.local
             
             - name: Print env
               run: cat .env.local
