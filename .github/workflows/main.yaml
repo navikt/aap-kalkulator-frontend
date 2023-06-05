@@ -1,6 +1,5 @@
-name: "Build and deploy"
+name: "Build and deploy to prod"
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
@@ -41,7 +40,10 @@ jobs:
               run: yarn install --frozen-lockfile
               env:
                 NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
-              
+
+            - name: Copy env-file for prod
+              run: cp .nais/prod.env .env.local
+
             - name: test application
               run: yarn test
 
@@ -92,26 +94,18 @@ jobs:
                 cache-to: type=gha,mode=max
 
   deploy:
-        strategy:
-          matrix:
-            cluster: [ dev-gcp, prod-gcp ]
-            isMain:
-              - ${{ github.ref == 'refs/heads/main' }}
-            exclude:
-              - isMain: false
-                cluster: prod-gcp
-        name: Deploy til ${{matrix.cluster}}
-        needs: build
-        runs-on: ubuntu-latest
-        env:
-          PRINT_PAYLOAD: true
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          RESOURCE: nais.yaml
-          CLUSTER: ${{matrix.cluster}}
-          VARS: .nais/${{matrix.cluster}}.yaml
-          IMAGE: ${{needs.build.outputs.image}}
-        steps:
-          - uses: actions/checkout@v3
-          - uses: nais/deploy/actions/deploy@master
+    name: Deploy til prod
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      PRINT_PAYLOAD: true
+      APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+      RESOURCE: nais.yaml
+      CLUSTER: prod-gcp
+      VARS: .nais/prod-gcp.yaml
+      IMAGE: ${{needs.build.outputs.image}}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: nais/deploy/actions/deploy@master
            
 
