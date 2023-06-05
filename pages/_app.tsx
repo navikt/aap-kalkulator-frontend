@@ -54,6 +54,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const locale = getLocaleOrFallback(router.locale);
 
+  console.log(process.env.NEXT_PUBLIC_ENVIRONMENT);
+
   const [browserState, setBrowserState] = useState<BrowserInterface>({
     redirect: false,
   });
@@ -64,7 +66,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <BrowserState.Provider value={{ browserState, setBrowserState }}>
           <State.Provider value={{ state, setState }}>
             <Head>
-              <meta name="robots" content="noindex" />
+              {process.env.NEXT_PUBLIC_ENVIRONMENT != 'prod' ? <meta name="robots" content="noindex" /> : ''}
               <title>AAP-kalkulator - www.nav.no</title>
             </Head>
             <Container>
