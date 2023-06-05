@@ -52,6 +52,9 @@ jobs:
 
             - name: hent tidsstempel
               run: echo "\nNEXT_PUBLIC_LAST_UPDATED=$(date +%m-%d-%Y)" >> .env.local
+            
+            - name: Print env
+              run: cat .env.local
 
             - name: Bygg klient(yarn run build)
               run: yarn run build
