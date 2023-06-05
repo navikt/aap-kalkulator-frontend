@@ -2,7 +2,10 @@ import { DecoratorComponents, DecoratorEnvProps, fetchDecoratorReact } from '@na
 import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document';
 import 'node-fetch';
 
-const decoratorEnv = (process.env.DEKORATOR_ENV ?? 'prod') as Exclude<DecoratorEnvProps['env'], 'localhost'>;
+const decoratorEnv = (process.env.NEXT_PUBLIC_DEKORATOR_ENV ?? 'prod') as Exclude<
+  DecoratorEnvProps['env'],
+  'localhost'
+>;
 
 // The 'head'-field of the document initialProps contains data from <head> (meta-tags etc)
 const getDocumentParameter = (initialProps: DocumentInitialProps, name: string) => {
