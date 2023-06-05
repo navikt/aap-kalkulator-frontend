@@ -54,8 +54,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const locale = getLocaleOrFallback(router.locale);
 
-  console.log(process.env.NEXT_PUBLIC_ENVIRONMENT);
-
   const [browserState, setBrowserState] = useState<BrowserInterface>({
     redirect: false,
   });
