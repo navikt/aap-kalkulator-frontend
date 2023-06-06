@@ -13,6 +13,7 @@
     "intl:diff": "json-diff -k ./translations/nb.json ./translations/nn.json"
   },
   "dependencies": {
+    "@grafana/faro-web-sdk": "^1.0.5",
     "@navikt/ds-css": "^4.0.0",
     "@navikt/ds-icons": "^3.4.3",
     "@navikt/ds-react": "^4.0.0",
