@@ -1,9 +1,10 @@
+import { initializeFaro } from '@grafana/faro-web-sdk';
 import '@navikt/ds-css';
 import { DecoratorLocale } from '@navikt/nav-dekoratoren-moduler';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 
 import Container from '../components/container/Container';
@@ -57,6 +58,18 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [browserState, setBrowserState] = useState<BrowserInterface>({
     redirect: false,
   });
+
+  useEffect(() => {
+    if (process.env.NEXT_PUBLIC_FARO_URL) {
+      initializeFaro({
+        url: process.env.NEXT_PUBLIC_FARO_URL,
+        app: {
+          name: 'aap-kalkulator',
+          version: process.env.NEXT_PUBLIC_ENVIRONMENT ?? '',
+        },
+      });
+    }
+  }, []);
 
   return (
     <IntlProvider locale={locale} messages={messages[locale as DecoratorLocale]}>
