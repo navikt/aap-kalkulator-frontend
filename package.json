@@ -13,10 +13,10 @@
     "intl:diff": "json-diff -k ./translations/nb.json ./translations/nn.json"
   },
   "dependencies": {
-    "@navikt/ds-css": "^3.3.1",
-    "@navikt/ds-icons": "^3.3.1",
-    "@navikt/ds-react": "^3.3.1",
-    "@navikt/ds-tailwind": "^3.3.1",
+    "@navikt/ds-css": "^4.0.0",
+    "@navikt/ds-icons": "^3.4.3",
+    "@navikt/ds-react": "^4.0.0",
+    "@navikt/ds-tailwind": "^4.0.0",
     "@navikt/nav-dekoratoren-moduler": "^2.0.1",
     "date-fns": "^2.30.0",
     "next": "^13.4.3",
@@ -27,8 +27,8 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.7.1",
-    "@navikt/aap-felles-prettier": "^0.0.67",
-    "@navikt/eslint-config-aap": "^0.0.67",
+    "@navikt/aap-felles-prettier": "^0.0.68",
+    "@navikt/eslint-config-aap": "^0.0.68",
     "@playwright/test": "^1.34.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",

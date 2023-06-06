@@ -764,36 +764,36 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@navikt/aap-felles-prettier@^0.0.67":
-  version "0.0.67"
-  resolved "https://npm.pkg.github.com/download/@navikt/aap-felles-prettier/0.0.67/6c5e7af293e56ef06200bc7cf72257291598d8c2"
-  integrity sha512-aP8+idtSKLR1hF/sNuQj8FCnRZjD0tSbhNR1VNEugfM33PIkBVayFjmX7r2+d2tRKarXejPg1aj7+vsKKJoncA==
+"@navikt/aap-felles-prettier@^0.0.68":
+  version "0.0.68"
+  resolved "https://npm.pkg.github.com/download/@navikt/aap-felles-prettier/0.0.68/582715b79906019a4fc3359284c4b3600c80c8b8#582715b79906019a4fc3359284c4b3600c80c8b8"
+  integrity sha512-pu3h9z1vGCdwhN7/UqsPVhDuOkVy3QX/vs86mBvvboFjRps/0wGtGtE0X1xldQxYxiR+gh9xPZhCTgh0xfc6nw==
   dependencies:
     "@trivago/prettier-plugin-sort-imports" "^4.1.1"
     prettier "^2.8.7"
 
-"@navikt/aksel-icons@^3.3.1":
-  version "3.3.1"
-  resolved "https://npm.pkg.github.com/download/@navikt/aksel-icons/3.3.1/859b455066f5cf05a7b13847eac1661102e686e4#859b455066f5cf05a7b13847eac1661102e686e4"
-  integrity sha512-nVydAD47iybWm8BXsQs+TbL/FRWOBUMgyov6pUler94FZYyl/tIxqKcTkzoi+MbnfZOxhj/XzisavzkXmUSRxA==
+"@navikt/aksel-icons@^4.0.0":
+  version "4.0.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/aksel-icons/4.0.0/df5ca613a431e17acbf2a63dff7c73c4a6deec76#df5ca613a431e17acbf2a63dff7c73c4a6deec76"
+  integrity sha512-Lz1h45z26U+D4HdaiM3MevyNTwrJlOBGDcu7ZxNnESeUYRchr5+7Th53nc8hBEjxOv/FOADLncthLd8aVcNDDA==
 
-"@navikt/ds-css@^3.3.1":
-  version "3.3.1"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-css/3.3.1/1581a1c0d499089d242c56651bbb057d310a2cde#1581a1c0d499089d242c56651bbb057d310a2cde"
-  integrity sha512-7talnj3dSdwj6W+omN0iwW0FZmXO6xqnb0USbkzwKd8BOs/eIXJDtwrb+GkahKyl9gMaWZ10UdeXQjjIf+YnWg==
+"@navikt/ds-css@^4.0.0":
+  version "4.0.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-css/4.0.0/7e197cbd0d29b547fd795f01f0477620c7fb1846#7e197cbd0d29b547fd795f01f0477620c7fb1846"
+  integrity sha512-ugd0YfIOpMhuwHPtN3mKAfMrSZianAcTfFtYXkrqg43DF/EZPI4rE7moOfony3WLSeeCEHoL97/2vbXEjVmzQQ==
 
-"@navikt/ds-icons@^3.3.1":
-  version "3.3.1"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/3.3.1/6b971c35ee70ee52a425b18fbc28449b16c525e2#6b971c35ee70ee52a425b18fbc28449b16c525e2"
-  integrity sha512-kdZAzzechXlEzFek4WqHOxGb2m2BhCEX5nYqHmagrjksW4uMjqfj1tVDS+PvCBLo9utcF3kPMco+dZRMMrCv2g==
+"@navikt/ds-icons@^3.4.3":
+  version "3.4.3"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/3.4.3/eaa8fc38f6d184806d3405a5efbc9d137c2b8d27#eaa8fc38f6d184806d3405a5efbc9d137c2b8d27"
+  integrity sha512-Ys25tnDUzS+AtagMMW4/154OCZy+pTxCv9uiV4YcZUeXMfjnMiRWx1dueyCODb7FF7Jd6TwELd3G6ieQt/rf+w==
 
-"@navikt/ds-react@^3.3.1":
-  version "3.3.1"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/3.3.1/d855961de72e8748971807575cc601dfc40d9674#d855961de72e8748971807575cc601dfc40d9674"
-  integrity sha512-iw3J5w90tnukpmJk3cK4xCHrW65Y57XGhlLPyc9jVk83p6p98CKx1g0mQPiCY42leUaP6HSZKyBBdcTWhMcu1Q==
+"@navikt/ds-react@^4.0.0":
+  version "4.0.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/4.0.0/ca96d5030a37a857ef0d021a732e89b3dd381334#ca96d5030a37a857ef0d021a732e89b3dd381334"
+  integrity sha512-/OF1AWDAPJSU4VbCHrUdsW7cmVysBm7UZkU4yqWnROMavBRN/h20wTogiLfoUu1W4hi8lsZCiLqrIA4jv7kcYA==
   dependencies:
     "@floating-ui/react" "0.24.1"
-    "@navikt/aksel-icons" "^3.3.1"
+    "@navikt/aksel-icons" "^4.0.0"
     "@radix-ui/react-tabs" "1.0.0"
     "@radix-ui/react-toggle-group" "1.0.0"
     clsx "^1.2.1"
@@ -801,15 +801,15 @@
     react-day-picker "8.3.4"
     react-modal "3.15.1"
 
-"@navikt/ds-tailwind@^3.3.1":
-  version "3.3.1"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-tailwind/3.3.1/745e767d493bb2671e879b3c4bae3e3a722209c6#745e767d493bb2671e879b3c4bae3e3a722209c6"
-  integrity sha512-u4RJ6BbOQF9+dkEi+IyvHtL71ro+19Udm96eagUyeIuux0gBChRo+BdLPxGfaNJRfurwduXZo+/F/C58LUD9Zw==
+"@navikt/ds-tailwind@^4.0.0":
+  version "4.0.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-tailwind/4.0.0/d7b94a1bd0f20d6860777ab3273c39659c6ddf38#d7b94a1bd0f20d6860777ab3273c39659c6ddf38"
+  integrity sha512-84VtFINcIrVmOflrXQT3cWUDi93h3+YAIgDhhV+v+X6mxhW4axBEU+UiQpysC6fmZRRcpZab3Ai8lL5sHqKoGw==
 
-"@navikt/eslint-config-aap@^0.0.67":
-  version "0.0.67"
-  resolved "https://npm.pkg.github.com/download/@navikt/eslint-config-aap/0.0.67/c0e6a065daa53fd8c52783968b11ad02788f482f"
-  integrity sha512-0TBdAYBRbXJV3DYCQtxQkKQZhVwQQys3OWbEO547O+hWFm1axbrScGs8N3qEGKQBZxS7H2dU+sq9UY/mEX6qBw==
+"@navikt/eslint-config-aap@^0.0.68":
+  version "0.0.68"
+  resolved "https://npm.pkg.github.com/download/@navikt/eslint-config-aap/0.0.68/da08b70d41b34cb513ce28841586c8c09d8ece96#da08b70d41b34cb513ce28841586c8c09d8ece96"
+  integrity sha512-7jdys/Ze8jKvuqn4oJNkPiT3KUqNxRO8q4yHT/n+nZkkEiqCis0ULRXumtf1UppJS2gBc5ArZxZxAgoFmJnlcQ==
 
 "@navikt/nav-dekoratoren-moduler@^2.0.1":
   version "2.0.1"
