@@ -24,7 +24,7 @@
     "node-fetch": "^3.2.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-intl": "^6.4.3"
+    "react-intl": "^6.4.4"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.7.3",
@@ -33,7 +33,7 @@
     "@playwright/test": "^1.35.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
-    "@types/node": "^18.16.16",
+    "@types/node": "^18.16.18",
     "@types/react": "^18.2.12",
     "@types/react-collapse": "^5.0.1",
     "@types/react-dom": "^18.2.5",
