@@ -14,10 +14,10 @@
   },
   "dependencies": {
     "@grafana/faro-web-sdk": "^1.1.0",
-    "@navikt/ds-css": "^4.1.6",
+    "@navikt/ds-css": "^4.1.7",
     "@navikt/ds-icons": "^3.4.3",
-    "@navikt/ds-react": "^4.1.6",
-    "@navikt/ds-tailwind": "^4.1.6",
+    "@navikt/ds-react": "^4.1.7",
+    "@navikt/ds-tailwind": "^4.1.7",
     "@navikt/nav-dekoratoren-moduler": "^2.1.0",
     "date-fns": "^2.30.0",
     "next": "^13.4.6",
