@@ -16,14 +16,11 @@ import { messages } from '../utils/message';
 
 export const State = createContext({
   state: {} as StateInterface,
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   setState: (value?: any) => {},
 });
 
 export const BrowserState = createContext({
   browserState: {} as BrowserInterface,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   setBrowserState: (value: any) => {},
 });
 export const initialState = {

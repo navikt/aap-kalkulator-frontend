@@ -1,21 +1,23 @@
 // noinspection JSNonASCIINames
+'use client';
+
 import { Alert, BodyShort, Button, Heading, Label, Link } from '@navikt/ds-react';
-import { NextPage } from 'next';
+import { InferGetStaticPropsType, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useMemo, useState } from 'react';
 
-import BackLink from '../components/backlink/BackLink';
-import { Circle } from '../components/circle/Circle';
-import { CoinIcon } from '../components/icons/CoinIcon';
-import { Result, ResultInterface } from '../components/result/Result';
-import Stepper from '../components/stepper/Stepper';
-import { useFeatureToggleIntl } from '../hooks/useFeatureToggleIntl';
-import { kalkuler } from '../lib/logic/Kalkuler';
-import { logAmplitudeEvent } from '../lib/utils/amplitude';
-import { GrunnbeloepHistorikk, grunnbeloep } from '../lib/utils/types';
-import { State } from './_app';
+import BackLink from '../../components/backlink/BackLink';
+import { Circle } from '../../components/circle/Circle';
+import { CoinIcon } from '../../components/icons/CoinIcon';
+import { Result, ResultInterface } from '../../components/result/Result';
+import Stepper from '../../components/stepper/Stepper';
+import { useFeatureToggleIntl } from '../../hooks/useFeatureToggleIntl';
+import { kalkuler } from '../../lib/logic/Kalkuler';
+import { logAmplitudeEvent } from '../../lib/utils/amplitude';
+import { GrunnbeloepHistorikk } from '../../lib/utils/types';
+import { State } from '../../pages/_app';
 
-export const getStaticProps = async () => {
+const getStaticProps = async () => {
   const res = await fetch('https://g.nav.no/api/v1/grunnbeloep');
   const resHistorikk = await fetch('https://g.nav.no/api/v1/historikk');
   const data = await res.json();
@@ -34,7 +36,7 @@ export const getStaticProps = async () => {
 };
 
 // @ts-ignore
-const Resultat: NextPage = ({ G, Historikk }: { G: grunnbeloep; Historikk: GrunnbeloepHistorikk[] }) => {
+const Page: NextPage = ({ G, Historikk }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { formatMessage } = useFeatureToggleIntl();
   const [result, setResult] = useState<ResultInterface | null>(null);
   const { state } = useContext(State);
@@ -173,4 +175,4 @@ const Resultat: NextPage = ({ G, Historikk }: { G: grunnbeloep; Historikk: Grunn
   );
 };
 
-export default Resultat;
+export default Page;
