@@ -827,28 +827,28 @@
     "@trivago/prettier-plugin-sort-imports" "^4.1.1"
     prettier "^2.8.7"
 
-"@navikt/aksel-icons@^4.7.0":
-  version "4.7.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/aksel-icons/4.7.0/a82f601c5bf91f3e2e1c4636e305d3f5bc361363#a82f601c5bf91f3e2e1c4636e305d3f5bc361363"
-  integrity sha512-HPyH9XafehwYIX4NFfHzr2ebMWi7WHM9gpJwk5R16xS9ZfODzV9fG8eVSRVR13GPSTiorfihPEZBxvUGygDDVA==
+"@navikt/aksel-icons@^4.7.2":
+  version "4.7.2"
+  resolved "https://npm.pkg.github.com/download/@navikt/aksel-icons/4.7.2/217c844b451f517a7262e532c3848c53509295be#217c844b451f517a7262e532c3848c53509295be"
+  integrity sha512-pFZg5yCX6QMsyyl8j/O3bF3EBqMiIF00Bo2CAdVl4V1JVQNBTJ5Ed6Tktmq0mtv4vBE5C7NvRelUeUN+Jex+/Q==
 
-"@navikt/ds-css@^4.7.0":
-  version "4.7.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-css/4.7.0/a8d22c1aea2d9de544434200b265c296175e2bff#a8d22c1aea2d9de544434200b265c296175e2bff"
-  integrity sha512-VDV0eJ9QDs+4K8dTLEw95lJibUb8SzKhVORtxuzGTVNRHBhLv9WnDbh6ar7rN+VB2TExB2wrOuezVFdbI3YFzg==
+"@navikt/ds-css@^4.7.2":
+  version "4.7.2"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-css/4.7.2/68cc42891f6ac554168c6249ab2d799229982e51#68cc42891f6ac554168c6249ab2d799229982e51"
+  integrity sha512-EvbwCbsCoVprOBz+f83IkNLLvkA/dkkKVhKlSEHFrSNPbp7GR1zIRuNOQ8LLr9xhhQAace4HQCRhOV4iR8+rWQ==
 
 "@navikt/ds-icons@^3.4.3":
   version "3.4.3"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/3.4.3/eaa8fc38f6d184806d3405a5efbc9d137c2b8d27#eaa8fc38f6d184806d3405a5efbc9d137c2b8d27"
   integrity sha512-Ys25tnDUzS+AtagMMW4/154OCZy+pTxCv9uiV4YcZUeXMfjnMiRWx1dueyCODb7FF7Jd6TwELd3G6ieQt/rf+w==
 
-"@navikt/ds-react@^4.7.0":
-  version "4.7.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/4.7.0/71d4c421248dcf197a71f926f934ab5131a0a336#71d4c421248dcf197a71f926f934ab5131a0a336"
-  integrity sha512-85/KpJ15PZsKR76ml7Gn/2OLPnllp15YjgiIHzzmsd5IUk8xHqg69HqjvqjGfFW9kvAMRPJCN4EYfss7D+gCsw==
+"@navikt/ds-react@^4.7.2":
+  version "4.7.2"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/4.7.2/06504ebc7d27702f80c8fde9144ff42be5efb177#06504ebc7d27702f80c8fde9144ff42be5efb177"
+  integrity sha512-u62Z0OevPx3tDcxuX6JEEzfjDAPBBsPAXa5+OfM+jV1tw8wEuv2Vy/55BV5lzkbnYTAeMaXw+ZZeKrx9EEq/ug==
   dependencies:
     "@floating-ui/react" "0.24.1"
-    "@navikt/aksel-icons" "^4.7.0"
+    "@navikt/aksel-icons" "^4.7.2"
     "@radix-ui/react-tabs" "1.0.0"
     "@radix-ui/react-toggle-group" "1.0.0"
     clsx "^1.2.1"
@@ -856,10 +856,10 @@
     react-day-picker "8.3.4"
     react-modal "3.15.1"
 
-"@navikt/ds-tailwind@^4.7.0":
-  version "4.7.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-tailwind/4.7.0/b4574b82a5d7215416966d89c40006671b62b936#b4574b82a5d7215416966d89c40006671b62b936"
-  integrity sha512-MV0GiGE6DWLDgweor2RJXgbDecrshiMV0Evg/CSeImlGDBFRVL1MgNTCYiZN+u+J9dVUZL6+7mGLWWOY3hUhdA==
+"@navikt/ds-tailwind@^4.7.2":
+  version "4.7.2"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-tailwind/4.7.2/9dc35f67dea3181c7cb502e90ef3a6841e5bbd12#9dc35f67dea3181c7cb502e90ef3a6841e5bbd12"
+  integrity sha512-9gQMoKboOYm8v5haiDxzTcvlSeX/ziz/kUnHG0MIrJAraRoS6bptpd3JM1gfDoDENLgPunFgVdGb/tWlr5C9dA==
 
 "@navikt/eslint-config-aap@^0.0.72":
   version "0.0.72"
@@ -1025,13 +1025,13 @@
     tiny-glob "^0.2.9"
     tslib "^2.4.0"
 
-"@playwright/test@^1.36.1":
-  version "1.36.1"
-  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.36.1.tgz#0b1247d279f142ac0876ce25e7daf15439d5367b"
-  integrity sha512-YK7yGWK0N3C2QInPU6iaf/L3N95dlGdbsezLya4n0ZCh3IL7VgPGxC6Gnznh9ApWdOmkJeleT2kMTcWPRZvzqg==
+"@playwright/test@^1.36.2":
+  version "1.36.2"
+  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.36.2.tgz#9edd68a02b0929c5d78d9479a654ceb981dfb592"
+  integrity sha512-2rVZeyPRjxfPH6J0oGJqE8YxiM1IBRyM8hyrXYK7eSiAqmbNhxwcLa7dZ7fy9Kj26V7FYia5fh9XJRq4Dqme+g==
   dependencies:
     "@types/node" "*"
-    playwright-core "1.36.1"
+    playwright-core "1.36.2"
   optionalDependencies:
     fsevents "2.3.2"
 
@@ -4835,10 +4835,10 @@ pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-playwright-core@1.36.1:
-  version "1.36.1"
-  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.36.1.tgz#f5f275d70548768ca892583519c89b237a381c77"
-  integrity sha512-7+tmPuMcEW4xeCL9cp9KxmYpQYHKkyjwoXRnoeTowaeNat8PoBMk/HwCYhqkH2fRkshfKEOiVus/IhID2Pg8kg==
+playwright-core@1.36.2:
+  version "1.36.2"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.36.2.tgz#32382f2d96764c24c65a86ea336cf79721c2e50e"
+  integrity sha512-sQYZt31dwkqxOrP7xy2ggDfEzUxM1lodjhsQ3NMMv5uGTRDsLxU0e4xf4wwMkF2gplIxf17QMBCodSFgm6bFVQ==
 
 postcss-import@^15.1.0:
   version "15.1.0"
