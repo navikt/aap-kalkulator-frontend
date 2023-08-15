@@ -33,6 +33,7 @@ spec:
         outbound:
             external:
                 - host: "www.nav.no"
+                - host: "g.nav.no"
     env: 
     {{#each env}}
         - name: {{this.name}}
