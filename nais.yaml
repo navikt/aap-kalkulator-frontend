@@ -31,8 +31,10 @@ spec:
     {{/each}}
     accessPolicy:
         outbound:
+            rules:
+              - application: nav-dekoratoren
+                namespace: personbruker
             external:
-                - host: "www.nav.no"
                 - host: "g.nav.no"
     env: 
     {{#each env}}
