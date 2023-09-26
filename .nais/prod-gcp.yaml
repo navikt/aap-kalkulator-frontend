@@ -1,5 +1,4 @@
 ingresses:
-- https://aap-kalkulator.intern.nav.no
 - https://www.nav.no/aap/kalkulator
 env: 
 - name: DEKORATOR_ENV
