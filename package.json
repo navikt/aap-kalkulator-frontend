@@ -13,7 +13,7 @@
     "intl:diff": "json-diff -k ./translations/nb.json ./translations/nn.json"
   },
   "dependencies": {
-    "@grafana/faro-web-sdk": "^1.1.4",
+    "@grafana/faro-web-sdk": "^1.2.5",
     "@navikt/ds-css": "^5.10.1",
     "@navikt/ds-icons": "^3.4.3",
     "@navikt/ds-react": "^5.10.1",
@@ -42,7 +42,7 @@
     "@typescript-eslint/parser": "^6.5.0",
     "autoprefixer": "^10.4.15",
     "eslint": "^8.48.0",
-    "eslint-config-next": "^13.4.19",
+    "eslint-config-next": "^14.0.2",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-jest": "^27.2.3",
     "eslint-plugin-jsx-a11y": "^6.7.1",
