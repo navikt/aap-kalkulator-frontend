@@ -97,7 +97,7 @@ describe('integrasjon', () => {
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
-    expect(resultat.resultat).toBe(286654);
+    expect(resultat.resultat).toBe(288474);
     expect(resultat.logs).toHaveLength(6);
     expect(resultat.logs[0]).toEqual({
       id: 'logic.salery.minsteGrunnlag',
@@ -111,9 +111,9 @@ describe('integrasjon', () => {
       id: 'logic.children.possibleChildsupport',
       values: {
         childAmount: '7',
-        perChild: '9 100',
-        res: '286 654',
-        totChild: '63 700',
+        perChild: '9 360',
+        res: '288 474',
+        totChild: '65 520',
       },
     });
   });
@@ -131,7 +131,7 @@ describe('integrasjon', () => {
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
-    expect(resultat.resultat).toBe(295_754);
+    expect(resultat.resultat).toBe(297_834);
     expect(resultat.logs).toHaveLength(6);
   });
   it('ytelse med grunnbeløp 6g, 22 barn og 0 arbeidsgrad', () => {
@@ -250,7 +250,7 @@ describe('integrasjon', () => {
       id: 'logic.children.maxChildren',
       values: {
         maksBarneTillegg: '81 075',
-        perChild: '9 100',
+        perChild: '9 360',
         res: '304 028',
       },
     });
@@ -339,7 +339,7 @@ describe('integrasjon', () => {
     };
     const resultat = kalkuler(state, g, historikk);
     //expect(resultat.resultat).toBe(455520)
-    expect(resultat.resultat).toBe(459_649);
+    expect(resultat.resultat).toBe(460_169);
   });
   it('400k avg, 2 barn og 0 arbeidsgrad', () => {
     const state: StateInterface = {

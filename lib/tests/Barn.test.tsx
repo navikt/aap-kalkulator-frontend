@@ -23,11 +23,11 @@ describe('Barnetilegg', () => {
   });
   it('med 1 barn', () => {
     const barn = barnetillegg(1);
-    expect(barn).toBe(9100);
+    expect(barn).toBe(9360);
   });
   it('med mangen barn', () => {
     const barn = barnetillegg(8);
-    expect(barn).toBe(72800);
+    expect(barn).toBe(74880);
   });
 });
 
@@ -51,14 +51,14 @@ describe('Barnetillegg med wrapped funksjon', () => {
     });
     barn.resultat = 100_000;
     leggTilBarnetillegg(barn);
-    expect(barn.resultat).toBe(109_100);
+    expect(barn.resultat).toBe(109_360);
     expect(barn.logs[0]).toEqual({
       id: 'logic.children.possibleChildsupport',
       values: {
         childAmount: '1',
-        perChild: '9 100',
-        res: '109 100',
-        totChild: '9 100',
+        perChild: '9 360',
+        res: '109 360',
+        totChild: '9 360',
       },
     });
   });
@@ -76,7 +76,7 @@ describe('Barnetillegg med wrapped funksjon', () => {
       id: 'logic.children.maxChildren',
       values: {
         maksBarneTillegg: '54 050',
-        perChild: '9 100',
+        perChild: '9 360',
         res: '202 685',
       },
     });
