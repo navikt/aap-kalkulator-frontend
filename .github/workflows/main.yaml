@@ -14,7 +14,7 @@ jobs:
         name: build
         runs-on: ubuntu-latest
         permissions:
-          contents: write
+          contents: read
           id-token: write
           packages: write
         outputs:
@@ -99,6 +99,9 @@ jobs:
   deploy:
     name: Deploy til prod
     needs: build
+    permissions:
+      contents: read
+      id-token: write
     runs-on: ubuntu-latest
     env:
       PRINT_PAYLOAD: true
