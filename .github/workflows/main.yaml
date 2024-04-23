@@ -68,7 +68,7 @@ jobs:
               with:
                 team: aap
                 source: ./.next/static
-                destination: /${{ inputs.appname }}/_next
+                destination: /${{ env.appname }}/_next
                 identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
                 project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
 
