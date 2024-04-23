@@ -63,7 +63,6 @@ jobs:
 
       - name: Upload static files to NAV CDN
         uses: nais/deploy/actions/cdn-upload/v2@master
-        if: ${{ inputs.cdn == true }}
         with:
           team: aap
           source: ./.next/static
