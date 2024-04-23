@@ -2208,7 +2208,7 @@ __metadata:
     react-dom: "npm:18.2.0"
     react-intl: "npm:^6.6.5"
     tailwindcss: "npm:^3.4.3"
-    ts-jest: "npm:^29.1.1"
+    ts-jest: "npm:^29.1.2"
     typescript: "npm:^5.2.2"
     yarn: "npm:^1.22.22"
   languageName: unknown
@@ -9150,7 +9150,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:^29.1.1":
+"ts-jest@npm:^29.1.2":
   version: 29.1.2
   resolution: "ts-jest@npm:29.1.2"
   dependencies:
