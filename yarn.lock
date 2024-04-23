@@ -2023,7 +2023,7 @@ __metadata:
     autoprefixer: "npm:^10.4.19"
     date-fns: "npm:^3.6.0"
     eslint: "npm:^9.1.1"
-    eslint-config-next: "npm:^14.0.2"
+    eslint-config-next: "npm:^14.2.2"
     eslint-config-standard: "npm:^17.1.0"
     eslint-plugin-jest: "npm:^28.2.0"
     eslint-plugin-jsx-a11y: "npm:^6.8.0"
@@ -3529,7 +3529,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:^14.0.2":
+"eslint-config-next@npm:^14.2.2":
   version: 14.2.2
   resolution: "eslint-config-next@npm:14.2.2"
   dependencies:

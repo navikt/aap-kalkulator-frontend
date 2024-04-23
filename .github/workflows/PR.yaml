@@ -13,6 +13,9 @@ jobs:
   build-and-publish:
     name: Bygg og publiser Docker image
     runs-on: ubuntu-latest
+    env:
+      NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+      SKIP_YARN_COREPACK_CHECK: true
     outputs:
       image: ${{ steps.bygg.outputs.image }}
     steps:
