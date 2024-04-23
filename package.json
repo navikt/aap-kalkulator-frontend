@@ -28,7 +28,7 @@
     "yarn": "^1.22.19"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.8.1",
+    "@axe-core/playwright": "^4.9.0",
     "@navikt/aap-felles-prettier": "^0.0.91",
     "@navikt/eslint-config-aap": "^0.0.91",
     "@playwright/test": "^1.39.0",
@@ -62,5 +62,6 @@
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --cache --fix",
     "*.{js,ts,tsx,css,md}": "prettier --write"
-  }
+  },
+  "packageManager": "yarn@4.1.1"
 }

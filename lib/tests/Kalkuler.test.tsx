@@ -8,6 +8,16 @@ export const getG = () => {
 
   const dataHistorikk = [
     {
+      dato: '2024-05-01',
+      grunnbeloep: 118620,
+      gjennomsnittPerAar: 116239,
+    },
+    {
+      dato: '2023-05-01',
+      grunnbeloep: 118620,
+      gjennomsnittPerAar: 116239,
+    },
+    {
       dato: '2022-05-01',
       grunnbeloep: 111477,
       gjennomsnittPerAar: 109784,
@@ -46,7 +56,6 @@ export const getG = () => {
   return { props: { G: dataG, Historikk: resHis } };
 };
 
-const aar = new Date().getFullYear();
 const initialState = {
   antallBarn: undefined,
   arbeidsgrad: undefined,
@@ -76,7 +85,7 @@ describe('integrasjon', () => {
       inntekt3: enMill,
       harBarn: false,
       harArbeid: false,
-      sykmeldtAar: aar,
+      sykmeldtAar: 2023,
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
@@ -93,7 +102,7 @@ describe('integrasjon', () => {
       antallBarn: 7,
       harBarn: true,
       harArbeid: false,
-      sykmeldtAar: aar,
+      sykmeldtAar: 2023,
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
@@ -127,7 +136,7 @@ describe('integrasjon', () => {
       harBarn: true,
       harArbeid: false,
       harLoenn: false,
-      sykmeldtAar: aar,
+      sykmeldtAar: 2023,
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
@@ -144,7 +153,7 @@ describe('integrasjon', () => {
       antallBarn: 22,
       harBarn: true,
       harArbeid: false,
-      sykmeldtAar: aar,
+      sykmeldtAar: 2023,
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
@@ -161,7 +170,7 @@ describe('integrasjon', () => {
       antallBarn: 23,
       harBarn: true,
       harArbeid: false,
-      sykmeldtAar: aar,
+      sykmeldtAar: 2023,
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
@@ -195,7 +204,7 @@ describe('integrasjon', () => {
       antallBarn: 24,
       harBarn: true,
       harArbeid: false,
-      sykmeldtAar: aar,
+      sykmeldtAar: 2023,
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
@@ -213,7 +222,7 @@ describe('integrasjon', () => {
       harBarn: false,
       harArbeid: true,
       arbeidsgrad: 40,
-      sykmeldtAar: aar,
+      sykmeldtAar: 2023,
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
@@ -232,7 +241,7 @@ describe('integrasjon', () => {
       harBarn: true,
       harArbeid: true,
       arbeidsgrad: 50,
-      sykmeldtAar: aar,
+      sykmeldtAar: 2023,
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
@@ -277,7 +286,7 @@ describe('integrasjon', () => {
       harBarn: false,
       harArbeid: true,
       arbeidsgrad: 20,
-      sykmeldtAar: aar,
+      sykmeldtAar: 2023,
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
@@ -296,7 +305,7 @@ describe('integrasjon', () => {
       harArbeid: true,
       arbeidsgrad: 61,
       harLoenn: false,
-      sykmeldtAar: aar,
+      sykmeldtAar: 2023,
       arbeidstimer: 22.875,
       over25: true,
     };
@@ -317,7 +326,7 @@ describe('integrasjon', () => {
       arbeidsgrad: 51,
       arbeidstimer: 19.125,
       harLoenn: false,
-      sykmeldtAar: aar,
+      sykmeldtAar: 2023,
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
@@ -334,7 +343,7 @@ describe('integrasjon', () => {
       antallBarn: 2,
       harBarn: true,
       harArbeid: false,
-      sykmeldtAar: aar,
+      sykmeldtAar: 2023,
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
@@ -384,7 +393,7 @@ describe('integrasjon', () => {
       antallBarn: 0,
       harBarn: false,
       harArbeid: false,
-      sykmeldtAar: aar,
+      sykmeldtAar: 2023,
       over25: false,
     };
     const resultat = kalkuler(state, g, historikk);
