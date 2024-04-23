@@ -24,8 +24,7 @@
     "node-fetch": "^3.3.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-intl": "^6.6.5",
-    "yarn": "^1.22.22"
+    "react-intl": "^6.6.5"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.9.0",
