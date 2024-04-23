@@ -20,9 +20,9 @@ jobs:
         outputs:
           image: ${{ steps.image.outputs.image }}
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
-            - uses: actions/setup-node@v3
+            - uses: actions/setup-node@v4
               with:
                 node-version: 20
                 registry-url: https://npm.pkg.github.com
@@ -38,7 +38,7 @@ jobs:
 
             - name: install dependencies Yarn
               if: steps.cache-node-modules.outputs.cache-hit != 'true'
-              run: yarn install --frozen-lockfile
+              run: yarn install --immutable
               env:
                 NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
 
