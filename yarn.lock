@@ -504,7 +504,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.9.2":
   version: 7.21.0
   resolution: "@babel/runtime@npm:7.21.0"
   dependencies:
@@ -824,26 +824,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@grafana/faro-core@npm:^1.2.5":
-  version: 1.2.5
-  resolution: "@grafana/faro-core@npm:1.2.5"
+"@grafana/faro-core@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "@grafana/faro-core@npm:1.6.0"
   dependencies:
-    "@opentelemetry/api": "npm:^1.4.1"
-    "@opentelemetry/api-metrics": "npm:^0.33.0"
-    "@opentelemetry/otlp-transformer": "npm:^0.41.2"
-    murmurhash-js: "npm:^1.0.0"
-  checksum: 10c0/64908115543b315b09f7cd85673ed4c77034ecfd9006444a82e25baaee6b955bea94f7f0c619997ce01613ade72cdc850c133d7d1279e5126d6dde8e0c4d27c6
+    "@opentelemetry/api": "npm:^1.7.0"
+    "@opentelemetry/otlp-transformer": "npm:^0.48.0"
+  checksum: 10c0/693607b549fd79ac929b62fad4da5dd032c4ad77b9f03e370bbab15fb300779b5367a200f1afabfdb20a9568a91608b88b784ca4f4571422fed2f494dfac18ba
   languageName: node
   linkType: hard
 
-"@grafana/faro-web-sdk@npm:^1.2.5":
-  version: 1.2.5
-  resolution: "@grafana/faro-web-sdk@npm:1.2.5"
+"@grafana/faro-web-sdk@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "@grafana/faro-web-sdk@npm:1.6.0"
   dependencies:
-    "@grafana/faro-core": "npm:^1.2.5"
+    "@grafana/faro-core": "npm:^1.6.0"
     ua-parser-js: "npm:^1.0.32"
     web-vitals: "npm:^3.1.1"
-  checksum: 10c0/c7a2c004864ed644ea165b7d9e6ae016cc3a1f14a9eb484e92bd50922b304bb9865414ae346c676f054e2cfba809505e62e787da32ef75dfed285688d3124f55
+  checksum: 10c0/97b851b9d0379fc29585af710760050a75fecdb2aaa1aeae7271fba893bc8ec91756fe67cf62b287882e6f43932c704e4d6dbf0f7c38a905018356305ef953d5
   languageName: node
   linkType: hard
 
@@ -1185,27 +1183,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/aap-felles-prettier@npm:^0.0.91":
-  version: 0.0.91
-  resolution: "@navikt/aap-felles-prettier@npm:0.0.91::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-felles-prettier%2F0.0.91%2F2e1b97aaf37191fc1ee97813ec0c5af7601841ca"
+"@navikt/aap-felles-prettier@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@navikt/aap-felles-prettier@npm:1.0.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-felles-prettier%2F1.0.0%2F0eaa1f5c668e4fcab2fb1e616f14ada5fd9bf301"
   dependencies:
     "@trivago/prettier-plugin-sort-imports": "npm:^4.2.0"
     prettier: "npm:^3.0.3"
-  checksum: 10c0/c7feda44a562031644a2e2e2667b879ba9e2650209a4e5286c6c2fa48208e4c6403cd8f7c76d1fb2b001aee59ee68566c25a8530c52dd27ba2fa41b51276daa4
+  checksum: 10c0/c8b2581def8b73b27ccc632c57ed41d030b5d3de08761b0495bce7bddd2d326ba02788c4c74eba0dc0721b565b1c4d27c2e866b4dbcb6c82419b7bebf52f7c5e
   languageName: node
   linkType: hard
 
-"@navikt/aksel-icons@npm:^5.10.1":
-  version: 5.10.1
-  resolution: "@navikt/aksel-icons@npm:5.10.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faksel-icons%2F5.10.1%2F02483b56f481c1bfd1e9256eac9f8c35f920b742"
-  checksum: 10c0/af5b3cdcbec44bdd236763d28f9ca81e77d8772a9f90cf1785ccb50b10d667ad88c2365abe0859365512a6ce57431ce1691228a1c681f747216902da3afb39ff
+"@navikt/aksel-icons@npm:^6.6.1":
+  version: 6.6.1
+  resolution: "@navikt/aksel-icons@npm:6.6.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faksel-icons%2F6.6.1%2F0fd0e1f9d47526a22740b9d962cd3fe587e426c2"
+  checksum: 10c0/f38adc8ede6d5d58ace0a6112202388dce045ff7fb98f5b8e4dabbfa66e1ff64dd2aede360831cca76ce87908b093db7c6053043c5b2fa2ba6c0ddcdd14416a6
   languageName: node
   linkType: hard
 
-"@navikt/ds-css@npm:^5.10.1":
-  version: 5.10.1
-  resolution: "@navikt/ds-css@npm:5.10.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-css%2F5.10.1%2Ffb0dc63ae42c7ba17aa47992829952d4598d5def"
-  checksum: 10c0/8f0ca05a3841d2a4304a9f63fe77c8f4cf69c7458b8a68ecffb187a885aa0f8181f65880c93f13b126c586e8a60fed9ed7cbef87cd425a1f521b68f6d81f943f
+"@navikt/ds-css@npm:^6.6.1":
+  version: 6.6.1
+  resolution: "@navikt/ds-css@npm:6.6.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-css%2F6.6.1%2F9dc8412bbd265411cdd9b6112df1935e758fd106"
+  checksum: 10c0/a70474c58a13b9b815c8ae79cce337729573053f9b95aaa9f0013f4d33052a2bf984cda7edb6dab3a4b0db6e75e3739c696954d535712942f0369baefb2b5b67
   languageName: node
   linkType: hard
 
@@ -1219,58 +1217,56 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-react@npm:^5.10.1":
-  version: 5.10.1
-  resolution: "@navikt/ds-react@npm:5.10.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-react%2F5.10.1%2F57cd27a134fac3c2c92aadaa86d4864d1efa2c3d"
+"@navikt/ds-react@npm:^6.6.1":
+  version: 6.6.1
+  resolution: "@navikt/ds-react@npm:6.6.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-react%2F6.6.1%2F0c38c765020670ddae14f9409b716afe01dd0a61"
   dependencies:
     "@floating-ui/react": "npm:0.25.4"
-    "@navikt/aksel-icons": "npm:^5.10.1"
-    "@navikt/ds-tokens": "npm:^5.10.1"
-    "@radix-ui/react-tabs": "npm:1.0.0"
-    "@radix-ui/react-toggle-group": "npm:1.0.0"
-    clsx: "npm:^1.2.1"
-    date-fns: "npm:2.29.3"
-    react-day-picker: "npm:8.3.4"
+    "@navikt/aksel-icons": "npm:^6.6.1"
+    "@navikt/ds-tokens": "npm:^6.6.1"
+    clsx: "npm:^2.1.0"
+    date-fns: "npm:^3.0.0"
+    react-day-picker: "npm:8.10.0"
   peerDependencies:
     "@types/react": ^17.0.30 || ^18.0.0
     react: ^17.0.0 || ^18.0.0
-  checksum: 10c0/2e2b1e96c1642bc365429198aa8c7dfb933214131e86a378a05069db1a8aa9d1b625dad43c2a5225c1de481f1b0a6021b47550fe10ee4cd6a08efb38422300c3
+  checksum: 10c0/2a32badf0d0d47a10723d206f2aa6d948bf9359e1ed03155b557e364a3582485cc8964d128aa74d0fb0a09c6903f2421c89542a5c31736b2b52579f5b5b13fd6
   languageName: node
   linkType: hard
 
-"@navikt/ds-tailwind@npm:^5.10.1":
-  version: 5.10.1
-  resolution: "@navikt/ds-tailwind@npm:5.10.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-tailwind%2F5.10.1%2Fe42cab3c9f1e220159a353597600fcbfd292e276"
-  checksum: 10c0/dc818c779001e0052ad05bea1dec6be63f4276883a8c5a0b390a23e93ef7ecf6ac13024b31adbae7608d67b596ba322948b945559503dbc97ebcec0505c8c626
+"@navikt/ds-tailwind@npm:^6.6.1":
+  version: 6.6.1
+  resolution: "@navikt/ds-tailwind@npm:6.6.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-tailwind%2F6.6.1%2F782ea8fd8265f03c7875e7e72cdc4f9503aa7564"
+  checksum: 10c0/57d79a4562bd6f4921fe46c57fb86eb6dc0a6207bfc50adc48969dfc4cd18b8451cb10604171b9735663c30d1b9dac6efd786a74754a311898e2f08670ebd2fe
   languageName: node
   linkType: hard
 
-"@navikt/ds-tokens@npm:^5.10.1":
-  version: 5.10.1
-  resolution: "@navikt/ds-tokens@npm:5.10.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-tokens%2F5.10.1%2Fe6ad53ab10ea5a6e9e206fe010c5781fdda949c3"
-  checksum: 10c0/a280b1bfc2464e7124ba0493f9ec5e6f8fc33b598af30b4d83cab7c4d2c05e0e88907e8923106b155c7185bd757645885996729153980f6b385196fc5402b177
+"@navikt/ds-tokens@npm:^6.6.1":
+  version: 6.6.1
+  resolution: "@navikt/ds-tokens@npm:6.6.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-tokens%2F6.6.1%2Fada69ecbc9de292d1b6a4e521fbee013d70f8d35"
+  checksum: 10c0/ae01760b6c0bcad85df68c46a7f2a96a2d87c1e6ea6e32d90c92d163b28dd56abf3af99f61ff7fe77b1a76cd78c854479a3a054654b292cbffc9d3438e5ef209
   languageName: node
   linkType: hard
 
-"@navikt/eslint-config-aap@npm:^0.0.91":
-  version: 0.0.91
-  resolution: "@navikt/eslint-config-aap@npm:0.0.91::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Feslint-config-aap%2F0.0.91%2F8c8abd4ee30e042d76d17fcfc3c752e3dac05524"
+"@navikt/eslint-config-aap@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@navikt/eslint-config-aap@npm:1.0.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Feslint-config-aap%2F1.0.0%2F55ab3ac344458e4fdb683946007bd1ad2e0cb300"
   peerDependencies:
-    "@typescript-eslint/eslint-plugin": ^6.7.0
-    "@typescript-eslint/parser": ^6.7.0
-    eslint: ^8.37.0
+    "@typescript-eslint/eslint-plugin": ^7.7.0
+    "@typescript-eslint/parser": ^7.7.0
+    eslint: ^8.56.0
     eslint-config-standard: ^17.0.0
-    eslint-plugin-jest: ^27.2.1
+    eslint-plugin-jest: ^28.2.0
     eslint-plugin-jsx-a11y: ^6.7.1
-    eslint-plugin-react: ^7.32.2
+    eslint-plugin-react: ^7.34.1
     eslint-plugin-react-hooks: ^4.6.0
-  checksum: 10c0/f53ef3bf02ffe1047ca235f71eef3814a7be101b6aaab73dafc13d14a75d68d6aa3ee964e3d8b8189245861b1ace92932781ed6a3ad961f496695f5bca9fa80d
+  checksum: 10c0/73504ae891f1f4022c31c25f1a9c4ba760a57b44da3c88f0104f89bb25cd3d85844b28ae48b3c8780a8db5a4b188971679d8258edef4eee969dcee33c6602c29
   languageName: node
   linkType: hard
 
-"@navikt/nav-dekoratoren-moduler@npm:^2.1.3":
-  version: 2.1.3
-  resolution: "@navikt/nav-dekoratoren-moduler@npm:2.1.3::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fnav-dekoratoren-moduler%2F2.1.3%2Fe2081da2da26254fa4eeaf564286e19452ec790f"
+"@navikt/nav-dekoratoren-moduler@npm:^2.1.6":
+  version: 2.1.6
+  resolution: "@navikt/nav-dekoratoren-moduler@npm:2.1.6::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fnav-dekoratoren-moduler%2F2.1.6%2F049e1daeecff43519e41e387f21fd7e3634c2bd3"
   dependencies:
     csp-header: "npm:^5.1.0"
     html-react-parser: "npm:^3.0.16"
@@ -1278,7 +1274,7 @@ __metadata:
   peerDependencies:
     jsdom: ">=16.x"
     react: 17.x || 18.x
-  checksum: 10c0/137067c2f3770cb1f76f5eed80ba6331633b12026034ab84c9df9084ec8b2d33162bac30830346f4c1bbb6256fe1a7532a72032638b39b2b3ee8e9a7b7a19f11
+  checksum: 10c0/c64502ad3eb90ec66b7de777dbda207d9f043d035ce4b3defe0be98ee83b280318c3e2ba3a4772ff03c55ddc0d9f3ebf18f06d2b0d4b802d9343e7ed235789ad
   languageName: node
   linkType: hard
 
@@ -1410,113 +1406,111 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/api-logs@npm:0.41.2":
-  version: 0.41.2
-  resolution: "@opentelemetry/api-logs@npm:0.41.2"
+"@opentelemetry/api-logs@npm:0.48.0":
+  version: 0.48.0
+  resolution: "@opentelemetry/api-logs@npm:0.48.0"
   dependencies:
     "@opentelemetry/api": "npm:^1.0.0"
-  checksum: 10c0/582f9ad3f55f5a8167c70f6388ef857727dea2c4b1b287ab803586832cb2e5717b7ea05d54118a05203de80dc79550710edbebc59bfda4e5b5901dbf8f9daaaf
+  checksum: 10c0/728e9d3c0d9f63dbde3a4086ba2fb2231a03e9dcea02a496d7823ac60471dc5addf05fc94f69da1afa9519826a243c2742597ebc0ceb72b42009954a2d14291a
   languageName: node
   linkType: hard
 
-"@opentelemetry/api-metrics@npm:^0.33.0":
-  version: 0.33.0
-  resolution: "@opentelemetry/api-metrics@npm:0.33.0"
-  dependencies:
-    "@opentelemetry/api": "npm:^1.0.0"
-  checksum: 10c0/d8cf24eb29a18a54e4326ca6cfaf56851c2ae9a4926b332e5af7213de00da70238740be5e5d39cf357b90229e7469db50873fd6518a89bb1bac7c11f75537099
-  languageName: node
-  linkType: hard
-
-"@opentelemetry/api@npm:^1.0.0, @opentelemetry/api@npm:^1.4.1":
+"@opentelemetry/api@npm:^1.0.0":
   version: 1.4.1
   resolution: "@opentelemetry/api@npm:1.4.1"
   checksum: 10c0/5ee641d3d64c91e87ee328fc22251fc70c809a3c744e51e595ca77c0bd3cad933b77a79beb4dac66b811e5068941cef9da58c1ec217c0748a01f598e08a7ae66
   languageName: node
   linkType: hard
 
-"@opentelemetry/core@npm:1.15.2":
-  version: 1.15.2
-  resolution: "@opentelemetry/core@npm:1.15.2"
-  dependencies:
-    "@opentelemetry/semantic-conventions": "npm:1.15.2"
-  peerDependencies:
-    "@opentelemetry/api": ">=1.0.0 <1.5.0"
-  checksum: 10c0/330f5905edec32f965151f2b314ae73344ac28672ea2c41ac41687413ac91dcd5c7ab99590dac9870ce189bb3d2a73a780c98e7bf1c8826c4c197a5698db96a4
+"@opentelemetry/api@npm:^1.7.0":
+  version: 1.8.0
+  resolution: "@opentelemetry/api@npm:1.8.0"
+  checksum: 10c0/66d5504bfbf9c19a14ea549f5fca975a73a5e1e8a1e40a6dc2d662893c942b9ba66c009262816dee2b9ffd0267acd707ec692eba20db11a09d4ee114c00dc161
   languageName: node
   linkType: hard
 
-"@opentelemetry/otlp-transformer@npm:^0.41.2":
-  version: 0.41.2
-  resolution: "@opentelemetry/otlp-transformer@npm:0.41.2"
+"@opentelemetry/core@npm:1.21.0":
+  version: 1.21.0
+  resolution: "@opentelemetry/core@npm:1.21.0"
   dependencies:
-    "@opentelemetry/api-logs": "npm:0.41.2"
-    "@opentelemetry/core": "npm:1.15.2"
-    "@opentelemetry/resources": "npm:1.15.2"
-    "@opentelemetry/sdk-logs": "npm:0.41.2"
-    "@opentelemetry/sdk-metrics": "npm:1.15.2"
-    "@opentelemetry/sdk-trace-base": "npm:1.15.2"
+    "@opentelemetry/semantic-conventions": "npm:1.21.0"
   peerDependencies:
-    "@opentelemetry/api": ">=1.3.0 <1.5.0"
-  checksum: 10c0/9d06300190020a1988378dea01fee3de8def099fcbbb40141d7986448f48414c2e5f292cc1167239cec7136f8c597da024404805a64ee88f7ad99ceeab0ca60f
+    "@opentelemetry/api": ">=1.0.0 <1.8.0"
+  checksum: 10c0/e6f1adcd224944f725ccfc4a337cb20405cb2081fa0a2a66a47a9044b248f47318f43c6d140e8ebbd4082d8657894e9d1a8e1a10db112ca8896c6bc4494c346c
   languageName: node
   linkType: hard
 
-"@opentelemetry/resources@npm:1.15.2":
-  version: 1.15.2
-  resolution: "@opentelemetry/resources@npm:1.15.2"
+"@opentelemetry/otlp-transformer@npm:^0.48.0":
+  version: 0.48.0
+  resolution: "@opentelemetry/otlp-transformer@npm:0.48.0"
   dependencies:
-    "@opentelemetry/core": "npm:1.15.2"
-    "@opentelemetry/semantic-conventions": "npm:1.15.2"
+    "@opentelemetry/api-logs": "npm:0.48.0"
+    "@opentelemetry/core": "npm:1.21.0"
+    "@opentelemetry/resources": "npm:1.21.0"
+    "@opentelemetry/sdk-logs": "npm:0.48.0"
+    "@opentelemetry/sdk-metrics": "npm:1.21.0"
+    "@opentelemetry/sdk-trace-base": "npm:1.21.0"
   peerDependencies:
-    "@opentelemetry/api": ">=1.0.0 <1.5.0"
-  checksum: 10c0/137a20a5cc2a71039919fc8a38b44c424c3fc4d7b413e2c8fd8db503244387f67cc971f4018bfc7b04fb9df6da2dea683ff9fb2775673f15bd63bca62cf92015
+    "@opentelemetry/api": ">=1.3.0 <1.8.0"
+  checksum: 10c0/9f220283200707fb9eceb9136cc681fc150fbd804c42a20aa788cf9c882eb7d96c3c81ab62fd6f564a4e36d62c9daa0a99336ac8bb4134571d3dc4d715f049bb
   languageName: node
   linkType: hard
 
-"@opentelemetry/sdk-logs@npm:0.41.2":
-  version: 0.41.2
-  resolution: "@opentelemetry/sdk-logs@npm:0.41.2"
+"@opentelemetry/resources@npm:1.21.0":
+  version: 1.21.0
+  resolution: "@opentelemetry/resources@npm:1.21.0"
   dependencies:
-    "@opentelemetry/core": "npm:1.15.2"
-    "@opentelemetry/resources": "npm:1.15.2"
+    "@opentelemetry/core": "npm:1.21.0"
+    "@opentelemetry/semantic-conventions": "npm:1.21.0"
   peerDependencies:
-    "@opentelemetry/api": ">=1.4.0 <1.5.0"
+    "@opentelemetry/api": ">=1.0.0 <1.8.0"
+  checksum: 10c0/0ac61b835e20d3323e1e6a5c74cbb64a9200e165724d6d1449f01bd18a0c5af3da854dacdc729cdb4ed00cb740639c76d6cd7c638ad6efffc23f9da0de36406a
+  languageName: node
+  linkType: hard
+
+"@opentelemetry/sdk-logs@npm:0.48.0":
+  version: 0.48.0
+  resolution: "@opentelemetry/sdk-logs@npm:0.48.0"
+  dependencies:
+    "@opentelemetry/core": "npm:1.21.0"
+    "@opentelemetry/resources": "npm:1.21.0"
+  peerDependencies:
+    "@opentelemetry/api": ">=1.4.0 <1.8.0"
     "@opentelemetry/api-logs": ">=0.39.1"
-  checksum: 10c0/aeb1aa2b7f848b5ac237cd195be064a281118cfedc995157df833fd1b0f2da94315b5d3a45a3f1fdcb75bbe2f032c42bdf144a52fd340f61b0a8a70ab4a97794
+  checksum: 10c0/0b70f8fffcb5e3ab21ce64aaae310280bce7e2eaac77138c258c9c3c4dd888e0822e44c9506e576ed375647ed3b7d8ae0c98a203ae4ccaa61d8003ba95d36aaa
   languageName: node
   linkType: hard
 
-"@opentelemetry/sdk-metrics@npm:1.15.2":
-  version: 1.15.2
-  resolution: "@opentelemetry/sdk-metrics@npm:1.15.2"
+"@opentelemetry/sdk-metrics@npm:1.21.0":
+  version: 1.21.0
+  resolution: "@opentelemetry/sdk-metrics@npm:1.21.0"
   dependencies:
-    "@opentelemetry/core": "npm:1.15.2"
-    "@opentelemetry/resources": "npm:1.15.2"
+    "@opentelemetry/core": "npm:1.21.0"
+    "@opentelemetry/resources": "npm:1.21.0"
     lodash.merge: "npm:^4.6.2"
   peerDependencies:
-    "@opentelemetry/api": ">=1.3.0 <1.5.0"
-  checksum: 10c0/2000356b0d29673ec7a40fc354e2c2147dd7b90885095e5cbc2c995403e1752e971d24a5241c6485dd4c69026dbd3c23757340c8fe90f2f0ee16c912f3b0d6dd
+    "@opentelemetry/api": ">=1.3.0 <1.8.0"
+  checksum: 10c0/4787b586022b3499d44d057697e51eae29afbda08d6126c047040f5bee0f31d9d5e10d3f8f6e7dfbf9afb0e229e97a5ebbfee05cc934675ec4173d2e25907bfd
   languageName: node
   linkType: hard
 
-"@opentelemetry/sdk-trace-base@npm:1.15.2":
-  version: 1.15.2
-  resolution: "@opentelemetry/sdk-trace-base@npm:1.15.2"
+"@opentelemetry/sdk-trace-base@npm:1.21.0":
+  version: 1.21.0
+  resolution: "@opentelemetry/sdk-trace-base@npm:1.21.0"
   dependencies:
-    "@opentelemetry/core": "npm:1.15.2"
-    "@opentelemetry/resources": "npm:1.15.2"
-    "@opentelemetry/semantic-conventions": "npm:1.15.2"
+    "@opentelemetry/core": "npm:1.21.0"
+    "@opentelemetry/resources": "npm:1.21.0"
+    "@opentelemetry/semantic-conventions": "npm:1.21.0"
   peerDependencies:
-    "@opentelemetry/api": ">=1.0.0 <1.5.0"
-  checksum: 10c0/acfdf1995f7faeeba2656e7272d63fb87af535eddba6ab4457b93d8a4548925beaa5f6335e2580d060a971020c69a9439c8e830130f21c2b1a94200c9d28c2f3
+    "@opentelemetry/api": ">=1.0.0 <1.8.0"
+  checksum: 10c0/0d68bfb614c45713185d20ad6aa766f38060fc5716d4fd196bb3195386f8bf22e3a9a56d3ec2a2c6753f9edb0d0b0e780f0d271a2d50ca866440ae624b4268ab
   languageName: node
   linkType: hard
 
-"@opentelemetry/semantic-conventions@npm:1.15.2":
-  version: 1.15.2
-  resolution: "@opentelemetry/semantic-conventions@npm:1.15.2"
-  checksum: 10c0/84428c3703e5bd0fb8e3f99cad0a48feb2ac03fec025f3a5691745486a89e446ea8fdf701c334d9dbb70a0c9f7053af777105f4ebc58fb1c602edb9aef918b28
+"@opentelemetry/semantic-conventions@npm:1.21.0":
+  version: 1.21.0
+  resolution: "@opentelemetry/semantic-conventions@npm:1.21.0"
+  checksum: 10c0/ba1eabdbe5cdc04cbb7ce28f2df91fc95000e14861eb93937cfc7768d29c7e57692eb4fb2645f6ba87ae046acc1d1e27e4e6415e46e03015d54a6fdaf8e9635b
   languageName: node
   linkType: hard
 
@@ -1549,224 +1543,6 @@ __metadata:
   bin:
     playwright: cli.js
   checksum: 10c0/6f1398c3c66657729a14d7c2d239e2f678c37610c3163b4ad1f028cbb6b88fc845cd9033a25d35436fa86d3dfcc57ecb49028c09f7aea1389c4257e4ac9124cd
-  languageName: node
-  linkType: hard
-
-"@radix-ui/primitive@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/primitive@npm:1.0.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-  checksum: 10c0/4b0a4bdbf312df2317c3a3c728b0d2249242220a93eedaffecd4207bc0b8d3f28498c4b15f16c8f60b8292302d6d28ef73d751f63e77ef9bf6a318f52c6dc19b
-  languageName: node
-  linkType: hard
-
-"@radix-ui/react-collection@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/react-collection@npm:1.0.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-    "@radix-ui/react-compose-refs": "npm:1.0.0"
-    "@radix-ui/react-context": "npm:1.0.0"
-    "@radix-ui/react-primitive": "npm:1.0.0"
-    "@radix-ui/react-slot": "npm:1.0.0"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 10c0/0b93efbf510fe935f1255658177e97aeb1630fc06192501a2707a3346067d5d89fd2375e413d5407e2b5d17c2cf4c0b1e744f478b0d5f9dc8bb748572d9b89bd
-  languageName: node
-  linkType: hard
-
-"@radix-ui/react-compose-refs@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/react-compose-refs@npm:1.0.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-  checksum: 10c0/449148920c1df82ffcdd78a68d3485036d198b41b9fcfc407b008df5dfefc8f1a60391f7b53e2bc69e0fdbbba846b0b79fede5f7ed35bca82af4eff6c56b8854
-  languageName: node
-  linkType: hard
-
-"@radix-ui/react-context@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/react-context@npm:1.0.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-  checksum: 10c0/3744c8f6291d1c0645dfb2497e232b2084f8c62075258370987592e3533710dc84b8ae983489ca354c0567eff3f311230f6c696bc4536ba0e431068b79196b00
-  languageName: node
-  linkType: hard
-
-"@radix-ui/react-direction@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/react-direction@npm:1.0.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-  checksum: 10c0/9e13eb248d37a7df8d8288dda32b4688d9341c056a31302686852e230e16ecc909843c842fe028d47de11b74948359281c04562afbe0161596749daefce67583
-  languageName: node
-  linkType: hard
-
-"@radix-ui/react-id@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/react-id@npm:1.0.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-    "@radix-ui/react-use-layout-effect": "npm:1.0.0"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-  checksum: 10c0/56e9817abdc209e0d5169ba2e6d3de477101650b02c04f7f1477800cfd3a9e8bc415bcd14760557a17de8cfcae571342e4f6a5ec182b05d613ae7d77309a861c
-  languageName: node
-  linkType: hard
-
-"@radix-ui/react-presence@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/react-presence@npm:1.0.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-    "@radix-ui/react-compose-refs": "npm:1.0.0"
-    "@radix-ui/react-use-layout-effect": "npm:1.0.0"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 10c0/2d696781e58f7acc45df2965b4756d5072a80704677cb6905a927754bd2076c87cd137820d3e58d8c2118a9b12aaa82fee79c6fef49b80012a12983002101fc5
-  languageName: node
-  linkType: hard
-
-"@radix-ui/react-primitive@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/react-primitive@npm:1.0.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-    "@radix-ui/react-slot": "npm:1.0.0"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 10c0/a68b3afe6eb39e1c73d6cc162283ce071b2a5793e5c417547a0b43281654346be7474f51c7055b5d2636667efbab863eb76f785e8484e63c670b0a9d863684be
-  languageName: node
-  linkType: hard
-
-"@radix-ui/react-roving-focus@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/react-roving-focus@npm:1.0.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-    "@radix-ui/primitive": "npm:1.0.0"
-    "@radix-ui/react-collection": "npm:1.0.0"
-    "@radix-ui/react-compose-refs": "npm:1.0.0"
-    "@radix-ui/react-context": "npm:1.0.0"
-    "@radix-ui/react-direction": "npm:1.0.0"
-    "@radix-ui/react-id": "npm:1.0.0"
-    "@radix-ui/react-primitive": "npm:1.0.0"
-    "@radix-ui/react-use-callback-ref": "npm:1.0.0"
-    "@radix-ui/react-use-controllable-state": "npm:1.0.0"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 10c0/bb4bd02185e6420c7f99f7155f1d40c46ee154162058540461228df242ffd8f06e04289e2f8516f751d8c8649c327f6eca2ff0e69963249a5bef228a7e671eca
-  languageName: node
-  linkType: hard
-
-"@radix-ui/react-slot@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/react-slot@npm:1.0.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-    "@radix-ui/react-compose-refs": "npm:1.0.0"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-  checksum: 10c0/a02573ae7c637b16a72d8511d879db37f33cf35b34b8d2cfe507ba8312abbb8e4075b0cb8cd39c5ba89ce341045375f83634457113256321e7a4c3c3638d2955
-  languageName: node
-  linkType: hard
-
-"@radix-ui/react-tabs@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/react-tabs@npm:1.0.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-    "@radix-ui/primitive": "npm:1.0.0"
-    "@radix-ui/react-context": "npm:1.0.0"
-    "@radix-ui/react-direction": "npm:1.0.0"
-    "@radix-ui/react-id": "npm:1.0.0"
-    "@radix-ui/react-presence": "npm:1.0.0"
-    "@radix-ui/react-primitive": "npm:1.0.0"
-    "@radix-ui/react-roving-focus": "npm:1.0.0"
-    "@radix-ui/react-use-controllable-state": "npm:1.0.0"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 10c0/12e98ca8792b0763940f41d8347639245fae7d0421ba4f3e95b7ac96888593b4549f2b18a01339e53b72a2a85089821ad5773a6e8f0b274da97a81523f06c158
-  languageName: node
-  linkType: hard
-
-"@radix-ui/react-toggle-group@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/react-toggle-group@npm:1.0.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-    "@radix-ui/primitive": "npm:1.0.0"
-    "@radix-ui/react-context": "npm:1.0.0"
-    "@radix-ui/react-direction": "npm:1.0.0"
-    "@radix-ui/react-primitive": "npm:1.0.0"
-    "@radix-ui/react-roving-focus": "npm:1.0.0"
-    "@radix-ui/react-toggle": "npm:1.0.0"
-    "@radix-ui/react-use-controllable-state": "npm:1.0.0"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 10c0/c4201d942b6286360a4cae54bc4e022179b37f7d0d226bdbb3f42ddc47d7b41a46fa84d6618e073f7dae10883d7657ec920e9020bb3f099b18f175c10b6a7a56
-  languageName: node
-  linkType: hard
-
-"@radix-ui/react-toggle@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/react-toggle@npm:1.0.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-    "@radix-ui/primitive": "npm:1.0.0"
-    "@radix-ui/react-primitive": "npm:1.0.0"
-    "@radix-ui/react-use-controllable-state": "npm:1.0.0"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 10c0/29e30a173cacdab7c494fb1b6fb60533ea5d06829a69a7e4b45b2503c72c7850c3eb95c1ed9f67a94f29eb635b93ff0f5d5623ea02a8d56eb4f195e4e4a315cd
-  languageName: node
-  linkType: hard
-
-"@radix-ui/react-use-callback-ref@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/react-use-callback-ref@npm:1.0.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-  checksum: 10c0/91bf130d39cfbda61de83fd4a6893cf459b3d72ec01268e3761eafd3c709f70f82940a6b46676ba6fe06fc707fdefe580946b3b99bb2af5f59887aa203e56533
-  languageName: node
-  linkType: hard
-
-"@radix-ui/react-use-controllable-state@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/react-use-controllable-state@npm:1.0.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-    "@radix-ui/react-use-callback-ref": "npm:1.0.0"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-  checksum: 10c0/fa2ad3b70bec91b628883455152b7ce19d321199e3677051822c14aa3941901f5fd14cddec1c9ab0998e4061fd3b8397727aef856fec099c419d8e1e3d7f75de
-  languageName: node
-  linkType: hard
-
-"@radix-ui/react-use-layout-effect@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/react-use-layout-effect@npm:1.0.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.13.10"
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-  checksum: 10c0/04bbcddbfaa2863cbd64978b70925d0a0b664131f8c33a518b0df2866966840b3d72302258b0f8cb7ed45b50b6d52d6cbdca00cc159c47f323eb8d7b70126d83
   languageName: node
   linkType: hard
 
@@ -2295,14 +2071,14 @@ __metadata:
   resolution: "aap-kalkulator-frontend@workspace:."
   dependencies:
     "@axe-core/playwright": "npm:^4.9.0"
-    "@grafana/faro-web-sdk": "npm:^1.2.5"
-    "@navikt/aap-felles-prettier": "npm:^0.0.91"
-    "@navikt/ds-css": "npm:^5.10.1"
+    "@grafana/faro-web-sdk": "npm:^1.6.0"
+    "@navikt/aap-felles-prettier": "npm:^1.0.0"
+    "@navikt/ds-css": "npm:^6.6.1"
     "@navikt/ds-icons": "npm:^3.4.3"
-    "@navikt/ds-react": "npm:^5.10.1"
-    "@navikt/ds-tailwind": "npm:^5.10.1"
-    "@navikt/eslint-config-aap": "npm:^0.0.91"
-    "@navikt/nav-dekoratoren-moduler": "npm:^2.1.3"
+    "@navikt/ds-react": "npm:^6.6.1"
+    "@navikt/ds-tailwind": "npm:^6.6.1"
+    "@navikt/eslint-config-aap": "npm:^1.0.0"
+    "@navikt/nav-dekoratoren-moduler": "npm:^2.1.6"
     "@playwright/test": "npm:^1.43.1"
     "@testing-library/jest-dom": "npm:^6.4.2"
     "@testing-library/react": "npm:^15.0.3"
@@ -3114,10 +2890,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "clsx@npm:1.2.1"
-  checksum: 10c0/34dead8bee24f5e96f6e7937d711978380647e936a22e76380290e35486afd8634966ce300fc4b74a32f3762c7d4c0303f442c3e259f4ce02374eb0c82834f27
+"clsx@npm:^2.1.0":
+  version: 2.1.1
+  resolution: "clsx@npm:2.1.1"
+  checksum: 10c0/c4c8eb865f8c82baab07e71bfa8897c73454881c4f99d6bc81585aecd7c441746c1399d08363dc096c550cceaf97bd4ce1e8854e1771e9998d9f94c4fe075839
   languageName: node
   linkType: hard
 
@@ -3314,19 +3090,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:2.29.3":
-  version: 2.29.3
-  resolution: "date-fns@npm:2.29.3"
-  checksum: 10c0/aa9128c876ef69a05988029d6aa3d7e5c47a1e978f18b77b48126683d1a2e6605a16c3f5293ca9f4ca790d0755b5061fcea5b469f097871cd53f6590a5c1adc4
-  languageName: node
-  linkType: hard
-
 "date-fns@npm:^2.30.0":
   version: 2.30.0
   resolution: "date-fns@npm:2.30.0"
   dependencies:
     "@babel/runtime": "npm:^7.21.0"
   checksum: 10c0/e4b521fbf22bc8c3db332bbfb7b094fd3e7627de0259a9d17c7551e2d2702608a7307a449206065916538e384f37b181565447ce2637ae09828427aed9cb5581
+  languageName: node
+  linkType: hard
+
+"date-fns@npm:^3.0.0":
+  version: 3.6.0
+  resolution: "date-fns@npm:3.6.0"
+  checksum: 10c0/0b5fb981590ef2f8e5a3ba6cd6d77faece0ea7f7158948f2eaae7bbb7c80a8f63ae30b01236c2923cf89bb3719c33aeb150c715ea4fe4e86e37dcf06bed42fb6
   languageName: node
   linkType: hard
 
@@ -6557,13 +6333,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"murmurhash-js@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "murmurhash-js@npm:1.0.0"
-  checksum: 10c0/f8569e16db0ba6f953bf88286e97cf737f1efe97b224e537c9308566ab963a067c7eca5b636fb473d6413c4cc3b79690b78ff7ab0f290e75db91c6fde0df92b4
-  languageName: node
-  linkType: hard
-
 "mz@npm:^2.7.0":
   version: 2.7.0
   resolution: "mz@npm:2.7.0"
@@ -7371,13 +7140,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-day-picker@npm:8.3.4":
-  version: 8.3.4
-  resolution: "react-day-picker@npm:8.3.4"
+"react-day-picker@npm:8.10.0":
+  version: 8.10.0
+  resolution: "react-day-picker@npm:8.10.0"
   peerDependencies:
-    date-fns: ^2.28.0
+    date-fns: ^2.28.0 || ^3.0.0
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/ae8b9fd2dc59bd00224bd20339ace2017b8eb550687bb06627c9d781507aa2398bbd67cf9926ad3c2748be7098276c7b9b78dbc8a0619ee551e42e5861fad78f
+  checksum: 10c0/e9868aced1e40b4cb7d6cf8d50e250226b38ec7ebea944b65aa9db20a0f36d0581b8a501297d09dcbf2d812de852168952b3fb27990915381629d6e314c2a4d8
   languageName: node
   linkType: hard
 
