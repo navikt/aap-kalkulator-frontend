@@ -1,9 +1,8 @@
+'use client';
 import { Alert, TextField } from '@navikt/ds-react';
-import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 
-import { useFeatureToggleIntl } from '../../hooks/useFeatureToggleIntl';
-import { BrowserState, State } from '../../pages/_app';
+import { BrowserState, State } from '../../_pages/_app';
 import BackLink from '../backlink/BackLink';
 import { FormWrapper } from '../formWrapper/FormWrapper';
 import { WalletIcon } from '../icons/WalletIcon';
@@ -11,10 +10,13 @@ import QuestionHeader from '../questionHeader/QuestionHeader';
 import Radio from '../radio/Radio';
 import Stepper from '../stepper/Stepper';
 import styles from './Arbeid.module.css';
+import { useRouter } from '../../navigation';
+import { useTranslations } from 'next-intl';
+import { useAppState } from '../state/StateContext';
 
 const Arbeid = () => {
   const router = useRouter();
-  const { state, setState } = useContext(State);
+  const [state, setState] = useAppState();
   const [arbeidsTimerError, setArbeidsTimerError] = useState('');
   const [radioErrorArbeid, setRadioErrorArbeid] = useState('');
   const [radioErrorAAP, setRadioErrorAAP] = useState('');
@@ -22,7 +24,7 @@ const Arbeid = () => {
     state.arbeidstimer != undefined && !isNaN(state.arbeidstimer) ? state.arbeidstimer.toString() : ''
   );
   const { browserState } = useContext(BrowserState);
-  const { formatMessage } = useFeatureToggleIntl();
+  const t = useTranslations();
 
   const onArbeidChange = (text: string) => {
     const parsed = parseFloat(text.replace(',', '.'));
@@ -54,12 +56,12 @@ const Arbeid = () => {
 
     if (state.harArbeid === undefined) {
       errors.push('Errors harArbeid');
-      setRadioErrorArbeid(formatMessage('work.gotWork.validation.required'));
+      setRadioErrorArbeid(t('work.gotWork.validation.required'));
     }
 
     if (state.harAAP === undefined) {
       errors.push('Errors harAAP');
-      setRadioErrorAAP(formatMessage('work.gotAAP.required'));
+      setRadioErrorAAP(t('work.gotAAP.required'));
     }
 
     if ((state.arbeidstimer === undefined || state.arbeidstimer < 0) && state.harArbeid) {
@@ -110,17 +112,17 @@ const Arbeid = () => {
         <div className="flex flex-col">
           <Radio
             error={radioErrorAAP}
-            title={formatMessage('work.gotAAP.title')}
+            title={t('work.gotAAP.title')}
             state={state.harAAP}
             onChange={onRadioAAPChange}
-            readMoreTitle={formatMessage('work.gotAAP.readMoreTitle')}
+            readMoreTitle={t('work.gotAAP.readMoreTitle')}
             readMore={
               <div>
-                {formatMessage('work.gotWork.readMore.start')}
+                {t('work.gotWork.readMore.start')}
                 <div>
                   <ul className="list-disc ml-5">
-                    <li>{formatMessage('work.gotWork.readMore.pointOne')}</li>
-                    <li>{formatMessage('work.gotWork.readMore.pointTwo')}</li>
+                    <li>{t('work.gotWork.readMore.pointOne')}</li>
+                    <li>{t('work.gotWork.readMore.pointTwo')}</li>
                   </ul>
                 </div>
               </div>
@@ -130,11 +132,11 @@ const Arbeid = () => {
         <div className="flex flex-col">
           <Radio
             error={radioErrorArbeid}
-            title={formatMessage('work.gotWork.title')}
+            title={t('work.gotWork.title')}
             state={state.harArbeid}
             onChange={onRadioArbeidChange}
-            readMoreTitle={formatMessage('work.gotWork.readMoreTitle')}
-            readMore={formatMessage('work.gotAAP.readMore')}
+            readMoreTitle={t('work.gotWork.readMoreTitle')}
+            readMore={t('work.gotAAP.readMore')}
           />
         </div>
 
@@ -142,8 +144,8 @@ const Arbeid = () => {
           <div className="mb-4">
             <div className="flex flex-row items-center gap-2">
               <TextField
-                label={formatMessage('work.howManyHours.title')}
-                description={formatMessage('work.howManyHours.description')}
+                label={t('work.howManyHours.title')}
+                description={t('work.howManyHours.description')}
                 className={styles.timer}
                 inputMode="numeric"
                 error={arbeidsTimerError}
@@ -153,12 +155,12 @@ const Arbeid = () => {
             </div>
             {(state?.arbeidstimer ?? 0) > 18.75 && !state?.harAAP && (
               <Alert className="mt-4" variant={'warning'}>
-                {formatMessage('work.howManyHours.warning.withoutAAP')}
+                {t('work.howManyHours.warning.withoutAAP')}
               </Alert>
             )}
             {(state?.arbeidstimer ?? 0) > 22.5 && state?.harAAP && (
               <Alert className="mt-4" variant={'warning'}>
-                {formatMessage('work.howManyHours.warning.withAAP')}
+                {t('work.howManyHours.warning.withAAP')}
               </Alert>
             )}
           </div>

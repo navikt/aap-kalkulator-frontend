@@ -1,6 +1,9 @@
-/** @type {import('next').NextConfig} */
+const createNextIntlPlugin = require('next-intl/plugin');
+ 
+const withNextIntl = createNextIntlPlugin();
 
 const assetPrefix = process.env.ASSET_PREFIX ?? undefined
+/** @type {import('next').NextConfig} */
 
 const nextConfig = {
     basePath: "/aap/kalkulator",
@@ -8,10 +11,10 @@ const nextConfig = {
     output: "standalone",
     assetPrefix:
         process.env.NODE_ENV === "production" ? assetPrefix : undefined,
-    i18n: {
+    /*i18n: {
         locales: ["nb", "nn"],
         defaultLocale: "nb",
-    },
+    },*/
 }
 
-module.exports = nextConfig
+module.exports = withNextIntl(nextConfig);

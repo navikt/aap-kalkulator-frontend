@@ -1,9 +1,7 @@
+'use client';
 import { Select } from '@navikt/ds-react';
-import { useRouter } from 'next/router';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 
-import { useFeatureToggleIntl } from '../../hooks/useFeatureToggleIntl';
-import { State } from '../../pages/_app';
 import BackLink from '../backlink/BackLink';
 import { FormWrapper } from '../formWrapper/FormWrapper';
 import { HeartIcon } from '../icons/HeartIcon';
@@ -11,6 +9,9 @@ import QuestionHeader from '../questionHeader/QuestionHeader';
 import Radio from '../radio/Radio';
 import Stepper from '../stepper/Stepper';
 import styles from './Helse.module.css';
+import { useRouter } from '../../navigation';
+import { useTranslations } from 'next-intl';
+import { useAppState } from '../state/StateContext';
 
 interface InntektsForm extends HTMLFormElement {
   readonly inntekt1: HTMLInputElement;
@@ -20,10 +21,10 @@ interface InntektsForm extends HTMLFormElement {
 
 const Helse = () => {
   const router = useRouter();
-  const { state, setState } = useContext(State);
+  const [state, setState] = useAppState();
   const [error, setError] = useState('');
   const [radioError, setRadioError] = useState('');
-  const { formatMessage } = useFeatureToggleIntl();
+  const t = useTranslations();
   const aapGrense = 11;
   let [aar, setAar] = useState(
     state.sykmeldtAar != undefined && !isNaN(state.sykmeldtAar) ? state.sykmeldtAar.toString() : '2023'
@@ -54,19 +55,19 @@ const Helse = () => {
     const sykmeldtAar = parseInt(event.currentTarget.sykmelding.value);
 
     const errors = isNaN(sykmeldtAar)
-      ? formatMessage('helse.nedsattArbeidsevne.validation.required')
+      ? t('helse.nedsattArbeidsevne.validation.required')
       : sykmeldtAar > detteAaret
-      ? formatMessage('helse.nedsattArbeidsevne.validation.max', {
-          Aar: detteAaret.toString(),
-        })
-      : sykmeldtAar < detteAaret - aapGrense
-      ? formatMessage('helse.nedsattArbeidsevne.validation.min', {
-          Aar: aapGrense.toString(),
-        })
-      : '';
+        ? t('helse.nedsattArbeidsevne.validation.max', {
+            Aar: detteAaret.toString(),
+          })
+        : sykmeldtAar < detteAaret - aapGrense
+          ? t('helse.nedsattArbeidsevne.validation.min', {
+              Aar: aapGrense.toString(),
+            })
+          : '';
 
     if (state.over25 == undefined) {
-      setRadioError(formatMessage('helse.over25.validation.required'));
+      setRadioError(t('helse.over25.validation.required'));
     }
 
     setError(errors);
@@ -80,7 +81,7 @@ const Helse = () => {
       sykmeldtAar,
     });
 
-    await router.push('/steg/2');
+    router.push('/steg/2');
   };
 
   const handleChange = (val: string) => {
@@ -92,22 +93,22 @@ const Helse = () => {
     <>
       <Stepper />
       <BackLink target="/" />
-      <QuestionHeader image={<HeartIcon />} tittel={formatMessage('helse.title')} />
+      <QuestionHeader image={<HeartIcon />} tittel={t('helse.title')} />
       <FormWrapper handleSubmit={handleSubmit}>
         <Radio
           error={radioError}
-          title={formatMessage('helse.over25.title')}
+          title={t('helse.over25.title')}
           state={state.over25}
           onChange={(val: any) => handleChange(val)}
-          readMoreTitle={formatMessage('helse.over25.readMoreTitle')}
-          readMore={formatMessage('helse.over25.readMore')}
+          readMoreTitle={t('helse.over25.readMoreTitle')}
+          readMore={t('helse.over25.readMore')}
         />
         <div className="mb-4">
           <div>
             <Select
               className={styles.select}
               id="sykmelding"
-              label={formatMessage('helse.nedsattArbeidsevne.title')}
+              label={t('helse.nedsattArbeidsevne.title')}
               onChange={(event) => onChange(event.target.value)}
               defaultValue={aar}
             >

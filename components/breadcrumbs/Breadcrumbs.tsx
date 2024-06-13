@@ -1,8 +1,10 @@
+'use client';
+
 import { Next } from '@navikt/ds-icons';
 import { BodyShort } from '@navikt/ds-react';
 import { useRef } from 'react';
 
-import { useFeatureToggleIntl } from '../../hooks/useFeatureToggleIntl';
+import { useTranslations } from 'next-intl';
 
 interface CrumbInterface {
   path: string;
@@ -33,20 +35,16 @@ const Crumb = ({ path, title, isClickable }: CrumbInterface) => {
 
 const Breadcrumbs = () => {
   const breadcrumbRef = useRef<HTMLElement>(null);
-  const { formatMessage } = useFeatureToggleIntl();
+  const t = useTranslations();
 
   return (
     <nav ref={breadcrumbRef} aria-label="Du er her: ">
       <ul className="flex flex-row gap-1 my-4 items-center ml-2">
-        <Crumb path="https://www.nav.no/aap" title={formatMessage('location')} isClickable={true} />
+        <Crumb path="https://www.nav.no/aap" title={t('location')} isClickable={true} />
         <li>
           <Next aria-hidden="true" />
         </li>
-        <Crumb
-          path="https://aap-kalkulator-frontend.dev.nav.no"
-          title={formatMessage('banner.title')}
-          isClickable={false}
-        />
+        <Crumb path="https://aap-kalkulator-frontend.dev.nav.no" title={t('banner.title')} isClickable={false} />
       </ul>
     </nav>
   );

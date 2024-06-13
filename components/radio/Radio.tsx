@@ -1,7 +1,7 @@
 import { Radio as DSRadio, RadioGroup, ReadMore } from '@navikt/ds-react';
 import React, { ReactNode } from 'react';
 
-import { useFeatureToggleIntl } from '../../hooks/useFeatureToggleIntl';
+import { useTranslations } from 'next-intl';
 
 const Radio = ({
   title,
@@ -18,7 +18,7 @@ const Radio = ({
   onChange: (newState: string) => void;
   error: ReactNode;
 }) => {
-  const { formatMessage } = useFeatureToggleIntl();
+  const t = useTranslations();
   const description = (
     <ReadMore size="small" header={readMoreTitle}>
       {readMore}
@@ -33,8 +33,8 @@ const Radio = ({
       value={state == undefined ? '' : state ? 'Ja' : 'Nei'}
       error={error}
     >
-      <DSRadio value="Ja">{formatMessage('options.yes')}</DSRadio>
-      <DSRadio value="Nei">{formatMessage('options.no')}</DSRadio>
+      <DSRadio value="Ja">{t('options.yes')}</DSRadio>
+      <DSRadio value="Nei">{t('options.no')}</DSRadio>
     </RadioGroup>
   );
 };

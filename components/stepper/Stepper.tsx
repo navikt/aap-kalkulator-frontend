@@ -1,15 +1,15 @@
+'use client';
 import { Edit, Success } from '@navikt/ds-icons';
 import { BodyShort, Link } from '@navikt/ds-react';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
 import React, { useRef } from 'react';
 
-import { useFeatureToggleIntl } from '../../hooks/useFeatureToggleIntl';
 import Divider from '../divider/Divider';
+import { useTranslations } from 'next-intl';
+import { usePathname } from '../../navigation';
 
 const Step = ({ title, stepNumber, isLast }: { title: string; stepNumber: number; isLast: boolean }) => {
-  const router = useRouter();
-  const path = router.asPath.split('/');
+  const path = usePathname().split('/');
   const current_step = path[path.length - 1] == 'resultat' ? 5 : parseInt(path[path.length - 1]);
   const isCurrentPage = stepNumber === current_step;
   const circleStyling = 'flex rounded-full w-8 h-8 items-center justify-center mb-2';
@@ -57,14 +57,8 @@ const Step = ({ title, stepNumber, isLast }: { title: string; stepNumber: number
 
 const Stepper = () => {
   const stepperRef = useRef<HTMLElement>(null);
-  const { formatMessage } = useFeatureToggleIntl();
-  const steps = [
-    formatMessage('helse.title'),
-    formatMessage('income.title'),
-    formatMessage('work.title'),
-    formatMessage('children.title'),
-    formatMessage('result.stepTitle'),
-  ];
+  const t = useTranslations();
+  const steps = [t('helse.title'), t('income.title'), t('work.title'), t('children.title'), t('result.stepTitle')];
   return (
     <nav aria-label="Steg i skjema" ref={stepperRef}>
       <ul className="flex flex-row justify-center pb-4 items-center md:px-8 px-0">

@@ -17,7 +17,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
@@ -25,7 +30,8 @@
     "**/*.tsx",
     "node_modules/ts-jest/globals.d.ts",
     "node_modules/ts-jest/globals.d.ts",
-    "node_modules/ts-jest/globals.d.ts"
+    "node_modules/ts-jest/globals.d.ts",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

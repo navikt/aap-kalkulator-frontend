@@ -1,15 +1,17 @@
+'use client';
 import { BodyShort, Label, TextField } from '@navikt/ds-react';
-import { useRouter } from 'next/router';
 import { ChangeEvent, useContext, useState } from 'react';
 
-import { useFeatureToggleIntl } from '../../hooks/useFeatureToggleIntl';
-import { BrowserState, State } from '../../pages/_app';
+import { BrowserState } from '../../_pages/_app';
 import BackLink from '../backlink/BackLink';
 import { FormWrapper } from '../formWrapper/FormWrapper';
 import { CoinIcon } from '../icons/CoinIcon';
 import QuestionHeader from '../questionHeader/QuestionHeader';
 import Radio from '../radio/Radio';
 import Stepper from '../stepper/Stepper';
+import { useRouter } from '../../navigation';
+import { useTranslations } from 'next-intl';
+import { useAppState } from '../state/StateContext';
 
 interface InntektInterface {
   inntekt1: string;
@@ -19,8 +21,8 @@ interface InntektInterface {
 
 const Inntekt = () => {
   const router = useRouter();
-  const { formatMessage } = useFeatureToggleIntl();
-  const { state, setState } = useContext(State);
+  const t = useTranslations();
+  const [state, setState] = useAppState();
   const [error, setError] = useState<string[]>(['', '', '']);
   const { browserState } = useContext(BrowserState);
   const [radioError, setRadioError] = useState<string>('');
@@ -63,7 +65,7 @@ const Inntekt = () => {
     ];
     setError(errors);
     if (state.harLoenn == undefined) {
-      setRadioError(formatMessage('income.gotIncome.validation.required'));
+      setRadioError(t('income.gotIncome.validation.required'));
     }
     if ((errors.some((v) => v.length > 0) && state.harLoenn == true) || state.harLoenn == undefined) {
       return;
@@ -108,31 +110,31 @@ const Inntekt = () => {
 
   const readMoreText = (
     <div>
-      <BodyShort spacing>{formatMessage('income.gotIncome.readMore1')}</BodyShort>
+      <BodyShort spacing>{t('income.gotIncome.readMore1')}</BodyShort>
     </div>
   );
   return (
     <>
       <Stepper />
       <BackLink target="/steg/1" />
-      <QuestionHeader image={<CoinIcon />} tittel={formatMessage('income.title')} />
+      <QuestionHeader image={<CoinIcon />} tittel={t('income.title')} />
       <FormWrapper handleSubmit={handleSubmit}>
         <Radio
           error={radioError}
-          title={formatMessage('income.gotIncome.title', {
+          title={t('income.gotIncome.title', {
             inntektsAar2: inntektsAar[2].toString(),
             inntektsAar0: inntektsAar[0].toString(),
           })}
           state={state.harLoenn}
           onChange={onRadioChange}
-          readMoreTitle={formatMessage('income.gotIncome.readMoreTitle')}
+          readMoreTitle={t('income.gotIncome.readMoreTitle')}
           readMore={readMoreText}
         />
 
         {state.harLoenn && (
           <fieldset>
-            <Label>{formatMessage('income.howMuch.title')}</Label>
-            <BodyShort spacing>{formatMessage('income.howMuch.description')}</BodyShort>
+            <Label>{t('income.howMuch.title')}</Label>
+            <BodyShort spacing>{t('income.howMuch.description')}</BodyShort>
             <div className="flex md:flex-row flex-col gap-4">
               {inntektsAar.reverse().map((aar, index) => (
                 <div key={index} className="flex flex-col">

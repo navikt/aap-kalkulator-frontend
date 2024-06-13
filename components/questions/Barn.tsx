@@ -1,9 +1,8 @@
+'use client';
 import { BodyShort, Link, TextField } from '@navikt/ds-react';
-import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 
-import { useFeatureToggleIntl } from '../../hooks/useFeatureToggleIntl';
-import { BrowserState, State } from '../../pages/_app';
+import { BrowserState, State } from '../../_pages/_app';
 import BackLink from '../backlink/BackLink';
 import { FormWrapper } from '../formWrapper/FormWrapper';
 import { TeddyIcon } from '../icons/TeddyIcon';
@@ -11,14 +10,16 @@ import QuestionHeader from '../questionHeader/QuestionHeader';
 import Radio from '../radio/Radio';
 import Stepper from '../stepper/Stepper';
 import styles from './Barn.module.css';
+import { useRouter } from '../../navigation';
+import { useTranslations } from 'next-intl';
+import { useAppState } from '../state/StateContext';
 
 const Barn = () => {
   const router = useRouter();
-  const { state, setState } = useContext(State);
+  const [state, setState] = useAppState();
   const [error, setError] = useState('');
   const [radioError, setRadioError] = useState<string | undefined>(undefined);
-  const { browserState } = useContext(BrowserState);
-  const { formatMessage } = useFeatureToggleIntl();
+  const t = useTranslations();
   const [antallBarn, setAntallBarn] = useState(
     state.antallBarn != undefined && !isNaN(state.antallBarn) ? state.antallBarn.toString() : ''
   );
@@ -60,30 +61,28 @@ const Barn = () => {
       return;
     }
 
-    await router.push('/resultat');
+    router.push('/resultat');
   };
   if (state.sykmeldtAar === undefined) {
-    browserState.redirect = true;
     router.push('/');
-    return <></>;
   }
 
   return (
     <>
       <Stepper />
       <BackLink target="/steg/3" />
-      <QuestionHeader image={<TeddyIcon />} tittel={formatMessage('children.title')} />
+      <QuestionHeader image={<TeddyIcon />} tittel={t('children.title')} />
       <FormWrapper handleSubmit={handleSubmit}>
         <Radio
           error={radioError}
-          title={formatMessage('children.gotChildren.title')}
-          readMoreTitle={formatMessage('children.gotChildren.readMoreTitle')}
+          title={t('children.gotChildren.title')}
+          readMoreTitle={t('children.gotChildren.readMoreTitle')}
           readMore={
             <>
               <BodyShort>
-                {formatMessage('children.gotChildren.readMore')}
+                {t('children.gotChildren.readMore')}
                 <Link href="https://www.nav.no/aap#hvormye-forsorgerbarn" target="_blank" rel="noreferrer" as={'a'}>
-                  {formatMessage('children.gotChildren.lesMer')}
+                  {t('children.gotChildren.lesMer')}
                 </Link>
               </BodyShort>
             </>
@@ -99,8 +98,8 @@ const Barn = () => {
                   inputMode="numeric"
                   className={styles.textfield}
                   id="antallBarn"
-                  label={formatMessage('children.howMany.title')}
-                  description={formatMessage('children.howMany.description')}
+                  label={t('children.howMany.title')}
+                  description={t('children.howMany.description')}
                   value={antallBarn}
                   onChange={(event) => onChange(event.target.value)}
                   error={error}
