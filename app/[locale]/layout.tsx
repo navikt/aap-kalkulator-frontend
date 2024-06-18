@@ -17,6 +17,27 @@ const RootLayout = async ({ params, children }: { params: { locale: string }; ch
       chatbot: false,
       feedback: false,
       urlLookupTable: false,
+      language: (params.locale as 'nb' | 'nn') ?? 'nb',
+      availableLanguages: [
+        {
+          locale: 'nb',
+          url: 'https://www.nav.no/aap/kalkulator/nb',
+        },
+        {
+          locale: 'nn',
+          url: 'https://www.nav.no/aap/kalkulator/nn',
+        },
+      ],
+      breadcrumbs: [
+        {
+          title: 'Arbeidsavklaringspenger',
+          url: 'https://www.nav.no/aap',
+        },
+        {
+          title: 'AAP-kalkulator',
+          url: 'https://www.nav.no/aap/kalkulator',
+        },
+      ],
     },
   });
 
@@ -47,8 +68,8 @@ const RootLayout = async ({ params, children }: { params: { locale: string }; ch
             </div>
           </StateProvider>
           <Decorator.Footer />
-          <Decorator.Scripts />
         </NextIntlClientProvider>
+        <Decorator.Scripts />
       </body>
     </html>
   );
