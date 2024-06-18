@@ -1,8 +1,7 @@
 'use client';
 import { BodyShort, Link, TextField } from '@navikt/ds-react';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 
-import { BrowserState, State } from '../../_pages/_app';
 import BackLink from '../backlink/BackLink';
 import { FormWrapper } from '../formWrapper/FormWrapper';
 import { TeddyIcon } from '../icons/TeddyIcon';

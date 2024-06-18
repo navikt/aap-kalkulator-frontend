@@ -1,8 +1,7 @@
 'use client';
 import { Alert, TextField } from '@navikt/ds-react';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 
-import { BrowserState, State } from '../../_pages/_app';
 import BackLink from '../backlink/BackLink';
 import { FormWrapper } from '../formWrapper/FormWrapper';
 import { WalletIcon } from '../icons/WalletIcon';
@@ -23,7 +22,7 @@ const Arbeid = () => {
   const [arbeidsTimer, setArbeidsTimer] = useState(
     state.arbeidstimer != undefined && !isNaN(state.arbeidstimer) ? state.arbeidstimer.toString() : ''
   );
-  const { browserState } = useContext(BrowserState);
+
   const t = useTranslations();
 
   const onArbeidChange = (text: string) => {
@@ -98,9 +97,7 @@ const Arbeid = () => {
   };
 
   if (state.sykmeldtAar === undefined) {
-    browserState.redirect = true;
     router.push('/');
-    return <></>;
   }
 
   return (

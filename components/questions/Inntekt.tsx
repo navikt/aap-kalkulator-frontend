@@ -1,8 +1,7 @@
 'use client';
 import { BodyShort, Label, TextField } from '@navikt/ds-react';
-import { ChangeEvent, useContext, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
-import { BrowserState } from '../../_pages/_app';
 import BackLink from '../backlink/BackLink';
 import { FormWrapper } from '../formWrapper/FormWrapper';
 import { CoinIcon } from '../icons/CoinIcon';
@@ -24,7 +23,6 @@ const Inntekt = () => {
   const t = useTranslations();
   const [state, setState] = useAppState();
   const [error, setError] = useState<string[]>(['', '', '']);
-  const { browserState } = useContext(BrowserState);
   const [radioError, setRadioError] = useState<string>('');
   const [inntekt, setInntekt] = useState<InntektInterface>({
     inntekt1: state.inntekt1 != undefined && !isNaN(state.inntekt1) ? state.inntekt1.toLocaleString('nb-NO') : '',
@@ -78,11 +76,10 @@ const Inntekt = () => {
       inntekt3,
     });
 
-    await router.push('/steg/3');
+    router.push('/steg/3');
   };
 
   if (state.sykmeldtAar === undefined) {
-    browserState.redirect = true;
     router.push('/');
     return <></>;
   }
@@ -100,9 +97,9 @@ const Inntekt = () => {
     setState({
       ...state,
       harLoenn: value == 'Ja',
-      inntekt1: state.inntekt1 !== undefined && !isNaN(state.inntekt1) ? state.inntekt1.toLocaleString('nb-NO') : '',
-      inntekt2: state.inntekt2 !== undefined && !isNaN(state.inntekt2) ? state.inntekt2.toLocaleString('nb-NO') : '',
-      inntekt3: state.inntekt3 !== undefined && !isNaN(state.inntekt3) ? state.inntekt3.toLocaleString('nb-NO') : '',
+      inntekt1: state.inntekt1 !== undefined && !isNaN(state.inntekt1) ? state.inntekt1 : undefined,
+      inntekt2: state.inntekt2 !== undefined && !isNaN(state.inntekt2) ? state.inntekt2 : undefined,
+      inntekt3: state.inntekt3 !== undefined && !isNaN(state.inntekt3) ? state.inntekt3 : undefined,
     });
     setError(['', '', '']);
     setRadioError('');

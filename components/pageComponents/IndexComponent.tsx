@@ -2,7 +2,7 @@
 
 import { useRouter } from '../../navigation';
 import { logAmplitudeEvent } from '../../lib/utils/amplitude';
-import { Alert, Button, Heading } from '@navikt/ds-react';
+import { Button, Heading } from '@navikt/ds-react';
 import { MagnifyingGlassIcon } from '../icons/MagnifyingGlassIcon';
 import Divider from '../divider/Divider';
 import { useTranslations } from 'next-intl';
