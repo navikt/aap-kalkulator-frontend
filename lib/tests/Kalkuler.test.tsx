@@ -106,22 +106,22 @@ describe('integrasjon', () => {
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
-    expect(resultat.resultat).toBe(288474);
+    expect(resultat.resultat).toBe(293045);
     expect(resultat.logs).toHaveLength(6);
     expect(resultat.logs[0]).toEqual({
       id: 'logic.salery.minsteGrunnlag',
-      values: { res: '337 809' },
+      values: { res: '344 734' },
     });
     expect(resultat.logs[1]).toEqual({
       id: 'logic.salery.reductionMin',
-      values: { res: '222 954' },
+      values: { res: '227 525' },
     });
     expect(resultat.logs[2]).toEqual({
       id: 'logic.children.possibleChildsupport',
       values: {
         childAmount: '7',
         perChild: '9 360',
-        res: '288 474',
+        res: '293 045',
         totChild: '65 520',
       },
     });
@@ -140,7 +140,7 @@ describe('integrasjon', () => {
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
-    expect(resultat.resultat).toBe(297_834);
+    expect(resultat.resultat).toBe(302_405);
     expect(resultat.logs).toHaveLength(6);
   });
   it('ytelse med grunnbeløp 6g, 22 barn og 0 arbeidsgrad', () => {
@@ -191,7 +191,7 @@ describe('integrasjon', () => {
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
-    expect(resultat.resultat).toBe(224813);
+    expect(resultat.resultat).toBe(227525);
     expect(resultat.logs).toHaveLength(4);
   });
   it('ytelse med grunnbeløp 6g, 24 barn og 0 arbeidsgrad', () => {
@@ -226,7 +226,7 @@ describe('integrasjon', () => {
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
-    expect(resultat.resultat).toBe(133772);
+    expect(resultat.resultat).toBe(136515);
     expect(resultat.logs).toHaveLength(4);
   });
   it('ytelse med grunnbeløp 2g, 15 barn og 50% arbeidsgrad', () => {
@@ -245,32 +245,32 @@ describe('integrasjon', () => {
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
-    expect(resultat.resultat).toBe(152014);
+    expect(resultat.resultat).toBe(155130);
     expect(resultat.logs).toHaveLength(6);
     expect(resultat.logs[0]).toEqual({
       id: 'logic.salery.minsteGrunnlag',
-      values: { res: '337 809' },
+      values: { res: '344 734' },
     });
     expect(resultat.logs[1]).toEqual({
       id: 'logic.salery.reductionMin',
-      values: { res: '222 954' },
+      values: { res: '227 525' },
     });
     expect(resultat.logs[2]).toEqual({
       id: 'logic.children.maxChildren',
       values: {
-        maksBarneTillegg: '81 075',
+        maksBarneTillegg: '82 737',
         perChild: '9 360',
-        res: '304 028',
+        res: '310 261',
       },
     });
     expect(resultat.logs[4]).toEqual({
       id: 'logic.work.justEnough',
       values: {
         hoursWorked: '18.75',
-        oldRes: '304 028',
+        oldRes: '310 261',
         percentWorked: '50',
         percentWorked2: '50',
-        res: '152 014',
+        res: '155 130',
       },
     });
   });
@@ -397,6 +397,6 @@ describe('integrasjon', () => {
       over25: false,
     };
     const resultat = kalkuler(state, g, historikk);
-    expect(resultat.resultat).toBe(148_636);
+    expect(resultat.resultat).toBe(151_683);
   });
 });

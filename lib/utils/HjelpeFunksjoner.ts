@@ -1,15 +1,17 @@
 export const YTELSESDAGER = 260;
 
+const MINSTE_ÅRLIG_YTELSE = 2.041;
+const BROEK = 0.66;
+
 export const ytelseTilGrunnlag = (ytelse: number) => {
-  const broek = 0.66;
-  return ytelse / broek;
+  return ytelse / BROEK;
 };
 export const minsteGrunnlagFraG = (g: number) => {
-  return (2 * g) / 0.66;
+  return (MINSTE_ÅRLIG_YTELSE * g) / BROEK;
 };
 
 export const minsteGrunnlagUnder25FraG = (g: number) => {
-  return (2 * g * (2.0 / 3.0)) / 0.66;
+  return (MINSTE_ÅRLIG_YTELSE * g * (2.0 / 3.0)) / BROEK;
 };
 
 export const maksGrunnlagFraG = (g: number) => {
@@ -17,7 +19,7 @@ export const maksGrunnlagFraG = (g: number) => {
 };
 
 export const prosentReduksjon = (res: number) => {
-  return res * 0.66;
+  return res * BROEK;
 };
 
 export const toKr = (resultat: number) => {
