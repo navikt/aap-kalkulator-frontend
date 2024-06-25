@@ -631,16 +631,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/ecma402-abstract@npm:^1.11.4":
-  version: 1.18.3
-  resolution: "@formatjs/ecma402-abstract@npm:1.18.3"
-  dependencies:
-    "@formatjs/intl-localematcher": "npm:0.5.4"
-    tslib: "npm:^2.4.0"
-  checksum: 10c0/daee00497618905b535f8ff67fcb2a3f5478e0c40980297e735273fb87bf6ac9645ca28ecf284681b446d2666bd33c36d94dc095510d1e115c4ce34f4bb4bcf5
-  languageName: node
-  linkType: hard
-
 "@formatjs/fast-memoize@npm:2.2.0":
   version: 2.2.0
   resolution: "@formatjs/fast-memoize@npm:2.2.0"
@@ -1093,17 +1083,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/aksel-icons@npm:^6.10.1":
-  version: 6.10.1
-  resolution: "@navikt/aksel-icons@npm:6.10.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faksel-icons%2F6.10.1%2F9ed7d24b6ecdea45f30e98fb86ca64cb91caaab5"
-  checksum: 10c0/a044eed399c2eb0f515a5781ac3a718ef6b5d925380b5bd91fc9b6f0d5323c2761256e785faea967a5b87ed18f1daa3e4e45b957b93832de60c9f1b7633b96d3
+"@navikt/aksel-icons@npm:^6.11.0":
+  version: 6.11.0
+  resolution: "@navikt/aksel-icons@npm:6.11.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faksel-icons%2F6.11.0%2F77b15cf3dd8cd4240862b8bb212a3e94c7b507f8"
+  checksum: 10c0/3554e780c682eed8e6688ce23a27417fb09441dd86ee4970bef6cc84c1fc1d20b4e1f923fd5a42b97880e5a235d9c31b5fce339316bdf237e6e49ad1258451f7
   languageName: node
   linkType: hard
 
-"@navikt/ds-css@npm:^6.10.1":
-  version: 6.10.1
-  resolution: "@navikt/ds-css@npm:6.10.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-css%2F6.10.1%2F4d4c458f7de7e8836f96b06119e44b4a3c2b23a2"
-  checksum: 10c0/d8780321ee2bb4ea0dab410bc1f9f859439539e55125d22184fd83be5da8e4ad8e4500c6310a9f06f1c7ce8e935792f70a97e09a829c559f08304e32b54f5672
+"@navikt/ds-css@npm:^6.11.0":
+  version: 6.11.0
+  resolution: "@navikt/ds-css@npm:6.11.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-css%2F6.11.0%2Fd71f2ada5c3376a5bba21d876604f7b9f946fff3"
+  checksum: 10c0/be46daa005d28b06fc3f325a7d38cb7f01ca1dcc4f6194298829e0e885e624a7cc2ea53151eb9079c459afd9308e4a86eec2f3fc7664c8544b691aa2e5933627
   languageName: node
   linkType: hard
 
@@ -1117,35 +1107,35 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-react@npm:^6.10.1":
-  version: 6.10.1
-  resolution: "@navikt/ds-react@npm:6.10.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-react%2F6.10.1%2F0bbb741134b2a1233ba54f9f494b294eeab8991c"
+"@navikt/ds-react@npm:^6.11.0":
+  version: 6.11.0
+  resolution: "@navikt/ds-react@npm:6.11.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-react%2F6.11.0%2Fd5570c1f831bbf7dfbbd005693f59fe74f67d1ee"
   dependencies:
     "@floating-ui/react": "npm:0.25.4"
     "@floating-ui/react-dom": "npm:^2.0.9"
-    "@navikt/aksel-icons": "npm:^6.10.1"
-    "@navikt/ds-tokens": "npm:^6.10.1"
+    "@navikt/aksel-icons": "npm:^6.11.0"
+    "@navikt/ds-tokens": "npm:^6.11.0"
     clsx: "npm:^2.1.0"
     date-fns: "npm:^3.0.0"
     react-day-picker: "npm:8.10.0"
   peerDependencies:
     "@types/react": ^17.0.30 || ^18.0.0
     react: ^17.0.0 || ^18.0.0
-  checksum: 10c0/7eacaeec25eea7596bcefe6a341bb31a9d9b6d728bee65f6d22b5ba376ab28b44355360a0f801ac0b1e6da6a5a6fe9d5728d16fca3c24ba2a7662418e99a9a5e
+  checksum: 10c0/f2ab020a5cf5939680407082eb82b9f1357d24462865e4379d4a3e2eef66ba9ac872dc6216095701b9b20ace2682ce9d97aafb4f89e4f0a404ada143a413cd99
   languageName: node
   linkType: hard
 
-"@navikt/ds-tailwind@npm:^6.10.1":
-  version: 6.10.1
-  resolution: "@navikt/ds-tailwind@npm:6.10.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-tailwind%2F6.10.1%2F78129f0d980928327ac4efcef8736790473b014a"
-  checksum: 10c0/62e1bad7798b564b21457b026ab995379575c914983303de18c10cde7932349e4e619d2750134452efb8a28bee72504d24ae12abf17453a714fbe81a4cba5944
+"@navikt/ds-tailwind@npm:^6.11.0":
+  version: 6.11.0
+  resolution: "@navikt/ds-tailwind@npm:6.11.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-tailwind%2F6.11.0%2F1d48fa680910badc3cb678bc7a97e3ba83ef18ec"
+  checksum: 10c0/bf2cbe8cef6eb5820564d32bd014b84b1ba28a0b55c65a7152a8c1284c819cde16c6ee2499abefe250a4773e79bdc9b7048f4463da4ce4537a13464dad26e7b0
   languageName: node
   linkType: hard
 
-"@navikt/ds-tokens@npm:^6.10.1":
-  version: 6.10.1
-  resolution: "@navikt/ds-tokens@npm:6.10.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-tokens%2F6.10.1%2Fedde2f97afeb90b5d2912d8c98ff6f56457b9e3b"
-  checksum: 10c0/b631c56510559205a5357b7e8cd2664b896c9895a239d6b4c79564a4c610ee38438ad7b27f693ac9b1b699f8ea61990c1275b90c9766191a972279ce8a5da497
+"@navikt/ds-tokens@npm:^6.11.0":
+  version: 6.11.0
+  resolution: "@navikt/ds-tokens@npm:6.11.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-tokens%2F6.11.0%2Fad1fc80e0934e1576e1c1f88a74eb52e40771e9b"
+  checksum: 10c0/025f103247046ec2eea69a3e2a31c1ac5c56a18ea7594a85ba38e0ce2748f502def24e599d7017e4942c0b0ae658a0aacb373e9d01e30ed8414d1a03ee356307
   languageName: node
   linkType: hard
 
@@ -1698,12 +1688,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.14.2":
-  version: 20.14.2
-  resolution: "@types/node@npm:20.14.2"
+"@types/node@npm:20.14.7":
+  version: 20.14.7
+  resolution: "@types/node@npm:20.14.7"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10c0/2d86e5f2227aaa42212e82ea0affe72799111b888ff900916376450b02b09b963ca888b20d9c332d8d2b833ed4781987867a38eaa2e4863fa8439071468b0a6f
+  checksum: 10c0/6211ffe86f769a58617e3bdca58610256021ef54bd99d2c442ee6109196cd6ee8e0bcd1cfac0e39bf4bb353f8900fa5fae540485a03816bd91ad1f86a0e18512
   languageName: node
   linkType: hard
 
@@ -2047,17 +2037,17 @@ __metadata:
     "@axe-core/playwright": "npm:^4.9.1"
     "@grafana/faro-web-sdk": "npm:^1.7.3"
     "@navikt/aap-felles-prettier": "npm:^1.0.2"
-    "@navikt/ds-css": "npm:^6.10.1"
+    "@navikt/ds-css": "npm:^6.11.0"
     "@navikt/ds-icons": "npm:^3.4.3"
-    "@navikt/ds-react": "npm:^6.10.1"
-    "@navikt/ds-tailwind": "npm:^6.10.1"
+    "@navikt/ds-react": "npm:^6.11.0"
+    "@navikt/ds-tailwind": "npm:^6.11.0"
     "@navikt/eslint-config-aap": "npm:^1.0.2"
     "@navikt/nav-dekoratoren-moduler": "npm:^2.1.6"
     "@playwright/test": "npm:^1.44.1"
     "@testing-library/jest-dom": "npm:^6.4.6"
     "@testing-library/react": "npm:^15.0.7"
     "@types/jest": "npm:^29.5.12"
-    "@types/node": "npm:20.14.2"
+    "@types/node": "npm:20.14.7"
     "@types/react": "npm:^18.3.3"
     "@types/react-collapse": "npm:^5.0.4"
     "@types/react-dom": "npm:^18.3.0"
@@ -2077,7 +2067,7 @@ __metadata:
     json-diff: "npm:^1.0.6"
     lint-staged: "npm:^15.2.7"
     next: "npm:^14.2.4"
-    next-intl: "npm:^3.15.0"
+    next-intl: "npm:^3.15.2"
     node-fetch: "npm:^3.3.2"
     postcss: "npm:^8.4.38"
     prettier: "npm:^3.3.2"
@@ -4781,7 +4771,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"intl-messageformat@npm:10.5.14, intl-messageformat@npm:^10.5.11":
+"intl-messageformat@npm:10.5.14, intl-messageformat@npm:^10.5.14":
   version: 10.5.14
   resolution: "intl-messageformat@npm:10.5.14"
   dependencies:
@@ -6336,17 +6326,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-intl@npm:^3.15.0":
-  version: 3.15.0
-  resolution: "next-intl@npm:3.15.0"
+"next-intl@npm:^3.15.2":
+  version: 3.15.2
+  resolution: "next-intl@npm:3.15.2"
   dependencies:
     "@formatjs/intl-localematcher": "npm:^0.2.32"
     negotiator: "npm:^0.6.3"
-    use-intl: "npm:^3.15.0"
+    use-intl: "npm:^3.15.2"
   peerDependencies:
     next: ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/28f5380397490fb8990c87b3e7d3f16f1b85f2e9bb155accd029ea8b93151baf5d435b41475c267ca2bfdd51ba1e9ec23a538a3a8b724a2772a2c141f97a33e0
+  checksum: 10c0/9562615bc1597e57783be07a91217c8d3bbfa5d8dafe9000c0c8a4087e1352263849dabf78a63908748f90235cc12b5c78f7729c7dabae0a3d094255fa5a89cb
   languageName: node
   linkType: hard
 
@@ -8303,15 +8293,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-intl@npm:^3.15.0":
-  version: 3.15.0
-  resolution: "use-intl@npm:3.15.0"
+"use-intl@npm:^3.15.2":
+  version: 3.15.2
+  resolution: "use-intl@npm:3.15.2"
   dependencies:
-    "@formatjs/ecma402-abstract": "npm:^1.11.4"
-    intl-messageformat: "npm:^10.5.11"
+    intl-messageformat: "npm:^10.5.14"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 10c0/029554a87b98dba14fc4abb4980e0218988cc8e92f8f2054001b9420d0b33feca57af824e03269ac22386ab7c28fc2ebfd61a9c0a07dc966dccb206624fc588f
+  checksum: 10c0/dc1afecbd5c75156fcbc1d5514054c2b04be42d908f1e84ae2dc8144449b0617e318dcd50f4d4b7dfd7d361189f9ec3b8dda45401ebf55108c07f05c36d30108
   languageName: node
   linkType: hard
 

@@ -4,14 +4,13 @@ import '../../styles/globals.css';
 import { fetchDecoratorReact } from '@navikt/nav-dekoratoren-moduler/ssr';
 import { getMessages } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
-import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import Banner from '../../components/banner/Banner';
 import { StateProvider } from '../../components/state/StateContext';
 
 const RootLayout = async ({ params, children }: { params: { locale: string }; children: React.ReactNode }) => {
   console.log('RootLayout', params);
   const Decorator = await fetchDecoratorReact({
-    env: 'devNext',
+    env: process.env.NEXT_PUBLIC_DEKORATOR_ENV ?? 'prod',
     params: {
       simple: false,
       chatbot: false,
@@ -21,11 +20,13 @@ const RootLayout = async ({ params, children }: { params: { locale: string }; ch
       availableLanguages: [
         {
           locale: 'nb',
-          url: 'https://www.nav.no/aap/kalkulator/nb',
+          url: `${process.env.NEXT_PUBLIC_BASE_URL}/nb`,
+          handleInApp: true,
         },
         {
           locale: 'nn',
-          url: 'https://www.nav.no/aap/kalkulator/nn',
+          url: `${process.env.NEXT_PUBLIC_BASE_URL}/nn`,
+          handleInApp: true,
         },
       ],
       breadcrumbs: [
@@ -35,7 +36,7 @@ const RootLayout = async ({ params, children }: { params: { locale: string }; ch
         },
         {
           title: 'AAP-kalkulator',
-          url: 'https://www.nav.no/aap/kalkulator',
+          url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
         },
       ],
     },
@@ -56,9 +57,8 @@ const RootLayout = async ({ params, children }: { params: { locale: string }; ch
             <div className="min-h-container bg-bg-subtle">
               <Banner />
               <div className="px-4 md:px-12">
-                <main className="max-w-[900px] mx-auto pb-8">
+                <main className="max-w-[900px] mx-auto pb-8 mt-6">
                   <div className="max-w-[600px]">
-                    <Breadcrumbs />
                     <div className="bg-surface-default p-6 md:p-10 " id="maincontent" tabIndex={-1}>
                       {children}
                     </div>
