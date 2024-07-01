@@ -42,3 +42,5 @@ yarn-error.log*
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+.yarn/instal-state.gz
