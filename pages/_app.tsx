@@ -1,6 +1,6 @@
 import { initializeFaro } from '@grafana/faro-web-sdk';
 import '@navikt/ds-css';
-import { DecoratorLocale } from '@navikt/nav-dekoratoren-moduler';
+import {DecoratorLocale, setParams} from '@navikt/nav-dekoratoren-moduler';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -58,6 +58,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [browserState, setBrowserState] = useState<BrowserInterface>({
     redirect: false,
   });
+  useEffect(() => {
+    setParams({language: locale as DecoratorLocale})
+  }, []);
 
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_FARO_URL) {
