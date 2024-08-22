@@ -24,7 +24,7 @@ const Banner = () => {
               |
             </p>
             <p className="text-gray-600 text-sm">
-              {formatMessage('banner.updated')} {format(dato, 'dd. MMMM yyyy', { locale: nb })}
+              {formatMessage('banner.updated')} {format(dato, 'd. MMMM yyyy', { locale: nb })}
             </p>
           </div>
         </div>
