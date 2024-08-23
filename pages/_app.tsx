@@ -59,7 +59,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     redirect: false,
   });
   useEffect(() => {
-    setParams({language: locale as DecoratorLocale})
+    setParams({language: locale as DecoratorLocale, enforceLogin: false, logoutWarning: false})
   }, []);
 
   useEffect(() => {
