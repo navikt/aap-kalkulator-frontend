@@ -93,7 +93,7 @@ jobs:
                 team: aap
 
             - name: Build and push Docker
-              uses: docker/build-push-action@v4
+              uses: docker/build-push-action@v6
               with:
                 context: .
                 file: Dockerfile
