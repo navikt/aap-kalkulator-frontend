@@ -36,7 +36,7 @@ jobs:
       appname: 'aap-kalkulator-frontend'
       playwright: false
       cdn: true
-      appsecrets: NEXT_PUBLIC_LAST_UPDATED=${{ needs.timestamp.outputs.lastupdated}}
+      dynamicenv: NEXT_PUBLIC_LAST_UPDATED=${{ needs.timestamp.outputs.lastupdated}}
   deployDev:
     needs: buildDev
     uses: navikt/aap-workflows/.github/workflows/deploy.yml@main
