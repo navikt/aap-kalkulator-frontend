@@ -18,7 +18,7 @@
     "@navikt/ds-icons": "^3.4.3",
     "@navikt/ds-react": "^6.10.1",
     "@navikt/ds-tailwind": "^6.10.1",
-    "@navikt/nav-dekoratoren-moduler": "^2.1.6",
+    "@navikt/nav-dekoratoren-moduler": "^3.1.1",
     "date-fns": "^3.6.0",
     "next": "^14.2.10",
     "node-fetch": "^3.3.2",
