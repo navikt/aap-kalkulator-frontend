@@ -36,14 +36,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@axe-core/playwright@npm:^4.9.1":
-  version: 4.9.1
-  resolution: "@axe-core/playwright@npm:4.9.1"
+"@axe-core/playwright@npm:^4.10.0":
+  version: 4.10.0
+  resolution: "@axe-core/playwright@npm:4.10.0"
   dependencies:
-    axe-core: "npm:~4.9.1"
+    axe-core: "npm:~4.10.0"
   peerDependencies:
     playwright-core: ">= 1.0.0"
-  checksum: 10c0/81c0eb27313cc984944fa0ebcd494cf3a55e954c15f945631a880dcee8456e760b3418662d81cfda7153b014943454c680e7dc617f876d03988a0975e114651f
+  checksum: 10c0/dd0e7bc4f59092ae5f204ab1e181406dbbc31adef47e9c3c7cfaa3b566f516d0665cab3ef5cc1a54885defc82a88018e61c2ad94f0d83dcb49f10c0ee2566bc0
   languageName: node
   linkType: hard
 
@@ -2025,7 +2025,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "aap-kalkulator-frontend@workspace:."
   dependencies:
-    "@axe-core/playwright": "npm:^4.9.1"
+    "@axe-core/playwright": "npm:^4.10.0"
     "@grafana/faro-web-sdk": "npm:^1.7.3"
     "@navikt/aap-felles-prettier": "npm:^1.0.2"
     "@navikt/ds-css": "npm:^6.10.1"
@@ -2442,10 +2442,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-core@npm:~4.9.1":
-  version: 4.9.1
-  resolution: "axe-core@npm:4.9.1"
-  checksum: 10c0/ac9e5a0c6fa115a43ebffc32a1d2189e1ca6431b5a78e88cdcf94a72a25c5964185682edd94fe6bdb1cb4266c0d06301b022866e0e50dcdf6e3cefe556470110
+"axe-core@npm:~4.10.0":
+  version: 4.10.2
+  resolution: "axe-core@npm:4.10.2"
+  checksum: 10c0/0e20169077de96946a547fce0df39d9aeebe0077f9d3eeff4896518b96fde857f80b98f0d4279274a7178791744dd5a54bb4f322de45b4f561ffa2586ff9a09d
   languageName: node
   linkType: hard
 
