@@ -1,5 +1,2 @@
 ingresses: 
 - https://aap-kalkulator.ekstern.dev.nav.no
-env: 
-- name: DEKORATOR_ENV
-  value: dev
