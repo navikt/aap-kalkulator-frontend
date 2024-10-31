@@ -1,123 +1,51 @@
 name: "Build and deploy to prod"
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
     paths-ignore:
       - '**.md'
 env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    APP: aap-kalkulator-frontend
-    IMAGE_BASE: europe-north1-docker.pkg.dev/${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}/aap/${{ github.event.repository.name }}
-jobs:        
-  build:
-        name: build
-        runs-on: ubuntu-latest
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
-          SKIP_YARN_COREPACK_CHECK: true
-        permissions:
-          contents: read
-          id-token: write
-          packages: write
-        outputs:
-          image: ${{ steps.image.outputs.image }}
-        steps:
-            - uses: actions/checkout@v4
-
-            - uses: actions/setup-node@v4
-              with:
-                node-version: 20
-                registry-url: https://npm.pkg.github.com
-                cache: yarn
-            - name: Enable Corepack
-              run: corepack enable
-            - name: Cache node_modules
-              id: cache-node-modules
-              uses: actions/cache@v3
-              with:
-                path: node_modules
-                key: ${{ runner.os }}-modules-${{ hashFiles('yarn.lock') }}
-
-            - name: install dependencies Yarn
-              if: steps.cache-node-modules.outputs.cache-hit != 'true'
-              run: yarn install --immutable
-              env:
-                NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
-
-            - name: Copy env-file for prod
-              run: cp .nais/prod.env .env.local
-
-            - name: test application
-              run: yarn test
-
-            - name: check diff on translations
-              run: yarn intl:diff
-
-            - name: hent tidsstempel
-              run: echo -e "\nNEXT_PUBLIC_LAST_UPDATED=$(date +%m-%d-%Y)" >> .env.local
-            
-            - name: Print env
-              run: cat .env.local
-
-            - name: Bygg klient(yarn run build)
-              run: yarn run build
-
-            - name: Upload static files to NAV CDN
-              uses: nais/deploy/actions/cdn-upload/v2@master
-              with:
-                team: aap
-                source: ./.next/static
-                destination: /aap-kalkulator-frontend/_next
-                identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
-                project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
-
-            - name: Set up Docker Buildx
-              id: buildx
-              uses: docker/setup-buildx-action@v2
-
-            - name: Setter tag-navn
-              run: echo "TAG=$(date +%m-%d-%Y)-$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
-
-            - name: Setter image-navn
-              id: image
-              run: |
-                echo "IMAGE=$(echo $IMAGE_BASE)-$(echo $TAG)" >> $GITHUB_ENV
-                echo "image=$(echo $IMAGE_BASE)-$(echo $TAG)" >> $GITHUB_OUTPUT
-
-            - name: Login GAR
-              uses: nais/login@v0
-              with:
-                project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
-                identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
-                team: aap
-
-            - name: Build and push Docker
-              uses: docker/build-push-action@v4
-              with:
-                context: .
-                file: Dockerfile
-                tags: ${{ env.IMAGE }}:latest
-                push: true
-                cache-from: type=gha
-                cache-to: type=gha,mode=max
-
-  deploy:
-    name: Deploy til prod
-    needs: build
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  APP: aap-kalkulator-frontend
+jobs:
+  timestamp:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      lastupdated: ${{ steps.settimestamp.outputs.last_updated }}
+    steps:
+      - name: Lag timestamp
+        id: settimestamp
+        run: |
+          last_updated="$(date +%m-%d-%Y)"
+          echo "last_updated: $last_updated"
+          echo "last_updated=$last_updated" >> $GITHUB_OUTPUT
+  buildProd:
+    uses: navikt/aap-workflows/.github/workflows/frontend-next-build.yml@main
+    needs: timestamp
     permissions:
       contents: read
       id-token: write
-    runs-on: ubuntu-latest
-    env:
-      PRINT_PAYLOAD: true
-      APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-      RESOURCE: nais.yaml
-      CLUSTER: prod-gcp
-      VARS: .nais/prod-gcp.yaml
-      IMAGE: ${{needs.build.outputs.image}}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: nais/deploy/actions/deploy@v2
-           
-
+      packages: write
+    secrets: inherit
+    with:
+      cluster: prod-gcp
+      appname: 'aap-kalkulator-frontend'
+      playwright: false
+      cdn: true
+      dynamicenv: NEXT_PUBLIC_LAST_UPDATED=${{ needs.timestamp.outputs.lastupdated}}
+  deployProd:
+    needs: buildProd
+    uses: navikt/aap-workflows/.github/workflows/deploy.yml@main
+    permissions:
+      contents: read
+      id-token: write
+    secrets: inherit
+    with:
+      cluster: prod-gcp
+      manifest: nais.yaml
+      imageSuffix: -prod-gcp
+      vars: .nais/prod-gcp.yaml
