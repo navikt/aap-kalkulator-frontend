@@ -115,5 +115,5 @@ jobs:
       VARS: .nais/dev-gcp.yaml
       IMAGE: ${{needs.build.outputs.image}}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: nais/deploy/actions/deploy@v1
