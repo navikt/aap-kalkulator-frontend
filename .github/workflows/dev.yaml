@@ -15,7 +15,7 @@ jobs:
     permissions:
       contents: write
     outputs:
-      lastupdated: ${{ steps.settimestamp.outputs.last_updated
+      lastupdated: ${{ steps.settimestamp.outputs.last_updated }}
     steps:
       - name: Lag timestamp
         id: settimestamp
