@@ -58,6 +58,9 @@
     "ts-jest": "^29.1.4",
     "typescript": "^5.4.5"
   },
+  "resolutions": {
+    "ws": "8.17.1"
+  },
   "prettier": "@navikt/aap-felles-prettier",
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --cache --fix",
