@@ -11,6 +11,9 @@ env:
   APP: aap-kalkulator-frontend
 jobs:
   timestamp:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Lag timestamp
         run: |
