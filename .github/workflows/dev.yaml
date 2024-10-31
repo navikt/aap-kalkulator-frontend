@@ -8,27 +8,35 @@ on:
       - '**.md'
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  APP: aap-kalkulator-frontend
 jobs:
-  buildDev:
+  timestamp:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      lastupdated: ${{ steps.settimestamp.outputs.last_updated
     steps:
       - name: Lag timestamp
+        id: settimestamp
         run: |
-          LAST_UPDATED="$(date +%m-%d-%Y)"
-          echo "LAST_UPDATED: $LAST_UPDATED"
-          echo "LAST_UPDATED=$LAST_UPDATED" >> $GITHUB_ENV
-      - uses: navikt/aap-workflows/.github/workflows/frontend-next-build.yml@main
-        needs: timestamp
-        permissions:
-          contents: read
-          id-token: write
-          packages: write
-        secrets: inherit
-        with:
-          cluster: dev-gcp
-          appname: 'aap-kalkulator-frontend'
-          playwright: false
-          cdn: true
-          appsecrets: NEXT_PUBLIC_LAST_UPDATED=${{env.LAST_UPDATED}}
+          last_updated="$(date +%m-%d-%Y)"
+          echo "last_updated: $last_updated"
+          echo "last_updated=$last_updated" >> $GITHUB_OUTPUT
+  buildDev:
+    uses: navikt/aap-workflows/.github/workflows/frontend-next-build.yml@main
+    needs: timestamp
+    permissions:
+      contents: read
+      id-token: write
+      packages: write
+    secrets: inherit
+    with:
+      cluster: dev-gcp
+      appname: 'aap-kalkulator-frontend'
+      playwright: false
+      cdn: true
+      appsecrets: NEXT_PUBLIC_LAST_UPDATED=${{ needs.timestamp.outputs.lastupdated}}
   deployDev:
     needs: buildDev
     uses: navikt/aap-workflows/.github/workflows/deploy.yml@main
