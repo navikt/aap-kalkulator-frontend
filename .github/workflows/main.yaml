@@ -118,6 +118,6 @@ jobs:
       IMAGE: ${{needs.build.outputs.image}}
     steps:
       - uses: actions/checkout@v4
-      - uses: nais/deploy/actions/deploy@v1
+      - uses: nais/deploy/actions/deploy@v2
            
 
