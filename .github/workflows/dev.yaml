@@ -9,7 +9,6 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   APP: aap-kalkulator-frontend
-  IMAGE_BASE: europe-north1-docker.pkg.dev/${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}/aap/${{ github.event.repository.name }}-dev
 jobs:
   build:
     name: build
@@ -78,7 +77,6 @@ jobs:
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
           image_suffix: dev-gcp
           tag: ${{ github.sha }}
-
   deploy:
     name: Deploy til dev
     needs: build
