@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.9.1",
-    "@navikt/aap-felles-prettier": "^1.0.2",
+    "@navikt/aap-felles-prettier": "^2.0.8",
     "@navikt/eslint-config-aap": "^1.0.2",
     "@playwright/test": "^1.44.1",
     "@testing-library/jest-dom": "^6.4.6",
