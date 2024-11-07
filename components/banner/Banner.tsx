@@ -6,9 +6,8 @@ import React from 'react';
 import { useFeatureToggleIntl } from '../../hooks/useFeatureToggleIntl';
 import { CalculatorSquareIcon } from '../icons/CalculatorSquareIcon';
 
-const dato = parse(process.env.NEXT_PUBLIC_LAST_UPDATED ?? '', 'MM-dd-yyyy', new Date());
-
 const Banner = () => {
+  const dato = parse(process.env.NEXT_PUBLIC_LAST_UPDATED ?? '', 'MM-dd-yyyy', new Date());
   const { formatMessage } = useFeatureToggleIntl();
   return (
     <header className="bg-[#ffffff] border-b-deepblue-400 border-b-4 text-center px-4 md:px-12 py-6">
