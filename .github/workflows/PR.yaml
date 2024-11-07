@@ -23,17 +23,12 @@ jobs:
           last_updated="$(date +%m-%d-%Y)"
           echo "last_updated: $last_updated"
           echo "last_updated=$last_updated" >> $GITHUB_OUTPUT
-  buildProd:
-    uses: navikt/aap-workflows/.github/workflows/frontend-next-build.yml@main
-    needs: timestamp
+  buildPullRequestDev:
+    uses: navikt/aap-workflows/.github/workflows/frontend-next-only-build.yml@main
     permissions:
       contents: read
       id-token: write
       packages: write
     secrets: inherit
     with:
-      cluster: prod-gcp
-      appname: 'aap-kalkulator-frontend'
-      playwright: true
-      cdn: true
-      dynamicenv: NEXT_PUBLIC_LAST_UPDATED=${{ needs.timestamp.outputs.lastupdated}}
+      cluster: dev-gcp
