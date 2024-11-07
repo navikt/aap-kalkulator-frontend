@@ -34,7 +34,7 @@ jobs:
     with:
       cluster: prod-gcp
       appname: 'aap-kalkulator-frontend'
-      playwright: false
+      playwright: true
       cdn: true
       dynamicenv: NEXT_PUBLIC_LAST_UPDATED=${{ needs.timestamp.outputs.lastupdated}}
   deployProd:

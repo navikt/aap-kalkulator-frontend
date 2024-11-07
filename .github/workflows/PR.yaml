@@ -10,28 +10,30 @@ env:
   APP: aap-kalkulator-frontend
   IMAGE_BASE: ghcr.io/${{ github.repository }}
 jobs:
-  build-and-publish:
-    name: Bygg og publiser Docker image
+  timestamp:
     runs-on: ubuntu-latest
-    env:
-      NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
-      SKIP_YARN_COREPACK_CHECK: true
+    permissions:
+      contents: write
     outputs:
-      image: ${{ steps.bygg.outputs.image }}
+      lastupdated: ${{ steps.settimestamp.outputs.last_updated }}
     steps:
-      - uses: "actions/checkout@v4"
-      - uses: "actions/setup-node@v4"
-        with:
-          node-version: "20"
-          registry-url: "https://npm.pkg.github.com"
-          cache: yarn
-      - name: Enable Corepack
-        run: corepack enable
-      - name: install dependencies Yarn
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: yarn install --immutable
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
-
-      - name: test application
-        run: yarn test
+      - name: Lag timestamp
+        id: settimestamp
+        run: |
+          last_updated="$(date +%m-%d-%Y)"
+          echo "last_updated: $last_updated"
+          echo "last_updated=$last_updated" >> $GITHUB_OUTPUT
+  buildProd:
+    uses: navikt/aap-workflows/.github/workflows/frontend-next-build.yml@main
+    needs: timestamp
+    permissions:
+      contents: read
+      id-token: write
+      packages: write
+    secrets: inherit
+    with:
+      cluster: prod-gcp
+      appname: 'aap-kalkulator-frontend'
+      playwright: true
+      cdn: true
+      dynamicenv: NEXT_PUBLIC_LAST_UPDATED=${{ needs.timestamp.outputs.lastupdated}}
