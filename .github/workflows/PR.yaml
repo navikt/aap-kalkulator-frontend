@@ -25,6 +25,7 @@ jobs:
           echo "last_updated=$last_updated" >> $GITHUB_OUTPUT
   buildPullRequestDev:
     uses: navikt/aap-workflows/.github/workflows/frontend-next-only-build.yml@main
+    needs: timestamp
     permissions:
       contents: read
       id-token: write
