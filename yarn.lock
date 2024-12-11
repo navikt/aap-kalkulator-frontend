@@ -1071,13 +1071,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/aap-felles-prettier@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@navikt/aap-felles-prettier@npm:1.0.2::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-felles-prettier%2F1.0.2%2F98fbea44544f7b4a3674949b1ff0d575cfd3cecf"
+"@navikt/aap-felles-prettier@npm:^1.9.7":
+  version: 1.9.7
+  resolution: "@navikt/aap-felles-prettier@npm:1.9.7::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-felles-prettier%2F1.9.7%2F6c5360e0715a161c54c41f861612dcd02a6965dd"
   dependencies:
     "@trivago/prettier-plugin-sort-imports": "npm:^4.3.0"
-    prettier: "npm:^3.2.5"
-  checksum: 10c0/0ff9ae601c96d09d2b171122621ad3d71a78744810c0aabed84e81d111e7a4224476f37279faa77ec64600ff4b57bbe939a70648178d9ca3e9ca0eb1602c4480
+    prettier: "npm:^3.3.3"
+  checksum: 10c0/cae4f3e905a9b8a955d26d42bbe41b7a38338925e61197cce6b835cb06c71d17184a82b4bf7e45f34ea5423d2ce427b61de5683b54be830074e10a7e72d8d35f
   languageName: node
   linkType: hard
 
@@ -2027,7 +2027,7 @@ __metadata:
   dependencies:
     "@axe-core/playwright": "npm:^4.9.1"
     "@grafana/faro-web-sdk": "npm:^1.7.3"
-    "@navikt/aap-felles-prettier": "npm:^1.0.2"
+    "@navikt/aap-felles-prettier": "npm:^1.9.7"
     "@navikt/ds-css": "npm:^6.10.1"
     "@navikt/ds-icons": "npm:^3.4.3"
     "@navikt/ds-react": "npm:^6.10.1"
@@ -6914,21 +6914,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.2.5":
-  version: 3.2.5
-  resolution: "prettier@npm:3.2.5"
-  bin:
-    prettier: bin/prettier.cjs
-  checksum: 10c0/ea327f37a7d46f2324a34ad35292af2ad4c4c3c3355da07313339d7e554320f66f65f91e856add8530157a733c6c4a897dc41b577056be5c24c40f739f5ee8c6
-  languageName: node
-  linkType: hard
-
 "prettier@npm:^3.3.2":
   version: 3.3.2
   resolution: "prettier@npm:3.3.2"
   bin:
     prettier: bin/prettier.cjs
   checksum: 10c0/39ed27d17f0238da6dd6571d63026566bd790d3d0edac57c285fbab525982060c8f1e01955fe38134ab10f0951a6076da37f015db8173c02f14bc7f0803a384c
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^3.3.3":
+  version: 3.4.2
+  resolution: "prettier@npm:3.4.2"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 10c0/99e076a26ed0aba4ebc043880d0f08bbb8c59a4c6641cdee6cdadf2205bdd87aa1d7823f50c3aea41e015e99878d37c58d7b5f0e663bba0ef047f94e36b96446
   languageName: node
   linkType: hard
 
