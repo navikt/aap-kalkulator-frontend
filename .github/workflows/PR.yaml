@@ -34,3 +34,4 @@ jobs:
     with:
       cluster: dev-gcp
       dynamicenv: NEXT_PUBLIC_LAST_UPDATED=${{ needs.timestamp.outputs.lastupdated}}
+      playwright: true
