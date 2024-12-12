@@ -2,7 +2,7 @@ name: Merge Dependabot pull requester
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/10 9 * * 1-5'
+    - cron: "0,10,20,30,40,50 9 * * 1,2,3,4,5"
 
 jobs:
   merge-dependabot-pr:
