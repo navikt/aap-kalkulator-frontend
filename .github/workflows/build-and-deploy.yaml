@@ -1,0 +1,77 @@
+name: Bygg og deploy
+
+on:
+  workflow_dispatch:
+#  push:
+#    branches:
+#      - main
+#    paths-ignore:
+#      - '**.md'
+
+jobs:
+  timestamp:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      lastupdated: ${{ steps.settimestamp.outputs.last_updated }}
+    steps:
+      - name: Lag timestamp
+        id: settimestamp
+        run: |
+          last_updated="$(date +%m-%d-%Y)"
+          echo "last_updated: $last_updated"
+          echo "last_updated=$last_updated" >> $GITHUB_OUTPUT
+  buildDev:
+    uses: navikt/aap-workflows/.github/workflows/frontend-next-build.yml@main
+    needs: timestamp
+    permissions:
+      contents: read
+      id-token: write
+      packages: write
+    secrets: inherit
+    with:
+      cluster: dev-gcp
+      appname: 'aap-kalkulator-frontend'
+      playwright: true
+      cdn: true
+      dynamicenv: NEXT_PUBLIC_LAST_UPDATED=${{ needs.timestamp.outputs.lastupdated}}
+  buildProd:
+    if: github.ref == 'refs/heads/main'
+    uses: navikt/aap-workflows/.github/workflows/frontend-next-build.yml@main
+    needs: [timestamp, deployDev]
+    permissions:
+      contents: read
+      id-token: write
+      packages: write
+    secrets: inherit
+    with:
+      cluster: prod-gcp
+      appname: 'aap-kalkulator-frontend'
+      playwright: true
+      cdn: true
+      dynamicenv: NEXT_PUBLIC_LAST_UPDATED=${{ needs.timestamp.outputs.lastupdated}}
+  deployDev:
+    needs: buildDev
+    uses: navikt/aap-workflows/.github/workflows/deploy.yml@main
+    permissions:
+      contents: read
+      id-token: write
+    secrets: inherit
+    with:
+      cluster: dev-gcp
+      manifest: nais.yaml
+      imageSuffix: -dev-gcp
+      vars: .nais/dev-gcp.yaml
+  deployProd:
+    needs: buildProd
+    uses: navikt/aap-workflows/.github/workflows/deploy.yml@main
+    permissions:
+      contents: read
+      id-token: write
+    secrets: inherit
+    with:
+      cluster: prod-gcp
+      manifest: nais.yaml
+      imageSuffix: -prod-gcp
+      vars: .nais/prod-gcp.yaml
