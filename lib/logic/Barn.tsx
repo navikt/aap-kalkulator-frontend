@@ -1,9 +1,16 @@
 import { Result } from '../../components/result/Result';
 import { YTELSESDAGER, toKr, ytelseTilGrunnlag } from '../utils/HjelpeFunksjoner';
+import {isBefore} from "date-fns";
 
 const SATS_PER_BARN_PER_DAG: number = 36;
 
-export const barnetillegg = (antallBarn: number) => antallBarn * SATS_PER_BARN_PER_DAG * YTELSESDAGER;
+export function getBarnetilleggSats(todayDate: Date): number {
+  // TODO: ny sats 37 NOK fra 1.1.2025, kan fjernes etter den datoen
+  return isBefore(todayDate, new Date(2025, 0, 1))
+    ? 36
+    : 37;
+}
+export const barnetillegg = (antallBarn: number) => antallBarn * getBarnetilleggSats(new Date()) * YTELSESDAGER;
 
 export const leggTilBarnetillegg = (resultat: Result) => {
   if (!resultat.personInfo!!.harBarn || resultat.personInfo!!.antallBarn == 0) {
