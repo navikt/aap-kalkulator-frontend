@@ -764,24 +764,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@grafana/faro-core@npm:^1.17.1":
-  version: 1.17.1
-  resolution: "@grafana/faro-core@npm:1.17.1"
+"@grafana/faro-core@npm:^1.17.2":
+  version: 1.17.2
+  resolution: "@grafana/faro-core@npm:1.17.2"
   dependencies:
     "@opentelemetry/api": "npm:^1.9.0"
     "@opentelemetry/otlp-transformer": "npm:^0.200.0"
-  checksum: 10c0/00c8be744073a5045e541ccddf616d8b56a10028a475d824df614f3afc5b69fa7825efbbccf3733d3737bd40c9ccf0b3d4b6aa2eaf1597bf8ac31392f5263d61
+  checksum: 10c0/9bdf958b81b284e171eb0c44e0d481fb76a12f89e891aeec2808c9b1070705a248be95db0ac7035718b29f1f3cd4e23c625c990e11a5c53c2d83bb6ec1ed09d9
   languageName: node
   linkType: hard
 
-"@grafana/faro-web-sdk@npm:^1.17.1":
-  version: 1.17.1
-  resolution: "@grafana/faro-web-sdk@npm:1.17.1"
+"@grafana/faro-web-sdk@npm:^1.17.2":
+  version: 1.17.2
+  resolution: "@grafana/faro-web-sdk@npm:1.17.2"
   dependencies:
-    "@grafana/faro-core": "npm:^1.17.1"
+    "@grafana/faro-core": "npm:^1.17.2"
     ua-parser-js: "npm:^1.0.32"
     web-vitals: "npm:^4.0.1"
-  checksum: 10c0/45016e5bc54255db2db1f25d366d67f43ad48f2cd5ecd726cc6ec370d5edfac29a1423c1565b60c06768fc806d9de84f86f9a22295e697db0a5234bd8ff77ac8
+  checksum: 10c0/31189badd3bdc3f6d7d83e27ec73f5eecabc04e6bf0e05edf4c06a97e25c71caee46dc425ce23e8c28fcbd77cf5a03dc3900ff03d73e1bfd6f7a6f04d2fc1a51
   languageName: node
   linkType: hard
 
@@ -2150,7 +2150,7 @@ __metadata:
   resolution: "aap-kalkulator-frontend@workspace:."
   dependencies:
     "@axe-core/playwright": "npm:^4.9.1"
-    "@grafana/faro-web-sdk": "npm:^1.17.1"
+    "@grafana/faro-web-sdk": "npm:^1.17.2"
     "@navikt/aap-felles-prettier": "npm:^1.9.7"
     "@navikt/ds-css": "npm:^6.10.1"
     "@navikt/ds-icons": "npm:^3.4.3"
