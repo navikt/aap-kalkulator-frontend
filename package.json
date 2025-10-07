@@ -30,7 +30,7 @@
     "@axe-core/playwright": "^4.9.1",
     "@navikt/aap-felles-prettier": "^1.9.7",
     "@navikt/eslint-config-aap": "^1.0.2",
-    "@playwright/test": "^1.49.1",
+    "@playwright/test": "^1.56.0",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^15.0.7",
     "@types/jest": "^29.5.14",
