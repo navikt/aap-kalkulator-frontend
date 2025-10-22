@@ -33,7 +33,7 @@ jobs:
     with:
       cluster: dev-gcp
       appname: 'aap-kalkulator-frontend'
-      playwright: true
+      playwright: false
       cdn: true
       dynamicenv: NEXT_PUBLIC_LAST_UPDATED=${{ needs.timestamp.outputs.lastupdated}}
   buildProd:
@@ -48,7 +48,7 @@ jobs:
     with:
       cluster: prod-gcp
       appname: 'aap-kalkulator-frontend'
-      playwright: true
+      playwright: false
       cdn: true
       dynamicenv: NEXT_PUBLIC_LAST_UPDATED=${{ needs.timestamp.outputs.lastupdated}}
   deployDev:
