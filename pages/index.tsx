@@ -7,7 +7,6 @@ import Divider from '../components/divider/Divider';
 import { MagnifyingGlassIcon } from '../components/icons/MagnifyingGlassIcon';
 import { StateInterface } from '../components/state/State';
 import { useFeatureToggleIntl } from '../hooks/useFeatureToggleIntl';
-import { logAmplitudeEvent } from '../lib/utils/amplitude';
 import { BrowserState, State } from './_app';
 
 const Home: NextPage = () => {
@@ -21,10 +20,6 @@ const Home: NextPage = () => {
 
   const { formatMessage } = useFeatureToggleIntl();
   const handleStart = () => {
-    logAmplitudeEvent('skjema startet', {
-      skjemanavn: 'aap-kalkulator',
-      skjemaId: 'aap-kalkulator',
-    });
     browserState.redirect = false;
     router.push('/steg/1');
   };

@@ -11,7 +11,6 @@ import { Result, ResultInterface } from '../components/result/Result';
 import Stepper from '../components/stepper/Stepper';
 import { useFeatureToggleIntl } from '../hooks/useFeatureToggleIntl';
 import { kalkuler } from '../lib/logic/Kalkuler';
-import { logAmplitudeEvent } from '../lib/utils/amplitude';
 import { GrunnbeloepHistorikk, grunnbeloep } from '../lib/utils/types';
 import { State } from './_app';
 
@@ -47,10 +46,6 @@ const Resultat: NextPage = ({ G, Historikk }: { G: grunnbeloep; Historikk: Grunn
       return;
     }
 
-    logAmplitudeEvent('skjema fullført', {
-      skjemanavn: 'aap-kalkulator',
-      skjemaId: 'aap-kalkulator',
-    });
     const res: Result = kalkuler(state, G, Historikk);
     setResult({
       resultat: res.resultat,
