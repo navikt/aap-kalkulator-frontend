@@ -27,7 +27,7 @@
     "react-intl": "^6.8.9"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.9.1",
+    "@axe-core/playwright": "^4.11.0",
     "@navikt/aap-felles-prettier": "^1.9.7",
     "@navikt/eslint-config-aap": "^1.0.2",
     "@playwright/test": "^1.49.1",
