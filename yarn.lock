@@ -1560,7 +1560,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-css@npm:^6.10.1":
+"@navikt/ds-css@npm:^6.17.0":
   version: 6.17.0
   resolution: "@navikt/ds-css@npm:6.17.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-css%2F6.17.0%2Fce84459723d9a8e88df82eb67dc77b05af5dd0de"
   checksum: 10c0/3d103d492bd96380531c05ec9e46e8afeccea10b6e041c9dd5dffe9f25055a11eff44b2919dad4193637f0fb51176bb642de05bec97c3b11704a2727483e1cc1
@@ -1577,7 +1577,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-react@npm:^6.10.1":
+"@navikt/ds-react@npm:^6.17.0":
   version: 6.17.0
   resolution: "@navikt/ds-react@npm:6.17.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-react%2F6.17.0%2F5353e0239dc0387ba796a67a0e764bfb88f30a48"
   dependencies:
@@ -1595,7 +1595,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ds-tailwind@npm:^6.10.1":
+"@navikt/ds-tailwind@npm:^6.17.0":
   version: 6.17.0
   resolution: "@navikt/ds-tailwind@npm:6.17.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-tailwind%2F6.17.0%2F2395e7f207705192d3b2adf6954f2a84ee1a7efb"
   checksum: 10c0/f6540b89c830930c91abfc24e7c80c2831a3af5f55480a2d2ab4b99c20ba0273efc6dc9d866a0ff54089f2f8e449bf7d2164b97b7c7fcd8867b5ebb734d8d75b
@@ -2707,10 +2707,10 @@ __metadata:
     "@axe-core/playwright": "npm:^4.9.1"
     "@grafana/faro-web-sdk": "npm:^1.18.1"
     "@navikt/aap-felles-prettier": "npm:^1.9.7"
-    "@navikt/ds-css": "npm:^6.10.1"
+    "@navikt/ds-css": "npm:^6.17.0"
     "@navikt/ds-icons": "npm:^3.4.3"
-    "@navikt/ds-react": "npm:^6.10.1"
-    "@navikt/ds-tailwind": "npm:^6.10.1"
+    "@navikt/ds-react": "npm:^6.17.0"
+    "@navikt/ds-tailwind": "npm:^6.17.0"
     "@navikt/eslint-config-aap": "npm:^1.0.2"
     "@navikt/nav-dekoratoren-moduler": "npm:^2.1.6"
     "@playwright/test": "npm:^1.49.1"
