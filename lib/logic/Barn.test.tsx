@@ -6,7 +6,7 @@ describe('Barn', () => {
     expect(gammelSats).toBe(37);
   })
 
-  test('sats for barnetillegg den 31.12.2025 er 36', () => {
+  test('sats for barnetillegg den 31.12.2025 er 37', () => {
     const gammelSats = getBarnetilleggSatsPerBarnPerDag(new Date(2025, 11, 31));
     expect(gammelSats).toBe(37);
   })
