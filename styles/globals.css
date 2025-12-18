@@ -1,3 +1,5 @@
+@layer base, dekorator-base, dekorator-utilities, theme, components, utilities;
+
 @import 'tailwindcss';
 @import '@navikt/ds-css' layer(components);
 @config '../tailwind.config.js';
