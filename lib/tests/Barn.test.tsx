@@ -1,6 +1,6 @@
 import { Result } from '../../components/result/Result';
-import { barnetillegg, getBarnetilleggSatsPerBarnPerDag, leggTilBarnetillegg } from '../logic/Barn';
-import { toKr, YTELSESDAGER } from '../utils/HjelpeFunksjoner';
+import { barnetillegg, leggTilBarnetillegg } from '../logic/Barn';
+import { toKr } from '../utils/HjelpeFunksjoner';
 
 const FORVENTET_BARNETILLEGG_PR_BARN = 9880; // barnetilleggsats * ytelsesdager
 
