@@ -1,7 +1,10 @@
 // noinspection JSNonASCIINames
 import { StateInterface } from '../../components/state/State';
 import { kalkuler } from '../logic/Kalkuler';
+import { toKr } from '../utils/HjelpeFunksjoner';
 import { GrunnbeloepHistorikk, grunnbeloep } from '../utils/types';
+
+const FORVENTET_BARNETILLEGG_PR_BARN = 9880; // barnetilleggssats * ytelsesdager
 
 export const getG = () => {
   const dataG: grunnbeloep = { grunnbeloep: 111477 };
@@ -97,6 +100,7 @@ describe('integrasjon', () => {
     expect(resultat.resultat).toBe(441449);
     expect(resultat.logs).toHaveLength(4);
   });
+
   it('ytelse med grunnbeløp 2g, 7 barn og 0 arbeidsgrad', () => {
     const state: StateInterface = {
       ...initialState,
@@ -110,8 +114,10 @@ describe('integrasjon', () => {
       sykmeldtAar: 2023,
       over25: true,
     };
+
     const resultat = kalkuler(state, g, historikk);
-    expect(resultat.resultat).toBe(294865);
+
+    expect(resultat.resultat).toBe(296685);
     expect(resultat.logs).toHaveLength(6);
     expect(resultat.logs[0]).toEqual({
       id: 'logic.salery.minsteGrunnlag',
@@ -125,12 +131,13 @@ describe('integrasjon', () => {
       id: 'logic.children.possibleChildsupport',
       values: {
         childAmount: '7',
-        perChild: '9 620',
-        res: '294 865',
-        totChild: '67 340',
+        perChild: toKr(FORVENTET_BARNETILLEGG_PR_BARN),
+        res: '296 685',
+        totChild: toKr(FORVENTET_BARNETILLEGG_PR_BARN * state.antallBarn!),
       },
     });
   });
+
   it('ytelse med grunnbeløp 2g, 8 barn og 0 arbeidsgrad', () => {
     const state: StateInterface = {
       ...initialState,
@@ -145,9 +152,10 @@ describe('integrasjon', () => {
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
-    expect(resultat.resultat).toBe(304_485);
+    expect(resultat.resultat).toBe(306_565);
     expect(resultat.logs).toHaveLength(6);
   });
+
   it('ytelse med grunnbeløp 6g, 22 barn og 0 arbeidsgrad', () => {
     const state: StateInterface = {
       ...initialState,
@@ -165,6 +173,7 @@ describe('integrasjon', () => {
     expect(resultat.resultat).toBe(601_976);
     expect(resultat.logs).toHaveLength(6);
   });
+
   it('ytelse med grunnbeløp 6g, 23 barn og 0 arbeidsgrad', () => {
     const state: StateInterface = {
       harLoenn: true,
@@ -182,6 +191,7 @@ describe('integrasjon', () => {
     expect(resultat.resultat).toBe(601976);
     expect(resultat.logs).toHaveLength(6);
   });
+
   it('ytelse med grunnbeløp 6g, sykemeldt 2021', () => {
     const state: StateInterface = {
       harLoenn: true,
@@ -199,6 +209,7 @@ describe('integrasjon', () => {
     expect(resultat.resultat).toBe(227525);
     expect(resultat.logs).toHaveLength(4);
   });
+
   it('ytelse med grunnbeløp 6g, 24 barn og 0 arbeidsgrad', () => {
     const state: StateInterface = {
       ...initialState,
@@ -216,6 +227,7 @@ describe('integrasjon', () => {
     expect(resultat.resultat).toBe(601976);
     expect(resultat.logs).toHaveLength(6);
   });
+
   it('ytelse med grunnbeløp 2g, 0 barn og 40% arbeidsgrad', () => {
     const state: StateInterface = {
       ...initialState,
@@ -234,6 +246,7 @@ describe('integrasjon', () => {
     expect(resultat.resultat).toBe(136515);
     expect(resultat.logs).toHaveLength(4);
   });
+
   it('ytelse med grunnbeløp 2g, 15 barn og 50% arbeidsgrad', () => {
     const state: StateInterface = {
       harLoenn: false,
@@ -264,7 +277,7 @@ describe('integrasjon', () => {
       id: 'logic.children.maxChildren',
       values: {
         maksBarneTillegg: '82 737',
-        perChild: '9 620',
+        perChild: toKr(FORVENTET_BARNETILLEGG_PR_BARN),
         res: '310 261',
       },
     });
@@ -279,6 +292,7 @@ describe('integrasjon', () => {
       },
     });
   });
+
   it('ytelse med grunnbeløp 6g, 0 barn og 20% arbeidsgrad', () => {
     const state: StateInterface = {
       ...initialState,
@@ -298,6 +312,7 @@ describe('integrasjon', () => {
     expect(resultat.resultat).toBe(353159);
     expect(resultat.logs).toHaveLength(4);
   });
+
   it('ytelse med grunnbeløp 6g, 5 barn og 61% arbeidsgrad', () => {
     const state: StateInterface = {
       ...initialState,
@@ -318,6 +333,7 @@ describe('integrasjon', () => {
     expect(resultat.resultat).toBe(0);
     expect(resultat.logs).toHaveLength(1);
   });
+
   it('ytelse med grunnbeløp 6g, 5 barn og 51% arbeidsgrad, uten AAP', () => {
     const state: StateInterface = {
       ...initialState,
@@ -338,6 +354,7 @@ describe('integrasjon', () => {
     expect(resultat.resultat).toBe(0);
     expect(resultat.logs).toHaveLength(1);
   });
+
   it('over 6g siste år, 2 barn og 0 arbeidsgrad', () => {
     const state: StateInterface = {
       ...initialState,
@@ -352,9 +369,9 @@ describe('integrasjon', () => {
       over25: true,
     };
     const resultat = kalkuler(state, g, historikk);
-    //expect(resultat.resultat).toBe(455520)
-    expect(resultat.resultat).toBe(460_689);
+    expect(resultat.resultat).toBe(461_209);
   });
+
   it('400k avg, 2 barn og 0 arbeidsgrad', () => {
     const state: StateInterface = {
       ...initialState,
@@ -371,6 +388,7 @@ describe('integrasjon', () => {
     const resultat = kalkuler(state, g, historikk);
     expect(resultat.resultat).toBe(290_177);
   });
+
   it('400k siste år, 0 barn og 0 arbeidsgrad', () => {
     const state: StateInterface = {
       ...initialState,
@@ -387,6 +405,7 @@ describe('integrasjon', () => {
     const resultat = kalkuler(state, g, historikk);
     expect(resultat.resultat).toBe(281_045);
   });
+
   it('0 alle år, 0 barn og 0 arbeidsgrad uten AAP', () => {
     const state: StateInterface = {
       ...initialState,

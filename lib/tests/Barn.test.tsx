@@ -1,5 +1,8 @@
 import { Result } from '../../components/result/Result';
-import { barnetillegg, leggTilBarnetillegg } from '../logic/Barn';
+import { barnetillegg, getBarnetilleggSatsPerBarnPerDag, leggTilBarnetillegg } from '../logic/Barn';
+import { toKr, YTELSESDAGER } from '../utils/HjelpeFunksjoner';
+
+const FORVENTET_BARNETILLEGG_PR_BARN = 9880; // barnetilleggsats * ytelsesdager
 
 const initialState = {
   antallBarn: undefined,
@@ -23,15 +26,16 @@ describe('Barnetilegg', () => {
   });
   it('med 1 barn', () => {
     const barn = barnetillegg(1);
-    expect(barn).toBe(9620);
+    expect(barn).toBe(FORVENTET_BARNETILLEGG_PR_BARN);
   });
   it('med mangen barn', () => {
     const barn = barnetillegg(8);
-    expect(barn).toBe(76960);
+    expect(barn).toBe(FORVENTET_BARNETILLEGG_PR_BARN * 8);
   });
 });
 
 describe('Barnetillegg med wrapped funksjon', () => {
+  const grunnlag_uten_barnetillegg = 100_000;
   it('Med 0 barn', () => {
     const barn = new Result({
       ...initialState,
@@ -49,16 +53,16 @@ describe('Barnetillegg med wrapped funksjon', () => {
       harBarn: true,
       antallBarn: 1,
     });
-    barn.resultat = 100_000;
+    barn.resultat = grunnlag_uten_barnetillegg;
     leggTilBarnetillegg(barn);
-    expect(barn.resultat).toBe(109_620);
+    expect(barn.resultat).toBe(grunnlag_uten_barnetillegg + FORVENTET_BARNETILLEGG_PR_BARN);
     expect(barn.logs[0]).toEqual({
       id: 'logic.children.possibleChildsupport',
       values: {
         childAmount: '1',
-        perChild: '9 620',
-        res: '109 620',
-        totChild: '9 620',
+        perChild: toKr(FORVENTET_BARNETILLEGG_PR_BARN),
+        res: toKr(grunnlag_uten_barnetillegg + FORVENTET_BARNETILLEGG_PR_BARN),
+        totChild: toKr(FORVENTET_BARNETILLEGG_PR_BARN),
       },
     });
   });
@@ -76,7 +80,7 @@ describe('Barnetillegg med wrapped funksjon', () => {
       id: 'logic.children.maxChildren',
       values: {
         maksBarneTillegg: '54 050',
-        perChild: '9 620',
+        perChild: toKr(FORVENTET_BARNETILLEGG_PR_BARN),
         res: '202 685',
       },
     });

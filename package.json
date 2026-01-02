@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
+    "test:watch": "jest --watch",
     "test:e2e": "playwright test",
     "prepare": "husky install",
     "intl:diff": "json-diff -k ./translations/nb.json ./translations/nn.json"
