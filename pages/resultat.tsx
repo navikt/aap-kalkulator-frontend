@@ -76,8 +76,8 @@ const Resultat: NextPage = ({ G, Historikk }: { G: grunnbeloep; Historikk: Grunn
           </Heading>
         </div>
         <div className="grid gap-4">
-          <div className="grid sm:grid-rows-2 sm:w-[100%] md:grid-rows-1 md:grid-cols-2 my-4 gap-4 justify-self-center">
-            <div className="bg-green-100 p-4 rounded flex-col flex">
+          <div className="grid sm:grid-rows-2 sm:w-full md:grid-rows-1 md:grid-cols-2 my-4 gap-4 justify-self-center">
+            <div className="bg-green-100 p-4 rounded-sm flex-col flex">
               <span className="text-3xl md:text-3xl text-green-900">
                 {(dagsats * 10).toLocaleString('nb-NO')}&nbsp;kr
               </span>
@@ -89,7 +89,7 @@ const Resultat: NextPage = ({ G, Historikk }: { G: grunnbeloep; Historikk: Grunn
                 })}
               </Label>
             </div>
-            <div className="bg-green-100 p-4 rounded flex-col flex">
+            <div className="bg-green-100 p-4 rounded-sm flex-col flex">
               <span className="text-3xl md:text-3xl text-green-900">
                 {Math.ceil(result == null ? 0 : resultat).toLocaleString('nb-NO')}
                 &nbsp;kr
