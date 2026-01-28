@@ -2,7 +2,16 @@ import React from 'react';
 
 export const CalculatorSquareIcon = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="80px" height="80px" fill="none" viewBox="0 0 96 96">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="80px"
+      height="80px"
+      fill="none"
+      viewBox="0 0 96 96"
+      role="img"
+      tabIndex={-1}
+      aria-hidden={'true'}
+    >
       <g clipPath="url(#clip0_1_4889)">
         <path fill="#CCE2F0" d="M23 22H75V48H23z"></path>
         <path fill="#CCE2F0" d="M23 48H75V74H23z"></path>
