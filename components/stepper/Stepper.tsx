@@ -44,14 +44,12 @@ const Step = ({ title, stepNumber, isLast }: { title: string; stepNumber: number
   }
 
   return (
-    <NextLink passHref href={`/steg/${stepNumber}`} legacyBehavior>
-      <Link className={`${stepStyling}`}>
-        {circle}
-        <BodyShort as="span" size="small">
-          {title}
-        </BodyShort>
-      </Link>
-    </NextLink>
+    <Link className={`${stepStyling}`} href={`/steg/${stepNumber}`} as={NextLink}>
+      {circle}
+      <BodyShort as="span" size="small">
+        {title}
+      </BodyShort>
+    </Link>
   );
 };
 
