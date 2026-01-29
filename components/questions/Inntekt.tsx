@@ -1,4 +1,4 @@
-import { BodyShort, Label, TextField } from '@navikt/ds-react';
+import { BodyShort, TextField } from '@navikt/ds-react';
 import { useRouter } from 'next/router';
 import { ChangeEvent, useContext, useState } from 'react';
 
@@ -10,6 +10,8 @@ import { CoinIcon } from '../icons/CoinIcon';
 import QuestionHeader from '../questionHeader/QuestionHeader';
 import Radio from '../radio/Radio';
 import Stepper from '../stepper/Stepper';
+
+import styles from './Inntekt.module.css';
 
 interface InntektInterface {
   inntekt1: string;
@@ -131,7 +133,7 @@ const Inntekt = () => {
 
         {state.harLoenn && (
           <fieldset>
-            <Label>{formatMessage('income.howMuch.title')}</Label>
+            <legend className={styles.overskrift}>{formatMessage('income.howMuch.title')}</legend>
             <BodyShort spacing>{formatMessage('income.howMuch.description')}</BodyShort>
             <div className="flex md:flex-row flex-col gap-4">
               {inntektsAar.reverse().map((aar, index) => (
@@ -147,6 +149,7 @@ const Inntekt = () => {
                     error={error[indexKorreksjon(index)]}
                     value={Object.values(inntekt)[indexKorreksjon(index)]}
                     onChange={onChange}
+                    autoComplete="off"
                   />
                 </div>
               ))}

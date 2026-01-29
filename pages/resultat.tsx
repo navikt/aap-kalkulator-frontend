@@ -1,5 +1,5 @@
 // noinspection JSNonASCIINames
-import { Alert, BodyShort, Button, Heading, Label, Link } from '@navikt/ds-react';
+import { Alert, BodyShort, Button, Heading, Link } from '@navikt/ds-react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useMemo, useState } from 'react';
@@ -81,24 +81,24 @@ const Resultat: NextPage = ({ G, Historikk }: { G: grunnbeloep; Historikk: Grunn
               <span className="text-3xl md:text-3xl text-green-900">
                 {(dagsats * 10).toLocaleString('nb-NO')}&nbsp;kr
               </span>
-              <Label className="text-green-800">
+              <BodyShort className="text-green-800" weight="semibold">
                 {' '}
                 {formatMessage('result.per14', {
                   wbr: () => <>&nbsp;</>,
                   shy: () => <>&shy;</>,
                 })}
-              </Label>
+              </BodyShort>
             </div>
             <div className="bg-green-100 p-4 rounded-sm flex-col flex">
               <span className="text-3xl md:text-3xl text-green-900">
                 {Math.ceil(result == null ? 0 : resultat).toLocaleString('nb-NO')}
                 &nbsp;kr
               </span>{' '}
-              <Label className="text-green-800">
+              <BodyShort className="text-green-800" weight="semibold">
                 {formatMessage('result.perAar', {
                   shy: () => <>&shy;</>,
                 })}
-              </Label>
+              </BodyShort>
             </div>
           </div>
           <div className="space-y-7">

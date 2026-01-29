@@ -149,7 +149,8 @@ const Arbeid = () => {
                 error={arbeidsTimerError}
                 value={arbeidsTimer}
                 onChange={(event) => onArbeidChange(event.target.value)}
-              ></TextField>
+                autoComplete="off"
+              />
             </div>
             {(state?.arbeidstimer ?? 0) > 18.75 && !state?.harAAP && (
               <Alert className="mt-4" variant={'warning'}>

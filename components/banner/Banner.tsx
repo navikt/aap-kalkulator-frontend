@@ -10,11 +10,14 @@ const Banner = () => {
   const dato = parse(process.env.NEXT_PUBLIC_LAST_UPDATED ?? '', 'MM-dd-yyyy', new Date());
   const { formatMessage } = useFeatureToggleIntl();
   return (
-    <header className="bg-[#ffffff] border-b-deepblue-400 border-b-4 text-center px-4 md:px-12 py-6">
+    <section
+      className="bg-[#ffffff] border-b-deepblue-400 border-b-4 text-center px-4 md:px-12 py-6"
+      aria-labelledby="kalkulatorheading"
+    >
       <div className="max-w-[1128px] mx-auto flex gap-8">
         <CalculatorSquareIcon />
         <div>
-          <Heading size="large" level="1" aria-label={formatMessage('banner.title')}>
+          <Heading size="large" level="1" aria-label={formatMessage('banner.title')} id="kalkulatorheading">
             {formatMessage('banner.title')}
           </Heading>
           <div className="flex gap-4 py-3 items-baseline">
@@ -28,7 +31,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
-    </header>
+    </section>
   );
 };
 

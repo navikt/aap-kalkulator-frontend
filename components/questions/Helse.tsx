@@ -56,14 +56,14 @@ const Helse = () => {
     const errors = isNaN(sykmeldtAar)
       ? formatMessage('helse.nedsattArbeidsevne.validation.required')
       : sykmeldtAar > detteAaret
-      ? formatMessage('helse.nedsattArbeidsevne.validation.max', {
-          Aar: detteAaret.toString(),
-        })
-      : sykmeldtAar < detteAaret - aapGrense
-      ? formatMessage('helse.nedsattArbeidsevne.validation.min', {
-          Aar: aapGrense.toString(),
-        })
-      : '';
+        ? formatMessage('helse.nedsattArbeidsevne.validation.max', {
+            Aar: detteAaret.toString(),
+          })
+        : sykmeldtAar < detteAaret - aapGrense
+          ? formatMessage('helse.nedsattArbeidsevne.validation.min', {
+              Aar: aapGrense.toString(),
+            })
+          : '';
 
     if (state.over25 == undefined) {
       setRadioError(formatMessage('helse.over25.validation.required'));
@@ -110,6 +110,7 @@ const Helse = () => {
               label={formatMessage('helse.nedsattArbeidsevne.title')}
               onChange={(event) => onChange(event.target.value)}
               defaultValue={aar}
+              autoComplete="off"
             >
               {Array.from(Array(aapGrense).keys()).map((i) => {
                 const year = new Date().getFullYear() - i;
