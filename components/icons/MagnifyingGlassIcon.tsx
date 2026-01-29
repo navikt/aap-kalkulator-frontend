@@ -2,7 +2,15 @@ import React from 'react';
 
 export const MagnifyingGlassIcon = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="120px" height="120px" fill="none" viewBox="0 0 64 64">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="120px"
+      height="120px"
+      fill="none"
+      viewBox="0 0 64 64"
+      role="img"
+      aria-hidden="true"
+    >
       <g clipPath="url(#clip0_19357_38278)">
         <path
           fill="#CCE2F0"
