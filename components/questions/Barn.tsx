@@ -104,6 +104,7 @@ const Barn = () => {
                   value={antallBarn}
                   onChange={(event) => onChange(event.target.value)}
                   error={error}
+                  autoComplete="off"
                 />
               </div>
             </div>

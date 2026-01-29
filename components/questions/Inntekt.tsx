@@ -149,6 +149,7 @@ const Inntekt = () => {
                     error={error[indexKorreksjon(index)]}
                     value={Object.values(inntekt)[indexKorreksjon(index)]}
                     onChange={onChange}
+                    autoComplete="off"
                   />
                 </div>
               ))}
