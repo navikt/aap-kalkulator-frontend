@@ -15,8 +15,8 @@ import { GrunnbeloepHistorikk, grunnbeloep } from '../lib/utils/types';
 import { State } from './_app';
 
 export const getStaticProps = async () => {
-  const res = await fetch('https://g.nav.no/api/v1/grunnbeloep');
-  const resHistorikk = await fetch('https://g.nav.no/api/v1/historikk/grunnbeløp');
+  const res = await fetch('https://g.nav.no/api/v1/grunnbeloep', { cache: 'no-store' });
+  const resHistorikk = await fetch('https://g.nav.no/api/v1/historikk/grunnbeløp', { cache: 'no-store' });
   const data = await res.json();
   // @ts-ignore
   const dataHistorikk: GrunnbeloepHistorikk[] = await resHistorikk.json().then((res) =>
