@@ -29,7 +29,7 @@ export const getServerSideProps = async () => {
       };
     })
   );
-  return { props: { G: data, Historikk: dataHistorikk }, revalidate: 7200 };
+  return { props: { G: data, Historikk: dataHistorikk } };
 };
 
 // @ts-ignore
