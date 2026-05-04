@@ -14,9 +14,9 @@ import { kalkuler } from '../lib/logic/Kalkuler';
 import { GrunnbeloepHistorikk, grunnbeloep } from '../lib/utils/types';
 import { State } from './_app';
 
-export const getStaticProps = async () => {
-  const res = await fetch('https://g.nav.no/api/v1/grunnbeloep', { cache: 'no-store' });
-  const resHistorikk = await fetch('https://g.nav.no/api/v1/historikk/grunnbeløp', { cache: 'no-store' });
+export const getServerSideProps = async () => {
+  const res = await fetch('https://g.nav.no/api/v1/grunnbeloep');
+  const resHistorikk = await fetch('https://g.nav.no/api/v1/historikk/grunnbeløp');
   const data = await res.json();
   // @ts-ignore
   const dataHistorikk: GrunnbeloepHistorikk[] = await resHistorikk.json().then((res) =>
