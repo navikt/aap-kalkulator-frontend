@@ -14,7 +14,7 @@ import { kalkuler } from '../lib/logic/Kalkuler';
 import { GrunnbeloepHistorikk, grunnbeloep } from '../lib/utils/types';
 import { State } from './_app';
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await fetch('https://g.nav.no/api/v1/grunnbeloep');
   const resHistorikk = await fetch('https://g.nav.no/api/v1/historikk/grunnbeløp');
   const data = await res.json();
