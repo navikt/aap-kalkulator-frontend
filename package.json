@@ -56,7 +56,7 @@
     "postcss": "^8.5.14",
     "prettier": "^3.7.4",
     "tailwindcss": "^4.2.4",
-    "ts-jest": "^29.4.10",
+    "ts-jest": "^29.4.11",
     "typescript": "^5.9.3"
   },
   "resolutions": {
