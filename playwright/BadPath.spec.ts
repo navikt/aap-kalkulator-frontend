@@ -19,7 +19,7 @@ test('BadPath', async ({ page }) => {
       name: 'Hvilket år ble du så syk at du måtte jobbe mindre enn 50%?',
     })
     .selectOption('2019');
-  await page.getByText('Ja').first().click();
+  await page.getByRole('radio', { name: 'Ja' }).check();
   await page.getByRole('button', { name: 'Gå videre' }).click();
 
   //Inntekt side
@@ -36,6 +36,7 @@ test('BadPath', async ({ page }) => {
   await page.getByRole('button', { name: 'Gå videre' }).click();
 
   //Arbeid side
+  await expect(page.getByRole('heading', { name: 'Arbeid' })).toBeVisible();
   await page.getByRole('button', { name: 'Gå videre' }).click();
   await expect(page.getByText('Du må svare på om du har AAP')).toBeVisible();
   await expect(page.getByText('Velg enten ja eller nei for å gå videre.')).toBeVisible();
@@ -51,7 +52,9 @@ test('BadPath', async ({ page }) => {
   await page.getByRole('button', { name: 'Gå videre' }).click();
 
   //Barn side
-  await page.getByLabel('Ja').check();
+  // await page.getByLabel('Ja').check();
+  await expect(page.getByRole('heading', { name: 'Barn' })).toBeVisible();
+  await page.getByRole('radio', { name: 'Ja' }).check();
   await page.getByRole('button', { name: 'Gå videre' }).click();
   await expect(page.getByText('Antall barn må være et tall.')).toBeVisible();
   await page.getByLabel('Hvor mange barn forsørger du?').fill('2');
