@@ -38,19 +38,17 @@ class MyDocument extends Document<Props> {
 
   render(): JSX.Element {
     const { Decorator, language } = this.props;
-    const showDecorator = true;
+
     return (
       <Html lang={language || 'no'}>
-        <Head>{showDecorator && <Decorator.Styles />}</Head>
+        <Head>
+          <Decorator.Styles />
+        </Head>
         <body>
-          {showDecorator && <Decorator.Header />}
+          <Decorator.Header />
           <Main />
-          {showDecorator && (
-            <>
-              <Decorator.Footer />
-              <Decorator.Scripts />
-            </>
-          )}
+          <Decorator.Footer />
+          <Decorator.Scripts />
           <NextScript />
         </body>
       </Html>
