@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
-    "@navikt/aap-felles-prettier": "^5.9.0",
+    "@navikt/aap-felles-prettier": "^5.10.0",
     "@navikt/eslint-config-aap": "^5.5.1",
     "@playwright/test": "^1.62.0",
     "@tailwindcss/postcss": "^4.3.3",
