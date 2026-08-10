@@ -1746,13 +1746,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/aap-felles-prettier@npm:^5.9.0":
-  version: 5.9.0
-  resolution: "@navikt/aap-felles-prettier@npm:5.9.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-felles-prettier%2F5.9.0%2F84994aec2d3dee343acf0b10082985d9588edc95"
+"@navikt/aap-felles-prettier@npm:^5.10.0":
+  version: 5.10.0
+  resolution: "@navikt/aap-felles-prettier@npm:5.10.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faap-felles-prettier%2F5.10.0%2Feec80ef0fcb4a478f83240786576759439c47cf5"
   dependencies:
     "@trivago/prettier-plugin-sort-imports": "npm:^6.0.2"
     prettier: "npm:^3.9.5"
-  checksum: 10c0/7267e96d19dc747bffcdf460d1aa21940508a5ca7d3fc72d8d92e94f3e074b2cfc6a48651fcc6d4dbb49fd92b22d216ae21130aa3563b20722cbf9f02cd26e9b
+  checksum: 10c0/c61826b551aba152e092c3a47c4a25cd3dcc2349f11e7b32c4e25357346de443221b9a9693fcc9e5216ea7ff3a417208b6e46f2a85f2486d2441084159b7d392
   languageName: node
   linkType: hard
 
@@ -3095,7 +3095,7 @@ __metadata:
   dependencies:
     "@axe-core/playwright": "npm:^4.12.1"
     "@grafana/faro-web-sdk": "npm:^1.19.0"
-    "@navikt/aap-felles-prettier": "npm:^5.9.0"
+    "@navikt/aap-felles-prettier": "npm:^5.10.0"
     "@navikt/ds-css": "npm:^7.40.0"
     "@navikt/ds-icons": "npm:^3.4.3"
     "@navikt/ds-react": "npm:^7.40.0"
