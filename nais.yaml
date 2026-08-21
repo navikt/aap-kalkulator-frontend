@@ -5,6 +5,7 @@ metadata:
     namespace: aap
     labels:
         team: aap
+        systemkatalog.nav.no/system: TE-496
 spec:
     port: 3000
     image: {{ image }}
