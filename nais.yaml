@@ -42,8 +42,3 @@ spec:
             external:
                 - host: "g.nav.no"
     env: 
-    {{#each env}}
-        - name: {{this.name}}
-          value: {{this.value}}
-    {{/each}}
-
