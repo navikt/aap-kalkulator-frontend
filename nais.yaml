@@ -41,4 +41,3 @@ spec:
                 namespace: personbruker
             external:
                 - host: "g.nav.no"
-    env: 
