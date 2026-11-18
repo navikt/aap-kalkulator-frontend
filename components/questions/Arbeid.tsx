@@ -2,8 +2,6 @@ import { Alert, BodyShort, List, TextField, VStack } from '@navikt/ds-react';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 
-
-
 import { useFeatureToggleIntl } from '../../hooks/useFeatureToggleIntl';
 import { BrowserState, State } from '../../pages/_app';
 import BackLink from '../backlink/BackLink';
@@ -12,25 +10,6 @@ import { WalletIcon } from '../icons/WalletIcon';
 import QuestionHeader from '../questionHeader/QuestionHeader';
 import Radio from '../radio/Radio';
 import Stepper from '../stepper/Stepper';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const Arbeid = () => {
   const router = useRouter();
