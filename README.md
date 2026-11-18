@@ -29,7 +29,7 @@ Lag en .env.local fil og legg inn
 NEXT_PUBLIC_LAST_UPDATED=10-26-2022
 ```
 
-Åpne [http://localhost:3000](http://localhost:3000) i nettleser for å gå gjennom kalkulatoren
+Appen vil være tilgjengelig på: [http://localhost:3000/aap/kalkulator](http://localhost:3000/aap/kalkulator)
 
 ---
 
