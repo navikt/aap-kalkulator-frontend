@@ -1,4 +1,4 @@
-import { Button } from '@navikt/ds-react';
+import { Button, VStack } from '@navikt/ds-react';
 
 import { useFeatureToggleIntl } from '../../hooks/useFeatureToggleIntl';
 
@@ -10,10 +10,12 @@ export const FormWrapper = ({ handleSubmit, children }: Props) => {
   const { formatMessage } = useFeatureToggleIntl();
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-8 justify-items-start">
+    <VStack as="form" onSubmit={handleSubmit} gap="8" align="start">
       {children}
 
-      <Button variant="primary">{formatMessage('navigation.next')}</Button>
-    </form>
+      <Button type="submit" variant="primary">
+        {formatMessage('navigation.next')}
+      </Button>
+    </VStack>
   );
 };

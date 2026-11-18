@@ -11,7 +11,6 @@ import Container from '../components/container/Container';
 import { Dekorator } from '../components/dekorator/Dekorator';
 import { BrowserInterface } from '../components/state/BrowserInterface';
 import { StateInterface } from '../components/state/State';
-import '../styles/globals.css';
 import { messages } from '../utils/message';
 
 export const State = createContext({

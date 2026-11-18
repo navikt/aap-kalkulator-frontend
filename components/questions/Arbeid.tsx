@@ -1,4 +1,4 @@
-import { Alert, TextField } from '@navikt/ds-react';
+import { Alert, BodyShort, List, TextField, VStack } from '@navikt/ds-react';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 
@@ -10,7 +10,6 @@ import { WalletIcon } from '../icons/WalletIcon';
 import QuestionHeader from '../questionHeader/QuestionHeader';
 import Radio from '../radio/Radio';
 import Stepper from '../stepper/Stepper';
-import styles from './Arbeid.module.css';
 
 const Arbeid = () => {
   const router = useRouter();
@@ -107,7 +106,7 @@ const Arbeid = () => {
       <BackLink target="/steg/2" />
       <QuestionHeader image={<WalletIcon />} tittel={'Arbeid'} />
       <FormWrapper handleSubmit={handleSubmit}>
-        <div className="flex flex-col">
+        <VStack gap="4">
           <Radio
             error={radioErrorAAP}
             title={formatMessage('work.gotAAP.title')}
@@ -115,19 +114,15 @@ const Arbeid = () => {
             onChange={onRadioAAPChange}
             readMoreTitle={formatMessage('work.gotAAP.readMoreTitle')}
             readMore={
-              <div>
+              <BodyShort size="small">
                 {formatMessage('work.gotWork.readMore.start')}
-                <div>
-                  <ul className="list-disc ml-5">
-                    <li>{formatMessage('work.gotWork.readMore.pointOne')}</li>
-                    <li>{formatMessage('work.gotWork.readMore.pointTwo')}</li>
-                  </ul>
-                </div>
-              </div>
+                <List as="ul" size="small">
+                  <List.Item>{formatMessage('work.gotWork.readMore.pointOne')}</List.Item>
+                  <List.Item>{formatMessage('work.gotWork.readMore.pointTwo')}</List.Item>
+                </List>
+              </BodyShort>
             }
           />
-        </div>
-        <div className="flex flex-col">
           <Radio
             error={radioErrorArbeid}
             title={formatMessage('work.gotWork.title')}
@@ -136,34 +131,28 @@ const Arbeid = () => {
             readMoreTitle={formatMessage('work.gotWork.readMoreTitle')}
             readMore={formatMessage('work.gotAAP.readMore')}
           />
-        </div>
 
-        {state.harArbeid && (
-          <div className="mb-4">
-            <div className="flex flex-row items-center gap-2">
+          {state.harArbeid && (
+            <VStack gap="4">
               <TextField
                 label={formatMessage('work.howManyHours.title')}
                 description={formatMessage('work.howManyHours.description')}
-                className={styles.timer}
+                htmlSize={4}
                 inputMode="numeric"
                 error={arbeidsTimerError}
                 value={arbeidsTimer}
                 onChange={(event) => onArbeidChange(event.target.value)}
                 autoComplete="off"
               />
-            </div>
-            {(state?.arbeidstimer ?? 0) > 18.75 && !state?.harAAP && (
-              <Alert className="mt-4" variant={'warning'}>
-                {formatMessage('work.howManyHours.warning.withoutAAP')}
-              </Alert>
-            )}
-            {(state?.arbeidstimer ?? 0) > 22.5 && state?.harAAP && (
-              <Alert className="mt-4" variant={'warning'}>
-                {formatMessage('work.howManyHours.warning.withAAP')}
-              </Alert>
-            )}
-          </div>
-        )}
+              {(state?.arbeidstimer ?? 0) > 18.75 && !state?.harAAP && (
+                <Alert variant={'warning'}>{formatMessage('work.howManyHours.warning.withoutAAP')}</Alert>
+              )}
+              {(state?.arbeidstimer ?? 0) > 22.5 && state?.harAAP && (
+                <Alert variant={'warning'}>{formatMessage('work.howManyHours.warning.withAAP')}</Alert>
+              )}
+            </VStack>
+          )}
+        </VStack>
       </FormWrapper>
     </>
   );

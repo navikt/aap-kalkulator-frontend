@@ -1,4 +1,4 @@
-import { Heading } from '@navikt/ds-react';
+import { Heading, VStack } from '@navikt/ds-react';
 import React from 'react';
 
 import { Circle } from '../circle/Circle';
@@ -6,9 +6,9 @@ import { Circle } from '../circle/Circle';
 const QuestionHeader = ({ image, tittel }: { image: React.ReactElement; tittel: string }) => {
   return (
     <>
-      <div aria-hidden="true" className="flex flex-col items-center pt-4 mb-4">
+      <VStack aria-hidden="true" align="center" paddingBlock="4 0" marginBlock="0 4">
         <Circle>{image}</Circle>
-      </div>
+      </VStack>
       <Heading size="large" level="2" spacing>
         {tittel}
       </Heading>

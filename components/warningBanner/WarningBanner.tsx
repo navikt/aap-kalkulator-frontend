@@ -1,15 +1,14 @@
-import { Alert } from '@navikt/ds-react';
-import React from 'react';
+import { Alert, Box } from '@navikt/ds-react';
 
 const WarningBanner = (text: { text: string }) => {
   return (
-    <div className="px-4 md:px-12">
-      <div className="max-w-[900px] mx-auto">
-        <div className="pt-3 max-w-[600px]">
+    <Box paddingInline={{ xs: 'space-16', md: 'space-48' }}>
+      <Box maxWidth="900px" marginInline="auto">
+        <Box paddingBlock="space-12 space-0" maxWidth="600px">
           <Alert variant="info">{text.text}</Alert>
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
