@@ -28,7 +28,7 @@ const Radio = ({
   return (
     <RadioGroup
       legend={title}
-      description={readMore !== undefined && description}
+      description={!!readMore && description}
       onChange={onChange}
       value={state == undefined ? '' : state ? 'Ja' : 'Nei'}
       error={error}

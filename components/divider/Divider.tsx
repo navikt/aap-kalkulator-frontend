@@ -1,8 +1,10 @@
+import { Box } from '@navikt/ds-react';
+
 const Divider = ({ isTitle }: { isTitle?: boolean }) => {
   return isTitle ? (
-    <div className={`border-t-2 border-solid border-border-strong w-16 h-0`} aria-hidden="true" />
+    <Box aria-hidden="true" borderWidth="2 0 0" borderColor="border-strong" width="4rem" />
   ) : (
-    <div className={`border-t-2 border-solid border-border-strong w-3/5 md:w-4/5 h-0`} aria-hidden="true" />
+    <Box aria-hidden="true" borderWidth="2 0 0" borderColor="border-strong" width={{ xs: '60%', md: '80%' }} />
   );
 };
 export default Divider;

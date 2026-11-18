@@ -1,9 +1,11 @@
-import style from './Circle.module.css';
+import { Box, HStack } from '@navikt/ds-react';
 
 export const Circle = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className={style.circle}>
-      <div className={style.flex}>{children}</div>
-    </div>
+    <Box asChild width="88px" height="88px" borderRadius="full" background="surface-success-subtle">
+      <HStack align="center" justify="center">
+        {children}
+      </HStack>
+    </Box>
   );
 };

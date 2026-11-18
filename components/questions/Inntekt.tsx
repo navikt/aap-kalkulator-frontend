@@ -1,4 +1,4 @@
-import { BodyShort, TextField } from '@navikt/ds-react';
+import { BodyShort, Fieldset, Stack, TextField } from '@navikt/ds-react';
 import { useRouter } from 'next/router';
 import { ChangeEvent, useContext, useState } from 'react';
 
@@ -10,8 +10,6 @@ import { CoinIcon } from '../icons/CoinIcon';
 import QuestionHeader from '../questionHeader/QuestionHeader';
 import Radio from '../radio/Radio';
 import Stepper from '../stepper/Stepper';
-
-import styles from './Inntekt.module.css';
 
 interface InntektInterface {
   inntekt1: string;
@@ -108,11 +106,6 @@ const Inntekt = () => {
     setRadioError('');
   };
 
-  const readMoreText = (
-    <div>
-      <BodyShort spacing>{formatMessage('income.gotIncome.readMore1')}</BodyShort>
-    </div>
-  );
   return (
     <>
       <Stepper />
@@ -128,37 +121,34 @@ const Inntekt = () => {
           state={state.harLoenn}
           onChange={onRadioChange}
           readMoreTitle={formatMessage('income.gotIncome.readMoreTitle')}
-          readMore={readMoreText}
+          readMore={<BodyShort size="small">{formatMessage('income.gotIncome.readMore1')}</BodyShort>}
         />
 
         {state.harLoenn && (
-          <fieldset>
-            <legend className={styles.overskrift}>{formatMessage('income.howMuch.title')}</legend>
-            <BodyShort spacing>{formatMessage('income.howMuch.description')}</BodyShort>
-            <div className="flex md:flex-row flex-col gap-4">
+          <Fieldset
+            legend={formatMessage('income.howMuch.title')}
+            description={formatMessage('income.howMuch.description')}
+          >
+            <Stack direction={{ xs: 'column', md: 'row' }} gap="space-16" wrap={false} align="start">
               {inntektsAar.reverse().map((aar, index) => (
-                <div key={index} className="flex flex-col">
-                  <TextField
-                    inputMode="numeric"
-                    className={`max-w-[160px]`}
-                    key={index}
-                    id={`inntekt${idKorreksjon(index)}`}
-                    name={`inntekt${idKorreksjon(index)}`}
-                    label={`Inntekt ${aar}`}
-                    size="medium"
-                    error={error[indexKorreksjon(index)]}
-                    value={Object.values(inntekt)[indexKorreksjon(index)]}
-                    onChange={onChange}
-                    autoComplete="off"
-                  />
-                </div>
+                <TextField
+                  inputMode="numeric"
+                  key={index}
+                  id={`inntekt${idKorreksjon(index)}`}
+                  name={`inntekt${idKorreksjon(index)}`}
+                  label={`Inntekt ${aar}`}
+                  error={error[indexKorreksjon(index)]}
+                  value={Object.values(inntekt)[indexKorreksjon(index)]}
+                  onChange={onChange}
+                  autoComplete="off"
+                />
               ))}
-            </div>
-          </fieldset>
+            </Stack>
+          </Fieldset>
         )}
       </FormWrapper>
     </>
-  );
+  );;
 };
 
 export default Inntekt;

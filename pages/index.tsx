@@ -1,4 +1,4 @@
-import { Alert, Button, Heading } from '@navikt/ds-react';
+import { Alert, Button, Heading, List, VStack } from '@navikt/ds-react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
@@ -24,30 +24,26 @@ const Home: NextPage = () => {
     router.push('/steg/1');
   };
   return (
-    <>
-      <div className="flex flex-col items-center pt-4">
-        {browserState.redirect && (
-          <Alert variant="info" className="mb-8">
-            {formatMessage('start.refreshed')}
-          </Alert>
-        )}
-        <MagnifyingGlassIcon />
-        <Heading level="2" size="large" spacing>
+    <VStack gap="4">
+      <VStack align="center" gap="4" paddingBlock="4">
+        {browserState.redirect && <Alert variant="info">{formatMessage('start.refreshed')}</Alert>}
+        <MagnifyingGlassIcon aria-hidden="true" />
+        <Heading level="2" size="large">
           {formatMessage('start.title')}
         </Heading>
         <Divider isTitle={true} />
-      </div>
-      <div className="flex flex-col items-center mt-4 gap-4 pl-4">
-        <ul className="list-disc space-y-2 mb-8 md:w-5/6">
-          <li>{formatMessage('start.firstPoint')}</li>
-          <li>{formatMessage('start.secondPoint')}</li>
-          <li>{formatMessage('start.thirdPoint')}</li>
-        </ul>
-      </div>
-      <Button onClick={handleStart} className="w-20 ml-4" variant="primary" as={'button'}>
-        {formatMessage('navigation.start')}
-      </Button>
-    </>
+      </VStack>
+      <VStack align="start" gap="4" paddingInline="4">
+        <List>
+          <List.Item>{formatMessage('start.firstPoint')}</List.Item>
+          <List.Item>{formatMessage('start.secondPoint')}</List.Item>
+          <List.Item>{formatMessage('start.thirdPoint')}</List.Item>
+        </List>
+        <Button onClick={handleStart} variant="primary">
+          {formatMessage('navigation.start')}
+        </Button>
+      </VStack>
+    </VStack>
   );
 };
 

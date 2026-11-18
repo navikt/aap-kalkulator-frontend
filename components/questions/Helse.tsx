@@ -1,4 +1,4 @@
-import { Select } from '@navikt/ds-react';
+import { Box, Select } from '@navikt/ds-react';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 
@@ -10,7 +10,6 @@ import { HeartIcon } from '../icons/HeartIcon';
 import QuestionHeader from '../questionHeader/QuestionHeader';
 import Radio from '../radio/Radio';
 import Stepper from '../stepper/Stepper';
-import styles from './Helse.module.css';
 
 interface InntektsForm extends HTMLFormElement {
   readonly inntekt1: HTMLInputElement;
@@ -102,27 +101,25 @@ const Helse = () => {
           readMoreTitle={formatMessage('helse.over25.readMoreTitle')}
           readMore={formatMessage('helse.over25.readMore')}
         />
-        <div className="mb-4">
-          <div>
-            <Select
-              className={styles.select}
-              id="sykmelding"
-              label={formatMessage('helse.nedsattArbeidsevne.title')}
-              onChange={(event) => onChange(event.target.value)}
-              defaultValue={aar}
-              autoComplete="off"
-            >
-              {Array.from(Array(aapGrense).keys()).map((i) => {
-                const year = new Date().getFullYear() - i;
-                return (
-                  <option key={year} value={year}>
-                    {year}
-                  </option>
-                );
-              })}
-            </Select>
-          </div>
-        </div>
+        <Box marginBlock="0 space-16">
+          <Select
+            id="sykmelding"
+            label={formatMessage('helse.nedsattArbeidsevne.title')}
+            onChange={(event) => onChange(event.target.value)}
+            defaultValue={aar}
+            autoComplete="off"
+            error={error}
+          >
+            {Array.from(Array(aapGrense).keys()).map((i) => {
+              const year = new Date().getFullYear() - i;
+              return (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              );
+            })}
+          </Select>
+        </Box>
       </FormWrapper>
     </>
   );

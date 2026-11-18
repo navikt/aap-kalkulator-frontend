@@ -1,24 +1,29 @@
+import { Box } from '@navikt/ds-react';
 import { ReactNode } from 'react';
-import React from 'react';
 
 import Banner from '../banner/Banner';
 import Breadcrumbs from '../breadcrumbs/Breadcrumbs';
 
 const Container = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="min-h-container bg-bg-subtle">
+    <Box minHeight="80vh" background="bg-subtle">
       <Banner />
-      <div className="px-4 md:px-12">
-        <main className="max-w-[900px] mx-auto pb-8">
-          <div className="max-w-[600px]">
+      <Box paddingInline={{ xs: 'space-16', md: 'space-48' }}>
+        <Box as="main" maxWidth="900px" marginInline="auto" paddingBlock="0 space-32">
+          <Box maxWidth="600px">
             <Breadcrumbs />
-            <div className="bg-surface-default p-6 md:p-10 " id="maincontent" tabIndex={-1}>
+            <Box
+              background="surface-default"
+              padding={{ xs: 'space-24', md: 'space-40' }}
+              id="maincontent"
+              tabIndex={-1}
+            >
               {children}
-            </div>
-          </div>
-        </main>
-      </div>
-    </div>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

@@ -1,5 +1,5 @@
 // noinspection JSNonASCIINames
-import { Alert, BodyShort, Button, Heading, Link } from '@navikt/ds-react';
+import { Alert, BodyShort, Box, Button, HGrid, Heading, Link, List, VStack } from '@navikt/ds-react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useMemo, useState } from 'react';
@@ -64,106 +64,84 @@ const Resultat: NextPage = ({ G, Historikk }: { G: grunnbeloep; Historikk: Grunn
     <>
       <Stepper />
       <BackLink target="/steg/4" tekst="Endre svar" />
-      <div className="grid gap-8">
-        <div className="flex flex-col items-center pt-4 mb-4" aria-hidden="true">
+      <VStack gap="8">
+        <VStack align="center" paddingBlock="4" aria-hidden="true">
           <Circle>
             <CoinIcon />
           </Circle>
-        </div>
-        <div className="text-left -mb-5">
-          <Heading level="2" size="large">
-            {formatMessage('result.title')}
-          </Heading>
-        </div>
-        <div className="grid gap-4">
-          <div className="grid sm:grid-rows-2 sm:w-full md:grid-rows-1 md:grid-cols-2 my-4 gap-4 justify-self-center">
-            <div className="bg-green-100 p-4 rounded-sm flex-col flex">
-              <span className="text-3xl md:text-3xl text-green-900">
+        </VStack>
+        <Heading level="2" size="large">
+          {formatMessage('result.title')}
+        </Heading>
+        <VStack gap="4">
+          <HGrid columns={{ xs: 1, md: 2 }} gap="4">
+            <Box background="surface-success-subtle" padding="4" borderRadius="small" margin="0">
+              <Heading size="large">
                 {(dagsats * 10).toLocaleString('nb-NO')}&nbsp;kr
-              </span>
-              <BodyShort className="text-green-800" weight="semibold">
-                {' '}
+              </Heading>
+              <BodyShort>
                 {formatMessage('result.per14', {
                   wbr: () => <>&nbsp;</>,
                   shy: () => <>&shy;</>,
                 })}
               </BodyShort>
-            </div>
-            <div className="bg-green-100 p-4 rounded-sm flex-col flex">
-              <span className="text-3xl md:text-3xl text-green-900">
+            </Box>
+            <Box background="surface-success-subtle" padding="4" borderRadius="small" margin="0">
+              <Heading size="large">
                 {Math.ceil(result == null ? 0 : resultat).toLocaleString('nb-NO')}
                 &nbsp;kr
-              </span>{' '}
-              <BodyShort className="text-green-800" weight="semibold">
+              </Heading>
+              <BodyShort>
                 {formatMessage('result.perAar', {
                   shy: () => <>&shy;</>,
                 })}
               </BodyShort>
-            </div>
-          </div>
-          <div className="space-y-7">
+            </Box>
+          </HGrid>
+          <VStack gap="7">
             <BodyShort>{formatMessage('result.preDisclaimer')}</BodyShort>
             {result != null && (
-              <div>
-                <Heading size="medium" level="2" spacing>
+              <VStack gap="4">
+                <Heading size="medium" level="2">
                   {formatMessage('result.description')}
                 </Heading>
 
-                <ul className=" space-y-4 px-5 list-disc">
+                <List>
                   {result?.logs.map((text) => (
-                    <li key={text.id}>
-                      <div>
-                        {formatMessage(text.id, {
-                          ...text.values,
-                          strong: (...chunks: any) => <strong>{chunks}</strong>,
-                        })}
-                      </div>
-                    </li>
+                    <List.Item key={text.id}>
+                      {formatMessage(text.id, {
+                        ...text.values,
+                        strong: (...chunks: any) => <strong>{chunks}</strong>,
+                      })}
+                    </List.Item>
                   ))}
-                </ul>
-              </div>
+                </List>
+              </VStack>
             )}
-          </div>
-        </div>
-
-        {state.harAAP && (
-          <>
-            <Alert variant="info">
-              <div>
+          </VStack>
+          {state.harAAP && (
+            <VStack align="start" gap="4">
+              <Alert variant="info">
                 <BodyShort>{state.harAAP && formatMessage('result.disclamerMedAAP')}</BodyShort>
-              </div>
-            </Alert>
-            <Button
-              className={'w-fit'}
-              variant={'primary'}
-              onClick={() => {
-                window.location.href = 'https://www.nav.no/aap/mine-aap';
-              }}
-            >
-              {formatMessage('result.buttonMedAAP')}
-            </Button>
-          </>
-        )}
-        {!state.harAAP && (
-          <>
-            <Alert variant="info">
-              <div>
+              </Alert>
+              <Button as="a" href="https://www.nav.no/aap/mine-aap" variant="primary">
+                {formatMessage('result.buttonMedAAP')}
+              </Button>
+            </VStack>
+          )}
+          {!state.harAAP && (
+            <VStack align="start" gap="4">
+              <Alert variant="info">
                 <BodyShort>{formatMessage('result.disclamerUtenAAP')}</BodyShort>
-              </div>
-            </Alert>
-            <Button
-              className={'w-fit'}
-              variant={'primary'}
-              onClick={() => {
-                window.location.href = 'https://www.nav.no/aap/soknad';
-              }}
-            >
-              {formatMessage('result.buttonUtenAAP')}
-            </Button>
-          </>
-        )}
-        <Link href={'https://www.nav.no/aap'}>{formatMessage('result.link2')}</Link>
-      </div>
+              </Alert>
+              <Button as="a" href="https://www.nav.no/aap/soknad" variant="primary">
+                {formatMessage('result.buttonUtenAAP')}
+              </Button>
+            </VStack>
+          )}
+          <Link href={'https://www.nav.no/aap'}>{formatMessage('result.link2')}</Link>
+        </VStack>
+      </VStack>
     </>
   );
 };

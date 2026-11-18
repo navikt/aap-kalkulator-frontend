@@ -7,14 +7,16 @@ exports[`Divider component should render 1`] = `
     <div>
       <div
         aria-hidden="true"
-        class="border-t-2 border-solid border-border-strong w-16 h-0"
+        class="navds-r-w navds-box navds-box-border-color navds-box-border-width"
+        style="--__ac-r-w-xs: 4rem; --__ac-box-border-color: var(--a-border-strong); --__ac-box-border-width: 2px 0px 0px;"
       />
     </div>
   </body>,
   "container": <div>
     <div
       aria-hidden="true"
-      class="border-t-2 border-solid border-border-strong w-16 h-0"
+      class="navds-r-w navds-box navds-box-border-color navds-box-border-width"
+      style="--__ac-r-w-xs: 4rem; --__ac-box-border-color: var(--a-border-strong); --__ac-box-border-width: 2px 0px 0px;"
     />
   </div>,
   "debug": [Function],
