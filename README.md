@@ -3,8 +3,9 @@
 Vi ser i dag at det er mange henvendelser til NKS hvor brukerne lurer på hvor mye de kan få i AAP, og hvorfor de får akkurat denne summen. Denne kalkulatoren vil kunne gi en forhåndsberegning av AAP til brukere, med en enkel forklaring av hva som ligger til grunn for utregningen. Vi håper kalkulatoren kan redusere noen av henvendelsene til NKS. Vi legger vekt på at kalkulatoren kun er et hjelpeverktøy og ikke en nøyaktig utregning. Den vil ikke kreve innlogging.
 
 Bruker starter på en startside hvor de blir informert om informasjonene nevt i avsnittet over. Etter et noe spørsmål er blitt besvart vil de bli presentert med resultat siden. Teksten er dynamisk og vil være forskjellig ut fra svarene avgitt. I eksempelet under har bruker oppgitt inntekt, antall barn og sykemeldingsår 2020.
-| År | Inntekt |
-|------|---------|
+
+| År       | Inntekt |
+| -------- | ------- |
 | **2017** | 300 000 |
 | **2018** | 300 000 |
 | **2019** | 500 000 |
@@ -15,15 +16,36 @@ Bruker starter på en startside hvor de blir informert om informasjonene nevt i 
 
 # Komme i gang
 
-Hvordan bygge, teste og kjøre koden viss aktuelt.
+Prosjektet bruker **mise** til å styre `Node` og `pnpm`.
+Installer mise og aktiver det før du fortsetter.
+Se [hvordan du installerer mise](https://mise.jdx.dev/getting-started.html).
 
-```bash
-npm run dev
-# or
-yarn dev
+Pnpm 12 tillater ikke miljøvariabler i repoets tokeninnstillinger. Legg til eller oppdater denne linjen i din egen `~/.npmrc`. Behold resten av filen:
+
+```ini
+//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
 ```
 
-Lag en .env.local fil og legg inn
+Sett `NODE_AUTH_TOKEN` til et token med `read:packages` og tilgang til Nav-pakkene før du installerer. Du kan fortsatt bruke et pnpm-alias som henter tokenet fra nøkkelringen.
+
+```bash
+mise install
+pnpm install
+pnpm dev
+```
+
+`preinstall` stopper installasjon med npm og Yarn. `--ignore-scripts` hopper over denne sjekken.
+
+Gjenstående oppgradering: Etter `mise install` kjører du `pnpm install --no-frozen-lockfile` og sjekker inn den oppdaterte `pnpm-lock.yaml`. Slett `yarn.lock` først etter en vellykket migrering. Publiser de oppdaterte workflowene i `aap-workflows` før frontend-workflowene kjører.
+
+Kjør testene og bygg appen med:
+
+```bash
+pnpm test
+pnpm build
+```
+
+Lag en `.env.local`-fil og legg inn:
 
 ```bash
 NEXT_PUBLIC_LAST_UPDATED=10-26-2022
