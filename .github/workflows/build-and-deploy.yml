@@ -23,8 +23,7 @@ jobs:
           echo "last_updated: $last_updated"
           echo "last_updated=$last_updated" >> $GITHUB_OUTPUT
   buildDev:
-#     TODO: FIKSET
-    uses: navikt/aap-workflows/.github/workflows/frontend-next-build-pnpm.yml@9559b52f11ff7eaa6ae2c7d55954bd8745ca56c3
+    uses: navikt/aap-workflows/.github/workflows/frontend-next-build-pnpm.yml@main
     needs: timestamp
     permissions:
       contents: read
@@ -39,8 +38,7 @@ jobs:
       dynamicenv: NEXT_PUBLIC_LAST_UPDATED=${{ needs.timestamp.outputs.lastupdated}}
   buildProd:
     if: github.ref == 'refs/heads/main'
-#     TODO: FIKSET
-    uses: navikt/aap-workflows/.github/workflows/frontend-next-build-pnpm.yml@9559b52f11ff7eaa6ae2c7d55954bd8745ca56c3
+    uses: navikt/aap-workflows/.github/workflows/frontend-next-build-pnpm.yml@main
     needs: [timestamp, deployDev]
     permissions:
       contents: read
