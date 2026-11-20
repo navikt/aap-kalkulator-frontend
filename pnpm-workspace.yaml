@@ -1,0 +1,7 @@
+pmOnFail: error
+minimumReleaseAge: 2880
+# Block dependency scripts without failing installation.
+allowBuilds: { '@parcel/watcher': set this to true or false, protobufjs: set this to true or false }
+strictDepBuilds: false
+overrides:
+  ws: 8.17.1

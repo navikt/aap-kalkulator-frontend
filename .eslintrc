@@ -1,3 +1,0 @@
-{
-  "extends": ["@navikt/eslint-config-aap", "next/core-web-vitals"]
-}
