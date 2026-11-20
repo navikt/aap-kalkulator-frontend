@@ -14,29 +14,43 @@ Bruker starter på en startside hvor de blir informert om informasjonene nevt i 
 
 ---
 
-# Komme i gang
+## Bygge og kjøre app lokalt
 
-Prosjektet bruker **mise** til å styre `Node` og `pnpm`.
-Installer mise og aktiver det før du fortsetter.
+### Sett opp GitHub token
+
+> ⚠️ **OBS:** Dette steget er nødvendig for å kunne installere avhengigheter fra Navikt Github Package Registry.
+> Hvis noe feiler med `unauthorized` eller `403`, sjekk at du har et gyldig token og oppsett.
+
+Du finner bruksanvisning for oppsett av GitHub token her:
+[AAP Sysdoc - Frontend](https://aap-sysdoc.ansatt.nav.no/teknisk/frontend)
+
+### Kjøre lokalt
+
+Prosjektet er satt opp med **mise** for å styre `Node` og `pnpm`.
+Det anbefales at du installerer mise og aktiverer det før du fortsetter.
 Se [hvordan du installerer mise](https://mise.jdx.dev/getting-started.html).
 
-Pnpm 12 tillater ikke miljøvariabler i repoets tokeninnstillinger. Legg til eller oppdater denne linjen i din egen `~/.npmrc`. Behold resten av filen:
-
-```ini
-//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
-```
-
-Sett `NODE_AUTH_TOKEN` til et token med `read:packages` og tilgang til Nav-pakkene før du installerer. Du kan fortsatt bruke et pnpm-alias som henter tokenet fra nøkkelringen.
+Hvis du bruker mise kan du bare kjøre denne:
 
 ```bash
 mise install
+```
+
+Installer pakker med pnpm:
+
+```bash
 pnpm install
+```
+
+Så for å kjøre opp prosjektet:
+
+```bash
 pnpm dev
 ```
 
 `preinstall` stopper installasjon med npm og Yarn. `--ignore-scripts` hopper over denne sjekken.
 
-Gjenstående oppgradering: Etter `mise install` kjører du `pnpm install --no-frozen-lockfile` og sjekker inn den oppdaterte `pnpm-lock.yaml`. Slett `yarn.lock` først etter en vellykket migrering. Publiser de oppdaterte workflowene i `aap-workflows` før frontend-workflowene kjører.
+### Test og bygg
 
 Kjør testene og bygg appen med:
 
